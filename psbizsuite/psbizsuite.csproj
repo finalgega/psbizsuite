@@ -234,6 +234,9 @@
     <Content Include="Assets\Jquery\ui.checkbox.js" />
     <Content Include="Assets\Jquery\ui.core.js" />
     <Content Include="Global.asax" />
+    <Content Include="Views\View1.aspx">
+      <BrowseToURL>~/Views/View1.aspx</BrowseToURL>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -259,6 +262,9 @@
     <Content Include="Assets\Images\forms\Thumbs.db" />
     <Content Include="Assets\Images\login\Thumbs.db" />
     <Content Include="Assets\Images\table\Thumbs.db" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\View1.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
