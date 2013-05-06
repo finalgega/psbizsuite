@@ -13,13 +13,14 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>psbizsuite</RootNamespace>
     <AssemblyName>psbizsuite</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,16 +43,14 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -102,6 +101,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -113,6 +113,126 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Assets\Css\datePicker.css" />
+    <Content Include="Assets\Css\pro_dropline.css" />
+    <Content Include="Assets\Css\pro_dropline_ie.css" />
+    <Content Include="Assets\Css\screen.css" />
+    <Content Include="Assets\Images\forms\bg_related_act.gif" />
+    <Content Include="Assets\Images\forms\bubble_inner.gif" />
+    <Content Include="Assets\Images\forms\bubble_left.gif" />
+    <Content Include="Assets\Images\forms\bubble_right.gif" />
+    <Content Include="Assets\Images\forms\choose-file.gif" />
+    <Content Include="Assets\Images\forms\error_left.gif" />
+    <Content Include="Assets\Images\forms\error_right.gif" />
+    <Content Include="Assets\Images\forms\form_inp.gif" />
+    <Content Include="Assets\Images\forms\form_inp_error.gif" />
+    <Content Include="Assets\Images\forms\form_reset.gif" />
+    <Content Include="Assets\Images\forms\form_select.gif" />
+    <Content Include="Assets\Images\forms\form_select_small.gif" />
+    <Content Include="Assets\Images\forms\form_submit.gif" />
+    <Content Include="Assets\Images\forms\form_textarea.gif" />
+    <Content Include="Assets\Images\forms\header_related_act.gif" />
+    <Content Include="Assets\Images\forms\icon_calendar.jpg" />
+    <Content Include="Assets\Images\forms\icon_edit.gif" />
+    <Content Include="Assets\Images\forms\icon_list_arrow.gif" />
+    <Content Include="Assets\Images\forms\icon_minus.gif" />
+    <Content Include="Assets\Images\forms\icon_plus.gif" />
+    <Content Include="Assets\Images\forms\lines_dotted_short.gif" />
+    <Content Include="Assets\Images\forms\step_1.gif" />
+    <Content Include="Assets\Images\forms\step_dark_left.gif" />
+    <Content Include="Assets\Images\forms\step_dark_right.gif" />
+    <Content Include="Assets\Images\forms\step_dark_round.gif" />
+    <Content Include="Assets\Images\forms\step_light_left.gif" />
+    <Content Include="Assets\Images\forms\step_light_right.gif" />
+    <Content Include="Assets\Images\forms\step_light_round.gif" />
+    <Content Include="Assets\Images\forms\upload_file.gif" />
+    <Content Include="Assets\Images\login\icon_back_login.gif" />
+    <Content Include="Assets\Images\login\inp_login.gif" />
+    <Content Include="Assets\Images\login\loginbox_bg.png" />
+    <Content Include="Assets\Images\login\login_bg.jpg" />
+    <Content Include="Assets\Images\login\submit_login.gif" />
+    <Content Include="Assets\Images\shared\blank.gif" />
+    <Content Include="Assets\Images\shared\border_bit.jpg" />
+    <Content Include="Assets\Images\shared\cal_th_repeat.jpg" />
+    <Content Include="Assets\Images\shared\cal_top_bg.jpg" />
+    <Content Include="Assets\Images\shared\cal_top_repeat.jpg" />
+    <Content Include="Assets\Images\shared\checkbox.gif" />
+    <Content Include="Assets\Images\shared\content_repeat.jpg" />
+    <Content Include="Assets\Images\shared\corner_bottom_left.jpg" />
+    <Content Include="Assets\Images\shared\corner_bottom_right.jpg" />
+    <Content Include="Assets\Images\shared\corner_top_left.jpg" />
+    <Content Include="Assets\Images\shared\corner_top_right.jpg" />
+    <Content Include="Assets\Images\shared\icon_idlogo.jpg" />
+    <Content Include="Assets\Images\shared\logo.png" />
+    <Content Include="Assets\Images\shared\nav\account_drop_bg.gif" />
+    <Content Include="Assets\Images\shared\nav\account_line.gif" />
+    <Content Include="Assets\Images\shared\nav\back_0.gif" />
+    <Content Include="Assets\Images\shared\nav\back_1x.gif" />
+    <Content Include="Assets\Images\shared\nav\Copy of pro_line_1.gif" />
+    <Content Include="Assets\Images\shared\nav\divider.jpg" />
+    <Content Include="Assets\Images\shared\nav\icon_acc_inbox.gif" />
+    <Content Include="Assets\Images\shared\nav\icon_acc_personal.gif" />
+    <Content Include="Assets\Images\shared\nav\icon_acc_projects.gif" />
+    <Content Include="Assets\Images\shared\nav\icon_acc_settings.gif" />
+    <Content Include="Assets\Images\shared\nav\icon_acc_stats.gif" />
+    <Content Include="Assets\Images\shared\nav\nav_logout.gif" />
+    <Content Include="Assets\Images\shared\nav\nav_myaccount.gif" />
+    <Content Include="Assets\Images\shared\nav\pro_line_0x.gif" />
+    <Content Include="Assets\Images\shared\nav\pro_line_1.gif" />
+    <Content Include="Assets\Images\shared\nav\pro_line_2.gif" />
+    <Content Include="Assets\Images\shared\nav\repeat.jpg" />
+    <Content Include="Assets\Images\shared\side_shadowleft.jpg" />
+    <Content Include="Assets\Images\shared\side_shadowright.jpg" />
+    <Content Include="Assets\Images\shared\top_bg.jpg" />
+    <Content Include="Assets\Images\shared\top_search_btn.gif" />
+    <Content Include="Assets\Images\shared\top_search_inp.gif" />
+    <Content Include="Assets\Images\shared\top_search_select.gif" />
+    <Content Include="Assets\Images\shared\year_next.gif" />
+    <Content Include="Assets\Images\shared\year_prev.gif" />
+    <Content Include="Assets\Images\table\actions_slider_bg.gif" />
+    <Content Include="Assets\Images\table\action_delete.gif" />
+    <Content Include="Assets\Images\table\action_edit.gif" />
+    <Content Include="Assets\Images\table\content_round_repeat.jpg" />
+    <Content Include="Assets\Images\table\content_round_top.jpg" />
+    <Content Include="Assets\Images\table\dropdown_actions.gif" />
+    <Content Include="Assets\Images\table\icon_close_blue.gif" />
+    <Content Include="Assets\Images\table\icon_close_green.gif" />
+    <Content Include="Assets\Images\table\icon_close_red.gif" />
+    <Content Include="Assets\Images\table\icon_close_yellow.gif" />
+    <Content Include="Assets\Images\table\message_blue.gif" />
+    <Content Include="Assets\Images\table\message_green.gif" />
+    <Content Include="Assets\Images\table\message_red.gif" />
+    <Content Include="Assets\Images\table\message_yellow.gif" />
+    <Content Include="Assets\Images\table\paging_far_left.gif" />
+    <Content Include="Assets\Images\table\paging_far_right.gif" />
+    <Content Include="Assets\Images\table\paging_left.gif" />
+    <Content Include="Assets\Images\table\paging_right.gif" />
+    <Content Include="Assets\Images\table\select_number_rows.gif" />
+    <Content Include="Assets\Images\table\table_header.jpg" />
+    <Content Include="Assets\Images\table\table_header_checkbox.jpg" />
+    <Content Include="Assets\Images\table\table_header_options.jpg" />
+    <Content Include="Assets\Images\table\table_header_repeat.jpg" />
+    <Content Include="Assets\Images\table\table_icon_1.gif" />
+    <Content Include="Assets\Images\table\table_icon_2.gif" />
+    <Content Include="Assets\Images\table\table_icon_3.gif" />
+    <Content Include="Assets\Images\table\table_icon_4.gif" />
+    <Content Include="Assets\Images\table\table_icon_5.gif" />
+    <Content Include="Assets\Images\table\table_sort_arrow.gif" />
+    <Content Include="Assets\Jquery\custom_jquery.js" />
+    <Content Include="Assets\Jquery\date.js" />
+    <Content Include="Assets\Jquery\jquery-1.4.1.min.js" />
+    <Content Include="Assets\Jquery\jquery.bind.js" />
+    <Content Include="Assets\Jquery\jquery.datePicker.js" />
+    <Content Include="Assets\Jquery\jquery.dimensions.js" />
+    <Content Include="Assets\Jquery\jquery.filestyle.js" />
+    <Content Include="Assets\Jquery\jquery.pngFix.pack.js" />
+    <Content Include="Assets\Jquery\jquery.selectbox-0.5.js" />
+    <Content Include="Assets\Jquery\jquery.selectbox-0.5_style_2.js" />
+    <Content Include="Assets\Jquery\jquery.selectbox-0.5_style_3.js" />
+    <Content Include="Assets\Jquery\jquery.tooltip.js" />
+    <Content Include="Assets\Jquery\jquery.usermode.js" />
+    <Content Include="Assets\Jquery\ui.checkbox.js" />
+    <Content Include="Assets\Jquery\ui.core.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -130,6 +250,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Images\shared\nav\Thumbs.db" />
+    <Content Include="Assets\Images\shared\Thumbs.db" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Images\forms\Thumbs.db" />
+    <Content Include="Assets\Images\login\Thumbs.db" />
+    <Content Include="Assets\Images\table\Thumbs.db" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
