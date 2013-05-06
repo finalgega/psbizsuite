@@ -5,11 +5,11 @@
 <html>
 <head runat="server">
     <meta name="viewport" content="width=device-width" />
-    <title>View1</title>
+    <title>Index</title>
 </head>
 <body>
     <div>
-        
+        This will be a login page :)
     </div>
 </body>
 </html>

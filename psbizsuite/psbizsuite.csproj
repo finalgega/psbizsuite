@@ -104,6 +104,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -234,9 +235,7 @@
     <Content Include="Assets\Jquery\ui.checkbox.js" />
     <Content Include="Assets\Jquery\ui.core.js" />
     <Content Include="Global.asax" />
-    <Content Include="Views\View1.aspx">
-      <BrowseToURL>~/Views/View1.aspx</BrowseToURL>
-    </Content>
+    <Content Include="Views\Home\Index.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -248,7 +247,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -262,9 +260,6 @@
     <Content Include="Assets\Images\forms\Thumbs.db" />
     <Content Include="Assets\Images\login\Thumbs.db" />
     <Content Include="Assets\Images\table\Thumbs.db" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\View1.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
