@@ -618,7 +618,7 @@ a:hover.action-delete	{
 	text-indent: -3000px;
 	width: 80px;
 	}
-#id-form	{
+.id-form	{
 	}
 .inp-form	{
 	background: url(../Images/forms/form_inp.gif) no-repeat;
@@ -649,18 +649,17 @@ a:hover.action-delete	{
 	padding: 6px 6px 0 6px;
 	width: 378px;
 	}
-#id-form td	{
+.id-form td	{
 	padding: 0 0 10px 0;
 	}
-#id-form td.noheight	{
+.id-form td.noheight	{
 	padding: 0 0 0px 0;
 	}
-#id-form th	{
+.id-form th	{
 	line-height: 28px;
 	min-width: 130px;
-	padding: 0 0 10px 0;
+	padding: 0 20px 10px 0;
 	text-align: left;
-	width: 130px;
 	}
 .styledselect-day ,
 .styledselect-month ,
