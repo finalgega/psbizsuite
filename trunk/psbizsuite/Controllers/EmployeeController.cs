@@ -16,5 +16,10 @@ namespace psbizsuite.Controllers
             return View();
         }
 
+        public ActionResult EditEmployeeDetail()
+        {
+            return View();
+        }
+
     }
 }

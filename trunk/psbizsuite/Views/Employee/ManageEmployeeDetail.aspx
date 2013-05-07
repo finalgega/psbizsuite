@@ -72,7 +72,7 @@
                                     <td>Sale Executive</td>
                                     <td>2400</td>
                                     <td class="options-width">
-                                        <a href="" title="More details or Edit" class="icon-1 info-tooltip"></a>
+                                        <a href="EditEmployeeDetail" title="More details or Edit" class="icon-1 info-tooltip"></a>
                                         <a href="" title="Delete" class="icon-2 info-tooltip"></a>
                                     </td>
                                 </tr>
@@ -84,7 +84,7 @@
                                     <td>Sale Executive</td>
                                     <td>2400</td>
                                     <td class="options-width">
-                                        <a href="" title="More details or Edit" class="icon-1 info-tooltip"></a>
+                                        <a href="EditEmployeeDetail" title="More details or Edit" class="icon-1 info-tooltip"></a>
                                         <a href="" title="Delete" class="icon-2 info-tooltip"></a>
                                     </td>
                                 </tr>

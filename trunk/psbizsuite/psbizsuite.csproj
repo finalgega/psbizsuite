@@ -236,6 +236,7 @@
     <Content Include="Assets\Jquery\ui.checkbox.js" />
     <Content Include="Assets\Jquery\ui.core.js" />
     <Content Include="Global.asax" />
+    <Content Include="Views\Employee\EditEmployeeDetail.aspx" />
     <Content Include="Views\Employee\ManageEmployeeDetail.aspx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Web.config" />
