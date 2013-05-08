@@ -1,19 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="9ca62bae-3af9-4f6c-a37a-14c7e2d74851" name="ClassDiagram" linkedPackageId="b4bbaf2f-b1c1-4b24-886d-73dee3dddc02" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
-  <profileInstances>
-    <packageHasProfileInstances Id="f195a232-7f74-4b87-81be-af188726b8e6">
-      <profileInstance Id="0f514389-40cf-4d28-aab3-649678e908a1" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="200fa42e-236e-4d21-a636-208a142844fe">
-      <profileInstance Id="27c574a0-6f2b-4d41-beb1-baf1f8afd454" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-  </profileInstances>
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
       <class Id="6391bccc-d0de-43be-9d07-c0bc223d6f93" name="User" isAbstract="true" isLeaf="false" isActiveClass="false">
@@ -278,22 +264,6 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="ffa4c730-cf76-444e-98ca-7aa07642f424" />
           </association>
-          <association Id="774c3c0a-36c7-4dfd-9a61-d70acd1e9e30" isDerived="false" sourceEndRoleName="Payroll" targetEndRoleName="Account" isLeaf="false" isAbstract="false">
-            <classMoniker Id="de2555a6-d5d6-4fbb-81cb-6ba4af885625" LastKnownName="Account" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd Id="806a8187-f8ef-4875-91c2-7b7a456cfca8" name="Payroll" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="cf164aba-9ccb-4cc5-a03b-8996c250e1be" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd Id="6bbf490d-786e-489b-9045-dec3de26b7b9" name="Account" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="86cfc37e-a4ab-4527-ac02-83ba391abf9f" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-            <elementDefinition Id="f1bd9b2f-d6eb-494a-9738-c0775af8e970" />
-          </association>
         </targetEnds>
         <ownedAttributesInternal>
           <property Id="769877a6-286e-4a78-8832-172c23f37e01" name="amount" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
@@ -411,11 +381,62 @@
     <logicalClassDesignerModelHasTypes>
       <class Id="dd62a73e-1a19-496f-a98d-c7bc5a2d393f" name="OrderItem" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="7c1b6049-12f6-48cd-92c9-052657669344" />
+        <ownedAttributesInternal>
+          <property Id="ad9c0383-ceb2-4c79-85ff-3c54cbcd39c1" name="id" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="5efe7538-5cf8-4f6e-aa96-7ebef0c6b38f" />
+          </property>
+          <property Id="78af6d33-834b-4318-a53d-f23379231950" name="description" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="a68b6196-86f1-4615-b155-8d0442a7bec5" />
+          </property>
+          <property Id="bd9ae276-1fdc-4a58-8927-9b5ee97044c2" name="unitPrice" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="50cabfa9-2cba-401d-8820-ae6caf98910d" />
+          </property>
+          <property Id="ee42ccbf-a60d-42ea-ae30-e360f029fc05" name="quantity" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="4ee47f19-a4a3-407f-942a-12095641e05d" />
+          </property>
+          <property Id="f4fbbd9e-2a12-424f-8b72-68b39370057a" name="totalAmount" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="627d3a6f-504b-4e47-8060-f30188ededb5" />
+          </property>
+        </ownedAttributesInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
       <class Id="f70915f4-cca0-4930-b22c-47b025e5add8" name="PayrollRequest" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="06cc034c-159d-455a-bd8e-eeff618b3b55" />
+        <targetEnds>
+          <association Id="5a48d95b-2a77-475d-bbdc-ed3d4b21a8fc" isDerived="false" sourceEndRoleName="PayrollRequest" targetEndRoleName="Account" isLeaf="false" isAbstract="false">
+            <classMoniker Id="de2555a6-d5d6-4fbb-81cb-6ba4af885625" LastKnownName="Account" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="312e9f56-ed1e-4562-8fa4-5d752d2d59e6" name="PayrollRequest" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="c6b63785-ff1f-462f-a0fd-55116e80ca9b" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="33d73d79-111c-439e-a977-364fca50fde3" name="Account" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="4d67cfb4-09b2-4b1f-a6fc-03982a4465ba" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="4ec4694e-253a-4b47-9392-c609861361ab" />
+          </association>
+          <association Id="60c6cfcc-7244-4202-b2ac-09460cffb2b0" isDerived="false" sourceEndRoleName="PayrollRequest" targetEndRoleName="Employee" isLeaf="false" isAbstract="false">
+            <classMoniker Id="73a25dcc-da8d-47aa-8be9-6f48a0eb82a2" LastKnownName="Employee" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1aa855e4-0529-442e-9537-1f81ceb74ff2" name="PayrollRequest" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="84712386-9a01-499b-a181-50484330ad8f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="67d8499c-e0c7-49ce-b81c-d349d7c6cff0" name="Employee" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="c0f9ba60-b7a3-4d97-8ab5-09d717701ecf" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="27bd2ba1-bf35-441e-9be3-bc825f151a3f" />
+          </association>
+        </targetEnds>
         <ownedAttributesInternal>
           <property Id="6a4f9f45-7423-4177-96d5-1d082973c444" name="id" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="c308a02e-5d00-43a9-b860-906086249e21" />
@@ -463,6 +484,18 @@
           <elementDefinition Id="5ef1cad8-a3f1-426e-8d30-c7c2630179a0" />
         </profileInstance>
         <elementDefinition Id="bc1d2d9d-21c1-4f6e-8b2c-7abc3812326a" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="f195a232-7f74-4b87-81be-af188726b8e6">
+        <profileInstance Id="0f514389-40cf-4d28-aab3-649678e908a1" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="200fa42e-236e-4d21-a636-208a142844fe">
+        <profileInstance Id="27c574a0-6f2b-4d41-beb1-baf1f8afd454" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
       </packageHasProfileInstances>
     </profileInstances>
   </package>
