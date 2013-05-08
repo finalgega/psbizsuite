@@ -150,6 +150,7 @@
     <Content Include="Assets\Images\forms\step_light_right.gif" />
     <Content Include="Assets\Images\forms\step_light_round.gif" />
     <Content Include="Assets\Images\forms\upload_file.gif" />
+    <Content Include="Assets\Images\ItemImg.jpg" />
     <Content Include="Assets\Images\login\icon_back_login.gif" />
     <Content Include="Assets\Images\login\inp_login.gif" />
     <Content Include="Assets\Images\login\loginbox_bg.png" />

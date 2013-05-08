@@ -244,26 +244,7 @@
 		        <div class="table">
                     <asp:ContentPlaceHolder ID="NavContent" runat="server">
                         <!-- START Order Nav Bar-->
-                        <ul class="select">
-                            <li><a href="#nogo"><b>Order</b><!--[if IE 7]><!--></a><!--<![endif]-->
-                                <div class="select_sub">
-                                    <ul class="sub">
-                                        <li><a href="#nogo">Create Order</a></li>
-                                        <li><a href="#nogo">View/Edit Order</a></li>
-                                    </ul>
-                                </div>
-                        </ul>
-                        <div class="nav-divider">&nbsp;</div>
-                        <ul class="select">
-                            <li><a href="#nogo"><b>Customer Profile</b><!--[if IE 7]><!--></a><!--<![endif]-->
-                                <div class="select_sub">
-                                    <ul class="sub">
-                                        <li><a href="#nogo">Create Customer Profile</a></li>
-                                        <li><a href="#nogo">View/Edit Customer Profile</a></li>
-                                    </ul>
-                                </div>
-                        </ul>
-                        <div class="nav-divider">&nbsp;</div>
+                        
                         <!-- END Order Nav Bar-->
                     </asp:ContentPlaceHolder>
             	    <div class="clear"></div>
