@@ -1,15 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    ViewIndividualLeave
+    ViewLeavePolicy
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-
     <!--  start page-heading -->
     <div id="page-heading">
-        <h1>Manage Leaves</h1>
+        <h1>Manage Leave Policy</h1>
     </div>
     <!-- end page-heading -->
 
@@ -34,62 +33,60 @@
                         <form id="mainForm" action="">
                             <table border="0" class="zeroPS" style="width: 100%;" id="product-table">
                                 <tr>
-                                   
-                                    <th class="table-header-repeat line-left minwidth-1"><a href="">Applied By</a></th>
-                                    <th class="table-header-repeat line-left minwidth-1"><a href="">Days of leave</a></th>
-                                    <th class="table-header-repeat line-left minwidth-1"><a href="">Start Date</a></th>
-                                    <th class="table-header-repeat line-left"><a href="">End Date</a></th>
-                                    <th class="table-header-repeat line-left"><a href="">Policy</a></th>
-                                    <th class="table-header-repeat line-left"><a href="">Status</a></th>
-                                    <th class="table-header-options line-left"><a href="">Options</a></th>
+                                    <th class="table-header-check"><a id="toggle-all"></a></th>
+                                    <th class="table-header-repeat line-left minwidth-1"><a href="">Policy Name</a></th>
+                                    <th class="table-header-repeat line-left minwidth-1"><a href="">Policy Description</a></th>
+                                    <th class="table-header-repeat line-left minwidth-1"><a href="">Leave Days</a></th>
+                                    <th class="table-header-repeat line-left minwidth-1"><a href="">Service Year</a></th>
+                                    <th class="table-header-repeat line-left minwidth-1"><a href="">Paid Leave</a></th>
+                                    <th class="table-header-repeat line-left minwidth-1"><a href="">Period</a></th>
+                                    <th class="table-header-repeat line-left"><a href="">Options</a></th>
                                 </tr>
                                 <tr>
-                               
-                                    <td>Sabev George</td>
-                                    <td>1</td>
-                                    <td>5/8/2013</td>
-                                    <td>5/8/2013</td>
-                                    <td>Medical leave</td>
-                                    <td>Pending</td>
+                                    <td>
+                                        <input type="checkbox" /></td>
+                                    <td>Annual Leave for 1 year of service</td>
+                                    <td>An employee's annual leave entitlement under Part IV of the Employment Act</td>
+                                    <td>7</td>
+                                    <td>1 year</td>
+                                    <td>Yes</td>
+                                    <td>Yearly</td>
                                     <td class="options-width">
-                                        <a href="" title="Approve" class="icon-5 info-tooltip"></a>
-                                        <a href="" title="Not approve" class="icon-2 info-tooltip"></a>
+                                        <a href="" title="Edit" class="icon-1 info-tooltip"></a>
+                                        <a href="" title="Delete" class="icon-2 info-tooltip"></a>
                                     </td>
                                 </tr>
                                 <tr class="alternate-row">
-                                    
-                                    <td>Sabev George</td>
-                                    <td>1</td>
-                                    <td>5/8/2013</td>
-                                    <td>5/8/2013</td>
-                                    <td>Medical leave</td>
-                                    <td>Pending</td>
+                                    <td>
+                                        <input type="checkbox" /></td>
+                                    <td>Sick Leave for 6 months of service</td>
+                                    <td>An employee covered by the Employment Act is entitled to paid sick leave, including medical leave issued by a dentist</td>
+                                    <td>14</td>
+                                    <td>6 months</td>
+                                    <td>Yes</td>
+                                    <td>Yearly</td>
                                     <td class="options-width">
-                                        <a href="" title="Approve" class="icon-5 info-tooltip"></a>
-                                        <a href="" title="Not approve" class="icon-2 info-tooltip"></a>
+                                        <a href="" title="Edit" class="icon-1 info-tooltip"></a>
+                                        <a href="" title="Delete" class="icon-2 info-tooltip"></a>
                                     </td>
                                 </tr>
-                                <tr>
-                                 
-                                    <td>Sabev George</td>
-                                    <td>1</td>
-                                    <td>5/8/2013</td>
-                                    <td>5/8/2013</td>
-                                    <td>Medical leave</td>
-                                    <td>Pending</td>
-                                    <td class="options-width">
-                                        <a href="" title="Approve" class="icon-5 info-tooltip"></a>
-                                        <a href="" title="Not approve" class="icon-2 info-tooltip"></a>
-                                    </td>
-                                </tr>
-                              
+
+
                             </table>
                         </form>
                     </div>
                     <!--  end content-table  -->
 
+                    <!--  start actions-box ............................................... -->
+                    <div id="actions-box">
+                        <a href="" class="action-slider"></a>
+                        <div id="actions-box-slider">
+                            <a href="" class="action-delete">Delete</a>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end actions-box........... -->
 
-                   
                     <!--  start paging..................................................... -->
                     <table border="0" class="zeroPS" id="paging-table">
                         <tr>
@@ -131,10 +128,12 @@
 
 <asp:Content ID="NavHR" ContentPlaceHolderID="NavContent" runat="server">
     <ul class="select">
-        <li><a href="#nogo"><b>Attendance</b><!--[if IE 7]><!--></a><!--<![endif]--></ul>
+        <li><a href="#nogo"><b>Attendance</b><!--[if IE 7]><!--></a><!--<![endif]-->
+    </ul>
     <div class="nav-divider">&nbsp;</div>
     <ul class="select">
-        <li><a href="#nogo"><b>Employee Details</b><!--[if IE 7]><!--></a><!--<![endif]--></ul>
+        <li><a href="#nogo"><b>Employee Details</b><!--[if IE 7]><!--></a><!--<![endif]-->
+    </ul>
     <div class="nav-divider">&nbsp;</div>
     <ul class="select">
         <li><a href="#nogo"><b>Leave</b><!--[if IE 7]><!--></a><!--<![endif]-->

@@ -241,6 +241,8 @@
     <Content Include="Views\Employee\EditEmployeeDetail.aspx" />
     <Content Include="Views\Employee\ManageEmployeeDetail.aspx" />
     <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Leave\EditLeavePolicy.aspx" />
+    <Content Include="Views\Leave\ViewLeavePolicy.aspx" />
     <Content Include="Views\Order\CreateOrder.aspx" />
     <Content Include="Views\Leave\ViewIndividualLeave.aspx" />
     <Content Include="Web.config" />
