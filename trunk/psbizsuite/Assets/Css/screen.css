@@ -570,7 +570,8 @@ a.action-slider.activated	{
 	width: 108px;
 	}
 a.action-edit ,
-a.action-delete	{
+a.action-delete,
+a.action-tick	{
 	color: #272727;
 	display: block;
 	font-weight: bold;
@@ -593,7 +594,13 @@ a:hover.action-delete	{
 	background: #949494 url(../Images/table/action_delete.gif) no-repeat 14px 5px;
 	color: #fff;
 	}
-		 
+a.action-tick	{
+	background: #c7c7c7 url(../Images/table/action_delete.gif) no-repeat 14px 5px;
+	}
+a:hover.action-tick	{
+	background: #949494 url(../Images/table/action_delete.gif) no-repeat 14px 5px;
+	color: #fff;
+	}
 	
 /* FORM ------------------------------------------------------- */	
 .form-submit	{
