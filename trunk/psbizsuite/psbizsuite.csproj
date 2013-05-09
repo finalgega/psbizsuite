@@ -106,11 +106,14 @@
   <ItemGroup>
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InventoryController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\LeaveController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Inventory.cs" />
+    <Compile Include="Models\InventoryItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -242,6 +245,8 @@
     <Content Include="Views\Employee\EditEmployeeDetail.aspx" />
     <Content Include="Views\Employee\ManageEmployeeDetail.aspx" />
     <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Inventory\CreateInventoryItemForm.aspx" />
+    <Content Include="Views\Inventory\RetrieveInventoryItemForm.aspx" />
     <Content Include="Views\Leave\EditLeavePolicy.aspx" />
     <Content Include="Views\Leave\ViewLeavePolicy.aspx" />
     <Content Include="Views\Order\CreateOrder.aspx" />
@@ -257,7 +262,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
