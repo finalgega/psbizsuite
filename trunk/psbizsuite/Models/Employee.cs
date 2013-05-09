@@ -9,21 +9,51 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class Inventory
+public class Employee : User
 {
-	public virtual DateTime date
+	public virtual string nric
 	{
 		get;
 		set;
 	}
 
-	public virtual int id
+	public virtual double salaryPerHour
 	{
 		get;
 		set;
 	}
 
-	public virtual InventoryItem InventoryItem
+	public virtual string position
+	{
+		get;
+		set;
+	}
+
+	public virtual DateTime startEmploymentDate
+	{
+		get;
+		set;
+	}
+
+	public virtual DateTime endEmploymentDate
+	{
+		get;
+		set;
+	}
+
+	public virtual DateTime startShiftHour
+	{
+		get;
+		set;
+	}
+
+	public virtual DateTime endShiftHour
+	{
+		get;
+		set;
+	}
+
+	public virtual DateTime dob
 	{
 		get;
 		set;

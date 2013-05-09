@@ -9,21 +9,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class Inventory
+public class Account
 {
-	public virtual DateTime date
+	public virtual Double cashInAmount
 	{
 		get;
 		set;
 	}
 
-	public virtual int id
+	public virtual Double cashOutAmount
 	{
 		get;
 		set;
 	}
 
-	public virtual InventoryItem InventoryItem
+	public virtual int invoiceId
+	{
+		get;
+		set;
+	}
+
+	public virtual int plStatementId
+	{
+		get;
+		set;
+	}
+
+	public virtual DateTime timeStamp
+	{
+		get;
+		set;
+	}
+
+	public virtual Order Order
 	{
 		get;
 		set;

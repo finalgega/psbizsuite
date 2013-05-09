@@ -9,25 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class Inventory
+public class Customer : User
 {
-	public virtual DateTime date
-	{
-		get;
-		set;
-	}
-
-	public virtual int id
-	{
-		get;
-		set;
-	}
-
-	public virtual InventoryItem InventoryItem
-	{
-		get;
-		set;
-	}
-
 }
 

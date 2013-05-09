@@ -9,21 +9,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class Inventory
+public class PayrollRequest
 {
-	public virtual DateTime date
-	{
-		get;
-		set;
-	}
-
 	public virtual int id
 	{
 		get;
 		set;
 	}
 
-	public virtual InventoryItem InventoryItem
+	public virtual string status
+	{
+		get;
+		set;
+	}
+
+	public virtual Double totalAmount
+	{
+		get;
+		set;
+	}
+
+	public virtual DateTime date
+	{
+		get;
+		set;
+	}
+
+	public virtual Account Account
+	{
+		get;
+		set;
+	}
+
+	public virtual Employee Employee
 	{
 		get;
 		set;

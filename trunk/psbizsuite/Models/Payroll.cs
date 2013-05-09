@@ -9,21 +9,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class Inventory
+public class Payroll
 {
-	public virtual DateTime date
+	public virtual Double amount
 	{
 		get;
 		set;
 	}
 
-	public virtual int id
+	public virtual Double totalWorkingHour
 	{
 		get;
 		set;
 	}
 
-	public virtual InventoryItem InventoryItem
+	public virtual Double totalOTHour
+	{
+		get;
+		set;
+	}
+
+	public virtual Attendance Attendance
 	{
 		get;
 		set;

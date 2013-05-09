@@ -9,21 +9,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class Inventory
+public abstract class User
 {
-	public virtual DateTime date
+	public virtual string username
 	{
 		get;
 		set;
 	}
 
-	public virtual int id
+	public virtual string password
 	{
 		get;
 		set;
 	}
 
-	public virtual InventoryItem InventoryItem
+	public virtual string address
+	{
+		get;
+		set;
+	}
+
+	public virtual int phoneNo
+	{
+		get;
+		set;
+	}
+
+	public virtual string email
+	{
+		get;
+		set;
+	}
+
+	public virtual string fullName
 	{
 		get;
 		set;

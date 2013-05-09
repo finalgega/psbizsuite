@@ -9,21 +9,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class Inventory
+public class Leave
 {
-	public virtual DateTime date
+	public virtual DateTime startLeaveDate
 	{
 		get;
 		set;
 	}
 
-	public virtual int id
+	public virtual string status
 	{
 		get;
 		set;
 	}
 
-	public virtual InventoryItem InventoryItem
+	public virtual string reason
+	{
+		get;
+		set;
+	}
+
+	public virtual DateTime endLeaveDate
+	{
+		get;
+		set;
+	}
+
+	public virtual string policyType
+	{
+		get;
+		set;
+	}
+
+	public virtual Employee Employee
 	{
 		get;
 		set;
