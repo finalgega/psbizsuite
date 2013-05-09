@@ -6,26 +6,65 @@
   <MessageClass Name="Error" Label="Error" Option="Show errors" />
   <MessageClass Name="Property" Label="Property" Option="Show metadata" />
   <MessageClass Name="Diagnostic" Label="Message" Option="Show diagnostic messages" />
-  <Message Timestamp="2013-05-09T21:36:17" Importance="High" Text="Code generation or text transformation started." />
-  <Message Timestamp="2013-05-09T21:36:17" Importance="Diagnostic" Text="Name = ClassTemplate" />
-  <Message Timestamp="2013-05-09T21:36:17" Importance="Diagnostic" Text="Overwrite = True" />
-  <Message Timestamp="2013-05-09T21:36:17" Importance="Diagnostic" Text="ProjectPath = ..\psbizsuite\psbizsuite.csproj" />
-  <Message Timestamp="2013-05-09T21:36:17" Importance="Diagnostic" Text="TargetDirectory = Models\{PackageStructure}" />
-  <Message Timestamp="2013-05-09T21:36:17" Importance="Diagnostic" Text="TargetName = {Name}" />
-  <Message Timestamp="2013-05-09T21:36:17" Importance="Diagnostic" Text="TemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4" />
-  <Message Timestamp="2013-05-09T21:36:17" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4" />
-  <Message Timestamp="2013-05-09T21:36:17" Importance="Medium" Text="ModelingProject1's Text Template Binding: 'ClassTemplate' will apply ClassTemplate.t4 to: 'ModelingProject1::Supplier' -  (Class), 'ModelingProject1::InventoryItem' -  (Class) " />
-  <Message Timestamp="2013-05-09T21:36:19" Importance="Medium" Text="'ModelingProject1::Supplier' -  (Class) : success (file replaced) - C:\Users\Lin\Documents\BizSuite\psbizsuite\psbizsuite\Models\Supplier.cs" />
-  <Message Timestamp="2013-05-09T21:36:19" Importance="Medium" Text="'ModelingProject1::InventoryItem' -  (Class) : success (file replaced) - C:\Users\Lin\Documents\BizSuite\psbizsuite\psbizsuite\Models\InventoryItem.cs" />
-  <Message Timestamp="2013-05-09T21:36:19" Importance="Diagnostic" Text="Name = StructTemplate" />
-  <Message Timestamp="2013-05-09T21:36:19" Importance="Diagnostic" Text="Overwrite = True" />
-  <Message Timestamp="2013-05-09T21:36:19" Importance="Diagnostic" Text="ProjectPath = ..\ModelingProject1Lib\ModelingProject1Lib.csproj" />
-  <Message Timestamp="2013-05-09T21:36:19" Importance="Diagnostic" Text="TargetDirectory = GeneratedCode\{PackageStructure}" />
-  <Message Timestamp="2013-05-09T21:36:19" Importance="Diagnostic" Text="TargetName = {Name}" />
-  <Message Timestamp="2013-05-09T21:36:19" Importance="Diagnostic" Text="TemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4" />
-  <Message Timestamp="2013-05-09T21:36:19" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4" />
-  <Message Timestamp="2013-05-09T21:36:19" Importance="Medium" Text="ModelingProject1's Text Template Binding: 'StructTemplate' will apply StructTemplate.t4 to: 'ModelingProject1::Supplier' -  (Class), 'ModelingProject1::InventoryItem' -  (Class) " />
-  <Message Timestamp="2013-05-09T21:36:20" Importance="Diagnostic" Text="'ModelingProject1::Supplier' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
-  <Message Timestamp="2013-05-09T21:36:20" Importance="Diagnostic" Text="'ModelingProject1::InventoryItem' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
-  <Message Timestamp="2013-05-09T21:36:20" Importance="High" Text="Code generation complete. Errors: 0. Warnings: 0." />
+  <Message Timestamp="2013-05-09T21:52:43" Importance="High" Text="Code generation or text transformation started." />
+  <Message Timestamp="2013-05-09T21:52:43" Importance="Diagnostic" Text="Name = ClassTemplate" />
+  <Message Timestamp="2013-05-09T21:52:43" Importance="Diagnostic" Text="Overwrite = True" />
+  <Message Timestamp="2013-05-09T21:52:43" Importance="Diagnostic" Text="ProjectPath = ..\psbizsuite\psbizsuite.csproj" />
+  <Message Timestamp="2013-05-09T21:52:43" Importance="Diagnostic" Text="TargetDirectory = Models\{PackageStructure}" />
+  <Message Timestamp="2013-05-09T21:52:43" Importance="Diagnostic" Text="TargetName = {Name}" />
+  <Message Timestamp="2013-05-09T21:52:43" Importance="Diagnostic" Text="TemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4" />
+  <Message Timestamp="2013-05-09T21:52:43" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4" />
+  <Message Timestamp="2013-05-09T21:52:43" Importance="Medium" Text="ModelingProject1's Text Template Binding: 'ClassTemplate' will apply ClassTemplate.t4 to: 'ModelingProject1::User' -  (Class), 'ModelingProject1::Supplier' -  (Class), 'ModelingProject1::InventoryItem' -  (Class), 'ModelingProject1::Inventory' -  (Class), 'ModelingProject1::Customer' -  (Class), 'ModelingProject1::Employee' -  (Class), 'ModelingProject1::Account' -  (Class), 'ModelingProject1::PayrollRequest' -  (Class), 'ModelingProject1::Order' -  (Class), 'ModelingProject1::OrderItem' -  (Class), 'ModelingProject1::SupportTicket' -  (Class), 'ModelingProject1::Attendance' -  (Class), 'ModelingProject1::Payroll' -  (Class), 'ModelingProject1::Leave' -  (Class) " />
+  <Message Timestamp="2013-05-09T21:52:45" Importance="Medium" Text="'ModelingProject1::User' -  (Class) : success (file replaced) - C:\Users\Lin\Documents\BizSuite\psbizsuite\psbizsuite\Models\User.cs" />
+  <Message Timestamp="2013-05-09T21:52:45" Importance="Medium" Text="'ModelingProject1::Supplier' -  (Class) : success (file replaced) - C:\Users\Lin\Documents\BizSuite\psbizsuite\psbizsuite\Models\Supplier.cs" />
+  <Message Timestamp="2013-05-09T21:52:45" Importance="Medium" Text="'ModelingProject1::InventoryItem' -  (Class) : success (file replaced) - C:\Users\Lin\Documents\BizSuite\psbizsuite\psbizsuite\Models\InventoryItem.cs" />
+  <Message Timestamp="2013-05-09T21:52:45" Importance="Medium" Text="'ModelingProject1::Inventory' -  (Class) : success (file replaced) - C:\Users\Lin\Documents\BizSuite\psbizsuite\psbizsuite\Models\Inventory.cs" />
+  <Message Timestamp="2013-05-09T21:52:46" Importance="Medium" Text="'ModelingProject1::Customer' -  (Class) : success (file replaced) - C:\Users\Lin\Documents\BizSuite\psbizsuite\psbizsuite\Models\Customer.cs" />
+  <Message Timestamp="2013-05-09T21:52:46" Importance="Medium" Text="'ModelingProject1::Employee' -  (Class) : success (file replaced) - C:\Users\Lin\Documents\BizSuite\psbizsuite\psbizsuite\Models\Employee.cs" />
+  <Message Timestamp="2013-05-09T21:52:46" Importance="Medium" Text="'ModelingProject1::Account' -  (Class) : success (file replaced) - C:\Users\Lin\Documents\BizSuite\psbizsuite\psbizsuite\Models\Account.cs" />
+  <Message Timestamp="2013-05-09T21:52:47" Importance="Medium" Text="'ModelingProject1::PayrollRequest' -  (Class) : success (file replaced) - C:\Users\Lin\Documents\BizSuite\psbizsuite\psbizsuite\Models\PayrollRequest.cs" />
+  <Message Timestamp="2013-05-09T21:52:47" Importance="Medium" Text="'ModelingProject1::Order' -  (Class) : success (file replaced) - C:\Users\Lin\Documents\BizSuite\psbizsuite\psbizsuite\Models\Order.cs" />
+  <Message Timestamp="2013-05-09T21:52:47" Importance="Medium" Text="'ModelingProject1::OrderItem' -  (Class) : success (file replaced) - C:\Users\Lin\Documents\BizSuite\psbizsuite\psbizsuite\Models\OrderItem.cs" />
+  <Message Timestamp="2013-05-09T21:52:47" Importance="Medium" Text="'ModelingProject1::SupportTicket' -  (Class) : success (file replaced) - C:\Users\Lin\Documents\BizSuite\psbizsuite\psbizsuite\Models\SupportTicket.cs" />
+  <Message Timestamp="2013-05-09T21:52:48" Importance="Medium" Text="'ModelingProject1::Attendance' -  (Class) : success (file replaced) - C:\Users\Lin\Documents\BizSuite\psbizsuite\psbizsuite\Models\Attendance.cs" />
+  <Message Timestamp="2013-05-09T21:52:48" Importance="Medium" Text="'ModelingProject1::Payroll' -  (Class) : success (file replaced) - C:\Users\Lin\Documents\BizSuite\psbizsuite\psbizsuite\Models\Payroll.cs" />
+  <Message Timestamp="2013-05-09T21:52:48" Importance="Medium" Text="'ModelingProject1::Leave' -  (Class) : success (file replaced) - C:\Users\Lin\Documents\BizSuite\psbizsuite\psbizsuite\Models\Leave.cs" />
+  <Message Timestamp="2013-05-09T21:52:48" Importance="Diagnostic" Text="Name = StructTemplate" />
+  <Message Timestamp="2013-05-09T21:52:48" Importance="Diagnostic" Text="Overwrite = True" />
+  <Message Timestamp="2013-05-09T21:52:48" Importance="Diagnostic" Text="ProjectPath = ..\ModelingProject1Lib\ModelingProject1Lib.csproj" />
+  <Message Timestamp="2013-05-09T21:52:48" Importance="Diagnostic" Text="TargetDirectory = GeneratedCode\{PackageStructure}" />
+  <Message Timestamp="2013-05-09T21:52:48" Importance="Diagnostic" Text="TargetName = {Name}" />
+  <Message Timestamp="2013-05-09T21:52:48" Importance="Diagnostic" Text="TemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4" />
+  <Message Timestamp="2013-05-09T21:52:48" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4" />
+  <Message Timestamp="2013-05-09T21:52:48" Importance="Medium" Text="ModelingProject1's Text Template Binding: 'StructTemplate' will apply StructTemplate.t4 to: 'ModelingProject1::User' -  (Class), 'ModelingProject1::Supplier' -  (Class), 'ModelingProject1::InventoryItem' -  (Class), 'ModelingProject1::Inventory' -  (Class), 'ModelingProject1::Customer' -  (Class), 'ModelingProject1::Employee' -  (Class), 'ModelingProject1::Account' -  (Class), 'ModelingProject1::PayrollRequest' -  (Class), 'ModelingProject1::Order' -  (Class), 'ModelingProject1::OrderItem' -  (Class), 'ModelingProject1::SupportTicket' -  (Class), 'ModelingProject1::Attendance' -  (Class), 'ModelingProject1::Payroll' -  (Class), 'ModelingProject1::Leave' -  (Class) " />
+  <Message Timestamp="2013-05-09T21:52:48" Importance="Diagnostic" Text="'ModelingProject1::User' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-05-09T21:52:49" Importance="Diagnostic" Text="'ModelingProject1::Supplier' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-05-09T21:52:49" Importance="Diagnostic" Text="'ModelingProject1::InventoryItem' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-05-09T21:52:49" Importance="Diagnostic" Text="'ModelingProject1::Inventory' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-05-09T21:52:49" Importance="Diagnostic" Text="'ModelingProject1::Customer' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-05-09T21:52:49" Importance="Diagnostic" Text="'ModelingProject1::Employee' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-05-09T21:52:49" Importance="Diagnostic" Text="'ModelingProject1::Account' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-05-09T21:52:50" Importance="Diagnostic" Text="'ModelingProject1::PayrollRequest' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-05-09T21:52:50" Importance="Diagnostic" Text="'ModelingProject1::Order' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-05-09T21:52:50" Importance="Diagnostic" Text="'ModelingProject1::OrderItem' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-05-09T21:52:50" Importance="Diagnostic" Text="'ModelingProject1::SupportTicket' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-05-09T21:52:50" Importance="Diagnostic" Text="'ModelingProject1::Attendance' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-05-09T21:52:51" Importance="Diagnostic" Text="'ModelingProject1::Payroll' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-05-09T21:52:51" Importance="Diagnostic" Text="'ModelingProject1::Leave' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-05-09T21:52:51" Importance="Diagnostic" Text="The selection included 14 elements which were not bound to a template." />
+  <Message Timestamp="2013-05-09T21:52:51" Importance="Diagnostic" Text="'c80a6677-8ff3-4dc5-b654-51388dcd165f' -  (Generalization): no bound template." />
+  <Message Timestamp="2013-05-09T21:52:51" Importance="Diagnostic" Text="'ModelingProject1::' -  (Association): no bound template." />
+  <Message Timestamp="2013-05-09T21:52:51" Importance="Diagnostic" Text="'a7541ba7-1e0c-4aae-9f26-67ae860ab862' -  (Generalization): no bound template." />
+  <Message Timestamp="2013-05-09T21:52:51" Importance="Diagnostic" Text="'84fd094c-9bda-4b72-a66a-1b7aac2353e7' -  (Generalization): no bound template." />
+  <Message Timestamp="2013-05-09T21:52:51" Importance="Diagnostic" Text="'ModelingProject1::' -  (Association): no bound template." />
+  <Message Timestamp="2013-05-09T21:52:51" Importance="Diagnostic" Text="'ModelingProject1::' -  (Association): no bound template." />
+  <Message Timestamp="2013-05-09T21:52:51" Importance="Diagnostic" Text="'ModelingProject1::' -  (Association): no bound template." />
+  <Message Timestamp="2013-05-09T21:52:51" Importance="Diagnostic" Text="'ModelingProject1::' -  (Association): no bound template." />
+  <Message Timestamp="2013-05-09T21:52:51" Importance="Diagnostic" Text="'ModelingProject1::' -  (Association): no bound template." />
+  <Message Timestamp="2013-05-09T21:52:51" Importance="Diagnostic" Text="'ModelingProject1::' -  (Association): no bound template." />
+  <Message Timestamp="2013-05-09T21:52:51" Importance="Diagnostic" Text="'ModelingProject1::' -  (Association): no bound template." />
+  <Message Timestamp="2013-05-09T21:52:51" Importance="Diagnostic" Text="'ModelingProject1::' -  (Association): no bound template." />
+  <Message Timestamp="2013-05-09T21:52:51" Importance="Diagnostic" Text="'ModelingProject1::' -  (Association): no bound template." />
+  <Message Timestamp="2013-05-09T21:52:51" Importance="Diagnostic" Text="'ModelingProject1::' -  (Association): no bound template." />
+  <Message Timestamp="2013-05-09T21:52:51" Importance="High" Text="Code generation complete. Errors: 0. Warnings: 0." />
 </Log>

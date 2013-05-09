@@ -47,5 +47,17 @@ public class Account
 		set;
 	}
 
+	public virtual IEnumerable<InventoryItem> InventoryItem
+	{
+		get;
+		set;
+	}
+
+	public virtual IEnumerable<PayrollRequest> PayrollRequest
+	{
+		get;
+		set;
+	}
+
 }
 

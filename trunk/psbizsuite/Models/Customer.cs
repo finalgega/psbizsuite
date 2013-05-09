@@ -11,5 +11,17 @@ using System.Text;
 
 public class Customer : User
 {
+	public virtual IEnumerable<SupportTicket> SupportTicket
+	{
+		get;
+		set;
+	}
+
+	public virtual IEnumerable<Order> Order
+	{
+		get;
+		set;
+	}
+
 }
 

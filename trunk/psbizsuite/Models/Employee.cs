@@ -59,5 +59,17 @@ public class Employee : User
 		set;
 	}
 
+	public virtual IEnumerable<Attendance> Attendance
+	{
+		get;
+		set;
+	}
+
+	public virtual IEnumerable<Leave> Leave
+	{
+		get;
+		set;
+	}
+
 }
 
