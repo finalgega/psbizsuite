@@ -9,21 +9,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class Inventory
+public class SupportTicket
 {
-	public virtual DateTime date
-	{
-		get;
-		set;
-	}
-
 	public virtual int id
 	{
 		get;
 		set;
 	}
 
-	public virtual InventoryItem InventoryItem
+	public virtual string answer
+	{
+		get;
+		set;
+	}
+
+	public virtual int referenceId
+	{
+		get;
+		set;
+	}
+
+	public virtual Customer Customer
 	{
 		get;
 		set;

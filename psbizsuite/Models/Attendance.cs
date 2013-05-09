@@ -9,21 +9,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class Inventory
+public class Attendance
 {
-	public virtual DateTime date
+	public virtual DateTime dateTime
 	{
 		get;
 		set;
 	}
 
-	public virtual int id
-	{
-		get;
-		set;
-	}
-
-	public virtual InventoryItem InventoryItem
+	public virtual Employee Employee
 	{
 		get;
 		set;

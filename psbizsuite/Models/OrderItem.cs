@@ -9,21 +9,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class Inventory
+public class OrderItem
 {
-	public virtual DateTime date
-	{
-		get;
-		set;
-	}
-
 	public virtual int id
 	{
 		get;
 		set;
 	}
 
-	public virtual InventoryItem InventoryItem
+	public virtual string description
+	{
+		get;
+		set;
+	}
+
+	public virtual Double unitPrice
+	{
+		get;
+		set;
+	}
+
+	public virtual Double quantity
+	{
+		get;
+		set;
+	}
+
+	public virtual Double totalAmount
 	{
 		get;
 		set;
