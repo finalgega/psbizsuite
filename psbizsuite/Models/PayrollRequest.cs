@@ -41,11 +41,5 @@ public class PayrollRequest
 		set;
 	}
 
-	public virtual Employee Employee
-	{
-		get;
-		set;
-	}
-
 }
 

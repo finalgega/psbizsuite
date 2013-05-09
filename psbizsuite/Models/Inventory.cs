@@ -23,7 +23,7 @@ public class Inventory
 		set;
 	}
 
-	public virtual InventoryItem InventoryItem
+	public virtual IEnumerable<InventoryItem> InventoryItem
 	{
 		get;
 		set;

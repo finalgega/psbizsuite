@@ -35,7 +35,7 @@ public class Order
 		set;
 	}
 
-	public virtual OrderItem OrderItem
+	public virtual IEnumerable<OrderItem> OrderItem
 	{
 		get;
 		set;

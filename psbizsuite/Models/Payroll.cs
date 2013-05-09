@@ -29,7 +29,7 @@ public class Payroll
 		set;
 	}
 
-	public virtual Attendance Attendance
+	public virtual IEnumerable<Attendance> Attendance
 	{
 		get;
 		set;

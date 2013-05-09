@@ -23,5 +23,11 @@ public class Attendance
 		set;
 	}
 
+	public virtual Payroll Payroll
+	{
+		get;
+		set;
+	}
+
 }
 
