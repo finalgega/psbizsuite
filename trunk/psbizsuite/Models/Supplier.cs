@@ -23,5 +23,10 @@ public class Supplier : User
 		set;
 	}
 
+    public override bool isExist()
+    {
+        return (this == null) ? false : true;
+    }
+
 }
 

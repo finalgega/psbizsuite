@@ -71,5 +71,9 @@ public class Employee : User
 		set;
 	}
 
+    public override bool isExist()
+    { 
+        return (this == null) ? false : true;
+    }
 }
 

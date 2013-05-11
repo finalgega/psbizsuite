@@ -47,5 +47,7 @@ public abstract class User
 		set;
 	}
 
+    public abstract bool isExist();
+
 }
 

@@ -261,6 +261,7 @@
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Inventory\CreateInventoryItemForm.aspx" />
     <Content Include="Views\Inventory\RetrieveInventoryItemForm.aspx" />
+    <Content Include="Views\Inventory\UpdateInventoryItemForm.aspx" />
     <Content Include="Views\Leave\EditLeavePolicy.aspx" />
     <Content Include="Views\Leave\ViewLeavePolicy.aspx" />
     <Content Include="Views\Order\CreateOrder.aspx" />
