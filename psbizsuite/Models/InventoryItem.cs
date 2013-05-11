@@ -47,5 +47,20 @@ public class InventoryItem
 		set;
 	}
 
+    public void reduceQuantity(int quantity)
+    {
+        this.quantity -= quantity;
+    }
+
+    public void replenishStock(int quantity)
+    {
+        this.quantity += quantity;
+    }
+
+    public bool isExist()
+    {
+        return (this == null) ? false : true;
+    }
+
 }
 
