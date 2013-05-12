@@ -16,5 +16,15 @@ namespace psbizsuite.Controllers
             return View();
         }
 
+        public ActionResult ViewEditOrder()
+        {
+            return View();
+        }
+
+        public ActionResult ViewOrder()
+        {
+            //CUSTOMER VIEW ONLY
+            return View();
+        }
     }
 }

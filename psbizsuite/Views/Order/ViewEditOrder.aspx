@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    CreateCustomerProfile
+    View/EditOrder
 </asp:Content>
 
 <asp:Content ID="NavOrder" ContentPlaceHolderID="NavContent" runat="server">
@@ -31,32 +31,40 @@
 
     <form id="form1" runat="server">
 
-<h2>Create Customer Profile</h2>
+<h2>View/Edit Order</h2>
         <table>
             <tr>
-                <td><asp:Label ID="CustName" runat="server" Text="Customer Name"></asp:Label></td>
-                <td><input id="CustNameField" type="text" /></td>
+                <td><asp:Label ID="OrderItem1" runat="server" Text="Order Item 1"></asp:Label></td>
+                <td><asp:Label ID="OrderItem1Desc" runat="server" Text="Printer - $499"></asp:Label></td>
+                <td><img src="../../Assets/Images/ItemImg.jpg" width="80" height="80" /></td>
+                <td><input id="OrderItem1Rm" type="checkbox" /></td>
             </tr>
             <tr>
-                <td><asp:Label ID="CustAddress" runat="server" Text="Customer Address"></asp:Label></td>
-                <td><input id="CustAddressField" type="text" /></td>
+                <td><asp:Label ID="OrderItem2" runat="server" Text="Order Item 2"></asp:Label></td>
+                <td><asp:Label ID="OrderItem2Desc" runat="server" Text="Black Ink - $50"></asp:Label></td>
+                <td></td>
+                <td><input id="OrderItem2Rm" type="checkbox" /></td>
             </tr>
             <tr>
-                <td><asp:Label ID="CustPhone" runat="server" Text="Customer Phone Number"></asp:Label></td>
-                <td><input id="CustPhoneField" type="text" /></td>
+                <td></td>
+                <td><asp:Button ID="RemoveItem" runat="server" Text="Remove Item from Order" /></td>
             </tr>
             <tr>
-                <td><asp:Label ID="CustPhoneOpt" runat="server" Text="Customer Phone Number (opt)" /></td>
-                <td><input id="CustPhoneOptField" type="text" /></td>
+                <td><asp:Label ID="SearchInventoryResults" runat="server" Text="Search Inventory Results"></asp:Label></td>
+                <td><asp:DropDownList ID="SearchInventoryResultsDDL" runat="server">
+                <asp:ListItem>Printer</asp:ListItem>
+                <asp:ListItem>Black Ink</asp:ListItem>
+                </asp:DropDownList></td>
             </tr>
             <tr>
-                <td><asp:Label ID="CustEmail" runat="server" Text="Customer Email"></asp:Label></td>
-                <td><asp:TextBox ID="CustEmailField" runat="server"></asp:TextBox></td>
+                <td><asp:Label ID="ItemImage" runat="server" Text="Item Image"></asp:Label></td>
+                <td><img src="../../Assets/Images/ItemImg.jpg" width="80" height="80" /></td>
             </tr>
             <tr>
-                <td>
-                    <input id="SubmitCustomer" type="submit" value="Create Customer" />
+                <td></td>
+                <td><asp:Button ID="AddItem" runat="server" Text="Add Item to Order" /></td>
             </tr>
+            <tr><td></td></tr>
         </table>
            
     </form>

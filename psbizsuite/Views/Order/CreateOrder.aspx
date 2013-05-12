@@ -31,7 +31,7 @@
 
     <form id="form1" runat="server">
 
-<h2>CreateOrder</h2>
+<h2>Create Order</h2>
         <table>
             <tr>
                 <td><asp:Label ID="SearchInventory" runat="server" Text="Search Inventory"></asp:Label></td>
@@ -73,6 +73,28 @@
         </table>
            
             <!-- Insert Create Customer here -->
+        <table id="CreateCustForm" hidden="hidden">
+            <tr>
+                <td><asp:Label ID="CustName" runat="server" Text="Customer Name"></asp:Label></td>
+                <td><input id="CustNameField" type="text" /></td>
+            </tr>
+            <tr>
+                <td><asp:Label ID="CustAddress" runat="server" Text="Customer Address"></asp:Label></td>
+                <td><input id="CustAddressField" type="text" /></td>
+            </tr>
+            <tr>
+                <td><asp:Label ID="CustPhone" runat="server" Text="Customer Phone Number"></asp:Label></td>
+                <td><input id="CustPhoneField" type="text" /></td>
+            </tr>
+            <tr>
+                <td><asp:Label ID="CustPhoneOpt" runat="server" Text="Customer Phone Number (opt)" /></td>
+                <td><input id="CustPhoneOptField" type="text" /></td>
+            </tr>
+            <tr>
+                <td><asp:Label ID="CustEmail" runat="server" Text="Customer Email"></asp:Label></td>
+                <td><asp:TextBox ID="CustEmailField" runat="server"></asp:TextBox></td>
+            </tr>
+        </table>
     </form>
 
 </asp:Content>
