@@ -15,6 +15,16 @@ namespace psbizsuite.Controllers
         {
             return View();
         }
+        
+        public ActionResult ViewEditCustomerProfile()
+        {
+            return View();
+        }
 
+        public ActionResult ViewCustomerProfile()
+        {
+            //CUSTOMER VIEW ONLY
+            return View();
+        }
     }
 }

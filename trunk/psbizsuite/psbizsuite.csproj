@@ -269,6 +269,7 @@
     <Content Include="Views\Leave\ViewLeavePolicy.aspx" />
     <Content Include="Views\Order\CreateOrder.aspx" />
     <Content Include="Views\Leave\ViewIndividualLeave.aspx" />
+    <Content Include="Views\Order\ViewEditOrder.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
