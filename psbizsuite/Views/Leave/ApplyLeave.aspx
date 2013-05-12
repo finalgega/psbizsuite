@@ -1,45 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    EditEmployeeDetail
-</asp:Content>
-
-
-
-<asp:Content ID="NavHR" ContentPlaceHolderID="NavContent" runat="server">
-    <ul class="select">
-        <li><a href="#nogo"><b>Attendance</b><!--[if IE 7]><!--></a><!--<![endif]-->
-    </ul>
-    <div class="nav-divider">&nbsp;</div>
-    <ul class="select">
-        <li><a href="#nogo"><b>Employee Details</b><!--[if IE 7]><!--></a><!--<![endif]-->
-    </ul>
-    <div class="nav-divider">&nbsp;</div>
-    <ul class="select">
-        <li><a href="#nogo"><b>Leave</b><!--[if IE 7]><!--></a><!--<![endif]-->
-            <div class="select_sub">
-                <ul class="sub">
-                    <li><a href="#nogo">Manage Leave</a></li>
-                    <li><a href="#nogo">Manage Policy</a></li>
-                </ul>
-            </div>
-    </ul>
-    <div class="nav-divider">&nbsp;</div>
-    <ul class="select">
-        <li><a href="#nogo"><b>Payroll</b><!--[if IE 7]><!--></a><!--<![endif]-->
-    </ul>
-    <div class="nav-divider">&nbsp;</div>
+    ApplyLeave
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <!-- start content-outer -->
+   <!-- start content-outer -->
     <div id="content-outer">
         <!-- start content -->
         <div id="content">
 
             <div id="page-heading">
-                <h1>Sabev George</h1>
+                <h1>Apply Leave</h1>
             </div>
 
 
@@ -56,38 +29,18 @@
                 <tr>
                     <td id="tbl-border-left"></td>
                     <td>
-                        <!--  start content-table-inner -->
+                  <!--  start content-table-inner -->
                         <div id="content-table-inner">
 
                             <table border="0" class="zeroPS" style="width: 100%">
                                 <tr style="vertical-align: top">
                                     <td>
-
                                         <!-- start id-form -->
                                         <table border="0" class="zeroPS id-form">
                                             <tr>
-                                                <th>Full Name:</th>
-                                                <td>
-                                                    <input type="text" class="inp-form" /></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <th>NRIC: </th>
-                                                <td>
-                                                    <input type="text" class="inp-form" disabled /></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Contact No:</th>
-                                                <td>
-                                                    <input type="text" class="inp-form" />
-                                                </td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Date Of Birth:</th>
-
-                                                <td class="noheight">
+                                                <th>Start Date:</th>
+                                                
+                                                     <td class="noheight">
                                                     <form id="chooseDateForm" action="#">
                                                         <table border="0" class="zeroPS">
                                                             <tr style="vertical-align: top">
@@ -145,18 +98,7 @@
                                                                         <option value="12">Dec</option>
                                                                     </select>
                                                                 </td>
-                                                                <td>
-                                                                    <select id="y" class="styledselect-year">
-                                                                        <option value="">yyyy</option>
-                                                                        <option value="2005">2005</option>
-                                                                        <option value="2006">2006</option>
-                                                                        <option value="2007">2007</option>
-                                                                        <option value="2008">2008</option>
-                                                                        <option value="2009">2009</option>
-                                                                        <option value="2010">2010</option>
-                                                                    </select>
-
-                                                                </td>
+                                                               
                                                                 <td><a href="" id="date-pick">
                                                                     <img src="../../Assets/Images/forms/icon_calendar.jpg" alt="" /></a></td>
                                                             </tr>
@@ -166,21 +108,9 @@
                                                 <td></td>
                                             </tr>
                                             <tr>
-                                                <th>Position:</th>
-                                                <td>
-                                                    <input type="text" class="inp-form" /></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Salary</th>
-                                                <td>
-                                                    <input type="text" class="inp-form" />
-                                                </td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Employment Start Date:</th>
-                                                <td class="noheight">
+                                                <th>End Date:</th>
+                                                
+                                                     <td class="noheight">
                                                     <form id="Form1" action="#">
                                                         <table border="0" class="zeroPS">
                                                             <tr style="vertical-align: top">
@@ -238,19 +168,9 @@
                                                                         <option value="12">Dec</option>
                                                                     </select>
                                                                 </td>
-                                                                <td>
-                                                                    <select id="Select3" class="styledselect-year">
-                                                                        <option value="">yyyy</option>
-                                                                        <option value="2005">2005</option>
-                                                                        <option value="2006">2006</option>
-                                                                        <option value="2007">2007</option>
-                                                                        <option value="2008">2008</option>
-                                                                        <option value="2009">2009</option>
-                                                                        <option value="2010">2010</option>
-                                                                    </select>
-
-                                                                </td>
-
+                                                               
+                                                                <td><a href="" id="A1">
+                                                                    <img src="../../Assets/Images/forms/icon_calendar.jpg" alt="" /></a></td>
                                                             </tr>
                                                         </table>
                                                     </form>
@@ -258,17 +178,24 @@
                                                 <td></td>
                                             </tr>
                                             <tr>
-                                                <th>Start Working Hour:</th>
-                                                <td>
-                                                    <input type="text" class="inp-form" /></td>
+                                                <th>Leave Days:</th>
+                                                <td> <input type="text" class="inp-form"  disabled/></td>
                                                 <td></td>
                                             </tr>
                                             <tr>
-                                                <th>End Working Hour:</th>
-                                                <td>
-                                                    <input type="text" class="inp-form" /></td>
-                                                <td>
+                                                <th>Leave Policy:</th>
+                                                  <td>
+                                                   
+                 
+                                                      <select>
+                                                          <option>Annual leave</option>
+                                                          <option>Medical leave</option>
+                                                      </select>
+                                                  </td>
+                                                <td></td>
                                             </tr>
+                                           
+                                            
                                             <tr>
                                                 <td></td>
                                                 <td>
@@ -284,19 +211,6 @@
                                             </tr>
                                         </table>
                                         <!-- end id-form  -->
-
-                                    </td>
-
-
-                                </tr>
-
-                            </table>
-
-                            <div class="clear"></div>
-
-
-                        </div>
-                        <!--  end content-table-inner  -->
                     </td>
                     <td id="tbl-border-right"></td>
                 </tr>
@@ -307,6 +221,7 @@
                 </tr>
             </table>
 
+
             <div class="clear">&nbsp;</div>
 
         </div>
@@ -315,4 +230,9 @@
     </div>
     <!--  end content-outer -->
 
+
+
+</asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="NavContent" runat="server">
 </asp:Content>
