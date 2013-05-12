@@ -35,7 +35,6 @@
                             <table border="0" class="zeroPS" style="width: 100%">
                                 <tr style="vertical-align: top">
                                     <td>
-
                                         <!-- start id-form -->
                                         <table border="0" class="zeroPS id-form">
                                             <tr>
@@ -52,14 +51,22 @@
                                             </tr>
                                             <tr>
                                                 <th>Leave Days:</th>
-                                                <td>
-                                                    <input type="text" class="inp-form"  value="7" /></td>
-                                                </td>
+                                                <td> <input type="text" class="inp-form"  value="7" /></td>
                                                 <td></td>
                                             </tr>
                                             <tr>
                                                 <th>Service Years:</th>
-                                                  <td><input type="text" class="inp-form"  value="1 year" /></td>
+                                                  <td>
+                                                      <select>
+                                                      <%for( int i=1; i<=12; i++ ){%>
+                                                        <option><%= i %></option>
+                                                      <% } %>
+                                                      </select>
+                                                      <select>
+                                                          <option>Year</option>
+                                                          <option>Month</option>
+                                                      </select>
+                                                  </td>
                                                 <td></td>
                                             </tr>
                                             <tr>
@@ -98,10 +105,7 @@
                                         <!-- end id-form  -->
 
                                     </td>
-
-
                                 </tr>
-
                             </table>
 
                             <div class="clear"></div>

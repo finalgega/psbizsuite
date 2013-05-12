@@ -26,5 +26,10 @@ namespace psbizsuite.Controllers
             return View();
         }
 
+        public ActionResult ApplyLeave()
+        {
+            return View();
+        }
+
     }
 }
