@@ -1,5 +1,5 @@
 *	{
-	margin: 0;
+	margin: 0 0 0 0px;
 	padding: 0;
 	}
 html, body	{
@@ -174,8 +174,7 @@ h3	{
 	cursor: pointer;
 	}
 .yellow-right	{
-	width: 55px;
-	}
+}
 #message-blue	{
 	margin-bottom: 5px;
 	}
@@ -1563,6 +1562,121 @@ input {
 }
 select {
         -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+}
+input {
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+}
+
+input {
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+}
+
+input {
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+}
+
+input {
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+}
+
+input {
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+}
+
+input {
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+}
+
+input {
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+}
+
+input {
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+}
+
+input {
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+}
+
+input {
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+}
+
+input {
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+}
+
+input {
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+}
+
+input {
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+}
+
+input {
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+}
+
+input {
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+}
+
+input {
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+}
+
+input {
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+}
+
+input {
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+}
+
+input {
+    -m
+input {
+    -moz-border-radius:8px;
     -webkit-border-radius:8px;
     border-radius:8px;
 }
