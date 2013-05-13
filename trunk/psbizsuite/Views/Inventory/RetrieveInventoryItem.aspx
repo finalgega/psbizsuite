@@ -7,7 +7,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
 <h2>RetrieveInventoryItem</h2>
-     <form id="retrieveInventory" method="get">
+     <form id="retrieveInventory" method="get" runat="server">
         <table>
             <tr>
                 <th>Item ID : </th>

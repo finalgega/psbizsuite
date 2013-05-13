@@ -5,19 +5,19 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-<h2>CreateInventoryItem</h2>
-    <form id="createInventoryForm">
-        <table>
+    <link href="../../Assets/Css/inventory.css" type="text/css" rel="stylesheet" />
+    <h2>CreateInventoryItem</h2>
+    <form id="createInventoryForm" runat="server">
+        <table >
             <tr>
                 <th colspan="4" id="tblFormHeader">New Inventory Item</th>
             </tr>
             <tr>
                 <th>Item ID : </th>
                 <td>
-                    <asp:Label ID="lblItemID" runat="server"></asp:Label>
+                    <asp:Label ID="lblItemID" runat="server" Text="1"></asp:Label>
                 </td>
-                <td colspan="2" rowspan="4">
+                <td id="tblImg" colspan="2" rowspan="4">
                     <asp:Image ID="Image1" runat="server" CssClass="imgWell" />
                 </td>
             </tr>
@@ -78,7 +78,9 @@
                     <input type="number" placeholder="1.5" id="weight" name="weight" />
                 </td>
                 <th>Reorder Level : </th>
-                <td><asp:TextBox runat="server" ID="reorderLevel" placeholder="the stock level where the quantity should be replenished"></asp:TextBox></td>
+                <td>
+                    <asp:TextBox runat="server" ID="reorderLevel" placeholder="the stock level where the quantity should be replenished"></asp:TextBox>
+                </td>
             </tr>
             <tr>
                 <td>
