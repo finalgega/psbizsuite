@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    View/EditOrder
+    ReplySupportTicket
 </asp:Content>
 
 <asp:Content ID="NavOrder" ContentPlaceHolderID="NavContent" runat="server">
@@ -42,44 +42,44 @@
 
     <form id="form1" runat="server">
 
-<h2>View/Edit Order</h2>
+<h2>Reply Support Ticket</h2>
+       
         <table>
             <tr>
-                <td><asp:Label ID="OrderItem1" runat="server" Text="Order Item 1"></asp:Label></td>
-                <td><asp:Label ID="OrderItem1Desc" runat="server" Text="Printer - $499"></asp:Label></td>
-                <td><img src="../../Assets/Images/ItemImg.jpg" width="80" height="80" /></td>
-                <td><input id="OrderItem1Rm" type="checkbox" /></td>
+                <td><asp:Label ID="EnquiryPriority" runat="server" Text="Sort Enquiry Priority"></asp:Label></td>
+                <td>
+                    <select id="EnquiryPriorityDDL">
+                        <option>Critical</option>
+                        <option>Important</option>
+                        <option>No Reply Required</option>
+                    </select>
+                </td>
             </tr>
             <tr>
-                <td><asp:Label ID="OrderItem2" runat="server" Text="Order Item 2"></asp:Label></td>
-                <td><asp:Label ID="OrderItem2Desc" runat="server" Text="Black Ink - $50"></asp:Label></td>
-                <td></td>
-                <td><input id="OrderItem2Rm" type="checkbox" /></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><asp:Button ID="RemoveItem" runat="server" Text="Remove Item from Order" /></td>
-            </tr>
-            <tr>
-                <td><asp:Label ID="SearchInventory" runat="server" Text="Search Inventory"></asp:Label></td>
-                <td><asp:TextBox ID="SearchInventoryField" runat="server"></asp:TextBox></td>
-            </tr>
-            <tr>
-                <td><asp:Label ID="SearchInventoryResults" runat="server" Text="Search Inventory Results"></asp:Label></td>
-                <td><asp:DropDownList ID="SearchInventoryResultsDDL" runat="server">
-                <asp:ListItem>Printer</asp:ListItem>
-                <asp:ListItem>Black Ink</asp:ListItem>
+                <td><asp:Label ID="EnquirySelect" runat="server" Text="Select an enquiry"></asp:Label></td>
+                <td><asp:DropDownList ID="EnquirySelectDDL" runat="server">
+                <asp:ListItem>Enquiry 1 - General</asp:ListItem>
+                <asp:ListItem>Enquiry 2 - Feedback</asp:ListItem>
                 </asp:DropDownList></td>
             </tr>
             <tr>
-                <td><asp:Label ID="ItemImage" runat="server" Text="Item Image"></asp:Label></td>
-                <td><img src="../../Assets/Images/ItemImg.jpg" width="80" height="80" /></td>
+                <td></td>
+                <td></td>
+            </tr>
+            
+            <tr>
+                <td><asp:Label ID="SupportTicket" runat="server" Text="Customer enquiry"></asp:Label></td>
+                <td><textarea id="SupportTicketField" cols="20" rows="2" readonly="readonly"></textarea></td>
             </tr>
             <tr>
-                <td></td>
-                <td><asp:Button ID="AddItem" runat="server" Text="Add Item to Order" /></td>
+                <td><asp:Label ID="SupportTicketReply" runat="server" Text="Your reply"></asp:Label></td>
+                <td><textarea id="SupportTicketReplyField" cols="20" rows="2"></textarea></td>
             </tr>
-            <tr><td></td></tr>
+            <tr>
+                <td>
+                    <input id="SendEnquiry" type="submit" value="Reply enquiry" />
+                </td>
+            </tr>
         </table>
            
     </form>

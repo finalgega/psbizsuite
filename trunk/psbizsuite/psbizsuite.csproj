@@ -111,6 +111,7 @@
     <Compile Include="Controllers\InventoryController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\LeaveController.cs" />
+    <Compile Include="Controllers\SupportTicketController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -259,6 +260,7 @@
     <Content Include="Global.asax" />
     <Content Include="Views\Attendance\ViewAttendance.aspx" />
     <Content Include="Views\Customer\CreateCustomerProfile.aspx" />
+    <Content Include="Views\Customer\ViewEditCustomerProfile.aspx" />
     <Content Include="Views\Employee\EditEmployeeDetail.aspx" />
     <Content Include="Views\Employee\ManageEmployeeDetail.aspx" />
     <Content Include="Views\Home\Index.aspx" />
@@ -271,6 +273,9 @@
     <Content Include="Views\Order\CreateOrder.aspx" />
     <Content Include="Views\Leave\ViewIndividualLeave.aspx" />
     <Content Include="Views\Order\ViewEditOrder.aspx" />
+    <Content Include="Views\SupportTicket\ReplySupportTicket.aspx" />
+    <Content Include="Views\SupportTicket\SendSupportTicket.aspx" />
+    <Content Include="Views\SupportTicket\ViewSupportTicket.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
