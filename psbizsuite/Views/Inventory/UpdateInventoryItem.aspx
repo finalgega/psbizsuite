@@ -1,14 +1,13 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<psbizsuite.Models.InventoryItem>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    UpdateInventoryItemForm
+    UpdateInventoryItem
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-<h2>UpdateInventoryItemForm</h2>
-
-    <form id="updateInventoryForm">
+<h2>UpdateInventoryItem</h2>
+     <form id="updateInventoryForm">
         <table>
             <tr>
                 <th colspan="4" id="tblFormHeader">New Inventory Item</th>
@@ -88,11 +87,6 @@
             </tr>
         </table>
     </form>
-
-<div>
-    <%: Html.ActionLink("Back to List", "Index") %>
-</div>
-
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="NavContent" runat="server">
