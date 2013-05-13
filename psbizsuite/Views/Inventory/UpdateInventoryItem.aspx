@@ -7,10 +7,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
 <h2>UpdateInventoryItem</h2>
-     <form id="updateInventoryForm">
+     <form id="updateInventoryForm" runat="server">
         <table>
             <tr>
-                <th colspan="4" id="tblFormHeader">New Inventory Item</th>
+                <th colspan="4" id="tblFormHeader">Inventory Item Details</th>
             </tr>
             <tr>
                 <th>Item ID : </th>

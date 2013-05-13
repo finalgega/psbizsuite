@@ -1556,3 +1556,13 @@ a:hover.back-login	{
     border-collapse:collapse; 
     border-spacing: 0;
 }
+input {
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+}
+select {
+        -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+}

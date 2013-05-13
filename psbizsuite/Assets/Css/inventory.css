@@ -1,0 +1,20 @@
+﻿table td,th {
+    padding:5px;
+}
+.imgWell {
+    width:50%;
+    margin-left:25%;
+    margin-right:25%;
+    margin-top:2.5%;
+    margin-bottom:2.5%;
+    height:100%;
+}
+
+input:invalid {
+    background-color:rgba(127,0,0,0.4);
+}
+
+input:valid {
+    background-color:rgba(0,0,144,0.5);
+}
+

@@ -135,6 +135,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Assets\Css\datePicker.css" />
+    <Content Include="Assets\Css\inventory.css" />
     <Content Include="Assets\Css\pro_dropline.css" />
     <Content Include="Assets\Css\pro_dropline_ie.css" />
     <Content Include="Assets\Css\screen.css" />
@@ -262,11 +263,8 @@
     <Content Include="Views\Employee\ManageEmployeeDetail.aspx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Inventory\CreateInventoryItem.aspx" />
-    <Content Include="Views\Inventory\CreateInventoryItemForm.aspx" />
     <Content Include="Views\Inventory\RetrieveInventoryItem.aspx" />
-    <Content Include="Views\Inventory\RetrieveInventoryItemForm.aspx" />
     <Content Include="Views\Inventory\UpdateInventoryItem.aspx" />
-    <Content Include="Views\Inventory\UpdateInventoryItemForm.aspx" />
     <Content Include="Views\Leave\ApplyLeave.aspx" />
     <Content Include="Views\Leave\EditLeavePolicy.aspx" />
     <Content Include="Views\Leave\ViewLeavePolicy.aspx" />
@@ -299,9 +297,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\Site.Master" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="ClassDiagram1.cd" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
