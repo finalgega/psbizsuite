@@ -1,12 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    CreateInventoryForm
+    CreateInventoryItem
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>CreateInventoryForm</h2>
+<h2>CreateInventoryItem</h2>
     <form id="createInventoryForm">
         <table>
             <tr>
@@ -18,7 +18,7 @@
                     <asp:Label ID="lblItemID" runat="server"></asp:Label>
                 </td>
                 <td colspan="2" rowspan="4">
-                    <asp:Image runat="server" CssClass="imgWell" />
+                    <asp:Image ID="Image1" runat="server" CssClass="imgWell" />
                 </td>
             </tr>
             <tr>
