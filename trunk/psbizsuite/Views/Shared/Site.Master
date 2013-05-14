@@ -251,9 +251,8 @@
                             <li><a href="#nogo"><b>Customer</b><!--[if IE 7]><!--></a><!--<![endif]-->
                                  <div class="select_sub">
                                     <ul class="sub">
-                                        <li><a href="../Customer/ViewEditCustomerProfile">View/Edit profile</a></li>
                                         <li><a href="../Customer/CreateCustomerProfile">Create profile</a></li>
-                                        <li><a href="../SupportTicket/ReplySupportTicket">Reply support ticket</a></li>
+                                        <li><a href="../Customer/ViewEditCustomerProfile">View/Edit profile</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -313,7 +312,20 @@
     
                             </li>
                         </ul>
+                    <div class="nav-divider">&nbsp;</div>
+                        <ul class="select">
+                            <li><a href="#nogo"><b>Support Ticket</b><!--[if IE 7]><!--></a><!--<![endif]-->
+                                 <div class="select_sub">
+                                    <ul class="sub">
+                                        <li><a href="../SupportTicket/SendSupportTicket">Contact Us</a></li>
+                                        <li><a href="../SupportTicket/ViewSupportTicket">View support tickets</a></li>
+                                        <li><a href="../SupportTicket/ReplySupportTicket">Reply support ticket</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
                         <div class="nav-divider">&nbsp;</div>
+
                         <!-- END Order Nav Bar-->
                     
                     <div class="clear"></div>

@@ -42,7 +42,7 @@
     <link href="../../Assets/Css/order.css" type="text/css" rel="stylesheet" />
     <form id="form1" runat="server">
 
-<h2>Send Support Ticket</h2>
+<h2>Contact Us</h2>
         <p>Contact Us at:<br />
             292 Outlook Road<br />
             #02-1020<br />
