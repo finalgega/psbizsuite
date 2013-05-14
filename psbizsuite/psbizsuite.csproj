@@ -141,6 +141,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Assets\Css\datePicker.css" />
     <Content Include="Assets\Css\inventory.css" />
+    <Content Include="Assets\Css\jquery.flot.min.js" />
     <Content Include="Assets\Css\pro_dropline.css" />
     <Content Include="Assets\Css\pro_dropline_ie.css" />
     <Content Include="Assets\Css\screen.css" />
