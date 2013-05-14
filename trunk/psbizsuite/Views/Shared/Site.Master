@@ -149,8 +149,8 @@
                            <li><a href="#nogo"><b>Employee</b><!--[if IE 7]><!--></a><!--<![endif]-->
                                    <div class="select_sub">
                                     <ul class="sub">
-                                        <li><a href="../Leave/ApplyLeave.aspx">Apply leave</a></li>
-                                        <li><a href="../Attendace/ViewAttendace">View attendance</a></li>
+                                        <li><a href="../Leave/ApplyLeave">Apply leave</a></li>
+                                        <li><a href="../Attendance/ViewAttendance">View attendance</a></li>
                                     </ul>
                                 </div>
                             </li>
