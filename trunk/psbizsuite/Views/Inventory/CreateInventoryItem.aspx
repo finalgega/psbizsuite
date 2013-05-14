@@ -24,62 +24,63 @@
             <tr>
                 <th>Item Name : </th>
                 <td>
-                    <asp:TextBox ID="itemName" name="itemName" placeholder="Name of Item" required runat="server"></asp:TextBox>
+                    <asp:TextBox ID="itemName" name="itemName" placeholder="Name of Item" required runat="server" CssClass="formValues"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <th>Item Description : </th>
                 <td>
-                    <input type="text" multiline="true" name="itemDescription" id="itemDescrption" placeholder="Item features, description,etc" required />
+                    <asp:TextBox TextMode="MultiLine" id="itemDescription" placeholder="Item features, specifications,etc" CssClass="formValues" required runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <th>Manufacturer : </th>
                 <td>
-                    <input type="text" placeholder="Manufacturer" id="txtManufacturer" name="txtManufacturer" required />
+                    <asp:TextBox placeholder="Manufacturer Name" id="itemManufacturer" CssClass="formValues" required="true" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
-                <th>Serial Nmber : </th>
+                <th>Serial Number : </th>
                 <td>
-                    <input type="text" placeholder="S/N:203-148015-203" id="txtSerial" name="txtSerial" required />
+                    <asp:TextBox placeholder="E.g. 203-655632-1152" ID="itemSerial" CssClass="formValues" required="true" runat="server"></asp:TextBox>
                 </td>
                 <th>Amount in Stock  : </th>
                 <td>
-                    <input type="number" name="itemQuantity" id="itemQuantity" placeholder="How many available" min="0" required />
+                    <asp:TextBox ID="itemQuantity" type="number" placeholder="The amount currently available" min="0" required="true" runat="server" CssClass="formValues"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <th>Cost Per Unit : </th>
                 <td>
-                    <input type="number" name="itemCostPerUnit" id="itemCostPerUnit" placeholder="How much it cost you" min="0" step="any" required />
+                    <asp:TextBox type="number" ID="itemCostPerUnit" placeholder="How much it cost you per unit" min="0" step="any" required CssClass="formValues" runat="server"></asp:TextBox>
                 </td>
                 <th>Price Per Unit : </th>
                 <td>
-                    <input type="number" name="itemPricePerUnit" id="itemPricePerUnit" placeholder="How much you are charging" required step="any" />
+                    <asp:TextBox type="number" ID="itemPricePerUnit" placeholder="How much are you charging?" min="0" step="any" CssClass="formValues" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <th>Category : </th>
                 <td>
                     <select name="categories" id="categories">
-                        <option value="1">A category</option>
-                        <option value="2">B Category</option>
-                    </select>
+                        <option value="1">Electronic Parts</option>
+                        <option value="2">Sundries</option>
+                        <option value="3">Stationery</option>
+                     </select>
                 </td>
                 <th>Location : </th>
                 <td>
-                    <input type="text" id="txtLocation" name="txtLocation" placeholder="aisle 3-A shelf 27" />
+                    <asp:TextBox ID="itemLocation" placeholder="Where is it located/shall be located" CssClass="formValues" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <th>Weight per Unit (kg) : </th>
                 <td>
-                    <input type="number" placeholder="1.5" id="weight" name="weight" />
+                    <asp:TextBox type="number" placeholder="1.5" ID="itemWeight" CssClass="formValues" runat="server"></asp:TextBox>
                 </td>
                 <th>Reorder Level : </th>
                 <td>
-                    <asp:TextBox runat="server" ID="reorderLevel" placeholder="the stock level where the quantity should be replenished"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="reorderLevel" placeholder="the stock level where the quantity should be replenished"  CssClass="formValues"></asp:TextBox>
                 </td>
             </tr>
             <tr>

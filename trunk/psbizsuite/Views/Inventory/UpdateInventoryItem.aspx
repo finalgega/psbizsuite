@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
+    <link href="../../Assets/Css/inventory.css" rel="stylesheet" type="text/css" />
 <h2>UpdateInventoryItem</h2>
      <form id="updateInventoryForm" runat="server">
         <table>
@@ -62,10 +62,7 @@
             <tr>
                 <th>Category : </th>
                 <td>
-                    <select name="categories" id="categories">
-                        <option value="1">A category</option>
-                        <option value="2">B Category</option>
-                    </select>
+                    <asp:Label ID="itemCategory" runat="server"></asp:Label>
                 </td>
                 <th>Location : </th>
                 <td>
