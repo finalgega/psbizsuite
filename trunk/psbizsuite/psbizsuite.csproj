@@ -143,6 +143,7 @@
     <Content Include="Assets\Css\pro_dropline.css" />
     <Content Include="Assets\Css\pro_dropline_ie.css" />
     <Content Include="Assets\Css\screen.css" />
+    <Content Include="Assets\Css\order.css" />
     <Content Include="Assets\Images\forms\bg_related_act.gif" />
     <Content Include="Assets\Images\forms\bubble_inner.gif" />
     <Content Include="Assets\Images\forms\bubble_left.gif" />

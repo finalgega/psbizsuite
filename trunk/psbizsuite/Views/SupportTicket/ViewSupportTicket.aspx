@@ -39,7 +39,7 @@
 </asp:Content>--%>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
+    <link href="../../Assets/Css/order.css" type="text/css" rel="stylesheet" />
     <form id="form1" runat="server">
 
 <h2>View Support Ticket</h2>
