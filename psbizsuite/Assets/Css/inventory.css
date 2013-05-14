@@ -1,5 +1,6 @@
 ﻿table td,th {
     padding:5px;
+    text-align:right;
 }
 .imgWell {
     width:50%;
