@@ -301,8 +301,8 @@
                                     <ul class="sub">
                                         <li><a href="../Attendance/ViewAttendanceSummary">View attendance report</a></li>
                                         <li><a href="../Employee/EditEmployeeDetail">Edit employee profile</a></li>
-                                        <li><a href="../Attendance/ViewLeavePolicy">Manage leave policy</a></li>
-                                        <li><a href="../Attendance/ViewIndividualLeave">Approve leave</a></li>
+                                        <li><a href="../Leave/ViewLeavePolicy">Manage leave policy</a></li>
+                                        <li><a href="../Leave/ViewIndividualLeave">Approve leave</a></li>
                                     </ul>
                                 </div>
                             </li>
