@@ -84,7 +84,7 @@
             </tr>
             <tr>
                 <td>
-                    <input type="submit" name="inventoryFormSubmit" id="inventoryFormSubmit" />
+                    <asp:Button UseSubmitBehavior="true" ID="inventoryFormSubmit" runat="server" />
                 </td>
             </tr>
         </table>
