@@ -9,7 +9,9 @@
     margin-bottom:2.5%;
     height:100%;
 }
-
+input {
+    height:25px;
+}
 input:invalid {
     background-color:rgba(127,0,0,0.4);
 }
