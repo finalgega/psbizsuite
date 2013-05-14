@@ -5,7 +5,34 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-   Calendar :)
+   
+      <script>
+    
+          $(function () {
+              $('#calendar').datePicker({
+                  inline: true,
+              });
+            
+          });
+  </script>
+    <style>
+       table.jCalendar th	{
+
+	font-weight: bold;
+	padding:20px;
+    font-size:12px;
+	}
+        table.jCalendar td {
+            font-size: 12px;
+            padding: 20px;
+        }
+	#calendar h2
+        {
+        font-size: 15px;
+        }
+
+    </style>
+    Hi <div id="calendar"></div>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="NavContent" runat="server">
