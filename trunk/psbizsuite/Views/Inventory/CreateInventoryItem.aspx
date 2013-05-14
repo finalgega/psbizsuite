@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿ <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     CreateInventoryItem
@@ -8,7 +8,7 @@
     <link href="../../Assets/Css/inventory.css" type="text/css" rel="stylesheet" />
     <h2>CreateInventoryItem</h2>
     <form id="createInventoryForm" runat="server">
-        <table >
+        <table>
             <tr>
                 <th colspan="4" id="tblFormHeader">New Inventory Item</th>
             </tr>
@@ -24,7 +24,7 @@
             <tr>
                 <th>Item Name : </th>
                 <td>
-                    <input type="text" name="itemName" id="itenName" placeholder="Name of item" required />
+                    <asp:TextBox ID="itemName" name="itemName" placeholder="Name of Item" required runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -84,7 +84,7 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Button UseSubmitBehavior="true" ID="inventoryFormSubmit" runat="server" />
+                    <asp:Button text="Create Record" UseSubmitBehavior="true" ID="inventoryFormSubmit" runat="server" />
                 </td>
             </tr>
         </table>
