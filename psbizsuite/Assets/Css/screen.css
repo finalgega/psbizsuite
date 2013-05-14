@@ -353,7 +353,7 @@ td.options-width	{
 td.checkbox-width	{
 	}
 .table-header-check	{
-	background: url(../Images/table/table_header_checkbox.jpg) no-repeat;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#666666), to(#3F3F3F));
 	border: none;
 	min-width: 29px;
 	padding: 0px 0 0 10px;
@@ -367,7 +367,7 @@ td.checkbox-width	{
 	width: 221px;
 	}
 .table-header-repeat	{
-	background: url(../Images/table/table_header_repeat.jpg) repeat-x;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#666666), to(#3F3F3F));
 	border: none;
 	font-size: 0px;
 	line-height: 0;
@@ -1463,7 +1463,7 @@ label	{
 	padding: 0 0 6px 0;
 	}
 .login-inp	{
-	background: url(../Images/login/inp_login.gif) no-repeat;
+	background:#383838;
 	border: none;
 	color: #fff;
 	font-size: 16px;
