@@ -12,11 +12,13 @@
 input {
     height:25px;
 }
-input:invalid {
-    background-color:rgba(127,0,0,0.4);
+.formValues:valid {
+          border-color:rgba(0,255,0,.7);
+}
+.formValues:invalid {
+           border-color:rgba(255,0,0,0.7);
 }
 
-input:valid {
-    background-color:rgba(0,0,144,0.5);
+#MainContent_inventoryFormSubmit {
+    width:120px;
 }
-

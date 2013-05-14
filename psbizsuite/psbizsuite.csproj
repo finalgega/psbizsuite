@@ -181,6 +181,7 @@
     <Content Include="Assets\Images\login\loginbox_bg.png" />
     <Content Include="Assets\Images\login\login_bg.jpg" />
     <Content Include="Assets\Images\login\submit_login.gif" />
+    <Content Include="Assets\Images\md22.jpg" />
     <Content Include="Assets\Images\shared\blank.gif" />
     <Content Include="Assets\Images\shared\border_bit.jpg" />
     <Content Include="Assets\Images\shared\cal_th_repeat.jpg" />
