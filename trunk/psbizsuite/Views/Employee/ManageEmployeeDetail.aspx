@@ -5,26 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="NavHR" ContentPlaceHolderID="NavContent" runat="server">
-    <ul class="select">
-        <li><a href="#nogo"><b>Attendance</b><!--[if IE 7]><!--></a><!--<![endif]--></ul>
-    <div class="nav-divider">&nbsp;</div>
-    <ul class="select">
-        <li><a href="#nogo"><b>Employee Details</b><!--[if IE 7]><!--></a><!--<![endif]--></ul>
-    <div class="nav-divider">&nbsp;</div>
-    <ul class="select">
-        <li><a href="#nogo"><b>Leave</b><!--[if IE 7]><!--></a><!--<![endif]-->
-            <div class="select_sub">
-                <ul class="sub">
-                    <li><a href="#nogo">Manage Leave</a></li>
-                    <li><a href="#nogo">Manage Policy</a></li>
-                </ul>
-            </div>
-    </ul>
-    <div class="nav-divider">&nbsp;</div>
-    <ul class="select">
-        <li><a href="#nogo"><b>Payroll</b><!--[if IE 7]><!--></a><!--<![endif]-->
-    </ul>
-    <div class="nav-divider">&nbsp;</div>
+    
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="NavOrder" ContentPlaceHolderID="NavContent" runat="server">
-    <ul class="select">
+   <%-- <ul class="select">
         <li><a href="#nogo"><b>Order</b><!--[if IE 7]><!--></a><!--<![endif]-->
             <div class="select_sub">
                 <ul class="sub">
@@ -36,7 +36,7 @@
             </div>
     </ul>
     <div class="nav-divider">&nbsp;</div>
-</asp:Content>
+</asp:Content>--%>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
