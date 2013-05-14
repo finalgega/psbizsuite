@@ -56,7 +56,7 @@
 		    </tr>
 		    <tr>
 			    <th></th>
-			    <td><a href="Director/DirectorDashboard"><input type="button" class="submit-login" /></a></td>
+			    <td><a href="Director/DirectorDashboard"><input type="button" class="submit-login" style="height:30px"/></a></td>
 		    </tr>
 		    </table>
 	    </div>
