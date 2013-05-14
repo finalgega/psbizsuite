@@ -108,6 +108,7 @@
     <Compile Include="Controllers\AccountingController.cs" />
     <Compile Include="Controllers\AttendanceController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\DirectorController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventoryController.cs" />
@@ -267,8 +268,10 @@
     <Content Include="Views\Accounting\ViewIR.aspx" />
     <Content Include="Views\Accounting\ViewPL.aspx" />
     <Content Include="Views\Attendance\ViewAttendance.aspx" />
+    <Content Include="Views\Attendance\ViewAttendanceSummary.aspx" />
     <Content Include="Views\Customer\CreateCustomerProfile.aspx" />
     <Content Include="Views\Customer\ViewEditCustomerProfile.aspx" />
+    <Content Include="Views\Director\DirectorDashboard.aspx" />
     <Content Include="Views\Employee\EditEmployeeDetail.aspx" />
     <Content Include="Views\Employee\ManageEmployeeDetail.aspx" />
     <Content Include="Views\Home\Index.aspx" />

@@ -6,19 +6,15 @@ using System.Web.Mvc;
 
 namespace psbizsuite.Controllers
 {
-    public class AttendanceController : Controller
+    public class DirectorController : Controller
     {
         //
-        // GET: /Attendance/
+        // GET: /Director/
 
-        public ActionResult ViewAttendance()
+        public ActionResult DirectorDashboard()
         {
             return View();
         }
 
-        public ActionResult ViewAttendanceSummary()
-        {
-            return View();
-        }
     }
 }

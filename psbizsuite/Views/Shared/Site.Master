@@ -5,7 +5,6 @@
 <html>
 <head runat="server">
     <meta name="viewport" content="width=device-width" />
-
     <link rel="stylesheet" href="../../Assets/Css/screen.css" type="text/css" media="screen" title="default" />
     <!--[if IE]>
     <link rel="stylesheet" media="all" type="text/css" href="css/pro_dropline_ie.css" />
@@ -27,7 +26,7 @@
                 return false;
             });
         });
-    </script>  
+    </script>
 
     <![if !IE 7]>
 
@@ -38,11 +37,11 @@
             $('.styledselect').selectbox({ inputClass: "selectbox_styled" });
         });
     </script>
- 
+
 
     <![endif]>
 
-    <!--  styled select box script version 2 --> 
+    <!--  styled select box script version 2 -->
     <script src="../../Assets/Jquery/jquery.selectbox-0.5_style_2.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).ready(function () {
@@ -51,7 +50,7 @@
         });
     </script>
 
-    <!--  styled select box script version 3 --> 
+    <!--  styled select box script version 3 -->
     <script src="../../Assets/Jquery/jquery.selectbox-0.5_style_2.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).ready(function () {
@@ -59,7 +58,7 @@
         });
     </script>
 
-    <!--  styled file upload script --> 
+    <!--  styled file upload script -->
     <script src="../../Assets/Jquery/jquery.filestyle.js" type="text/javascript"></script>
     <script type="text/javascript" charset="utf-8">
         $(function () {
@@ -74,7 +73,7 @@
 
     <!-- Custom jquery scripts -->
     <script src="../../Assets/Jquery/custom_jquery.js" type="text/javascript"></script>
- 
+
     <!-- Tooltips -->
     <script src="../../Assets/Jquery/jquery.tooltip.js" type="text/javascript"></script>
     <script src="../../Assets/Jquery/jquery.dimensions.js" type="text/javascript"></script>
@@ -90,7 +89,7 @@
                 left: 5
             });
         });
-    </script> 
+    </script>
 
 
     <!--  date picker script -->
@@ -160,15 +159,15 @@
     </script>
 
     <!-- toggle -->
-        <script type="text/javascript">
-            $(function () {
-                $('#toggle-all').click(function () {
-                    $('#toggle-all').toggleClass('toggle-checked');
-                    $('#mainForm input[type=checkbox]').checkBox('toggle');
-                    return false;
-                });
+    <script type="text/javascript">
+        $(function () {
+            $('#toggle-all').click(function () {
+                $('#toggle-all').toggleClass('toggle-checked');
+                $('#mainForm input[type=checkbox]').checkBox('toggle');
+                return false;
             });
-    </script>  
+        });
+    </script>
 
     <!-- MUST BE THE LAST SCRIPT IN <HEAD></HEAD></HEAD> png fix -->
     <script src="../../Assets/Jquery/jquery.pngFix.pack.js" type="text/javascript"></script>
@@ -178,25 +177,27 @@
         });
     </script>
 
-    <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+    <title>
+        <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
+    </title>
 </head>
 <body>
     <!-- Start: page-top-outer -->
-    <div id="page-top-outer">    
+    <div id="page-top-outer">
 
-    <!-- Start: page-top -->
-    <div id="page-top">
+        <!-- Start: page-top -->
+        <div id="page-top">
 
-	    <!-- start logo -->
-	    <div id="logo">
-	        <img src="../../Assets/Images/shared/logo.png" width="156" height="40" alt="" />
-	    </div>
-	    <!-- end logo -->
-	
- 	    <div class="clear"></div>
+            <!-- start logo -->
+            <div id="logo">
+                <img src="../../Assets/Images/shared/logo.png" width="156" height="40" alt="" />
+            </div>
+            <!-- end logo -->
 
-    </div>
-    <!-- End: page-top -->
+            <div class="clear"></div>
+
+        </div>
+        <!-- End: page-top -->
 
     </div>
     <!-- End: page-top-outer -->
@@ -204,65 +205,133 @@
     <div class="clear">&nbsp;</div>
 
     <!--  start nav-outer-repeat -->
-    <div class="nav-outer-repeat"> 
+    <div class="nav-outer-repeat">
         <!--  start nav-outer -->
-        <div class="nav-outer"> 
-            
-            <!-- start nav-right -->
-		    <div id="nav-right">
-			    
-                <div class="nav-divider">&nbsp;</div>
-			    <div class="showhide-account"><img src="../../Assets/Images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" /></div>
-			    <div class="nav-divider">&nbsp;</div>
-			    <a href="" id="logout"><img src="../../Assets/Images/shared/nav/nav_logout.gif" width="64" height="14" alt="" /></a>
-			    <div class="clear">&nbsp;</div>
+        <div class="nav-outer">
 
-                <!--  start account-content -->	
-			    <div class="account-content">
-			        <div class="account-drop-inner">
-				        <a href="" id="acc-settings">Settings</a>
-				        <div class="clear">&nbsp;</div>
-				        <div class="acc-line">&nbsp;</div>
-				        <a href="" id="acc-details">Personal details </a>
-				        <div class="clear">&nbsp;</div>
-				        <div class="acc-line">&nbsp;</div>
-				        <a href="" id="acc-project">Project details</a>
-				        <div class="clear">&nbsp;</div>
-				        <div class="acc-line">&nbsp;</div>
-				        <a href="" id="acc-inbox">Inbox</a>
-				        <div class="clear">&nbsp;</div>
-				        <div class="acc-line">&nbsp;</div>
-				        <a href="" id="acc-stats">Statistics</a> 
-			        </div>
-			    </div>
+            <!-- start nav-right -->
+            <div id="nav-right">
+
+                <div class="nav-divider">&nbsp;</div>
+                <div class="showhide-account">
+                    <img src="../../Assets/Images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" /></div>
+                <div class="nav-divider">&nbsp;</div>
+                <a href="" id="logout">
+                    <img src="../../Assets/Images/shared/nav/nav_logout.gif" width="64" height="14" alt="" /></a>
+                <div class="clear">&nbsp;</div>
+
+                <!--  start account-content -->
+                <div class="account-content">
+                    <div class="account-drop-inner">
+                        <a href="" id="acc-settings">Settings</a>
+                        <div class="clear">&nbsp;</div>
+                        <div class="acc-line">&nbsp;</div>
+                        <a href="" id="acc-details">Personal details </a>
+                        <div class="clear">&nbsp;</div>
+                        <div class="acc-line">&nbsp;</div>
+                        <a href="" id="acc-project">Project details</a>
+                        <div class="clear">&nbsp;</div>
+                        <div class="acc-line">&nbsp;</div>
+                        <a href="" id="acc-inbox">Inbox</a>
+                        <div class="clear">&nbsp;</div>
+                        <div class="acc-line">&nbsp;</div>
+                        <a href="" id="acc-stats">Statistics</a>
+                    </div>
+                </div>
                 <!--  end account-content -->
             </div>
-		    <!-- end nav-right -->
-			 
+            <!-- end nav-right -->
+
             <!--  start nav -->
-		    <div class="nav">
-		        <div class="table">
-                    <asp:ContentPlaceHolder ID="NavContent" runat="server">
+            <div class="nav">
+                <div class="table">
+                    <asp:ContentPlaceHolder ID="NavContent" runat="server"/>
                         <!-- START Order Nav Bar-->
-                        
+                        <ul class="select">
+                            <li><a href="#nogo"><b>Customer</b><!--[if IE 7]><!--></a><!--<![endif]-->
+                                 <div class="select_sub">
+                                    <ul class="sub">
+                                        <li><a href="../Customer/ViewEditCustomerProfile">View/Edit profile</a></li>
+                                        <li><a href="../Customer/CreateCustomerProfile">Create profile</a></li>
+                                        <li><a href="../SupportTicket/ReplySupportTicket">Reply support ticket</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="nav-divider">&nbsp;</div>
+                        <ul class="select">
+                            <li><a href="#nogo"><b>Order</b><!--[if IE 7]><!--></a><!--<![endif]-->
+                                 <div class="select_sub">
+                                    <ul class="sub">
+                                        <li><a href="../Order/CreateOrder">Create order</a></li>
+                                        <li><a href="../Order/ViewEditOrder">View/Edit order</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="nav-divider">&nbsp;</div>
+                        <ul class="select">
+                            <li><a href="#nogo"><b>Accounting</b><!--[if IE 7]><!--></a><!--<![endif]-->
+                                 <div class="select_sub">
+                                    <ul class="sub">
+                                        <li><a href="../Accounting/GenerateIR">Generate invoice</a></li>
+                                        <li><a href="../Accounting/ViewIR">View invoice</a></li>
+                                        <li><a href="../Accounting/ManageCashFlow">Manage cash flow</a></li>
+                                        <li><a href="../Accounting/ViewPL">View profit & loss statement</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="nav-divider">&nbsp;</div>
+                        <ul class="select">
+                           <li><a href="#nogo"><b>Inventory</b><!--[if IE 7]><!--></a><!--<![endif]-->
+                                 <div class="select_sub">
+                                    <ul class="sub">
+                                        <li><a href="../Inventory/CreateInventoryItem">Add inventory item</a></li>
+                                        <li><a href="../Inventory/RetrieveInventoryItem">View inventory</a></li>
+                                        <li><a href="../Inventory/UpdateInventoryItem">Edit inventory item</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="nav-divider">&nbsp;</div>
+                        <ul class="select">
+                           <li><a href="#nogo"><b>Human resource</b><!--[if IE 7]><!--></a><!--<![endif]-->
+                                 <div class="select_sub">
+                                    <ul class="sub">
+                                        <li><a href="../Attendance/ViewAttendanceSummary">View attendance report</a></li>
+                                        <li><a href="../Attendance/EditEmployeeDetail">Edit employee profile</a></li>
+                                        <li><a href="../Attendance/ViewLeavePolicy">Manage leave policy</a></li>
+                                        <li><a href="../Attendance/ViewIndividualLeave">Approve leave</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    <div class="nav-divider">&nbsp;</div>
+                        <ul class="select">
+                           <li><a href="#nogo"><b>Employee</b><!--[if IE 7]><!--></a><!--<![endif]-->
+    
+                            </li>
+                        </ul>
+                        <div class="nav-divider">&nbsp;</div>
                         <!-- END Order Nav Bar-->
-                    </asp:ContentPlaceHolder>
-            	    <div class="clear"></div>
-		        </div>
-		        <div class="clear"></div>
-		    </div>
-		    <!--  END start nav -->
+                    
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <!--  END start nav -->
 
         </div>
         <!--  END: start nav-outer -->
-        
+
         <div class="clear"></div>
 
     </div>
     <!-- END: start nav-outer-repeat -->
 
     <div class="clear"></div>
- 
+
     <!-- start content-outer -->
     <div id="content-outer">
 
@@ -271,7 +340,6 @@
 
             <div>
                 <asp:ContentPlaceHolder ID="MainContent" runat="server">
-        
                 </asp:ContentPlaceHolder>
             </div>
             <div class="clear">&nbsp;</div>
@@ -285,14 +353,15 @@
 
     <div class="clear">&nbsp;</div>
 
-    <!-- start footer -->         
+    <!-- start footer -->
     <div id="footer">
         <!-- <div id="footer-pad">&nbsp;</div> -->
-	    <!--  start footer-left -->
-	    <div id="footer-left">
-	    Admin Skin &copy; Copyright Internet Dreams Ltd. <a href="">www.netdreams.co.uk</a>. All rights reserved.</div>
-	    <!--  end footer-left -->
-	    <div class="clear">&nbsp;</div>
+        <!--  start footer-left -->
+        <div id="footer-left">
+            Admin Skin &copy; Copyright Internet Dreams Ltd. <a href="">www.netdreams.co.uk</a>. All rights reserved.
+        </div>
+        <!--  end footer-left -->
+        <div class="clear">&nbsp;</div>
     </div>
     <!-- end footer -->
 </body>

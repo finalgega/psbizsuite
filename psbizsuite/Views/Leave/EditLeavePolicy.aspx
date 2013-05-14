@@ -136,7 +136,7 @@
 </asp:Content>
 
 <asp:Content ID="NavHR" ContentPlaceHolderID="NavContent" runat="server">
-    <ul class="select">
+ <%--   <ul class="select">
         <li><a href="#nogo"><b>Attendance</b><!--[if IE 7]><!--></a><!--<![endif]-->
     </ul>
     <div class="nav-divider">&nbsp;</div>
@@ -157,5 +157,5 @@
     <ul class="select">
         <li><a href="#nogo"><b>Payroll</b><!--[if IE 7]><!--></a><!--<![endif]-->
     </ul>
-    <div class="nav-divider">&nbsp;</div>
+    <div class="nav-divider">&nbsp;</div>--%>
 </asp:Content>
