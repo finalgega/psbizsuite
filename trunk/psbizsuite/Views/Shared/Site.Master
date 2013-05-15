@@ -125,8 +125,10 @@
                                  <div class="select_sub">
                                     <ul class="sub">
                                         <li><a href="../Inventory/CreateInventoryItem">Add inventory item</a></li>
-                                        <li><a href="../Inventory/RetrieveInventoryItem">View inventory</a></li>
+                                        <li><a href="../Inventory/RetrieveInventoryItem">View inventory item</a></li>
+                                        <li><a href="../Inventory/ViewInventory">View inventory</a></li>
                                         <li><a href="../Inventory/UpdateInventoryItem">Edit inventory item</a></li>
+                                        <li><a href="#nogo">Generate Inventory Report</a></li>
                                     </ul>
                                 </div>
                             </li>

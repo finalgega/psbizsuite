@@ -44,11 +44,11 @@
 		    <table class="zeroPS" border="0">
 		    <tr>
 			    <th>Username</th>
-			    <td><input type="text"  class="login-inp" /></td>
+			    <td><input type="text"  class="login-inp" placeholder="loginID" /></td>
 		    </tr>
 		    <tr>
 			    <th>Password</th>
-			    <td><input type="password" value="************"  onfocus="this.value=''" class="login-inp" /></td>
+			    <td><input type="password" placeholder="yourpassword"  class="login-inp" /></td>
 		    </tr>
 		    <tr>
 			    <th></th>

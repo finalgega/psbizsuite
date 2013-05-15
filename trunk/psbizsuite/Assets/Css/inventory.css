@@ -23,3 +23,6 @@ input {
 #MainContent_inventoryFormSubmit {
     width:120px;
 }
+#tblFormHeader {
+    text-align:center;
+}
