@@ -26,5 +26,15 @@ namespace psbizsuite.Controllers
             return View();
         }
 
+        public ActionResult InventoryDashboard()
+        {
+            return View();
+        }
+
+        public ActionResult ViewInventory()
+        {
+            return View();
+        }
+
     }
 }

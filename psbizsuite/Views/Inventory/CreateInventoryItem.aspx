@@ -6,8 +6,13 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <link href="../../Assets/Css/inventory.css" type="text/css" rel="stylesheet" />
+    <script>
+        function displaySuccessfulMessage(e) {
+            alert('Inventory Item Created Successfully!');
+        }
+    </script>
     <h2>CreateInventoryItem</h2>
-    <form id="createInventoryForm" runat="server">
+    <form id="createInventoryForm" runat="server" onsubmit="displaySuccessfulMessage()">
         <table>
             <tr>
                 <th colspan="4" id="tblFormHeader">New Inventory Item</th>
@@ -76,7 +81,7 @@
             <tr>
                 <th>Weight per Unit (kg) : </th>
                 <td>
-                    <asp:TextBox type="number" placeholder="1.5" ID="itemWeight" CssClass="formValues" runat="server"></asp:TextBox>
+                    <asp:TextBox type="number" placeholder="1.5" ID="itemWeight" CssClass="formValues" runat="server" step="any" min="0"></asp:TextBox>
                 </td>
                 <th>Reorder Level : </th>
                 <td>
@@ -84,6 +89,7 @@
                 </td>
             </tr>
             <tr>
+                <td></td>
                 <td>
                     <asp:Button text="Create Record" UseSubmitBehavior="true" ID="inventoryFormSubmit" runat="server" />
                 </td>

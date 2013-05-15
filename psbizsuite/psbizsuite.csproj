@@ -268,8 +268,10 @@
     <Content Include="Views\Employee\ManageEmployeeDetail.aspx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Inventory\CreateInventoryItem.aspx" />
+    <Content Include="Views\Inventory\InventoryDashboard.aspx" />
     <Content Include="Views\Inventory\RetrieveInventoryItem.aspx" />
     <Content Include="Views\Inventory\UpdateInventoryItem.aspx" />
+    <Content Include="Views\Inventory\ViewInventory.aspx" />
     <Content Include="Views\Leave\ApplyLeave.aspx" />
     <Content Include="Views\Leave\EditLeavePolicy.aspx" />
     <Content Include="Views\Leave\ViewLeavePolicy.aspx" />
