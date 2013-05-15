@@ -142,6 +142,7 @@
     <Content Include="Assets\Css\datePicker.css" />
     <Content Include="Assets\Css\inventory.css" />
     <Content Include="Assets\Css\jquery.flot.min.js" />
+    <Content Include="Assets\Css\notifications.css" />
     <Content Include="Assets\Css\pro_dropline.css" />
     <Content Include="Assets\Css\pro_dropline_ie.css" />
     <Content Include="Assets\Css\screen.css" />
@@ -253,6 +254,7 @@
     <Content Include="Assets\Images\Untitled1.png" />
     <Content Include="Assets\Jquery\jquery-1.9.1.js" />
     <Content Include="Assets\Jquery\jquery-ui-1.10.3.custom.js" />
+    <Content Include="Assets\Jquery\jquery-1.7.2.js" />
     <Content Include="Assets\Jquery\purr-notifications.js" />
     <Content Include="Global.asax" />
     <Content Include="Views\Accounting\GenerateIR.aspx" />
