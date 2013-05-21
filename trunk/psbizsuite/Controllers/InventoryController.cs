@@ -36,5 +36,12 @@ namespace psbizsuite.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult CreateItemRecord()
+        {
+            Console.WriteLine("POST MADE IT!");
+            return Content("DATA PASSED!");
+        }
+
     }
 }
