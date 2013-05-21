@@ -34,9 +34,8 @@
                     {
                         usingTransparentPNG: true
                     }
-                );
-						
-                return false;
+                )		
+                return true;
             }
             );
 				
@@ -70,7 +69,7 @@
                );
     </script>
     <h2>CreateInventoryItem</h2>
-    <form id="createInventoryForm" runat="server" onsubmit="displaySuccessfulMessage()">
+    <form id="createInventoryForm" runat="server" method="post" action="CreateItemRecord">
         <table>
             <tr>
                 <th colspan="4" id="tblFormHeader">New Inventory Item</th>
