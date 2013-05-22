@@ -65,13 +65,35 @@
             </tr>
             <tr><td></td></tr>
             <tr>
-                <td><asp:RadioButtonList ID="IsCustNew" runat="server" RepeatDirection="Horizontal">
+                <script>
+                    $(document).ready()
+                    {
+                        function rblchangedstate() {
+                            var rbtn = $('input[type="radio"]');
+                            if (rbtn == null) {
+                                alert("cannot get radio-buttons");
+                            }
+                            if (rbtn[0].checked) {
+                                
+                                $('#CreateCustForm').show();
+                                $('#ExistCustForm').hide();
+                            } else {
+                                
+                                $('#CreateCustForm').hide();
+                                $('#ExistCustForm').show();
+                            }
+                        }
+                    }
+                </script>
+                <td><asp:RadioButtonList ID="IsCustNew" runat="server" RepeatDirection="Horizontal" CssClass="rblist" onchange="rblchangedstate()">
                 <asp:ListItem>New Customer</asp:ListItem>
                 <asp:ListItem>Existing Customer</asp:ListItem>
                 </asp:RadioButtonList></td>
             </tr>
+            </table>
+        <table id="ExistCustForm" hidden="hidden">
             <tr>
-                <td><asp:Label ID="SearchCustomer" runat="server" Text="Search Inventory"></asp:Label></td>
+                <td><asp:Label ID="SearchCustomer" runat="server" Text="Search Customer"></asp:Label></td>
                 <td><asp:TextBox ID="SearchCustomerField" runat="server"></asp:TextBox></td>
             </tr>
             <tr>
