@@ -38,14 +38,14 @@ namespace psbizsuite
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "SupportTicket", action = "ViewSupportTicket", id = UrlParameter.Optional });
             routes.MapRoute(
-    name: "EditEmployeeDetail",
-    url: "{controller}/{action}/{id}",
-    defaults: new { controller = "Employee", action = "EditEmployeeDetail", id = UrlParameter.Optional }
-    );
+                name: "EditEmployeeDetail",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Employee", action = "EditEmployeeDetail", id = UrlParameter.Optional }
+                );  
             routes.MapRoute(
-        name: "ViewIR",
-        url: "{controller}/{action}/{id}",
-        defaults: new { controller = "Accounting", action = "ViewIR", id = UrlParameter.Optional });
+                name: "ViewIR",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Accounting", action = "ViewIR", id = UrlParameter.Optional });
         }
     }
 }

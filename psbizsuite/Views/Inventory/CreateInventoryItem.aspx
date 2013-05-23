@@ -69,7 +69,8 @@
                );
     </script>
     <h2>CreateInventoryItem</h2>
-    <form id="createInventoryForm" runat="server" method="post" action="CreateItemRecord">
+    <form id="createInventoryForm" runat="server" method="POST" action="CreateItemRecord">
+    <!-- using (Html.BeginForm("CreateInventoryItem","Inventory","POST")); -->
         <table>
             <tr>
                 <th colspan="4" id="tblFormHeader">New Inventory Item</th>
@@ -154,6 +155,7 @@
                     <input type="button" class="show-sticky" value="HELLO NOTIFICATION!" /></td>
             </tr>
         </table>
+    <!-- using (Html.EndForm()); -->
     </form>
 
 </asp:Content>
