@@ -333,7 +333,6 @@
     <Content Include="Views\Director\DirectorDashboard.aspx" />
     <Content Include="Views\Employee\EditEmployeeDetail.aspx" />
     <Content Include="Views\Employee\ManageEmployeeDetail.aspx" />
-    <Content Include="Views\Home\2.aspx" />
     <Content Include="Views\Home\Create.aspx" />
     <Content Include="Views\Home\Delete.aspx" />
     <Content Include="Views\Home\Details.aspx" />

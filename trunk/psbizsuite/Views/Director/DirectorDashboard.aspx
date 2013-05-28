@@ -1,9 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<psbizsuite.Models.UserAccount>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     DirectorDashboard
 </asp:Content>
-
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -125,7 +124,8 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <h2>Attendace of today</h2>
+                                    <!-- retrieve data from useraccount object -->
+                                        <h2>Attendace of today <%= Model.Username %></h2>
                                     </td>
                                 </tr>
                                 <tr>
