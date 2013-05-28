@@ -129,7 +129,6 @@
     <Compile Include="Controllers\EncryptionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventoryController.cs" />
-    <Compile Include="Controllers\MySQLController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\LeaveController.cs" />
     <Compile Include="Controllers\SupportTicketController.cs" />
@@ -334,6 +333,11 @@
     <Content Include="Views\Director\DirectorDashboard.aspx" />
     <Content Include="Views\Employee\EditEmployeeDetail.aspx" />
     <Content Include="Views\Employee\ManageEmployeeDetail.aspx" />
+    <Content Include="Views\Home\2.aspx" />
+    <Content Include="Views\Home\Create.aspx" />
+    <Content Include="Views\Home\Delete.aspx" />
+    <Content Include="Views\Home\Details.aspx" />
+    <Content Include="Views\Home\Edit.aspx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Inventory\CreateInventoryItem.aspx" />
     <Content Include="Views\Inventory\InventoryDashboard.aspx" />
@@ -349,7 +353,9 @@
     <Content Include="Views\SupportTicket\ReplySupportTicket.aspx" />
     <Content Include="Views\SupportTicket\SendSupportTicket.aspx" />
     <Content Include="Views\SupportTicket\ViewSupportTicket.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
