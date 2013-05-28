@@ -21,12 +21,25 @@ namespace psbizsuite.Controllers
             return View(db.UserAccounts.ToList());
         }
 
+        [HttpPost]
+        public ActionResult Detail(string username, string password)
+        {
+            UserAccount useraccount = db.UserAccounts.Find(username);
+            if (useraccount == null)
+                return HttpNotFound();
+            else
+                //to do: add in authentication here
+                //return to DirectorDashboard view with useraccount object
+                //to retrieve data from the useraccount object in view, eg. <%= Model.username %> 
+                return View("../Director/DirectorDashboard", useraccount);
+        }
+
         //
         // GET: /Home/Details/5
 
-        public ActionResult Details(string id = null)
+        public ActionResult Details(string username)
         {
-            UserAccount useraccount = db.UserAccounts.Find(id);
+            UserAccount useraccount = db.UserAccounts.Find(username);
             if (useraccount == null)
             {
                 return HttpNotFound();
