@@ -12,14 +12,17 @@ namespace psbizsuite.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Attendance
+    public partial class EmployeePosition
     {
-        public int AttendanceId { get; set; }
-        public System.DateTime Date { get; set; }
-        public System.TimeSpan Time { get; set; }
-        public string Location { get; set; }
-        public string Employee_UserAccount_Username { get; set; }
+        public EmployeePosition()
+        {
+            this.Employees = new HashSet<Employee>();
+        }
     
-        public virtual Employee Employee { get; set; }
+        public int PositionId { get; set; }
+        public string PositionName { get; set; }
+        public string Responsibility { get; set; }
+    
+        public virtual ICollection<Employee> Employees { get; set; }
     }
 }

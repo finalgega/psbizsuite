@@ -40,14 +40,27 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="MySql.Data, Version=6.5.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
-    <Reference Include="MySql.Data.CF, Version=6.5.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
-    <Reference Include="MySql.Data.Entity, Version=6.5.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data.Entity, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Web, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -123,20 +136,69 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Account.cs" />
-    <Compile Include="Models\Attendance.cs" />
-    <Compile Include="Models\Customer.cs" />
-    <Compile Include="Models\Employee.cs" />
-    <Compile Include="Models\Inventory.cs" />
-    <Compile Include="Models\InventoryItem.cs" />
-    <Compile Include="Models\Leave.cs" />
-    <Compile Include="Models\Order.cs" />
-    <Compile Include="Models\OrderItem.cs" />
-    <Compile Include="Models\Payroll.cs" />
-    <Compile Include="Models\PayrollRequest.cs" />
-    <Compile Include="Models\Supplier.cs" />
-    <Compile Include="Models\SupportTicket.cs" />
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\AccountPayable.cs">
+      <DependentUpon>bizsuiteModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountReceivable.cs">
+      <DependentUpon>bizsuiteModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Attendance.cs">
+      <DependentUpon>bizsuiteModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\bizsuiteModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>bizsuiteModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\bizsuiteModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>bizsuiteModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\bizsuiteModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>bizsuiteModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customer.cs">
+      <DependentUpon>bizsuiteModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Employee.cs">
+      <DependentUpon>bizsuiteModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmployeePosition.cs">
+      <DependentUpon>bizsuiteModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Inventory.cs">
+      <DependentUpon>bizsuiteModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KeyPair.cs">
+      <DependentUpon>bizsuiteModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LeavePolicy.cs">
+      <DependentUpon>bizsuiteModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LeaveRequest.cs">
+      <DependentUpon>bizsuiteModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Order.cs">
+      <DependentUpon>bizsuiteModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderItem.cs">
+      <DependentUpon>bizsuiteModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PayrollRequest.cs">
+      <DependentUpon>bizsuiteModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Supplier.cs">
+      <DependentUpon>bizsuiteModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SupportTicket.cs">
+      <DependentUpon>bizsuiteModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserAccount.cs">
+      <DependentUpon>bizsuiteModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -316,6 +378,30 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\Accounting.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Models\bizsuiteModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>bizsuiteModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\bizsuiteModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>bizsuiteModel.edmx</DependentUpon>
+      <LastGenOutput>bizsuiteModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\bizsuiteModel.edmx.diagram">
+      <DependentUpon>bizsuiteModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\bizsuiteModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>bizsuiteModel.edmx</DependentUpon>
+      <LastGenOutput>bizsuiteModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

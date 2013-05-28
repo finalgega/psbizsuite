@@ -12,23 +12,16 @@ namespace psbizsuite.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SupportTicket
+    public partial class LeaveRequest
     {
-        public SupportTicket()
-        {
-            this.SupportTicket1 = new HashSet<SupportTicket>();
-        }
-    
-        public int SupportTicketId { get; set; }
-        public string Question { get; set; }
-        public string Answer { get; set; }
-        public string Customer_UserAccount_Username { get; set; }
-        public Nullable<int> ReferenceId { get; set; }
+        public int LeaveRequestId { get; set; }
+        public System.DateTime StartDate { get; set; }
+        public System.DateTime EndDate { get; set; }
+        public string Reason { get; set; }
         public string Employee_UserAccount_Username { get; set; }
+        public int LeavePolicy_LeavePolicyId { get; set; }
     
-        public virtual Customer Customer { get; set; }
         public virtual Employee Employee { get; set; }
-        public virtual ICollection<SupportTicket> SupportTicket1 { get; set; }
-        public virtual SupportTicket SupportTicket2 { get; set; }
+        public virtual LeavePolicy LeavePolicy { get; set; }
     }
 }

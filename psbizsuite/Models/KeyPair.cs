@@ -12,23 +12,12 @@ namespace psbizsuite.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SupportTicket
+    public partial class KeyPair
     {
-        public SupportTicket()
-        {
-            this.SupportTicket1 = new HashSet<SupportTicket>();
-        }
-    
-        public int SupportTicketId { get; set; }
-        public string Question { get; set; }
-        public string Answer { get; set; }
-        public string Customer_UserAccount_Username { get; set; }
-        public Nullable<int> ReferenceId { get; set; }
+        public byte[] Private { get; set; }
+        public byte[] Public { get; set; }
         public string Employee_UserAccount_Username { get; set; }
     
-        public virtual Customer Customer { get; set; }
         public virtual Employee Employee { get; set; }
-        public virtual ICollection<SupportTicket> SupportTicket1 { get; set; }
-        public virtual SupportTicket SupportTicket2 { get; set; }
     }
 }

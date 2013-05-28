@@ -12,22 +12,13 @@ namespace psbizsuite.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Order
+    public partial class AccountReceivable
     {
-        public Order()
-        {
-            this.AccountReceivables = new HashSet<AccountReceivable>();
-            this.OrderItems = new HashSet<OrderItem>();
-        }
-    
-        public int OrderId { get; set; }
-        public int ReceiptId { get; set; }
+        public int AccountReceivableId { get; set; }
         public string Status { get; set; }
-        public string Customer_UserAccount_Username { get; set; }
         public double TotalAmount { get; set; }
+        public int Order_OrderId { get; set; }
     
-        public virtual ICollection<AccountReceivable> AccountReceivables { get; set; }
-        public virtual Customer Customer { get; set; }
-        public virtual ICollection<OrderItem> OrderItems { get; set; }
+        public virtual Order Order { get; set; }
     }
 }
