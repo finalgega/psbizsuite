@@ -1,0 +1,1110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BizSuiteDBModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="BizSuiteDBModelStoreContainer">
+          <EntitySet Name="AccountPayable" EntityType="BizSuiteDBModel.Store.AccountPayable" store:Type="Tables" Schema="BizSuiteDB" />
+          <EntitySet Name="AccountReceivable" EntityType="BizSuiteDBModel.Store.AccountReceivable" store:Type="Tables" Schema="BizSuiteDB" />
+          <EntitySet Name="Attendance" EntityType="BizSuiteDBModel.Store.Attendance" store:Type="Tables" Schema="BizSuiteDB" />
+          <EntitySet Name="Customer" EntityType="BizSuiteDBModel.Store.Customer" store:Type="Tables" Schema="BizSuiteDB" />
+          <EntitySet Name="Employee" EntityType="BizSuiteDBModel.Store.Employee" store:Type="Tables" Schema="BizSuiteDB" />
+          <EntitySet Name="EmployeePosition" EntityType="BizSuiteDBModel.Store.EmployeePosition" store:Type="Tables" Schema="BizSuiteDB" />
+          <EntitySet Name="Inventory" EntityType="BizSuiteDBModel.Store.Inventory" store:Type="Tables" Schema="BizSuiteDB" />
+          <EntitySet Name="KeyPair" EntityType="BizSuiteDBModel.Store.KeyPair" store:Type="Tables" Schema="BizSuiteDB" />
+          <EntitySet Name="LeavePolicy" EntityType="BizSuiteDBModel.Store.LeavePolicy" store:Type="Tables" Schema="BizSuiteDB" />
+          <EntitySet Name="LeaveRequest" EntityType="BizSuiteDBModel.Store.LeaveRequest" store:Type="Tables" Schema="BizSuiteDB" />
+          <EntitySet Name="Order" EntityType="BizSuiteDBModel.Store.Order" store:Type="Tables" Schema="BizSuiteDB" />
+          <EntitySet Name="OrderItem" EntityType="BizSuiteDBModel.Store.OrderItem" store:Type="Tables" Schema="BizSuiteDB" />
+          <EntitySet Name="PayrollRequest" EntityType="BizSuiteDBModel.Store.PayrollRequest" store:Type="Tables" Schema="BizSuiteDB" />
+          <EntitySet Name="Supplier" EntityType="BizSuiteDBModel.Store.Supplier" store:Type="Tables" Schema="BizSuiteDB" />
+          <EntitySet Name="SupportTicket" EntityType="BizSuiteDBModel.Store.SupportTicket" store:Type="Tables" Schema="BizSuiteDB" />
+          <EntitySet Name="UserAccount" EntityType="BizSuiteDBModel.Store.UserAccount" store:Type="Tables" Schema="BizSuiteDB" />
+          <AssociationSet Name="fk_AccountReceivable_Order1" Association="BizSuiteDBModel.Store.fk_AccountReceivable_Order1">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="AccountReceivable" EntitySet="AccountReceivable" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Attendance_Employee1" Association="BizSuiteDBModel.Store.fk_Attendance_Employee1">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Attendance" EntitySet="Attendance" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Customer_UserAccount" Association="BizSuiteDBModel.Store.fk_Customer_UserAccount">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Employee_EmployeePosition1" Association="BizSuiteDBModel.Store.fk_Employee_EmployeePosition1">
+            <End Role="EmployeePosition" EntitySet="EmployeePosition" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Employee_UserAccount1" Association="BizSuiteDBModel.Store.fk_Employee_UserAccount1">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Inventory_Supplier1" Association="BizSuiteDBModel.Store.fk_Inventory_Supplier1">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Inventory" EntitySet="Inventory" />
+          </AssociationSet>
+          <AssociationSet Name="fk_KeyPair_Employee1" Association="BizSuiteDBModel.Store.fk_KeyPair_Employee1">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="KeyPair" EntitySet="KeyPair" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LeaveRequest_Employee1" Association="BizSuiteDBModel.Store.fk_LeaveRequest_Employee1">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="LeaveRequest" EntitySet="LeaveRequest" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LeaveRequest_LeavePolicy1" Association="BizSuiteDBModel.Store.fk_LeaveRequest_LeavePolicy1">
+            <End Role="LeavePolicy" EntitySet="LeavePolicy" />
+            <End Role="LeaveRequest" EntitySet="LeaveRequest" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Order_Customer1" Association="BizSuiteDBModel.Store.fk_Order_Customer1">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrderItem_Order1" Association="BizSuiteDBModel.Store.fk_OrderItem_Order1">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderItem" EntitySet="OrderItem" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Supplier_UserAccount1" Association="BizSuiteDBModel.Store.fk_Supplier_UserAccount1">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SupportTicket_Customer1" Association="BizSuiteDBModel.Store.fk_SupportTicket_Customer1">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="SupportTicket" EntitySet="SupportTicket" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SupportTicket_Employee1" Association="BizSuiteDBModel.Store.fk_SupportTicket_Employee1">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="SupportTicket" EntitySet="SupportTicket" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SupportTicket_SupportTicket1" Association="BizSuiteDBModel.Store.fk_SupportTicket_SupportTicket1">
+            <End Role="SupportTicket" EntitySet="SupportTicket" />
+            <End Role="SupportTicket1" EntitySet="SupportTicket" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AccountPayable">
+          <Key>
+            <PropertyRef Name="AccountPayableId" />
+          </Key>
+          <Property Name="AccountPayableId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="TotalAmount" Type="double" Nullable="false" />
+          <Property Name="ReferenceId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AccountReceivable">
+          <Key>
+            <PropertyRef Name="AccountReceivableId" />
+          </Key>
+          <Property Name="AccountReceivableId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="TotalAmount" Type="double" Nullable="false" />
+          <Property Name="Order_OrderId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Attendance">
+          <Key>
+            <PropertyRef Name="AttendanceId" />
+          </Key>
+          <Property Name="AttendanceId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Time" Type="time" Nullable="false" />
+          <Property Name="Location" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="Employee_UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="UserAccount_Username" />
+          </Key>
+          <Property Name="FullName" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+          <Property Name="PhoneNo" Type="int" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="45" />
+          <Property Name="FaxNo" Type="int" />
+          <Property Name="UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="UserAccount_Username" />
+          </Key>
+          <Property Name="FullName" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="Address" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="PhoneNo" Type="int" Nullable="false" />
+          <Property Name="NRIC" Type="varchar" Nullable="false" MaxLength="9" />
+          <Property Name="DOB" Type="date" Nullable="false" />
+          <Property Name="EndEmploymentDate" Type="date" />
+          <Property Name="StartEmploymentDate" Type="date" Nullable="false" />
+          <Property Name="SalaryPerHour" Type="double" Nullable="false" />
+          <Property Name="StartShiftHour" Type="time" Nullable="false" />
+          <Property Name="EndShirtHour" Type="time" Nullable="false" />
+          <Property Name="UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="EmployeePosition_PositionName" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="EmployeePosition">
+          <Key>
+            <PropertyRef Name="PositionName" />
+          </Key>
+          <Property Name="PositionId" Type="int" Nullable="false" />
+          <Property Name="PositionName" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="Responsibility" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="InventoryId" />
+          </Key>
+          <Property Name="InventoryId" Type="int" Nullable="false" />
+          <Property Name="ItemDescription" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="Image" Type="varchar" MaxLength="45" />
+          <Property Name="UnitCost" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="UnitWeightKilo" Type="varchar" MaxLength="45" />
+          <Property Name="Quantity" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="Location" Type="varchar" MaxLength="45" />
+          <Property Name="TimeStamp" Type="timestamp" Nullable="false" />
+          <Property Name="Supplier_UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="KeyPair">
+          <Key>
+            <PropertyRef Name="Private" />
+          </Key>
+          <Property Name="Private" Type="binary" Nullable="false" MaxLength="1" />
+          <Property Name="Public" Type="binary" Nullable="false" MaxLength="1" />
+          <Property Name="Employee_UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="LeavePolicy">
+          <Key>
+            <PropertyRef Name="LeavePolicyId" />
+          </Key>
+          <Property Name="LeavePolicyId" Type="int" Nullable="false" />
+          <Property Name="PolicyName" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="PolicyDescription" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="DaysOfLeave" Type="int" Nullable="false" />
+          <Property Name="MinServiceYear" Type="double" Nullable="false" />
+          <Property Name="Paid" Type="bool" Nullable="false" />
+          <Property Name="Period" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="LeaveRequest">
+          <Key>
+            <PropertyRef Name="LeaveRequestId" />
+          </Key>
+          <Property Name="LeaveRequestId" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" Nullable="false" />
+          <Property Name="Reason" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Employee_UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="LeavePolicy_LeavePolicyId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="ReceiptId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="Customer_UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="TotalAmount" Type="double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderItem">
+          <Key>
+            <PropertyRef Name="OrderItemId" />
+          </Key>
+          <Property Name="OrderItemId" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="45" />
+          <Property Name="UnitPrice" Type="double" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Order_OrderId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PayrollRequest">
+          <Key>
+            <PropertyRef Name="PayrollRequestId" />
+          </Key>
+          <Property Name="PayrollRequestId" Type="int" Nullable="false" />
+          <Property Name="TotalAmount" Type="double" />
+          <Property Name="RequestTimeStamp" Type="timestamp" />
+          <Property Name="Status" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="UserAccount_Username" />
+          </Key>
+          <Property Name="FullName" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="Address" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="PhoneNo" Type="int" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="45" />
+          <Property Name="FaxNo" Type="int" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="SupportTicket">
+          <Key>
+            <PropertyRef Name="SupportTicketId" />
+          </Key>
+          <Property Name="SupportTicketId" Type="int" Nullable="false" />
+          <Property Name="Question" Type="varchar" MaxLength="45" />
+          <Property Name="Answer" Type="varchar" MaxLength="45" />
+          <Property Name="Customer_UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="ReferenceId" Type="int" />
+          <Property Name="Employee_UserAccount_Username" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="UserAccount">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="Type" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
+        <Association Name="fk_AccountReceivable_Order1">
+          <End Role="Order" Type="BizSuiteDBModel.Store.Order" Multiplicity="1" />
+          <End Role="AccountReceivable" Type="BizSuiteDBModel.Store.AccountReceivable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="AccountReceivable">
+              <PropertyRef Name="Order_OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Attendance_Employee1">
+          <End Role="Employee" Type="BizSuiteDBModel.Store.Employee" Multiplicity="1" />
+          <End Role="Attendance" Type="BizSuiteDBModel.Store.Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="UserAccount_Username" />
+            </Principal>
+            <Dependent Role="Attendance">
+              <PropertyRef Name="Employee_UserAccount_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Customer_UserAccount">
+          <End Role="UserAccount" Type="BizSuiteDBModel.Store.UserAccount" Multiplicity="1" />
+          <End Role="Customer" Type="BizSuiteDBModel.Store.Customer" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="UserAccount_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Employee_EmployeePosition1">
+          <End Role="EmployeePosition" Type="BizSuiteDBModel.Store.EmployeePosition" Multiplicity="1" />
+          <End Role="Employee" Type="BizSuiteDBModel.Store.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeePosition">
+              <PropertyRef Name="PositionName" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="EmployeePosition_PositionName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Employee_UserAccount1">
+          <End Role="UserAccount" Type="BizSuiteDBModel.Store.UserAccount" Multiplicity="1" />
+          <End Role="Employee" Type="BizSuiteDBModel.Store.Employee" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="UserAccount_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Inventory_Supplier1">
+          <End Role="Supplier" Type="BizSuiteDBModel.Store.Supplier" Multiplicity="1" />
+          <End Role="Inventory" Type="BizSuiteDBModel.Store.Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="UserAccount_Username" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="Supplier_UserAccount_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_KeyPair_Employee1">
+          <End Role="Employee" Type="BizSuiteDBModel.Store.Employee" Multiplicity="1" />
+          <End Role="KeyPair" Type="BizSuiteDBModel.Store.KeyPair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="UserAccount_Username" />
+            </Principal>
+            <Dependent Role="KeyPair">
+              <PropertyRef Name="Employee_UserAccount_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LeaveRequest_Employee1">
+          <End Role="Employee" Type="BizSuiteDBModel.Store.Employee" Multiplicity="1" />
+          <End Role="LeaveRequest" Type="BizSuiteDBModel.Store.LeaveRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="UserAccount_Username" />
+            </Principal>
+            <Dependent Role="LeaveRequest">
+              <PropertyRef Name="Employee_UserAccount_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LeaveRequest_LeavePolicy1">
+          <End Role="LeavePolicy" Type="BizSuiteDBModel.Store.LeavePolicy" Multiplicity="1" />
+          <End Role="LeaveRequest" Type="BizSuiteDBModel.Store.LeaveRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LeavePolicy">
+              <PropertyRef Name="LeavePolicyId" />
+            </Principal>
+            <Dependent Role="LeaveRequest">
+              <PropertyRef Name="LeavePolicy_LeavePolicyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Order_Customer1">
+          <End Role="Customer" Type="BizSuiteDBModel.Store.Customer" Multiplicity="1" />
+          <End Role="Order" Type="BizSuiteDBModel.Store.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="UserAccount_Username" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Customer_UserAccount_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrderItem_Order1">
+          <End Role="Order" Type="BizSuiteDBModel.Store.Order" Multiplicity="1" />
+          <End Role="OrderItem" Type="BizSuiteDBModel.Store.OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="Order_OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Supplier_UserAccount1">
+          <End Role="UserAccount" Type="BizSuiteDBModel.Store.UserAccount" Multiplicity="1" />
+          <End Role="Supplier" Type="BizSuiteDBModel.Store.Supplier" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="UserAccount_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SupportTicket_Customer1">
+          <End Role="Customer" Type="BizSuiteDBModel.Store.Customer" Multiplicity="1" />
+          <End Role="SupportTicket" Type="BizSuiteDBModel.Store.SupportTicket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="UserAccount_Username" />
+            </Principal>
+            <Dependent Role="SupportTicket">
+              <PropertyRef Name="Customer_UserAccount_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SupportTicket_Employee1">
+          <End Role="Employee" Type="BizSuiteDBModel.Store.Employee" Multiplicity="0..1" />
+          <End Role="SupportTicket" Type="BizSuiteDBModel.Store.SupportTicket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="UserAccount_Username" />
+            </Principal>
+            <Dependent Role="SupportTicket">
+              <PropertyRef Name="Employee_UserAccount_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SupportTicket_SupportTicket1">
+          <End Role="SupportTicket" Type="BizSuiteDBModel.Store.SupportTicket" Multiplicity="0..1" />
+          <End Role="SupportTicket1" Type="BizSuiteDBModel.Store.SupportTicket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupportTicket">
+              <PropertyRef Name="SupportTicketId" />
+            </Principal>
+            <Dependent Role="SupportTicket1">
+              <PropertyRef Name="ReferenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BizSuiteDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="BizSuiteDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccountPayables" EntityType="BizSuiteDBModel.AccountPayable" />
+          <EntitySet Name="AccountReceivables" EntityType="BizSuiteDBModel.AccountReceivable" />
+          <EntitySet Name="Attendances" EntityType="BizSuiteDBModel.Attendance" />
+          <EntitySet Name="Customers" EntityType="BizSuiteDBModel.Customer" />
+          <EntitySet Name="Employees" EntityType="BizSuiteDBModel.Employee" />
+          <EntitySet Name="EmployeePositions" EntityType="BizSuiteDBModel.EmployeePosition" />
+          <EntitySet Name="Inventories" EntityType="BizSuiteDBModel.Inventory" />
+          <EntitySet Name="KeyPairs" EntityType="BizSuiteDBModel.KeyPair" />
+          <EntitySet Name="LeavePolicies" EntityType="BizSuiteDBModel.LeavePolicy" />
+          <EntitySet Name="LeaveRequests" EntityType="BizSuiteDBModel.LeaveRequest" />
+          <EntitySet Name="Orders" EntityType="BizSuiteDBModel.Order" />
+          <EntitySet Name="OrderItems" EntityType="BizSuiteDBModel.OrderItem" />
+          <EntitySet Name="PayrollRequests" EntityType="BizSuiteDBModel.PayrollRequest" />
+          <EntitySet Name="Suppliers" EntityType="BizSuiteDBModel.Supplier" />
+          <EntitySet Name="SupportTickets" EntityType="BizSuiteDBModel.SupportTicket" />
+          <EntitySet Name="UserAccounts" EntityType="BizSuiteDBModel.UserAccount" />
+          <AssociationSet Name="fk_AccountReceivable_Order1" Association="BizSuiteDBModel.fk_AccountReceivable_Order1">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="AccountReceivable" EntitySet="AccountReceivables" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Attendance_Employee1" Association="BizSuiteDBModel.fk_Attendance_Employee1">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Attendance" EntitySet="Attendances" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Customer_UserAccount" Association="BizSuiteDBModel.fk_Customer_UserAccount">
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Order_Customer1" Association="BizSuiteDBModel.fk_Order_Customer1">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SupportTicket_Customer1" Association="BizSuiteDBModel.fk_SupportTicket_Customer1">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="SupportTicket" EntitySet="SupportTickets" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Employee_EmployeePosition1" Association="BizSuiteDBModel.fk_Employee_EmployeePosition1">
+            <End Role="EmployeePosition" EntitySet="EmployeePositions" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Employee_UserAccount1" Association="BizSuiteDBModel.fk_Employee_UserAccount1">
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="fk_KeyPair_Employee1" Association="BizSuiteDBModel.fk_KeyPair_Employee1">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="KeyPair" EntitySet="KeyPairs" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LeaveRequest_Employee1" Association="BizSuiteDBModel.fk_LeaveRequest_Employee1">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="LeaveRequest" EntitySet="LeaveRequests" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SupportTicket_Employee1" Association="BizSuiteDBModel.fk_SupportTicket_Employee1">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="SupportTicket" EntitySet="SupportTickets" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Inventory_Supplier1" Association="BizSuiteDBModel.fk_Inventory_Supplier1">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="Inventory" EntitySet="Inventories" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LeaveRequest_LeavePolicy1" Association="BizSuiteDBModel.fk_LeaveRequest_LeavePolicy1">
+            <End Role="LeavePolicy" EntitySet="LeavePolicies" />
+            <End Role="LeaveRequest" EntitySet="LeaveRequests" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrderItem_Order1" Association="BizSuiteDBModel.fk_OrderItem_Order1">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderItem" EntitySet="OrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Supplier_UserAccount1" Association="BizSuiteDBModel.fk_Supplier_UserAccount1">
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SupportTicket_SupportTicket1" Association="BizSuiteDBModel.fk_SupportTicket_SupportTicket1">
+            <End Role="SupportTicket" EntitySet="SupportTickets" />
+            <End Role="SupportTicket1" EntitySet="SupportTickets" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AccountPayable">
+          <Key>
+            <PropertyRef Name="AccountPayableId" />
+          </Key>
+          <Property Name="AccountPayableId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="TotalAmount" Type="Double" Nullable="false" />
+          <Property Name="ReferenceId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AccountReceivable">
+          <Key>
+            <PropertyRef Name="AccountReceivableId" />
+          </Key>
+          <Property Name="AccountReceivableId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="TotalAmount" Type="Double" Nullable="false" />
+          <Property Name="Order_OrderId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="BizSuiteDBModel.fk_AccountReceivable_Order1" FromRole="AccountReceivable" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Attendance">
+          <Key>
+            <PropertyRef Name="AttendanceId" />
+          </Key>
+          <Property Name="AttendanceId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="Time" Type="Time" Nullable="false" />
+          <Property Name="Location" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Employee_UserAccount_Username" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Employee" Relationship="BizSuiteDBModel.fk_Attendance_Employee1" FromRole="Attendance" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="UserAccount_Username" />
+          </Key>
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="PhoneNo" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="FaxNo" Type="Int32" />
+          <Property Name="UserAccount_Username" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="UserAccount" Relationship="BizSuiteDBModel.fk_Customer_UserAccount" FromRole="Customer" ToRole="UserAccount" />
+          <NavigationProperty Name="Orders" Relationship="BizSuiteDBModel.fk_Order_Customer1" FromRole="Customer" ToRole="Order" />
+          <NavigationProperty Name="SupportTickets" Relationship="BizSuiteDBModel.fk_SupportTicket_Customer1" FromRole="Customer" ToRole="SupportTicket" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="UserAccount_Username" />
+          </Key>
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="PhoneNo" Type="Int32" Nullable="false" />
+          <Property Name="NRIC" Type="String" Nullable="false" MaxLength="9" Unicode="false" FixedLength="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" />
+          <Property Name="EndEmploymentDate" Type="DateTime" />
+          <Property Name="StartEmploymentDate" Type="DateTime" Nullable="false" />
+          <Property Name="SalaryPerHour" Type="Double" Nullable="false" />
+          <Property Name="StartShiftHour" Type="Time" Nullable="false" />
+          <Property Name="EndShirtHour" Type="Time" Nullable="false" />
+          <Property Name="UserAccount_Username" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="EmployeePosition_PositionName" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Attendances" Relationship="BizSuiteDBModel.fk_Attendance_Employee1" FromRole="Employee" ToRole="Attendance" />
+          <NavigationProperty Name="EmployeePosition" Relationship="BizSuiteDBModel.fk_Employee_EmployeePosition1" FromRole="Employee" ToRole="EmployeePosition" />
+          <NavigationProperty Name="UserAccount" Relationship="BizSuiteDBModel.fk_Employee_UserAccount1" FromRole="Employee" ToRole="UserAccount" />
+          <NavigationProperty Name="KeyPairs" Relationship="BizSuiteDBModel.fk_KeyPair_Employee1" FromRole="Employee" ToRole="KeyPair" />
+          <NavigationProperty Name="LeaveRequests" Relationship="BizSuiteDBModel.fk_LeaveRequest_Employee1" FromRole="Employee" ToRole="LeaveRequest" />
+          <NavigationProperty Name="SupportTickets" Relationship="BizSuiteDBModel.fk_SupportTicket_Employee1" FromRole="Employee" ToRole="SupportTicket" />
+        </EntityType>
+        <EntityType Name="EmployeePosition">
+          <Key>
+            <PropertyRef Name="PositionName" />
+          </Key>
+          <Property Name="PositionId" Type="Int32" Nullable="false" />
+          <Property Name="PositionName" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Responsibility" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Employees" Relationship="BizSuiteDBModel.fk_Employee_EmployeePosition1" FromRole="EmployeePosition" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="InventoryId" />
+          </Key>
+          <Property Name="InventoryId" Type="Int32" Nullable="false" />
+          <Property Name="ItemDescription" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Image" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="UnitCost" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="UnitWeightKilo" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Quantity" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Location" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="TimeStamp" Type="DateTime" Nullable="false" />
+          <Property Name="Supplier_UserAccount_Username" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Supplier" Relationship="BizSuiteDBModel.fk_Inventory_Supplier1" FromRole="Inventory" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="KeyPair">
+          <Key>
+            <PropertyRef Name="Private" />
+          </Key>
+          <Property Name="Private" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="Public" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="Employee_UserAccount_Username" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Employee" Relationship="BizSuiteDBModel.fk_KeyPair_Employee1" FromRole="KeyPair" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="LeavePolicy">
+          <Key>
+            <PropertyRef Name="LeavePolicyId" />
+          </Key>
+          <Property Name="LeavePolicyId" Type="Int32" Nullable="false" />
+          <Property Name="PolicyName" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="PolicyDescription" Type="String" Nullable="false" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="DaysOfLeave" Type="Int32" Nullable="false" />
+          <Property Name="MinServiceYear" Type="Double" Nullable="false" />
+          <Property Name="Paid" Type="Boolean" Nullable="false" />
+          <Property Name="Period" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="LeaveRequests" Relationship="BizSuiteDBModel.fk_LeaveRequest_LeavePolicy1" FromRole="LeavePolicy" ToRole="LeaveRequest" />
+        </EntityType>
+        <EntityType Name="LeaveRequest">
+          <Key>
+            <PropertyRef Name="LeaveRequestId" />
+          </Key>
+          <Property Name="LeaveRequestId" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" />
+          <Property Name="Reason" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Employee_UserAccount_Username" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="LeavePolicy_LeavePolicyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="BizSuiteDBModel.fk_LeaveRequest_Employee1" FromRole="LeaveRequest" ToRole="Employee" />
+          <NavigationProperty Name="LeavePolicy" Relationship="BizSuiteDBModel.fk_LeaveRequest_LeavePolicy1" FromRole="LeaveRequest" ToRole="LeavePolicy" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="ReceiptId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Customer_UserAccount_Username" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="TotalAmount" Type="Double" Nullable="false" />
+          <NavigationProperty Name="AccountReceivables" Relationship="BizSuiteDBModel.fk_AccountReceivable_Order1" FromRole="Order" ToRole="AccountReceivable" />
+          <NavigationProperty Name="Customer" Relationship="BizSuiteDBModel.fk_Order_Customer1" FromRole="Order" ToRole="Customer" />
+          <NavigationProperty Name="OrderItems" Relationship="BizSuiteDBModel.fk_OrderItem_Order1" FromRole="Order" ToRole="OrderItem" />
+        </EntityType>
+        <EntityType Name="OrderItem">
+          <Key>
+            <PropertyRef Name="OrderItemId" />
+          </Key>
+          <Property Name="OrderItemId" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="UnitPrice" Type="Double" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Order_OrderId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="BizSuiteDBModel.fk_OrderItem_Order1" FromRole="OrderItem" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="PayrollRequest">
+          <Key>
+            <PropertyRef Name="PayrollRequestId" />
+          </Key>
+          <Property Name="PayrollRequestId" Type="Int32" Nullable="false" />
+          <Property Name="TotalAmount" Type="Double" />
+          <Property Name="RequestTimeStamp" Type="DateTime" />
+          <Property Name="Status" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="UserAccount_Username" />
+          </Key>
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="PhoneNo" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="FaxNo" Type="Int32" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="UserAccount_Username" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Inventories" Relationship="BizSuiteDBModel.fk_Inventory_Supplier1" FromRole="Supplier" ToRole="Inventory" />
+          <NavigationProperty Name="UserAccount" Relationship="BizSuiteDBModel.fk_Supplier_UserAccount1" FromRole="Supplier" ToRole="UserAccount" />
+        </EntityType>
+        <EntityType Name="SupportTicket">
+          <Key>
+            <PropertyRef Name="SupportTicketId" />
+          </Key>
+          <Property Name="SupportTicketId" Type="Int32" Nullable="false" />
+          <Property Name="Question" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Answer" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Customer_UserAccount_Username" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="ReferenceId" Type="Int32" />
+          <Property Name="Employee_UserAccount_Username" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Customer" Relationship="BizSuiteDBModel.fk_SupportTicket_Customer1" FromRole="SupportTicket" ToRole="Customer" />
+          <NavigationProperty Name="Employee" Relationship="BizSuiteDBModel.fk_SupportTicket_Employee1" FromRole="SupportTicket" ToRole="Employee" />
+          <NavigationProperty Name="SupportTicket1" Relationship="BizSuiteDBModel.fk_SupportTicket_SupportTicket1" FromRole="SupportTicket" ToRole="SupportTicket1" />
+          <NavigationProperty Name="SupportTicket2" Relationship="BizSuiteDBModel.fk_SupportTicket_SupportTicket1" FromRole="SupportTicket1" ToRole="SupportTicket" />
+        </EntityType>
+        <EntityType Name="UserAccount">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Customer" Relationship="BizSuiteDBModel.fk_Customer_UserAccount" FromRole="UserAccount" ToRole="Customer" />
+          <NavigationProperty Name="Employee" Relationship="BizSuiteDBModel.fk_Employee_UserAccount1" FromRole="UserAccount" ToRole="Employee" />
+          <NavigationProperty Name="Supplier" Relationship="BizSuiteDBModel.fk_Supplier_UserAccount1" FromRole="UserAccount" ToRole="Supplier" />
+        </EntityType>
+        <Association Name="fk_AccountReceivable_Order1">
+          <End Role="Order" Type="BizSuiteDBModel.Order" Multiplicity="1" />
+          <End Role="AccountReceivable" Type="BizSuiteDBModel.AccountReceivable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="AccountReceivable">
+              <PropertyRef Name="Order_OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Attendance_Employee1">
+          <End Role="Employee" Type="BizSuiteDBModel.Employee" Multiplicity="1" />
+          <End Role="Attendance" Type="BizSuiteDBModel.Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="UserAccount_Username" />
+            </Principal>
+            <Dependent Role="Attendance">
+              <PropertyRef Name="Employee_UserAccount_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Customer_UserAccount">
+          <End Role="UserAccount" Type="BizSuiteDBModel.UserAccount" Multiplicity="1" />
+          <End Role="Customer" Type="BizSuiteDBModel.Customer" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="UserAccount_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Order_Customer1">
+          <End Role="Customer" Type="BizSuiteDBModel.Customer" Multiplicity="1" />
+          <End Role="Order" Type="BizSuiteDBModel.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="UserAccount_Username" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Customer_UserAccount_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SupportTicket_Customer1">
+          <End Role="Customer" Type="BizSuiteDBModel.Customer" Multiplicity="1" />
+          <End Role="SupportTicket" Type="BizSuiteDBModel.SupportTicket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="UserAccount_Username" />
+            </Principal>
+            <Dependent Role="SupportTicket">
+              <PropertyRef Name="Customer_UserAccount_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Employee_EmployeePosition1">
+          <End Role="EmployeePosition" Type="BizSuiteDBModel.EmployeePosition" Multiplicity="1" />
+          <End Role="Employee" Type="BizSuiteDBModel.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeePosition">
+              <PropertyRef Name="PositionName" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="EmployeePosition_PositionName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Employee_UserAccount1">
+          <End Role="UserAccount" Type="BizSuiteDBModel.UserAccount" Multiplicity="1" />
+          <End Role="Employee" Type="BizSuiteDBModel.Employee" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="UserAccount_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_KeyPair_Employee1">
+          <End Role="Employee" Type="BizSuiteDBModel.Employee" Multiplicity="1" />
+          <End Role="KeyPair" Type="BizSuiteDBModel.KeyPair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="UserAccount_Username" />
+            </Principal>
+            <Dependent Role="KeyPair">
+              <PropertyRef Name="Employee_UserAccount_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LeaveRequest_Employee1">
+          <End Role="Employee" Type="BizSuiteDBModel.Employee" Multiplicity="1" />
+          <End Role="LeaveRequest" Type="BizSuiteDBModel.LeaveRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="UserAccount_Username" />
+            </Principal>
+            <Dependent Role="LeaveRequest">
+              <PropertyRef Name="Employee_UserAccount_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SupportTicket_Employee1">
+          <End Role="Employee" Type="BizSuiteDBModel.Employee" Multiplicity="0..1" />
+          <End Role="SupportTicket" Type="BizSuiteDBModel.SupportTicket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="UserAccount_Username" />
+            </Principal>
+            <Dependent Role="SupportTicket">
+              <PropertyRef Name="Employee_UserAccount_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Inventory_Supplier1">
+          <End Role="Supplier" Type="BizSuiteDBModel.Supplier" Multiplicity="1" />
+          <End Role="Inventory" Type="BizSuiteDBModel.Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="UserAccount_Username" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="Supplier_UserAccount_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LeaveRequest_LeavePolicy1">
+          <End Role="LeavePolicy" Type="BizSuiteDBModel.LeavePolicy" Multiplicity="1" />
+          <End Role="LeaveRequest" Type="BizSuiteDBModel.LeaveRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LeavePolicy">
+              <PropertyRef Name="LeavePolicyId" />
+            </Principal>
+            <Dependent Role="LeaveRequest">
+              <PropertyRef Name="LeavePolicy_LeavePolicyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrderItem_Order1">
+          <End Role="Order" Type="BizSuiteDBModel.Order" Multiplicity="1" />
+          <End Role="OrderItem" Type="BizSuiteDBModel.OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="Order_OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Supplier_UserAccount1">
+          <End Role="UserAccount" Type="BizSuiteDBModel.UserAccount" Multiplicity="1" />
+          <End Role="Supplier" Type="BizSuiteDBModel.Supplier" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="UserAccount_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SupportTicket_SupportTicket1">
+          <End Role="SupportTicket" Type="BizSuiteDBModel.SupportTicket" Multiplicity="0..1" />
+          <End Role="SupportTicket1" Type="BizSuiteDBModel.SupportTicket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupportTicket">
+              <PropertyRef Name="SupportTicketId" />
+            </Principal>
+            <Dependent Role="SupportTicket1">
+              <PropertyRef Name="ReferenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BizSuiteDBModelStoreContainer" CdmEntityContainer="BizSuiteDBEntities">
+          <EntitySetMapping Name="AccountPayables">
+            <EntityTypeMapping TypeName="BizSuiteDBModel.AccountPayable">
+              <MappingFragment StoreEntitySet="AccountPayable">
+                <ScalarProperty Name="AccountPayableId" ColumnName="AccountPayableId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="ReferenceId" ColumnName="ReferenceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountReceivables">
+            <EntityTypeMapping TypeName="BizSuiteDBModel.AccountReceivable">
+              <MappingFragment StoreEntitySet="AccountReceivable">
+                <ScalarProperty Name="AccountReceivableId" ColumnName="AccountReceivableId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="Order_OrderId" ColumnName="Order_OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Attendances">
+            <EntityTypeMapping TypeName="BizSuiteDBModel.Attendance">
+              <MappingFragment StoreEntitySet="Attendance">
+                <ScalarProperty Name="AttendanceId" ColumnName="AttendanceId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Employee_UserAccount_Username" ColumnName="Employee_UserAccount_Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="BizSuiteDBModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FaxNo" ColumnName="FaxNo" />
+                <ScalarProperty Name="UserAccount_Username" ColumnName="UserAccount_Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="BizSuiteDBModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="NRIC" ColumnName="NRIC" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="EndEmploymentDate" ColumnName="EndEmploymentDate" />
+                <ScalarProperty Name="StartEmploymentDate" ColumnName="StartEmploymentDate" />
+                <ScalarProperty Name="SalaryPerHour" ColumnName="SalaryPerHour" />
+                <ScalarProperty Name="StartShiftHour" ColumnName="StartShiftHour" />
+                <ScalarProperty Name="EndShirtHour" ColumnName="EndShirtHour" />
+                <ScalarProperty Name="UserAccount_Username" ColumnName="UserAccount_Username" />
+                <ScalarProperty Name="EmployeePosition_PositionName" ColumnName="EmployeePosition_PositionName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeePositions">
+            <EntityTypeMapping TypeName="BizSuiteDBModel.EmployeePosition">
+              <MappingFragment StoreEntitySet="EmployeePosition">
+                <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+                <ScalarProperty Name="Responsibility" ColumnName="Responsibility" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inventories">
+            <EntityTypeMapping TypeName="BizSuiteDBModel.Inventory">
+              <MappingFragment StoreEntitySet="Inventory">
+                <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+                <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="UnitCost" ColumnName="UnitCost" />
+                <ScalarProperty Name="UnitWeightKilo" ColumnName="UnitWeightKilo" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="Supplier_UserAccount_Username" ColumnName="Supplier_UserAccount_Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KeyPairs">
+            <EntityTypeMapping TypeName="BizSuiteDBModel.KeyPair">
+              <MappingFragment StoreEntitySet="KeyPair">
+                <ScalarProperty Name="Private" ColumnName="Private" />
+                <ScalarProperty Name="Public" ColumnName="Public" />
+                <ScalarProperty Name="Employee_UserAccount_Username" ColumnName="Employee_UserAccount_Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LeavePolicies">
+            <EntityTypeMapping TypeName="BizSuiteDBModel.LeavePolicy">
+              <MappingFragment StoreEntitySet="LeavePolicy">
+                <ScalarProperty Name="LeavePolicyId" ColumnName="LeavePolicyId" />
+                <ScalarProperty Name="PolicyName" ColumnName="PolicyName" />
+                <ScalarProperty Name="PolicyDescription" ColumnName="PolicyDescription" />
+                <ScalarProperty Name="DaysOfLeave" ColumnName="DaysOfLeave" />
+                <ScalarProperty Name="MinServiceYear" ColumnName="MinServiceYear" />
+                <ScalarProperty Name="Paid" ColumnName="Paid" />
+                <ScalarProperty Name="Period" ColumnName="Period" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LeaveRequests">
+            <EntityTypeMapping TypeName="BizSuiteDBModel.LeaveRequest">
+              <MappingFragment StoreEntitySet="LeaveRequest">
+                <ScalarProperty Name="LeaveRequestId" ColumnName="LeaveRequestId" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Employee_UserAccount_Username" ColumnName="Employee_UserAccount_Username" />
+                <ScalarProperty Name="LeavePolicy_LeavePolicyId" ColumnName="LeavePolicy_LeavePolicyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="BizSuiteDBModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="ReceiptId" ColumnName="ReceiptId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Customer_UserAccount_Username" ColumnName="Customer_UserAccount_Username" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderItems">
+            <EntityTypeMapping TypeName="BizSuiteDBModel.OrderItem">
+              <MappingFragment StoreEntitySet="OrderItem">
+                <ScalarProperty Name="OrderItemId" ColumnName="OrderItemId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Order_OrderId" ColumnName="Order_OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PayrollRequests">
+            <EntityTypeMapping TypeName="BizSuiteDBModel.PayrollRequest">
+              <MappingFragment StoreEntitySet="PayrollRequest">
+                <ScalarProperty Name="PayrollRequestId" ColumnName="PayrollRequestId" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="RequestTimeStamp" ColumnName="RequestTimeStamp" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="BizSuiteDBModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FaxNo" ColumnName="FaxNo" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="UserAccount_Username" ColumnName="UserAccount_Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupportTickets">
+            <EntityTypeMapping TypeName="BizSuiteDBModel.SupportTicket">
+              <MappingFragment StoreEntitySet="SupportTicket">
+                <ScalarProperty Name="SupportTicketId" ColumnName="SupportTicketId" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="Customer_UserAccount_Username" ColumnName="Customer_UserAccount_Username" />
+                <ScalarProperty Name="ReferenceId" ColumnName="ReferenceId" />
+                <ScalarProperty Name="Employee_UserAccount_Username" ColumnName="Employee_UserAccount_Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserAccounts">
+            <EntityTypeMapping TypeName="BizSuiteDBModel.UserAccount">
+              <MappingFragment StoreEntitySet="UserAccount">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
