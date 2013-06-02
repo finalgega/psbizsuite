@@ -42,7 +42,7 @@
 
             <!--  start login-inner -->
             <div id="login-inner">
-                <% using (Html.BeginForm("Detail","Home",FormMethod.Post))
+                <% using (Html.BeginForm("Login","Home",FormMethod.Post))
                    { %>
                 <table class="zeroPS" border="0">
                     <tr>
