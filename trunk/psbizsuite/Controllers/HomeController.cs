@@ -22,17 +22,34 @@ namespace psbizsuite.Controllers
         }
 
         [HttpPost]
-        public ActionResult Detail(string username, string password)
+        public ActionResult Login(string username, string password)
         {
-            UserAccount useraccount = db.UserAccounts.Find(username);
-            if (useraccount == null)
-                return HttpNotFound();
+            if (ModelState.IsValid)
+            {
+                UserAccount useraccount = db.UserAccounts.Find(username);
+                if (useraccount == null)
+                {
+                    ModelState.AddModelError("LoginError", "unsuccessful login");
+                    return View();
+                }
+                else
+                {
+                    //to do: add in authentication here
+                    //return to DirectorDashboard view with useraccount object
+                    //to retrieve data from the useraccount object in view, eg. <%= Model.username %> 
+                 
+
+                       return View("../Director/DirectorDashboard", useraccount);
+                }
+            }
             else
-                //to do: add in authentication here
-                //return to DirectorDashboard view with useraccount object
-                //to retrieve data from the useraccount object in view, eg. <%= Model.username %> 
-                return View("../Director/DirectorDashboard", useraccount);
+            {
+                return HttpNotFound();
+            }
         }
+
+       
+
 
         //
         // GET: /Home/Details/5
