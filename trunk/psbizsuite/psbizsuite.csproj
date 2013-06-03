@@ -328,7 +328,12 @@
     <Content Include="Views\Accounting\ViewPL.aspx" />
     <Content Include="Views\Attendance\ViewAttendance.aspx" />
     <Content Include="Views\Attendance\ViewAttendanceSummary.aspx" />
+    <Content Include="Views\Customer\Create.aspx" />
     <Content Include="Views\Customer\CreateCustomerProfile.aspx" />
+    <Content Include="Views\Customer\Delete.aspx" />
+    <Content Include="Views\Customer\Details.aspx" />
+    <Content Include="Views\Customer\Edit.aspx" />
+    <Content Include="Views\Customer\Index.aspx" />
     <Content Include="Views\Customer\ViewEditCustomerProfile.aspx" />
     <Content Include="Views\EmployeePosition\Create.aspx" />
     <Content Include="Views\EmployeePosition\Delete.aspx" />
