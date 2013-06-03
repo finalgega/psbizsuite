@@ -14,22 +14,22 @@
 <table>
     <tr>
         <th>
-            <%: Html.DisplayNameFor(model => model.FullName) %>
+            Full Name
         </th>
         <th>
-            <%: Html.DisplayNameFor(model => model.Address) %>
+            Address
         </th>
         <th>
-            <%: Html.DisplayNameFor(model => model.PhoneNo) %>
+            Phone Number
         </th>
         <th>
-            <%: Html.DisplayNameFor(model => model.Email) %>
+            Email Address
         </th>
         <th>
-            <%: Html.DisplayNameFor(model => model.FaxNo) %>
+            Fax Number
         </th>
         <th>
-            <%: Html.DisplayNameFor(model => model.UserAccount.Password) %>
+            Password
         </th>
         <th></th>
     </tr>
