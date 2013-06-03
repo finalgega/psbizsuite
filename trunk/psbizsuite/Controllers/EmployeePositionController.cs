@@ -21,18 +21,7 @@ namespace psbizsuite.Controllers
             return View(db.EmployeePositions.ToList());
         }
 
-        //
-        // GET: /EmployeePosition/Details/5
-
-        public ActionResult Details(string id = null)
-        {
-            EmployeePosition employeeposition = db.EmployeePositions.Find(id);
-            if (employeeposition == null)
-            {
-                return HttpNotFound();
-            }
-            return View(employeeposition);
-        }
+   
 
         //
         // GET: /EmployeePosition/Create
@@ -61,7 +50,7 @@ namespace psbizsuite.Controllers
         //
         // GET: /EmployeePosition/Edit/5
 
-        public ActionResult Edit(string id = null)
+        public ActionResult Edit(string id)
         {
             EmployeePosition employeeposition = db.EmployeePositions.Find(id);
             if (employeeposition == null)
