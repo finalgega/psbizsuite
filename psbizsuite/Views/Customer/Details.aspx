@@ -12,42 +12,42 @@
     <legend>Customer</legend>
 
     <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.FullName) %>
+        Full Name
     </div>
     <div class="display-field">
         <%: Html.DisplayFor(model => model.FullName) %>
     </div>
 
     <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.Address) %>
+        Address
     </div>
     <div class="display-field">
         <%: Html.DisplayFor(model => model.Address) %>
     </div>
 
     <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.PhoneNo) %>
+        Phone Number
     </div>
     <div class="display-field">
         <%: Html.DisplayFor(model => model.PhoneNo) %>
     </div>
 
     <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.Email) %>
+        Email Address
     </div>
     <div class="display-field">
         <%: Html.DisplayFor(model => model.Email) %>
     </div>
 
     <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.FaxNo) %>
+        Fax Number
     </div>
     <div class="display-field">
         <%: Html.DisplayFor(model => model.FaxNo) %>
     </div>
 
     <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.UserAccount.Password) %>
+        Password
     </div>
     <div class="display-field">
         <%: Html.DisplayFor(model => model.UserAccount.Password) %>
