@@ -124,7 +124,6 @@
     <Compile Include="Controllers\AccountingController.cs" />
     <Compile Include="Controllers\AttendanceController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
-    <Compile Include="Controllers\DirectorController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\EmployeePositionController.cs" />
     <Compile Include="Controllers\EncryptionController.cs" />
@@ -331,7 +330,6 @@
     <Content Include="Views\Attendance\ViewAttendanceSummary.aspx" />
     <Content Include="Views\Customer\CreateCustomerProfile.aspx" />
     <Content Include="Views\Customer\ViewEditCustomerProfile.aspx" />
-    <Content Include="Views\Director\DirectorDashboard.aspx" />
     <Content Include="Views\EmployeePosition\Create.aspx" />
     <Content Include="Views\EmployeePosition\Delete.aspx" />
     <Content Include="Views\EmployeePosition\Details.aspx" />
