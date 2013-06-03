@@ -6,46 +6,81 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-<h2>Edit</h2>
+< <!-- start content-outer -->
+    <div id="content-outer">
+        <!-- start content -->
+        <div id="content">
 
-<% using (Html.BeginForm()) { %>
-    <%: Html.ValidationSummary(true) %>
+            <div id="page-heading">
+                <h1>Edit Employee Position</h1>
+            </div>
 
-    <fieldset>
-        <legend>EmployeePosition</legend>
+            <table border="0" class="zeroPS" style="width: 100%" id="content-table">
+                <tr>
+                    <th rowspan="3" class="sized">
+                        <img src="../../Assets/Images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
+                    <th class="topleft"></th>
+                    <td id="tbl-border-top">&nbsp;</td>
+                    <th class="topright"></th>
+                    <th rowspan="3" class="sized">
+                        <img src="../../Assets/Images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
+                </tr>
+                <tr>
+                    <td id="tbl-border-left"></td>
+                    <td>
+                        <!--  start content-table-inner -->
+                        <div id="content-table-inner">
 
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.PositionId) %>
+                            <table border="0" class="zeroPS" style="width: 100%">
+                                <tr style="vertical-align: top">
+                                    <td>
+
+                                        <% using (Html.BeginForm())
+                                           { %>
+                                        <%: Html.ValidationSummary(true) %>
+
+                                        <!-- start id-form -->
+                                        <table border="0" class="zeroPS id-form">
+                                            <tr>
+                                                <th>Position Name:</th>
+                                                <td><%: Html.EditorFor(model => model.PositionName) %></td>
+                                                <td><%: Html.ValidationMessageFor(model => model.PositionName) %></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Responsibility:</th>
+                                                <td><%: Html.TextAreaFor(model => model.Responsibility) %></td>
+                                                <td><%: Html.ValidationMessageFor(model => model.Responsibility) %></td>
+                                            </tr>
+                                            <tr>
+                                                <th>&nbsp;</th>
+                                                <td style="vertical-align: top">
+                                                    <input type="submit" class="form-submit" />
+                                                    <input type="reset" class="form-reset" />
+                                                </td>
+                                                <td></td>
+                                            </tr>
+
+                                        </table>
+                                        <!-- end id-form  -->
+                                        <% } %>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="clear"></div>
+                        </div>
+                        <!--  end content-table-inner  -->
+                    </td>
+                    <td id="tbl-border-right"></td>
+                </tr>
+                <tr>
+                    <th class="sized bottomleft"></th>
+                    <td id="tbl-border-bottom">&nbsp;</td>
+                    <th class="sized bottomright"></th>
+                </tr>
+            </table>
         </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.PositionId) %>
-            <%: Html.ValidationMessageFor(model => model.PositionId) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.PositionName) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.PositionName) %>
-            <%: Html.ValidationMessageFor(model => model.PositionName) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.Responsibility) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.Responsibility) %>
-            <%: Html.ValidationMessageFor(model => model.Responsibility) %>
-        </div>
-
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>
-<% } %>
-
-<div>
-    <%: Html.ActionLink("Back to List", "Index") %>
+    </div>
+    <div class="clear">&nbsp;</div>
 </div>
 
 </asp:Content>
