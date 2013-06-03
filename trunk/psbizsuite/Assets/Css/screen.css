@@ -1735,23 +1735,17 @@ a:hover.back-login {
 
 /*------- Form Styling -------*/
 input {
-    -moz-border-radius: 8px;
-    -webkit-border-radius: 8px;
-    border-radius: 8px;
+
     height: 25px;
 }
 
     input[type="button"], input[type="submit"], input[type="reset"] {
-        -moz-border-radius: 8px;
-        -webkit-border-radius: 8px;
-        border-radius: 8px;
+
         height: 40px;
         padding: 10px;
     }
 
 select {
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    border-radius: 4px;
+
     height: 25px;
 }
