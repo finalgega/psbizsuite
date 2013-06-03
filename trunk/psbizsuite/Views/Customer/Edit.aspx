@@ -14,57 +14,42 @@
     <fieldset>
         <legend>Customer</legend>
 
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.FullName) %>
-        </div>
-        <div class="editor-field">
+        <table>
+            <tr>
+                <td><div class="editor-label">Full Name</div></td>
+                <td><div class="editor-field">
             <%: Html.EditorFor(model => model.FullName) %>
-            <%: Html.ValidationMessageFor(model => model.FullName) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.Address) %>
-        </div>
-        <div class="editor-field">
+            <%: Html.ValidationMessageFor(model => model.FullName) %></div></td>
+            </tr>
+            <tr>
+                <td><div class="editor-label">Address</div></td>
+                <td><div class="editor-field">
             <%: Html.EditorFor(model => model.Address) %>
-            <%: Html.ValidationMessageFor(model => model.Address) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.PhoneNo) %>
-        </div>
-        <div class="editor-field">
+            <%: Html.ValidationMessageFor(model => model.Address) %></div></td>
+            </tr>
+            <tr>
+                <td><div class="editor-label">Phone Number</div></td>
+                <td><div class="editor-field">
             <%: Html.EditorFor(model => model.PhoneNo) %>
-            <%: Html.ValidationMessageFor(model => model.PhoneNo) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.Email) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.Email) %>
-            <%: Html.ValidationMessageFor(model => model.Email) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.FaxNo) %>
-        </div>
-        <div class="editor-field">
+            <%: Html.ValidationMessageFor(model => model.PhoneNo) %></div></td>
+            </tr>
+            <tr>
+                <td><div class="editor-label">Fax Number</div></td>
+                <td><div class="editor-field">
             <%: Html.EditorFor(model => model.FaxNo) %>
-            <%: Html.ValidationMessageFor(model => model.FaxNo) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.UserAccount_Username, "UserAccount") %>
-        </div>
-        <div class="editor-field">
-            <%: Html.DropDownList("UserAccount_Username", String.Empty) %>
-            <%: Html.ValidationMessageFor(model => model.UserAccount_Username) %>
-        </div>
-
-        <p>
-            <input type="submit" value="Save" />
-        </p>
+            <%: Html.ValidationMessageFor(model => model.FaxNo) %></div></td>
+            </tr>
+            <tr>
+                <td><div class="editor-label">Email Address</div></td>
+                <td><div class="editor-field">
+            <%: Html.EditorFor(model => model.Email) %>
+            <%: Html.ValidationMessageFor(model => model.Email) %></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Update Customer Details" />
+                </td>
+            </tr>
     </fieldset>
 <% } %>
 
