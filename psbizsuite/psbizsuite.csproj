@@ -322,6 +322,7 @@
     <Content Include="Assets\Jquery\jquery-1.9.1.js" />
     <Content Include="Assets\Jquery\jquery-ui-1.10.3.custom.js" />
     <Content Include="Assets\Jquery\jquery-1.7.2.js" />
+    <Content Include="Assets\Jquery\jquery.autogrowtextarea.js" />
     <Content Include="Assets\Jquery\purr-notifications.js" />
     <Content Include="databaseSchema.txt" />
     <Content Include="Global.asax" />
