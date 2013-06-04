@@ -20,8 +20,11 @@ namespace psbizsuite.Models
         }
     
         public int SupportTicketId { get; set; }
-        public string Question { get; set; }
-        public string Answer { get; set; }
+        public string EnquiryType { get; set; }
+        public string EnquiryPriority { get; set; }
+        public string ExistingEnquiry { get; set; }
+        public string Details { get; set; }
+        public string Reply { get; set; }
         public string Customer_UserAccount_Username { get; set; }
         public Nullable<int> ReferenceId { get; set; }
         public string Employee_UserAccount_Username { get; set; }

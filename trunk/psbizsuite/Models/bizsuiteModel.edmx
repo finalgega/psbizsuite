@@ -4,86 +4,86 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BizSuiteDBModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="BizSuiteDBModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="BizSuiteDBModelStoreContainer">
-          <EntitySet Name="AccountPayable" EntityType="BizSuiteDBModel.Store.AccountPayable" store:Type="Tables" Schema="BizSuiteDB" />
-          <EntitySet Name="AccountReceivable" EntityType="BizSuiteDBModel.Store.AccountReceivable" store:Type="Tables" Schema="BizSuiteDB" />
-          <EntitySet Name="Attendance" EntityType="BizSuiteDBModel.Store.Attendance" store:Type="Tables" Schema="BizSuiteDB" />
-          <EntitySet Name="Customer" EntityType="BizSuiteDBModel.Store.Customer" store:Type="Tables" Schema="BizSuiteDB" />
-          <EntitySet Name="Employee" EntityType="BizSuiteDBModel.Store.Employee" store:Type="Tables" Schema="BizSuiteDB" />
-          <EntitySet Name="EmployeePosition" EntityType="BizSuiteDBModel.Store.EmployeePosition" store:Type="Tables" Schema="BizSuiteDB" />
-          <EntitySet Name="Inventory" EntityType="BizSuiteDBModel.Store.Inventory" store:Type="Tables" Schema="BizSuiteDB" />
-          <EntitySet Name="KeyPair" EntityType="BizSuiteDBModel.Store.KeyPair" store:Type="Tables" Schema="BizSuiteDB" />
-          <EntitySet Name="LeavePolicy" EntityType="BizSuiteDBModel.Store.LeavePolicy" store:Type="Tables" Schema="BizSuiteDB" />
-          <EntitySet Name="LeaveRequest" EntityType="BizSuiteDBModel.Store.LeaveRequest" store:Type="Tables" Schema="BizSuiteDB" />
-          <EntitySet Name="Order" EntityType="BizSuiteDBModel.Store.Order" store:Type="Tables" Schema="BizSuiteDB" />
-          <EntitySet Name="OrderItem" EntityType="BizSuiteDBModel.Store.OrderItem" store:Type="Tables" Schema="BizSuiteDB" />
-          <EntitySet Name="PayrollRequest" EntityType="BizSuiteDBModel.Store.PayrollRequest" store:Type="Tables" Schema="BizSuiteDB" />
-          <EntitySet Name="Supplier" EntityType="BizSuiteDBModel.Store.Supplier" store:Type="Tables" Schema="BizSuiteDB" />
-          <EntitySet Name="SupportTicket" EntityType="BizSuiteDBModel.Store.SupportTicket" store:Type="Tables" Schema="BizSuiteDB" />
-          <EntitySet Name="UserAccount" EntityType="BizSuiteDBModel.Store.UserAccount" store:Type="Tables" Schema="BizSuiteDB" />
+          <EntitySet Name="accountpayable" EntityType="BizSuiteDBModel.Store.accountpayable" store:Type="Tables" Schema="bizsuitedb" />
+          <EntitySet Name="accountreceivable" EntityType="BizSuiteDBModel.Store.accountreceivable" store:Type="Tables" Schema="bizsuitedb" />
+          <EntitySet Name="attendance" EntityType="BizSuiteDBModel.Store.attendance" store:Type="Tables" Schema="bizsuitedb" />
+          <EntitySet Name="customer" EntityType="BizSuiteDBModel.Store.customer" store:Type="Tables" Schema="bizsuitedb" />
+          <EntitySet Name="employee" EntityType="BizSuiteDBModel.Store.employee" store:Type="Tables" Schema="bizsuitedb" />
+          <EntitySet Name="employeeposition" EntityType="BizSuiteDBModel.Store.employeeposition" store:Type="Tables" Schema="bizsuitedb" />
+          <EntitySet Name="inventory" EntityType="BizSuiteDBModel.Store.inventory" store:Type="Tables" Schema="bizsuitedb" />
+          <EntitySet Name="keypair" EntityType="BizSuiteDBModel.Store.keypair" store:Type="Tables" Schema="bizsuitedb" />
+          <EntitySet Name="leavepolicy" EntityType="BizSuiteDBModel.Store.leavepolicy" store:Type="Tables" Schema="bizsuitedb" />
+          <EntitySet Name="leaverequest" EntityType="BizSuiteDBModel.Store.leaverequest" store:Type="Tables" Schema="bizsuitedb" />
+          <EntitySet Name="order" EntityType="BizSuiteDBModel.Store.order" store:Type="Tables" Schema="bizsuitedb" />
+          <EntitySet Name="orderitem" EntityType="BizSuiteDBModel.Store.orderitem" store:Type="Tables" Schema="bizsuitedb" />
+          <EntitySet Name="payrollrequest" EntityType="BizSuiteDBModel.Store.payrollrequest" store:Type="Tables" Schema="bizsuitedb" />
+          <EntitySet Name="supplier" EntityType="BizSuiteDBModel.Store.supplier" store:Type="Tables" Schema="bizsuitedb" />
+          <EntitySet Name="supportticket" EntityType="BizSuiteDBModel.Store.supportticket" store:Type="Tables" Schema="bizsuitedb" />
+          <EntitySet Name="useraccount" EntityType="BizSuiteDBModel.Store.useraccount" store:Type="Tables" Schema="bizsuitedb" />
           <AssociationSet Name="fk_AccountReceivable_Order1" Association="BizSuiteDBModel.Store.fk_AccountReceivable_Order1">
-            <End Role="Order" EntitySet="Order" />
-            <End Role="AccountReceivable" EntitySet="AccountReceivable" />
+            <End Role="order" EntitySet="order" />
+            <End Role="accountreceivable" EntitySet="accountreceivable" />
           </AssociationSet>
           <AssociationSet Name="fk_Attendance_Employee1" Association="BizSuiteDBModel.Store.fk_Attendance_Employee1">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="Attendance" EntitySet="Attendance" />
+            <End Role="employee" EntitySet="employee" />
+            <End Role="attendance" EntitySet="attendance" />
           </AssociationSet>
           <AssociationSet Name="fk_Customer_UserAccount" Association="BizSuiteDBModel.Store.fk_Customer_UserAccount">
-            <End Role="UserAccount" EntitySet="UserAccount" />
-            <End Role="Customer" EntitySet="Customer" />
+            <End Role="useraccount" EntitySet="useraccount" />
+            <End Role="customer" EntitySet="customer" />
           </AssociationSet>
           <AssociationSet Name="fk_Employee_EmployeePosition1" Association="BizSuiteDBModel.Store.fk_Employee_EmployeePosition1">
-            <End Role="EmployeePosition" EntitySet="EmployeePosition" />
-            <End Role="Employee" EntitySet="Employee" />
+            <End Role="employeeposition" EntitySet="employeeposition" />
+            <End Role="employee" EntitySet="employee" />
           </AssociationSet>
           <AssociationSet Name="fk_Employee_UserAccount1" Association="BizSuiteDBModel.Store.fk_Employee_UserAccount1">
-            <End Role="UserAccount" EntitySet="UserAccount" />
-            <End Role="Employee" EntitySet="Employee" />
+            <End Role="useraccount" EntitySet="useraccount" />
+            <End Role="employee" EntitySet="employee" />
           </AssociationSet>
           <AssociationSet Name="fk_Inventory_Supplier1" Association="BizSuiteDBModel.Store.fk_Inventory_Supplier1">
-            <End Role="Supplier" EntitySet="Supplier" />
-            <End Role="Inventory" EntitySet="Inventory" />
+            <End Role="supplier" EntitySet="supplier" />
+            <End Role="inventory" EntitySet="inventory" />
           </AssociationSet>
           <AssociationSet Name="fk_KeyPair_Employee1" Association="BizSuiteDBModel.Store.fk_KeyPair_Employee1">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="KeyPair" EntitySet="KeyPair" />
+            <End Role="employee" EntitySet="employee" />
+            <End Role="keypair" EntitySet="keypair" />
           </AssociationSet>
           <AssociationSet Name="fk_LeaveRequest_Employee1" Association="BizSuiteDBModel.Store.fk_LeaveRequest_Employee1">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="LeaveRequest" EntitySet="LeaveRequest" />
+            <End Role="employee" EntitySet="employee" />
+            <End Role="leaverequest" EntitySet="leaverequest" />
           </AssociationSet>
           <AssociationSet Name="fk_LeaveRequest_LeavePolicy1" Association="BizSuiteDBModel.Store.fk_LeaveRequest_LeavePolicy1">
-            <End Role="LeavePolicy" EntitySet="LeavePolicy" />
-            <End Role="LeaveRequest" EntitySet="LeaveRequest" />
+            <End Role="leavepolicy" EntitySet="leavepolicy" />
+            <End Role="leaverequest" EntitySet="leaverequest" />
           </AssociationSet>
           <AssociationSet Name="fk_Order_Customer1" Association="BizSuiteDBModel.Store.fk_Order_Customer1">
-            <End Role="Customer" EntitySet="Customer" />
-            <End Role="Order" EntitySet="Order" />
+            <End Role="customer" EntitySet="customer" />
+            <End Role="order" EntitySet="order" />
           </AssociationSet>
           <AssociationSet Name="fk_OrderItem_Order1" Association="BizSuiteDBModel.Store.fk_OrderItem_Order1">
-            <End Role="Order" EntitySet="Order" />
-            <End Role="OrderItem" EntitySet="OrderItem" />
+            <End Role="order" EntitySet="order" />
+            <End Role="orderitem" EntitySet="orderitem" />
           </AssociationSet>
           <AssociationSet Name="fk_Supplier_UserAccount1" Association="BizSuiteDBModel.Store.fk_Supplier_UserAccount1">
-            <End Role="UserAccount" EntitySet="UserAccount" />
-            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="useraccount" EntitySet="useraccount" />
+            <End Role="supplier" EntitySet="supplier" />
           </AssociationSet>
           <AssociationSet Name="fk_SupportTicket_Customer1" Association="BizSuiteDBModel.Store.fk_SupportTicket_Customer1">
-            <End Role="Customer" EntitySet="Customer" />
-            <End Role="SupportTicket" EntitySet="SupportTicket" />
+            <End Role="customer" EntitySet="customer" />
+            <End Role="supportticket" EntitySet="supportticket" />
           </AssociationSet>
           <AssociationSet Name="fk_SupportTicket_Employee1" Association="BizSuiteDBModel.Store.fk_SupportTicket_Employee1">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="SupportTicket" EntitySet="SupportTicket" />
+            <End Role="employee" EntitySet="employee" />
+            <End Role="supportticket" EntitySet="supportticket" />
           </AssociationSet>
           <AssociationSet Name="fk_SupportTicket_SupportTicket1" Association="BizSuiteDBModel.Store.fk_SupportTicket_SupportTicket1">
-            <End Role="SupportTicket" EntitySet="SupportTicket" />
-            <End Role="SupportTicket1" EntitySet="SupportTicket" />
+            <End Role="supportticket" EntitySet="supportticket" />
+            <End Role="supportticket1" EntitySet="supportticket" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="AccountPayable">
+        <EntityType Name="accountpayable">
           <Key>
             <PropertyRef Name="AccountPayableId" />
           </Key>
@@ -92,7 +92,7 @@
           <Property Name="TotalAmount" Type="double" Nullable="false" />
           <Property Name="ReferenceId" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="AccountReceivable">
+        <EntityType Name="accountreceivable">
           <Key>
             <PropertyRef Name="AccountReceivableId" />
           </Key>
@@ -101,7 +101,7 @@
           <Property Name="TotalAmount" Type="double" Nullable="false" />
           <Property Name="Order_OrderId" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Attendance">
+        <EntityType Name="attendance">
           <Key>
             <PropertyRef Name="AttendanceId" />
           </Key>
@@ -111,7 +111,7 @@
           <Property Name="Location" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="Employee_UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
         </EntityType>
-        <EntityType Name="Customer">
+        <EntityType Name="customer">
           <Key>
             <PropertyRef Name="UserAccount_Username" />
           </Key>
@@ -122,7 +122,7 @@
           <Property Name="FaxNo" Type="int" />
           <Property Name="UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
         </EntityType>
-        <EntityType Name="Employee">
+        <EntityType Name="employee">
           <Key>
             <PropertyRef Name="UserAccount_Username" />
           </Key>
@@ -139,7 +139,7 @@
           <Property Name="UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="EmployeePosition_PositionName" Type="varchar" Nullable="false" MaxLength="45" />
         </EntityType>
-        <EntityType Name="EmployeePosition">
+        <EntityType Name="employeeposition">
           <Key>
             <PropertyRef Name="PositionName" />
           </Key>
@@ -147,7 +147,7 @@
           <Property Name="PositionName" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="Responsibility" Type="varchar" Nullable="false" MaxLength="45" />
         </EntityType>
-        <EntityType Name="Inventory">
+        <EntityType Name="inventory">
           <Key>
             <PropertyRef Name="InventoryId" />
           </Key>
@@ -161,7 +161,7 @@
           <Property Name="TimeStamp" Type="timestamp" Nullable="false" />
           <Property Name="Supplier_UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
         </EntityType>
-        <EntityType Name="KeyPair">
+        <EntityType Name="keypair">
           <Key>
             <PropertyRef Name="Private" />
           </Key>
@@ -169,7 +169,7 @@
           <Property Name="Public" Type="binary" Nullable="false" MaxLength="1" />
           <Property Name="Employee_UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
         </EntityType>
-        <EntityType Name="LeavePolicy">
+        <EntityType Name="leavepolicy">
           <Key>
             <PropertyRef Name="LeavePolicyId" />
           </Key>
@@ -181,7 +181,7 @@
           <Property Name="Paid" Type="bool" Nullable="false" />
           <Property Name="Period" Type="varchar" Nullable="false" MaxLength="45" />
         </EntityType>
-        <EntityType Name="LeaveRequest">
+        <EntityType Name="leaverequest">
           <Key>
             <PropertyRef Name="LeaveRequestId" />
           </Key>
@@ -192,7 +192,7 @@
           <Property Name="Employee_UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="LeavePolicy_LeavePolicyId" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Order">
+        <EntityType Name="order">
           <Key>
             <PropertyRef Name="OrderId" />
           </Key>
@@ -202,7 +202,7 @@
           <Property Name="Customer_UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="TotalAmount" Type="double" Nullable="false" />
         </EntityType>
-        <EntityType Name="OrderItem">
+        <EntityType Name="orderitem">
           <Key>
             <PropertyRef Name="OrderItemId" />
           </Key>
@@ -212,7 +212,7 @@
           <Property Name="Quantity" Type="int" />
           <Property Name="Order_OrderId" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="PayrollRequest">
+        <EntityType Name="payrollrequest">
           <Key>
             <PropertyRef Name="PayrollRequestId" />
           </Key>
@@ -221,7 +221,7 @@
           <Property Name="RequestTimeStamp" Type="timestamp" />
           <Property Name="Status" Type="varchar" MaxLength="45" />
         </EntityType>
-        <EntityType Name="Supplier">
+        <EntityType Name="supplier">
           <Key>
             <PropertyRef Name="UserAccount_Username" />
           </Key>
@@ -233,18 +233,21 @@
           <Property Name="Description" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
         </EntityType>
-        <EntityType Name="SupportTicket">
+        <EntityType Name="supportticket">
           <Key>
             <PropertyRef Name="SupportTicketId" />
           </Key>
           <Property Name="SupportTicketId" Type="int" Nullable="false" />
-          <Property Name="Question" Type="varchar" MaxLength="45" />
-          <Property Name="Answer" Type="varchar" MaxLength="45" />
-          <Property Name="Customer_UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="ReferenceId" Type="int" />
+          <Property Name="Customer_UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="Employee_UserAccount_Username" Type="varchar" MaxLength="45" />
+          <Property Name="EnquiryType" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="EnquiryPriority" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="ExistingEnquiry" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="Details" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="Reply" Type="varchar" MaxLength="500" />
         </EntityType>
-        <EntityType Name="UserAccount">
+        <EntityType Name="useraccount">
           <Key>
             <PropertyRef Name="Username" />
           </Key>
@@ -253,187 +256,186 @@
           <Property Name="Type" Type="varchar" Nullable="false" MaxLength="45" />
         </EntityType>
         <Association Name="fk_AccountReceivable_Order1">
-          <End Role="Order" Type="BizSuiteDBModel.Store.Order" Multiplicity="1" />
-          <End Role="AccountReceivable" Type="BizSuiteDBModel.Store.AccountReceivable" Multiplicity="*" />
+          <End Role="order" Type="BizSuiteDBModel.Store.order" Multiplicity="1" />
+          <End Role="accountreceivable" Type="BizSuiteDBModel.Store.accountreceivable" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Order">
+            <Principal Role="order">
               <PropertyRef Name="OrderId" />
             </Principal>
-            <Dependent Role="AccountReceivable">
+            <Dependent Role="accountreceivable">
               <PropertyRef Name="Order_OrderId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_Attendance_Employee1">
-          <End Role="Employee" Type="BizSuiteDBModel.Store.Employee" Multiplicity="1" />
-          <End Role="Attendance" Type="BizSuiteDBModel.Store.Attendance" Multiplicity="*" />
+          <End Role="employee" Type="BizSuiteDBModel.Store.employee" Multiplicity="1" />
+          <End Role="attendance" Type="BizSuiteDBModel.Store.attendance" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Employee">
+            <Principal Role="employee">
               <PropertyRef Name="UserAccount_Username" />
             </Principal>
-            <Dependent Role="Attendance">
+            <Dependent Role="attendance">
               <PropertyRef Name="Employee_UserAccount_Username" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_Customer_UserAccount">
-          <End Role="UserAccount" Type="BizSuiteDBModel.Store.UserAccount" Multiplicity="1" />
-          <End Role="Customer" Type="BizSuiteDBModel.Store.Customer" Multiplicity="0..1" />
+          <End Role="useraccount" Type="BizSuiteDBModel.Store.useraccount" Multiplicity="1" />
+          <End Role="customer" Type="BizSuiteDBModel.Store.customer" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="UserAccount">
+            <Principal Role="useraccount">
               <PropertyRef Name="Username" />
             </Principal>
-            <Dependent Role="Customer">
+            <Dependent Role="customer">
               <PropertyRef Name="UserAccount_Username" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_Employee_EmployeePosition1">
-          <End Role="EmployeePosition" Type="BizSuiteDBModel.Store.EmployeePosition" Multiplicity="1" />
-          <End Role="Employee" Type="BizSuiteDBModel.Store.Employee" Multiplicity="*" />
+          <End Role="employeeposition" Type="BizSuiteDBModel.Store.employeeposition" Multiplicity="1" />
+          <End Role="employee" Type="BizSuiteDBModel.Store.employee" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="EmployeePosition">
+            <Principal Role="employeeposition">
               <PropertyRef Name="PositionName" />
             </Principal>
-            <Dependent Role="Employee">
+            <Dependent Role="employee">
               <PropertyRef Name="EmployeePosition_PositionName" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_Employee_UserAccount1">
-          <End Role="UserAccount" Type="BizSuiteDBModel.Store.UserAccount" Multiplicity="1" />
-          <End Role="Employee" Type="BizSuiteDBModel.Store.Employee" Multiplicity="0..1" />
+          <End Role="useraccount" Type="BizSuiteDBModel.Store.useraccount" Multiplicity="1" />
+          <End Role="employee" Type="BizSuiteDBModel.Store.employee" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="UserAccount">
+            <Principal Role="useraccount">
               <PropertyRef Name="Username" />
             </Principal>
-            <Dependent Role="Employee">
+            <Dependent Role="employee">
               <PropertyRef Name="UserAccount_Username" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_Inventory_Supplier1">
-          <End Role="Supplier" Type="BizSuiteDBModel.Store.Supplier" Multiplicity="1" />
-          <End Role="Inventory" Type="BizSuiteDBModel.Store.Inventory" Multiplicity="*" />
+          <End Role="supplier" Type="BizSuiteDBModel.Store.supplier" Multiplicity="1" />
+          <End Role="inventory" Type="BizSuiteDBModel.Store.inventory" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Supplier">
+            <Principal Role="supplier">
               <PropertyRef Name="UserAccount_Username" />
             </Principal>
-            <Dependent Role="Inventory">
+            <Dependent Role="inventory">
               <PropertyRef Name="Supplier_UserAccount_Username" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_KeyPair_Employee1">
-          <End Role="Employee" Type="BizSuiteDBModel.Store.Employee" Multiplicity="1" />
-          <End Role="KeyPair" Type="BizSuiteDBModel.Store.KeyPair" Multiplicity="*" />
+          <End Role="employee" Type="BizSuiteDBModel.Store.employee" Multiplicity="1" />
+          <End Role="keypair" Type="BizSuiteDBModel.Store.keypair" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Employee">
+            <Principal Role="employee">
               <PropertyRef Name="UserAccount_Username" />
             </Principal>
-            <Dependent Role="KeyPair">
+            <Dependent Role="keypair">
               <PropertyRef Name="Employee_UserAccount_Username" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_LeaveRequest_Employee1">
-          <End Role="Employee" Type="BizSuiteDBModel.Store.Employee" Multiplicity="1" />
-          <End Role="LeaveRequest" Type="BizSuiteDBModel.Store.LeaveRequest" Multiplicity="*" />
+          <End Role="employee" Type="BizSuiteDBModel.Store.employee" Multiplicity="1" />
+          <End Role="leaverequest" Type="BizSuiteDBModel.Store.leaverequest" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Employee">
+            <Principal Role="employee">
               <PropertyRef Name="UserAccount_Username" />
             </Principal>
-            <Dependent Role="LeaveRequest">
+            <Dependent Role="leaverequest">
               <PropertyRef Name="Employee_UserAccount_Username" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_LeaveRequest_LeavePolicy1">
-          <End Role="LeavePolicy" Type="BizSuiteDBModel.Store.LeavePolicy" Multiplicity="1" />
-          <End Role="LeaveRequest" Type="BizSuiteDBModel.Store.LeaveRequest" Multiplicity="*" />
+          <End Role="leavepolicy" Type="BizSuiteDBModel.Store.leavepolicy" Multiplicity="1" />
+          <End Role="leaverequest" Type="BizSuiteDBModel.Store.leaverequest" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="LeavePolicy">
+            <Principal Role="leavepolicy">
               <PropertyRef Name="LeavePolicyId" />
             </Principal>
-            <Dependent Role="LeaveRequest">
+            <Dependent Role="leaverequest">
               <PropertyRef Name="LeavePolicy_LeavePolicyId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_Order_Customer1">
-          <End Role="Customer" Type="BizSuiteDBModel.Store.Customer" Multiplicity="1" />
-          <End Role="Order" Type="BizSuiteDBModel.Store.Order" Multiplicity="*" />
+          <End Role="customer" Type="BizSuiteDBModel.Store.customer" Multiplicity="1" />
+          <End Role="order" Type="BizSuiteDBModel.Store.order" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Customer">
+            <Principal Role="customer">
               <PropertyRef Name="UserAccount_Username" />
             </Principal>
-            <Dependent Role="Order">
+            <Dependent Role="order">
               <PropertyRef Name="Customer_UserAccount_Username" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_OrderItem_Order1">
-          <End Role="Order" Type="BizSuiteDBModel.Store.Order" Multiplicity="1" />
-          <End Role="OrderItem" Type="BizSuiteDBModel.Store.OrderItem" Multiplicity="*" />
+          <End Role="order" Type="BizSuiteDBModel.Store.order" Multiplicity="1" />
+          <End Role="orderitem" Type="BizSuiteDBModel.Store.orderitem" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Order">
+            <Principal Role="order">
               <PropertyRef Name="OrderId" />
             </Principal>
-            <Dependent Role="OrderItem">
+            <Dependent Role="orderitem">
               <PropertyRef Name="Order_OrderId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_Supplier_UserAccount1">
-          <End Role="UserAccount" Type="BizSuiteDBModel.Store.UserAccount" Multiplicity="1" />
-          <End Role="Supplier" Type="BizSuiteDBModel.Store.Supplier" Multiplicity="0..1" />
+          <End Role="useraccount" Type="BizSuiteDBModel.Store.useraccount" Multiplicity="1" />
+          <End Role="supplier" Type="BizSuiteDBModel.Store.supplier" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="UserAccount">
+            <Principal Role="useraccount">
               <PropertyRef Name="Username" />
             </Principal>
-            <Dependent Role="Supplier">
+            <Dependent Role="supplier">
               <PropertyRef Name="UserAccount_Username" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_SupportTicket_Customer1">
-          <End Role="Customer" Type="BizSuiteDBModel.Store.Customer" Multiplicity="1" />
-          <End Role="SupportTicket" Type="BizSuiteDBModel.Store.SupportTicket" Multiplicity="*" />
+          <End Role="customer" Type="BizSuiteDBModel.Store.customer" Multiplicity="1" />
+          <End Role="supportticket" Type="BizSuiteDBModel.Store.supportticket" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Customer">
+            <Principal Role="customer">
               <PropertyRef Name="UserAccount_Username" />
             </Principal>
-            <Dependent Role="SupportTicket">
+            <Dependent Role="supportticket">
               <PropertyRef Name="Customer_UserAccount_Username" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_SupportTicket_Employee1">
-          <End Role="Employee" Type="BizSuiteDBModel.Store.Employee" Multiplicity="0..1" />
-          <End Role="SupportTicket" Type="BizSuiteDBModel.Store.SupportTicket" Multiplicity="*" />
+          <End Role="employee" Type="BizSuiteDBModel.Store.employee" Multiplicity="0..1" />
+          <End Role="supportticket" Type="BizSuiteDBModel.Store.supportticket" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Employee">
+            <Principal Role="employee">
               <PropertyRef Name="UserAccount_Username" />
             </Principal>
-            <Dependent Role="SupportTicket">
+            <Dependent Role="supportticket">
               <PropertyRef Name="Employee_UserAccount_Username" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_SupportTicket_SupportTicket1">
-          <End Role="SupportTicket" Type="BizSuiteDBModel.Store.SupportTicket" Multiplicity="0..1" />
-          <End Role="SupportTicket1" Type="BizSuiteDBModel.Store.SupportTicket" Multiplicity="*" />
+          <End Role="supportticket" Type="BizSuiteDBModel.Store.supportticket" Multiplicity="0..1" />
+          <End Role="supportticket1" Type="BizSuiteDBModel.Store.supportticket" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="SupportTicket">
+            <Principal Role="supportticket">
               <PropertyRef Name="SupportTicketId" />
             </Principal>
-            <Dependent Role="SupportTicket1">
+            <Dependent Role="supportticket1">
               <PropertyRef Name="ReferenceId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BizSuiteDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -693,8 +695,11 @@
             <PropertyRef Name="SupportTicketId" />
           </Key>
           <Property Name="SupportTicketId" Type="Int32" Nullable="false" />
-          <Property Name="Question" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
-          <Property Name="Answer" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Type="String" Name="EnquiryType" Nullable="false" />
+          <Property Type="String" Name="EnquiryPriority" Nullable="false" />
+          <Property Type="String" Name="ExistingEnquiry" Nullable="false" />
+          <Property Type="String" Name="Details" Nullable="false" />
+          <Property Type="String" Name="Reply" Nullable="true" />
           <Property Name="Customer_UserAccount_Username" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
           <Property Name="ReferenceId" Type="Int32" />
           <Property Name="Employee_UserAccount_Username" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
@@ -900,188 +905,191 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="BizSuiteDBModelStoreContainer" CdmEntityContainer="BizSuiteDBEntities">
-          <EntitySetMapping Name="AccountPayables">
-            <EntityTypeMapping TypeName="BizSuiteDBModel.AccountPayable">
-              <MappingFragment StoreEntitySet="AccountPayable">
-                <ScalarProperty Name="AccountPayableId" ColumnName="AccountPayableId" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
-                <ScalarProperty Name="ReferenceId" ColumnName="ReferenceId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AccountReceivables">
-            <EntityTypeMapping TypeName="BizSuiteDBModel.AccountReceivable">
-              <MappingFragment StoreEntitySet="AccountReceivable">
-                <ScalarProperty Name="AccountReceivableId" ColumnName="AccountReceivableId" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
-                <ScalarProperty Name="Order_OrderId" ColumnName="Order_OrderId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Attendances">
-            <EntityTypeMapping TypeName="BizSuiteDBModel.Attendance">
-              <MappingFragment StoreEntitySet="Attendance">
-                <ScalarProperty Name="AttendanceId" ColumnName="AttendanceId" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Time" ColumnName="Time" />
-                <ScalarProperty Name="Location" ColumnName="Location" />
+          <EntitySetMapping Name="SupportTickets">
+            <EntityTypeMapping TypeName="IsTypeOf(BizSuiteDBModel.SupportTicket)">
+              <MappingFragment StoreEntitySet="supportticket">
+                <ScalarProperty Name="Reply" ColumnName="Reply" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="ExistingEnquiry" ColumnName="ExistingEnquiry" />
+                <ScalarProperty Name="EnquiryPriority" ColumnName="EnquiryPriority" />
+                <ScalarProperty Name="EnquiryType" ColumnName="EnquiryType" />
                 <ScalarProperty Name="Employee_UserAccount_Username" ColumnName="Employee_UserAccount_Username" />
+                <ScalarProperty Name="Customer_UserAccount_Username" ColumnName="Customer_UserAccount_Username" />
+                <ScalarProperty Name="ReferenceId" ColumnName="ReferenceId" />
+                <ScalarProperty Name="SupportTicketId" ColumnName="SupportTicketId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Customers">
-            <EntityTypeMapping TypeName="BizSuiteDBModel.Customer">
-              <MappingFragment StoreEntitySet="Customer">
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
+            <EntityTypeMapping TypeName="IsTypeOf(BizSuiteDBModel.Customer)">
+              <MappingFragment StoreEntitySet="customer">
+                <ScalarProperty Name="UserAccount_Username" ColumnName="UserAccount_Username" />
                 <ScalarProperty Name="FaxNo" ColumnName="FaxNo" />
-                <ScalarProperty Name="UserAccount_Username" ColumnName="UserAccount_Username" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Employees">
-            <EntityTypeMapping TypeName="BizSuiteDBModel.Employee">
-              <MappingFragment StoreEntitySet="Employee">
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
-                <ScalarProperty Name="NRIC" ColumnName="NRIC" />
-                <ScalarProperty Name="DOB" ColumnName="DOB" />
-                <ScalarProperty Name="EndEmploymentDate" ColumnName="EndEmploymentDate" />
-                <ScalarProperty Name="StartEmploymentDate" ColumnName="StartEmploymentDate" />
-                <ScalarProperty Name="SalaryPerHour" ColumnName="SalaryPerHour" />
-                <ScalarProperty Name="StartShiftHour" ColumnName="StartShiftHour" />
-                <ScalarProperty Name="EndShirtHour" ColumnName="EndShirtHour" />
-                <ScalarProperty Name="UserAccount_Username" ColumnName="UserAccount_Username" />
-                <ScalarProperty Name="EmployeePosition_PositionName" ColumnName="EmployeePosition_PositionName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="EmployeePositions">
-            <EntityTypeMapping TypeName="BizSuiteDBModel.EmployeePosition">
-              <MappingFragment StoreEntitySet="EmployeePosition">
-                <ScalarProperty Name="PositionId" ColumnName="PositionId" />
-                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
-                <ScalarProperty Name="Responsibility" ColumnName="Responsibility" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Inventories">
-            <EntityTypeMapping TypeName="BizSuiteDBModel.Inventory">
-              <MappingFragment StoreEntitySet="Inventory">
-                <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
-                <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="UnitCost" ColumnName="UnitCost" />
-                <ScalarProperty Name="UnitWeightKilo" ColumnName="UnitWeightKilo" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="Location" ColumnName="Location" />
-                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
-                <ScalarProperty Name="Supplier_UserAccount_Username" ColumnName="Supplier_UserAccount_Username" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="KeyPairs">
-            <EntityTypeMapping TypeName="BizSuiteDBModel.KeyPair">
-              <MappingFragment StoreEntitySet="KeyPair">
-                <ScalarProperty Name="Private" ColumnName="Private" />
-                <ScalarProperty Name="Public" ColumnName="Public" />
-                <ScalarProperty Name="Employee_UserAccount_Username" ColumnName="Employee_UserAccount_Username" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="LeavePolicies">
-            <EntityTypeMapping TypeName="BizSuiteDBModel.LeavePolicy">
-              <MappingFragment StoreEntitySet="LeavePolicy">
-                <ScalarProperty Name="LeavePolicyId" ColumnName="LeavePolicyId" />
-                <ScalarProperty Name="PolicyName" ColumnName="PolicyName" />
-                <ScalarProperty Name="PolicyDescription" ColumnName="PolicyDescription" />
-                <ScalarProperty Name="DaysOfLeave" ColumnName="DaysOfLeave" />
-                <ScalarProperty Name="MinServiceYear" ColumnName="MinServiceYear" />
-                <ScalarProperty Name="Paid" ColumnName="Paid" />
-                <ScalarProperty Name="Period" ColumnName="Period" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="LeaveRequests">
-            <EntityTypeMapping TypeName="BizSuiteDBModel.LeaveRequest">
-              <MappingFragment StoreEntitySet="LeaveRequest">
-                <ScalarProperty Name="LeaveRequestId" ColumnName="LeaveRequestId" />
-                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
-                <ScalarProperty Name="Reason" ColumnName="Reason" />
-                <ScalarProperty Name="Employee_UserAccount_Username" ColumnName="Employee_UserAccount_Username" />
-                <ScalarProperty Name="LeavePolicy_LeavePolicyId" ColumnName="LeavePolicy_LeavePolicyId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Orders">
-            <EntityTypeMapping TypeName="BizSuiteDBModel.Order">
-              <MappingFragment StoreEntitySet="Order">
-                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-                <ScalarProperty Name="ReceiptId" ColumnName="ReceiptId" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Customer_UserAccount_Username" ColumnName="Customer_UserAccount_Username" />
+            <EntityTypeMapping TypeName="IsTypeOf(BizSuiteDBModel.Order)">
+              <MappingFragment StoreEntitySet="order">
                 <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="Customer_UserAccount_Username" ColumnName="Customer_UserAccount_Username" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ReceiptId" ColumnName="ReceiptId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountReceivables">
+            <EntityTypeMapping TypeName="IsTypeOf(BizSuiteDBModel.AccountReceivable)">
+              <MappingFragment StoreEntitySet="accountreceivable">
+                <ScalarProperty Name="Order_OrderId" ColumnName="Order_OrderId" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="AccountReceivableId" ColumnName="AccountReceivableId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrderItems">
-            <EntityTypeMapping TypeName="BizSuiteDBModel.OrderItem">
-              <MappingFragment StoreEntitySet="OrderItem">
-                <ScalarProperty Name="OrderItemId" ColumnName="OrderItemId" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+            <EntityTypeMapping TypeName="IsTypeOf(BizSuiteDBModel.OrderItem)">
+              <MappingFragment StoreEntitySet="orderitem">
                 <ScalarProperty Name="Order_OrderId" ColumnName="Order_OrderId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PayrollRequests">
-            <EntityTypeMapping TypeName="BizSuiteDBModel.PayrollRequest">
-              <MappingFragment StoreEntitySet="PayrollRequest">
-                <ScalarProperty Name="PayrollRequestId" ColumnName="PayrollRequestId" />
-                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
-                <ScalarProperty Name="RequestTimeStamp" ColumnName="RequestTimeStamp" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Suppliers">
-            <EntityTypeMapping TypeName="BizSuiteDBModel.Supplier">
-              <MappingFragment StoreEntitySet="Supplier">
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="FaxNo" ColumnName="FaxNo" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="UserAccount_Username" ColumnName="UserAccount_Username" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SupportTickets">
-            <EntityTypeMapping TypeName="BizSuiteDBModel.SupportTicket">
-              <MappingFragment StoreEntitySet="SupportTicket">
-                <ScalarProperty Name="SupportTicketId" ColumnName="SupportTicketId" />
-                <ScalarProperty Name="Question" ColumnName="Question" />
-                <ScalarProperty Name="Answer" ColumnName="Answer" />
-                <ScalarProperty Name="Customer_UserAccount_Username" ColumnName="Customer_UserAccount_Username" />
-                <ScalarProperty Name="ReferenceId" ColumnName="ReferenceId" />
-                <ScalarProperty Name="Employee_UserAccount_Username" ColumnName="Employee_UserAccount_Username" />
+                <ScalarProperty Name="OrderItemId" ColumnName="OrderItemId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserAccounts">
-            <EntityTypeMapping TypeName="BizSuiteDBModel.UserAccount">
-              <MappingFragment StoreEntitySet="UserAccount">
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
+            <EntityTypeMapping TypeName="IsTypeOf(BizSuiteDBModel.UserAccount)">
+              <MappingFragment StoreEntitySet="useraccount">
                 <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="IsTypeOf(BizSuiteDBModel.Employee)">
+              <MappingFragment StoreEntitySet="employee">
+                <ScalarProperty Name="EmployeePosition_PositionName" ColumnName="EmployeePosition_PositionName" />
+                <ScalarProperty Name="UserAccount_Username" ColumnName="UserAccount_Username" />
+                <ScalarProperty Name="EndShirtHour" ColumnName="EndShirtHour" />
+                <ScalarProperty Name="StartShiftHour" ColumnName="StartShiftHour" />
+                <ScalarProperty Name="SalaryPerHour" ColumnName="SalaryPerHour" />
+                <ScalarProperty Name="StartEmploymentDate" ColumnName="StartEmploymentDate" />
+                <ScalarProperty Name="EndEmploymentDate" ColumnName="EndEmploymentDate" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="NRIC" ColumnName="NRIC" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Attendances">
+            <EntityTypeMapping TypeName="IsTypeOf(BizSuiteDBModel.Attendance)">
+              <MappingFragment StoreEntitySet="attendance">
+                <ScalarProperty Name="Employee_UserAccount_Username" ColumnName="Employee_UserAccount_Username" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="AttendanceId" ColumnName="AttendanceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LeaveRequests">
+            <EntityTypeMapping TypeName="IsTypeOf(BizSuiteDBModel.LeaveRequest)">
+              <MappingFragment StoreEntitySet="leaverequest">
+                <ScalarProperty Name="LeavePolicy_LeavePolicyId" ColumnName="LeavePolicy_LeavePolicyId" />
+                <ScalarProperty Name="Employee_UserAccount_Username" ColumnName="Employee_UserAccount_Username" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="LeaveRequestId" ColumnName="LeaveRequestId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeePositions">
+            <EntityTypeMapping TypeName="IsTypeOf(BizSuiteDBModel.EmployeePosition)">
+              <MappingFragment StoreEntitySet="employeeposition">
+                <ScalarProperty Name="Responsibility" ColumnName="Responsibility" />
+                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+                <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KeyPairs">
+            <EntityTypeMapping TypeName="IsTypeOf(BizSuiteDBModel.KeyPair)">
+              <MappingFragment StoreEntitySet="keypair">
+                <ScalarProperty Name="Employee_UserAccount_Username" ColumnName="Employee_UserAccount_Username" />
+                <ScalarProperty Name="Public" ColumnName="Public" />
+                <ScalarProperty Name="Private" ColumnName="Private" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inventories">
+            <EntityTypeMapping TypeName="IsTypeOf(BizSuiteDBModel.Inventory)">
+              <MappingFragment StoreEntitySet="inventory">
+                <ScalarProperty Name="Supplier_UserAccount_Username" ColumnName="Supplier_UserAccount_Username" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UnitWeightKilo" ColumnName="UnitWeightKilo" />
+                <ScalarProperty Name="UnitCost" ColumnName="UnitCost" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+                <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="IsTypeOf(BizSuiteDBModel.Supplier)">
+              <MappingFragment StoreEntitySet="supplier">
+                <ScalarProperty Name="UserAccount_Username" ColumnName="UserAccount_Username" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FaxNo" ColumnName="FaxNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LeavePolicies">
+            <EntityTypeMapping TypeName="IsTypeOf(BizSuiteDBModel.LeavePolicy)">
+              <MappingFragment StoreEntitySet="leavepolicy">
+                <ScalarProperty Name="Period" ColumnName="Period" />
+                <ScalarProperty Name="Paid" ColumnName="Paid" />
+                <ScalarProperty Name="MinServiceYear" ColumnName="MinServiceYear" />
+                <ScalarProperty Name="DaysOfLeave" ColumnName="DaysOfLeave" />
+                <ScalarProperty Name="PolicyDescription" ColumnName="PolicyDescription" />
+                <ScalarProperty Name="PolicyName" ColumnName="PolicyName" />
+                <ScalarProperty Name="LeavePolicyId" ColumnName="LeavePolicyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountPayables">
+            <EntityTypeMapping TypeName="IsTypeOf(BizSuiteDBModel.AccountPayable)">
+              <MappingFragment StoreEntitySet="accountpayable">
+                <ScalarProperty Name="ReferenceId" ColumnName="ReferenceId" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="AccountPayableId" ColumnName="AccountPayableId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PayrollRequests">
+            <EntityTypeMapping TypeName="IsTypeOf(BizSuiteDBModel.PayrollRequest)">
+              <MappingFragment StoreEntitySet="payrollrequest">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RequestTimeStamp" ColumnName="RequestTimeStamp" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="PayrollRequestId" ColumnName="PayrollRequestId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
