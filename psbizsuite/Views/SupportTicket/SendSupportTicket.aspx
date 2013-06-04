@@ -108,7 +108,7 @@
             </tr>
             <tr>
                 <td>
-                    <input id="SendEnquiry" type="submit" value="Send enquiry" />
+                    <input id="SendEnquiry" type="submit" value="Send enquiry" onclick=""/>
                 </td>
             </tr>
         </table>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<psbizsuite.Models.SupportTicket>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.master" Inherits="System.Web.Mvc.ViewPage<psbizsuite.Models.SupportTicket>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Edit
@@ -17,19 +17,43 @@
         <%: Html.HiddenFor(model => model.SupportTicketId) %>
 
         <div class="editor-label">
-            <%: Html.LabelFor(model => model.Question) %>
+            <%: Html.LabelFor(model => model.EnquiryType) %>
         </div>
         <div class="editor-field">
-            <%: Html.EditorFor(model => model.Question) %>
-            <%: Html.ValidationMessageFor(model => model.Question) %>
+            <%: Html.EditorFor(model => model.EnquiryType) %>
+            <%: Html.ValidationMessageFor(model => model.EnquiryType) %>
         </div>
 
         <div class="editor-label">
-            <%: Html.LabelFor(model => model.Answer) %>
+            <%: Html.LabelFor(model => model.EnquiryPriority) %>
         </div>
         <div class="editor-field">
-            <%: Html.EditorFor(model => model.Answer) %>
-            <%: Html.ValidationMessageFor(model => model.Answer) %>
+            <%: Html.EditorFor(model => model.EnquiryPriority) %>
+            <%: Html.ValidationMessageFor(model => model.EnquiryPriority) %>
+        </div>
+
+        <div class="editor-label">
+            <%: Html.LabelFor(model => model.ExistingEnquiry) %>
+        </div>
+        <div class="editor-field">
+            <%: Html.EditorFor(model => model.ExistingEnquiry) %>
+            <%: Html.ValidationMessageFor(model => model.ExistingEnquiry) %>
+        </div>
+
+        <div class="editor-label">
+            <%: Html.LabelFor(model => model.Details) %>
+        </div>
+        <div class="editor-field">
+            <%: Html.EditorFor(model => model.Details) %>
+            <%: Html.ValidationMessageFor(model => model.Details) %>
+        </div>
+
+        <div class="editor-label">
+            <%: Html.LabelFor(model => model.Reply) %>
+        </div>
+        <div class="editor-field">
+            <%: Html.EditorFor(model => model.Reply) %>
+            <%: Html.ValidationMessageFor(model => model.Reply) %>
         </div>
 
         <div class="editor-label">

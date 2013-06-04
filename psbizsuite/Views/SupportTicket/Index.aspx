@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<psbizsuite.Models.SupportTicket>>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<psbizsuite.Models.SupportTicket>>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Index
@@ -14,16 +14,25 @@
 <table>
     <tr>
         <th>
-            <%: Html.DisplayNameFor(model => model.Question) %>
+            <%: Html.DisplayNameFor(model => model.EnquiryType) %>
         </th>
         <th>
-            <%: Html.DisplayNameFor(model => model.Answer) %>
+            <%: Html.DisplayNameFor(model => model.EnquiryPriority) %>
+        </th>
+        <th>
+            <%: Html.DisplayNameFor(model => model.ExistingEnquiry) %>
+        </th>
+        <th>
+            <%: Html.DisplayNameFor(model => model.Details) %>
+        </th>
+        <th>
+            <%: Html.DisplayNameFor(model => model.Reply) %>
         </th>
         <th>
             <%: Html.DisplayNameFor(model => model.Customer.FullName) %>
         </th>
         <th>
-            <%: Html.DisplayNameFor(model => model.SupportTicket2.Question) %>
+            <%: Html.DisplayNameFor(model => model.SupportTicket2.EnquiryType) %>
         </th>
         <th>
             <%: Html.DisplayNameFor(model => model.Employee.FullName) %>
@@ -34,16 +43,25 @@
 <% foreach (var item in Model) { %>
     <tr>
         <td>
-            <%: Html.DisplayFor(modelItem => item.Question) %>
+            <%: Html.DisplayFor(modelItem => item.EnquiryType) %>
         </td>
         <td>
-            <%: Html.DisplayFor(modelItem => item.Answer) %>
+            <%: Html.DisplayFor(modelItem => item.EnquiryPriority) %>
+        </td>
+        <td>
+            <%: Html.DisplayFor(modelItem => item.ExistingEnquiry) %>
+        </td>
+        <td>
+            <%: Html.DisplayFor(modelItem => item.Details) %>
+        </td>
+        <td>
+            <%: Html.DisplayFor(modelItem => item.Reply) %>
         </td>
         <td>
             <%: Html.DisplayFor(modelItem => item.Customer.FullName) %>
         </td>
         <td>
-            <%: Html.DisplayFor(modelItem => item.SupportTicket2.Question) %>
+            <%: Html.DisplayFor(modelItem => item.SupportTicket2.EnquiryType) %>
         </td>
         <td>
             <%: Html.DisplayFor(modelItem => item.Employee.FullName) %>

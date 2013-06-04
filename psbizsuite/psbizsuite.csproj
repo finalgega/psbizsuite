@@ -124,6 +124,7 @@
     <Compile Include="Controllers\AccountingController.cs" />
     <Compile Include="Controllers\AttendanceController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\EmployeePositionController.cs" />
     <Compile Include="Controllers\EncryptionController.cs" />
