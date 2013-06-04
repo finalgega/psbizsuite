@@ -11,7 +11,6 @@ namespace psbizsuite.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class Employee
     {
@@ -27,25 +26,15 @@ namespace psbizsuite.Models
         public string Address { get; set; }
         public int PhoneNo { get; set; }
         public string NRIC { get; set; }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public System.DateTime? DOB { get; set; }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public System.DateTime DOB { get; set; }
         public Nullable<System.DateTime> EndEmploymentDate { get; set; }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public System.DateTime? StartEmploymentDate { get; set; }
+        public System.DateTime StartEmploymentDate { get; set; }
         public double SalaryPerHour { get; set; }
-        [Required(ErrorMessage = "Is required field. Format HH:MM (24 hour time)")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:hh\\:mm}")]
         public System.TimeSpan StartShiftHour { get; set; }
-        [Required(ErrorMessage = "Is required field. Format HH:MM (24 hour time)")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:hh\\:mm}")]
         public System.TimeSpan EndShirtHour { get; set; }
         public string UserAccount_Username { get; set; }
         public string EmployeePosition_PositionName { get; set; }
-
+    
         public virtual ICollection<Attendance> Attendances { get; set; }
         public virtual EmployeePosition EmployeePosition { get; set; }
         public virtual UserAccount UserAccount { get; set; }

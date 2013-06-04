@@ -354,6 +354,11 @@
     <Content Include="Views\Order\CreateOrder.aspx" />
     <Content Include="Views\Leave\ViewIndividualLeave.aspx" />
     <Content Include="Views\Order\ViewEditOrder.aspx" />
+    <Content Include="Views\SupportTicket\Create.aspx" />
+    <Content Include="Views\SupportTicket\Delete.aspx" />
+    <Content Include="Views\SupportTicket\Details.aspx" />
+    <Content Include="Views\SupportTicket\Edit.aspx" />
+    <Content Include="Views\SupportTicket\Index.aspx" />
     <Content Include="Views\SupportTicket\ReplySupportTicket.aspx" />
     <Content Include="Views\SupportTicket\SendSupportTicket.aspx" />
     <Content Include="Views\SupportTicket\ViewSupportTicket.aspx" />
@@ -412,6 +417,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ClassDiagram1.cd" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
