@@ -5,7 +5,14 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
+    <style>
+        .address {
+            width: 300px;
+            height: 80px;
+            resize: none;
+        }
+    </style>
+    
     <!-- start content-outer -->
     <div id="content-outer">
         <!-- start content -->
@@ -44,58 +51,58 @@
                                         <table border="0" class="zeroPS id-form">
                                             <tr>
                                                 <th>Full Name:</th>
-                                                <td><%: Html.EditorFor(model => model.FullName) %></td>
-                                                <td><%: Html.ValidationMessageFor(model => model.FullName) %></td>
+                                                <td><%: Html.TextBoxFor(model => model.FullName, new { style="width: 250px;"})%>
+                                                <%: Html.ValidationMessageFor(model => model.FullName)%></td>
                                             </tr>
                                             <tr>
                                                 <th>NRIC:</th>
-                                                <td><%: Html.EditorFor(model => model.NRIC) %></td>
-                                                <td><%: Html.ValidationMessageFor(model => model.NRIC) %></td>
+                                                <td><%: Html.EditorFor(model => model.NRIC) %>
+                                                <%: Html.ValidationMessageFor(model => model.NRIC) %></td>
                                             </tr>
                                             <tr>
                                                 <th>Contact No:</th>
-                                                <td><%: Html.TextBoxFor(model => model.PhoneNo) %></td>
-                                                <td><%: Html.ValidationMessageFor(model => model.PhoneNo) %></td>
+                                                <td><%: Html.TextBoxFor(model => model.PhoneNo) %>
+                                                <%: Html.ValidationMessageFor(model => model.PhoneNo) %></td>
                                             </tr>
                                             <tr>
                                                 <th>Date Of Birth:</th>
-                                                <td><%: Html.EditorFor(model => model.DOB) %> **TODO add datepicker</td>
-                                                <td><%: Html.ValidationMessageFor(model => model.DOB) %></td>
+                                                <td><%: Html.EditorFor(model => model.DOB) %>
+                                                <%: Html.ValidationMessageFor(model => model.DOB) %></td>
                                             </tr>
                                             <tr>
                                                 <th>Address:</th>
-                                                <td><%: Html.TextAreaFor(model => model.Address) %></td>
-                                                <td><%: Html.ValidationMessageFor(model => model.Address) %></td>
+                                                <td><%: Html.TextAreaFor(model => model.Address, new { @class = "address" })%>
+                                                <%: Html.ValidationMessageFor(model => model.Address) %></td>
                                             </tr>
                                             <tr>
                                                 <th>Position: </th>
-                                                <td><%: Html.DropDownList("EmployeePosition_PositionName", String.Empty) %></td>
-                                                <td><%: Html.ValidationMessageFor(model => model.EmployeePosition_PositionName) %></td>
+                                                <td><%: Html.DropDownList("EmployeePosition_PositionName", String.Empty) %>
+                                                <%: Html.ValidationMessageFor(model => model.EmployeePosition_PositionName) %></td>
                                             </tr>
                                             <tr>
                                                 <th>Start Date of Employement:</th>
-                                                <td><%: Html.EditorFor(model => model.StartEmploymentDate) %></td>
-                                                <td><%: Html.ValidationMessageFor(model => model.StartEmploymentDate) %></td>
+                                                <td><%: Html.EditorFor(model => model.StartEmploymentDate) %>
+                                                <%: Html.ValidationMessageFor(model => model.StartEmploymentDate) %></td>
                                             </tr>
                                             <tr>
                                                 <th>End Date of Employement:</th>
-                                                <td><%: Html.EditorFor(model => model.EndEmploymentDate) %></td>
-                                                <td><%: Html.ValidationMessageFor(model => model.EndEmploymentDate) %></td>
+                                                <td><%: Html.EditorFor(model => model.EndEmploymentDate) %>
+                                                <%: Html.ValidationMessageFor(model => model.EndEmploymentDate) %></td>
                                             </tr>
                                             <tr>
                                                 <th>Start Working Hour:</th>
-                                                <td><%: Html.EditorFor(model => model.StartShiftHour) %></td>
-                                                <td><%: Html.ValidationMessageFor(model => model.StartShiftHour) %></td>
+                                                <td><%: Html.EditorFor(model => model.StartShiftHour)%>
+                                                <%: Html.ValidationMessageFor(model => model.StartShiftHour) %></td>
                                             </tr>
                                             <tr>
                                                 <th>End Working Hour:</th>
-                                                <td><%: Html.EditorFor(model => model.EndShirtHour) %></td>
-                                                <td><%: Html.ValidationMessageFor(model => model.EndShirtHour) %></td>
+                                                <td><%: Html.EditorFor(model => model.EndShirtHour) %>
+                                                <%: Html.ValidationMessageFor(model => model.EndShirtHour) %></td>
                                             </tr>
                                             <tr>
                                                 <th>Salary Per Hour:</th>
-                                                <td><%: Html.EditorFor(model => model.SalaryPerHour) %></td>
-                                                <td><%: Html.ValidationMessageFor(model => model.SalaryPerHour) %></td>
+                                                <td><%: Html.EditorFor(model => model.SalaryPerHour) %>
+                                                <%: Html.ValidationMessageFor(model => model.SalaryPerHour) %></td>
                                             </tr>
                                             <tr>
                                                 <th>&nbsp;</th>

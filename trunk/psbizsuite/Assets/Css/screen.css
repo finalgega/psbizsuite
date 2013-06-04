@@ -1733,19 +1733,34 @@ a:hover.back-login {
     border-spacing: 0;
 }
 
+
+
+
 /*------- Form Styling -------*/
 input {
-
     height: 25px;
 }
 
     input[type="button"], input[type="submit"], input[type="reset"] {
-
         height: 40px;
         padding: 10px;
     }
 
 select {
-
     height: 25px;
+}
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    background-image: url(../Images/forms/error_left.gif);
+    background-repeat: no-repeat;
+    padding: 8px 8px 8px 15px;
+    background-color: #d63921;
+    color: #fff;
+}
+
+.input-validation-error {
+    border: 1px solid #ff0000;
+
 }
