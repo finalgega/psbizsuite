@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Linq;
 using System.Web;
@@ -48,10 +49,12 @@ namespace psbizsuite.Controllers
         [HttpPost]
         public ActionResult CreateItemRecord()
         {
-            Console.WriteLine("POST MADE IT!");
+            Debug.WriteLine("POST MADE IT!");
             EncryptionController encrypt = new EncryptionController();
             StringBuilder randStr = new StringBuilder("Hello World!\n");
             StringBuilder nXtString = encrypt.SimpleXORAlgorithm(randStr);
+            MySQLController mysql = new MySQLController();
+            mysql.SetUp();
            // byte[] test = encrypt.RSAEncrypt(randStr);
            // StringBuilder nXtString = new StringBuilder(encrypt.RSADecrypt(test));
             return Content(nXtString.ToString());
