@@ -34,6 +34,7 @@ namespace psbizsuite.Models
         public System.TimeSpan EndShirtHour { get; set; }
         public string UserAccount_Username { get; set; }
         public string EmployeePosition_PositionName { get; set; }
+        public string PhoneUid { get; set; }
     
         public virtual ICollection<Attendance> Attendances { get; set; }
         public virtual EmployeePosition EmployeePosition { get; set; }

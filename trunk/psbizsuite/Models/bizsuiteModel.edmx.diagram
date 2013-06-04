@@ -22,7 +22,7 @@
         <EntityTypeShape EntityType="BizSuiteDBModel.SupportTicket" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSuiteDBModel.UserAccount" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
         <AssociationConnector Association="BizSuiteDBModel.fk_AccountReceivable_Order1" ManuallyRouted="false" />
-        <AssociationConnector Association="BizSuiteDBModel.fk_Attendance_Employee1" ManuallyRouted="false" />
+        <AssociationConnector ManuallyRouted="false" Association="BizSuiteDBModel.fk_Attendance_Employee1" />
         <AssociationConnector Association="BizSuiteDBModel.fk_Customer_UserAccount" ManuallyRouted="false" />
         <AssociationConnector Association="BizSuiteDBModel.fk_Order_Customer1" ManuallyRouted="false" />
         <AssociationConnector Association="BizSuiteDBModel.fk_SupportTicket_Customer1" ManuallyRouted="false" />
