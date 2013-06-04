@@ -42,7 +42,7 @@ namespace psbizsuite.Controllers
         {
             ViewBag.Customer_UserAccount_Username = new SelectList(db.Customers, "UserAccount_Username", "FullName");
             ViewBag.Employee_UserAccount_Username = new SelectList(db.Employees, "UserAccount_Username", "FullName");
-            ViewBag.ReferenceId = new SelectList(db.SupportTickets, "SupportTicketId", "Question");
+            ViewBag.ReferenceId = new SelectList(db.SupportTickets, "SupportTicketId", "EnquiryType");
             return View();
         }
 
@@ -61,7 +61,7 @@ namespace psbizsuite.Controllers
 
             ViewBag.Customer_UserAccount_Username = new SelectList(db.Customers, "UserAccount_Username", "FullName", supportticket.Customer_UserAccount_Username);
             ViewBag.Employee_UserAccount_Username = new SelectList(db.Employees, "UserAccount_Username", "FullName", supportticket.Employee_UserAccount_Username);
-            ViewBag.ReferenceId = new SelectList(db.SupportTickets, "SupportTicketId", "Question", supportticket.ReferenceId);
+            ViewBag.ReferenceId = new SelectList(db.SupportTickets, "SupportTicketId", "EnquiryType", supportticket.ReferenceId);
             return View(supportticket);
         }
 
@@ -77,7 +77,7 @@ namespace psbizsuite.Controllers
             }
             ViewBag.Customer_UserAccount_Username = new SelectList(db.Customers, "UserAccount_Username", "FullName", supportticket.Customer_UserAccount_Username);
             ViewBag.Employee_UserAccount_Username = new SelectList(db.Employees, "UserAccount_Username", "FullName", supportticket.Employee_UserAccount_Username);
-            ViewBag.ReferenceId = new SelectList(db.SupportTickets, "SupportTicketId", "Question", supportticket.ReferenceId);
+            ViewBag.ReferenceId = new SelectList(db.SupportTickets, "SupportTicketId", "EnquiryType", supportticket.ReferenceId);
             return View(supportticket);
         }
 
@@ -95,7 +95,7 @@ namespace psbizsuite.Controllers
             }
             ViewBag.Customer_UserAccount_Username = new SelectList(db.Customers, "UserAccount_Username", "FullName", supportticket.Customer_UserAccount_Username);
             ViewBag.Employee_UserAccount_Username = new SelectList(db.Employees, "UserAccount_Username", "FullName", supportticket.Employee_UserAccount_Username);
-            ViewBag.ReferenceId = new SelectList(db.SupportTickets, "SupportTicketId", "Question", supportticket.ReferenceId);
+            ViewBag.ReferenceId = new SelectList(db.SupportTickets, "SupportTicketId", "EnquiryType", supportticket.ReferenceId);
             return View(supportticket);
         }
 

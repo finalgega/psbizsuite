@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<psbizsuite.Models.SupportTicket>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.master" Inherits="System.Web.Mvc.ViewPage<psbizsuite.Models.SupportTicket>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Details
@@ -12,17 +12,38 @@
     <legend>SupportTicket</legend>
 
     <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.Question) %>
+        <%: Html.DisplayNameFor(model => model.EnquiryType) %>
     </div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.Question) %>
+        <%: Html.DisplayFor(model => model.EnquiryType) %>
     </div>
 
     <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.Answer) %>
+        <%: Html.DisplayNameFor(model => model.EnquiryPriority) %>
     </div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.Answer) %>
+        <%: Html.DisplayFor(model => model.EnquiryPriority) %>
+    </div>
+
+    <div class="display-label">
+        <%: Html.DisplayNameFor(model => model.ExistingEnquiry) %>
+    </div>
+    <div class="display-field">
+        <%: Html.DisplayFor(model => model.ExistingEnquiry) %>
+    </div>
+
+    <div class="display-label">
+        <%: Html.DisplayNameFor(model => model.Details) %>
+    </div>
+    <div class="display-field">
+        <%: Html.DisplayFor(model => model.Details) %>
+    </div>
+
+    <div class="display-label">
+        <%: Html.DisplayNameFor(model => model.Reply) %>
+    </div>
+    <div class="display-field">
+        <%: Html.DisplayFor(model => model.Reply) %>
     </div>
 
     <div class="display-label">
@@ -33,10 +54,10 @@
     </div>
 
     <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.SupportTicket2.Question) %>
+        <%: Html.DisplayNameFor(model => model.SupportTicket2.EnquiryType) %>
     </div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.SupportTicket2.Question) %>
+        <%: Html.DisplayFor(model => model.SupportTicket2.EnquiryType) %>
     </div>
 
     <div class="display-label">
