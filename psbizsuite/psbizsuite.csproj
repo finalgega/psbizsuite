@@ -199,6 +199,7 @@
     <Compile Include="Models\UserAccount.cs">
       <DependentUpon>bizsuiteModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Utilities\Encryption.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -322,11 +323,13 @@
     <Content Include="Assets\Jquery\jquery-ui-1.10.3.custom.js" />
     <Content Include="Assets\Jquery\jquery-1.7.2.js" />
     <Content Include="Assets\Jquery\purr-notifications.js" />
+    <Content Include="databaseSchema.txt" />
     <Content Include="Global.asax" />
     <Content Include="Views\Accounting\GenerateIR.aspx" />
     <Content Include="Views\Accounting\ManageCashFlow.aspx" />
     <Content Include="Views\Accounting\ViewIR.aspx" />
     <Content Include="Views\Accounting\ViewPL.aspx" />
+    <Content Include="Views\Attendance\Index.aspx" />
     <Content Include="Views\Attendance\ViewAttendance.aspx" />
     <Content Include="Views\Attendance\ViewAttendanceSummary.aspx" />
     <Content Include="Views\Customer\Create.aspx" />
