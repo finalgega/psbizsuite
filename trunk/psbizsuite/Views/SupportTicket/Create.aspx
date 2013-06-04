@@ -14,73 +14,50 @@
     <fieldset>
         <legend>SupportTicket</legend>
 
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.EnquiryType) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.EnquiryType) %>
-            <%: Html.ValidationMessageFor(model => model.EnquiryType) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.EnquiryPriority) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.EnquiryPriority) %>
-            <%: Html.ValidationMessageFor(model => model.EnquiryPriority) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.ExistingEnquiry) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.ExistingEnquiry) %>
-            <%: Html.ValidationMessageFor(model => model.ExistingEnquiry) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.Details) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.Details) %>
-            <%: Html.ValidationMessageFor(model => model.Details) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.Reply) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.Reply) %>
-            <%: Html.ValidationMessageFor(model => model.Reply) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.Customer_UserAccount_Username, "Customer") %>
-        </div>
-        <div class="editor-field">
-            <%: Html.DropDownList("Customer_UserAccount_Username", String.Empty) %>
-            <%: Html.ValidationMessageFor(model => model.Customer_UserAccount_Username) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.ReferenceId, "SupportTicket2") %>
-        </div>
-        <div class="editor-field">
-            <%: Html.DropDownList("ReferenceId", String.Empty) %>
-            <%: Html.ValidationMessageFor(model => model.ReferenceId) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.Employee_UserAccount_Username, "Employee") %>
-        </div>
-        <div class="editor-field">
-            <%: Html.DropDownList("Employee_UserAccount_Username", String.Empty) %>
-            <%: Html.ValidationMessageFor(model => model.Employee_UserAccount_Username) %>
-        </div>
-
-        <p>
-            <input type="submit" value="Create" />
+        <h2>Contact Us</h2>
+        <p>Contact Us at:<br />
+            292 Outlook Road<br />
+            #02-1020<br />
+            Singapore 801292<br />
+            Telephone: 61212302<br />
+            Fax: 61212309
         </p>
+        <br /><br /><br />
+        Email Us:<br />
+        <table>
+            <tr>
+                <td><div class="editor-label">Enquiry Type</div></td>
+                <td><div class="editor-field">
+            <%: Html.RadioButtonFor(model => model.EnquiryType, "General Enquiry") %> General Enquiry
+            <%: Html.RadioButtonFor(model => model.EnquiryType, "Order Enquiry") %> Order Enquiry
+            <%: Html.RadioButtonFor(model => model.EnquiryType, "Feedback") %> Feedback
+            <%: Html.ValidationMessageFor(model => model.EnquiryType) %></div></td>
+            </tr>
+        <tr>
+            <td><div class="editor-label">Enquiry Priority</div></td>
+            <td><div class="editor-field">
+            <%: Html.RadioButtonFor(model => model.EnquiryPriority, "Critical") %> Critical
+            <%: Html.RadioButtonFor(model => model.EnquiryPriority, "Important") %> Important
+            <%: Html.RadioButtonFor(model => model.EnquiryPriority, "No Reply Required") %> No Reply Required
+            <%: Html.ValidationMessageFor(model => model.EnquiryPriority) %></div></td>
+        </tr>
+        
+        <tr>
+            <td><div class="editor-label">Existing Enquiry</div></td>
+            <td><div class="editor-field">
+            <%: Html.DropDownListFor(model => model.ExistingEnquiry, new SelectList(, "id", "name", Model.SupportTicketId), "Select existing enquiry" %>
+            <%: Html.ValidationMessageFor(model => model.ExistingEnquiry) %></div></td>
+        </tr>
+        <tr>
+            <td><div class="editor-label">Enquiry Details</div></td>
+            <td><div class="editor-field">
+            <%: Html.EditorFor(model => model.Details) %>
+            <%: Html.ValidationMessageFor(model => model.Details) %></div></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Send Support Ticket" /></td>
+        </tr>
+        </table>
     </fieldset>
 <% } %>
 
