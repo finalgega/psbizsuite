@@ -5,8 +5,8 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-<h2>Create</h2>
+    <link href="../../Assets/Css/order.css" type="text/css" rel="stylesheet" />
+<h2>Create Customer</h2>
 
 <% using (Html.BeginForm()) { %>
     <%: Html.ValidationSummary(true) %>
@@ -19,6 +19,11 @@
                 <td><div class="editor-field">
             <%: Html.EditorFor(model => model.FullName) %>
             <%: Html.ValidationMessageFor(model => model.FullName) %></div></td>
+            </tr><tr>
+                <td><div class="editor-label">User Name</div></td>
+                <td><div class="editor-field">
+            <%: Html.EditorFor(model => model.UserAccount_Username) %>
+            <%: Html.ValidationMessageFor(model => model.UserAccount_Username) %></div></td>
             </tr>
             <tr>
                 <td><div class="editor-label">Address</div></td>

@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
+    <link href="../../Assets/Css/order.css" type="text/css" rel="stylesheet" />
 <h2>Send Support Ticket</h2>
 
 <% using (Html.BeginForm()) { %>
@@ -45,7 +45,7 @@
         <tr>
             <td><div class="editor-label">Existing Enquiry</div></td>
             <td><div class="editor-field">
-            <%: Html.DropDownListFor(model => model.ExistingEnquiry, new SelectList(, "id", "name", Model.SupportTicketId), "Select existing enquiry" %>
+            <%: Html.DropDownList("ReferenceId", String.Empty) %>
             <%: Html.ValidationMessageFor(model => model.ExistingEnquiry) %></div></td>
         </tr>
         <tr>

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using psbizsuite.Models;
+using System.Data.Entity.Validation;
 
 namespace psbizsuite.Controllers
 {
@@ -40,19 +41,19 @@ namespace psbizsuite.Controllers
         {
             if (ModelState.IsValid)
             {
-                //add employee useraccount into userAccount database
-                //username is fullname without space
-                //password is NRIC
-                UserAccount employeeAcc = new UserAccount();
+               
+                    //add employee useraccount into userAccount database
+                    //username is fullname without space
+                    //password is NRIC
+                    UserAccount employeeAcc = new UserAccount();
                 employeeAcc.Username = employee.UserAccount_Username;
-                employeeAcc.Password = employee.NRIC;
-                employeeAcc.Type = "Employee";
-                db.UserAccounts.Add(employeeAcc);
+                    employeeAcc.Password = employee.NRIC;
+                    employeeAcc.Type = "Employee";
+                    db.UserAccounts.Add(employeeAcc);
 
-                //add employee profile into employee database
-                db.Employees.Add(employee);
+                    //add employee profile into employee database
+                    db.Employees.Add(employee);
 
-                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
