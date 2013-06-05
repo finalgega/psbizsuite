@@ -16,9 +16,10 @@ namespace psbizsuite.Models
     {
         public int AttendanceId { get; set; }
         public System.DateTime Date { get; set; }
-        public System.TimeSpan Time { get; set; }
         public string Location { get; set; }
         public string Employee_UserAccount_Username { get; set; }
+        public Nullable<System.TimeSpan> ClockInTime { get; set; }
+        public string ClockOutTime { get; set; }
     
         public virtual Employee Employee { get; set; }
     }
