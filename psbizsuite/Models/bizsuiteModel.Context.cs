@@ -41,6 +41,6 @@ namespace psbizsuite.Models
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<SupportTicket> SupportTickets { get; set; }
         public DbSet<UserAccount> UserAccounts { get; set; }
-        public DbSet<Category> Categories { get; set; }
+        public DbSet<category> categories { get; set; }
     }
 }

@@ -54,7 +54,8 @@ namespace psbizsuite.Controllers
                     //add employee profile into employee database
                     db.Employees.Add(employee);
 
-                return RedirectToAction("Index");
+                return View(employee);
+                
             }
 
             ViewBag.EmployeePosition_PositionName = new SelectList(db.EmployeePositions, "PositionName", "PositionName");
