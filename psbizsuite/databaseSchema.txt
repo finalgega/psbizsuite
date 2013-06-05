@@ -18,13 +18,13 @@ USE `bizsuitedb`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `accountpayables`
+-- Table structure for table `accountpayable`
 --
 
-DROP TABLE IF EXISTS `accountpayables`;
+DROP TABLE IF EXISTS `accountpayable`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `accountpayables` (
+CREATE TABLE `accountpayable` (
   `AccountPayableId` int(11) NOT NULL,
   `Status` varchar(45) NOT NULL,
   `TotalAmount` double NOT NULL,
@@ -34,77 +34,78 @@ CREATE TABLE `accountpayables` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `accountpayables`
+-- Dumping data for table `accountpayable`
 --
 
-LOCK TABLES `accountpayables` WRITE;
-/*!40000 ALTER TABLE `accountpayables` DISABLE KEYS */;
-/*!40000 ALTER TABLE `accountpayables` ENABLE KEYS */;
+LOCK TABLES `accountpayable` WRITE;
+/*!40000 ALTER TABLE `accountpayable` DISABLE KEYS */;
+/*!40000 ALTER TABLE `accountpayable` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `accountreceivables`
+-- Table structure for table `accountreceivable`
 --
 
-DROP TABLE IF EXISTS `accountreceivables`;
+DROP TABLE IF EXISTS `accountreceivable`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `accountreceivables` (
+CREATE TABLE `accountreceivable` (
   `AccountReceivableId` int(11) NOT NULL,
   `Status` varchar(45) NOT NULL,
   `TotalAmount` double NOT NULL,
   `Order_OrderId` int(11) NOT NULL,
   PRIMARY KEY (`AccountReceivableId`),
   KEY `fk_AccountReceivable_Order1_idx` (`Order_OrderId`),
-  CONSTRAINT `fk_AccountReceivable_Order1` FOREIGN KEY (`Order_OrderId`) REFERENCES `orders` (`OrderId`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_AccountReceivable_Order1` FOREIGN KEY (`Order_OrderId`) REFERENCES `order` (`OrderId`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `accountreceivables`
+-- Dumping data for table `accountreceivable`
 --
 
-LOCK TABLES `accountreceivables` WRITE;
-/*!40000 ALTER TABLE `accountreceivables` DISABLE KEYS */;
-/*!40000 ALTER TABLE `accountreceivables` ENABLE KEYS */;
+LOCK TABLES `accountreceivable` WRITE;
+/*!40000 ALTER TABLE `accountreceivable` DISABLE KEYS */;
+/*!40000 ALTER TABLE `accountreceivable` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `attendances`
+-- Table structure for table `attendance`
 --
 
-DROP TABLE IF EXISTS `attendances`;
+DROP TABLE IF EXISTS `attendance`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `attendances` (
+CREATE TABLE `attendance` (
   `AttendanceId` int(11) NOT NULL,
   `Date` date NOT NULL,
-  `Time` time NOT NULL,
-  `Location` varchar(45) NOT NULL,
+  `ClockInTime` time DEFAULT NULL,
+  `ClockOutTime` varchar(45) DEFAULT NULL,
+  `Location` varchar(45) DEFAULT NULL,
   `Employee_UserAccount_Username` varchar(45) NOT NULL,
   PRIMARY KEY (`AttendanceId`),
   KEY `fk_Attendance_Employee1_idx` (`Employee_UserAccount_Username`),
-  CONSTRAINT `fk_Attendance_Employee1` FOREIGN KEY (`Employee_UserAccount_Username`) REFERENCES `employees` (`UserAccount_Username`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_Attendance_Employee1` FOREIGN KEY (`Employee_UserAccount_Username`) REFERENCES `employee` (`UserAccount_Username`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `attendances`
+-- Dumping data for table `attendance`
 --
 
-LOCK TABLES `attendances` WRITE;
-/*!40000 ALTER TABLE `attendances` DISABLE KEYS */;
-/*!40000 ALTER TABLE `attendances` ENABLE KEYS */;
+LOCK TABLES `attendance` WRITE;
+/*!40000 ALTER TABLE `attendance` DISABLE KEYS */;
+/*!40000 ALTER TABLE `attendance` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `categories`
+-- Table structure for table `category`
 --
 
-DROP TABLE IF EXISTS `categories`;
+DROP TABLE IF EXISTS `category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `categories` (
+CREATE TABLE `category` (
   `CatId` int(11) NOT NULL,
   `CatName` varchar(45) NOT NULL,
   `CatDescription` varchar(45) NOT NULL,
@@ -113,22 +114,22 @@ CREATE TABLE `categories` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `categories`
+-- Dumping data for table `category`
 --
 
-LOCK TABLES `categories` WRITE;
-/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
+LOCK TABLES `category` WRITE;
+/*!40000 ALTER TABLE `category` DISABLE KEYS */;
+/*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `customers`
+-- Table structure for table `customer`
 --
 
-DROP TABLE IF EXISTS `customers`;
+DROP TABLE IF EXISTS `customer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `customers` (
+CREATE TABLE `customer` (
   `FullName` varchar(45) NOT NULL,
   `Address` varchar(100) DEFAULT NULL,
   `PhoneNo` int(8) NOT NULL,
@@ -136,52 +137,27 @@ CREATE TABLE `customers` (
   `FaxNo` int(8) DEFAULT NULL,
   `UserAccount_Username` varchar(45) NOT NULL,
   PRIMARY KEY (`UserAccount_Username`),
-  CONSTRAINT `fk_Customer_UserAccount` FOREIGN KEY (`UserAccount_Username`) REFERENCES `useraccounts` (`Username`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_Customer_UserAccount` FOREIGN KEY (`UserAccount_Username`) REFERENCES `useraccount` (`Username`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `customers`
+-- Dumping data for table `customer`
 --
 
-LOCK TABLES `customers` WRITE;
-/*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-/*!40000 ALTER TABLE `customers` ENABLE KEYS */;
+LOCK TABLES `customer` WRITE;
+/*!40000 ALTER TABLE `customer` DISABLE KEYS */;
+/*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `employeepositions`
+-- Table structure for table `employee`
 --
 
-DROP TABLE IF EXISTS `employeepositions`;
+DROP TABLE IF EXISTS `employee`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `employeepositions` (
-  `PositionId` int(11) NOT NULL,
-  `PositionName` varchar(45) NOT NULL,
-  `Responsibility` varchar(45) NOT NULL,
-  PRIMARY KEY (`PositionName`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `employeepositions`
---
-
-LOCK TABLES `employeepositions` WRITE;
-/*!40000 ALTER TABLE `employeepositions` DISABLE KEYS */;
-INSERT INTO `employeepositions` VALUES (0,'HR Personel','Manage human resouces');
-/*!40000 ALTER TABLE `employeepositions` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `employees`
---
-
-DROP TABLE IF EXISTS `employees`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `employees` (
+CREATE TABLE `employee` (
   `FullName` varchar(45) NOT NULL,
   `Address` varchar(100) NOT NULL,
   `PhoneNo` int(8) NOT NULL,
@@ -191,35 +167,59 @@ CREATE TABLE `employees` (
   `StartEmploymentDate` date NOT NULL,
   `SalaryPerHour` double NOT NULL,
   `StartShiftHour` time NOT NULL,
-  `EndShiftHour` time NOT NULL,
+  `EndShirtHour` time NOT NULL,
   `UserAccount_Username` varchar(45) NOT NULL,
   `EmployeePosition_PositionName` varchar(45) NOT NULL,
-  `PhoneUid` varchar(45) DEFAULT NULL,
+  `PhoneUid` varchar(45) NOT NULL,
   PRIMARY KEY (`UserAccount_Username`),
-  KEY `fk_Employee_UserAccount1_idx` (`UserAccount_Username`),
   KEY `fk_Employee_EmployeePosition1_idx` (`EmployeePosition_PositionName`),
-  CONSTRAINT `fk_Employee_EmployeePosition1` FOREIGN KEY (`EmployeePosition_PositionName`) REFERENCES `employeepositions` (`PositionName`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Employee_UserAccount1` FOREIGN KEY (`UserAccount_Username`) REFERENCES `useraccounts` (`Username`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_Employee_EmployeePosition1` FOREIGN KEY (`EmployeePosition_PositionName`) REFERENCES `employeeposition` (`PositionName`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Employee_UserAccount` FOREIGN KEY (`UserAccount_Username`) REFERENCES `useraccount` (`Username`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `employees`
+-- Dumping data for table `employee`
 --
 
-LOCK TABLES `employees` WRITE;
-/*!40000 ALTER TABLE `employees` DISABLE KEYS */;
-/*!40000 ALTER TABLE `employees` ENABLE KEYS */;
+LOCK TABLES `employee` WRITE;
+/*!40000 ALTER TABLE `employee` DISABLE KEYS */;
+/*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `inventories`
+-- Table structure for table `employeeposition`
 --
 
-DROP TABLE IF EXISTS `inventories`;
+DROP TABLE IF EXISTS `employeeposition`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `inventories` (
+CREATE TABLE `employeeposition` (
+  `PositionId` int(11) NOT NULL,
+  `PositionName` varchar(45) NOT NULL,
+  `Responsibility` varchar(45) NOT NULL,
+  PRIMARY KEY (`PositionName`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `employeeposition`
+--
+
+LOCK TABLES `employeeposition` WRITE;
+/*!40000 ALTER TABLE `employeeposition` DISABLE KEYS */;
+INSERT INTO `employeeposition` VALUES (0,'HR Manager','Manage Human resources');
+/*!40000 ALTER TABLE `employeeposition` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `inventory`
+--
+
+DROP TABLE IF EXISTS `inventory`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `inventory` (
   `InventoryId` int(11) NOT NULL,
   `ItemDescription` varchar(45) NOT NULL,
   `Image` varchar(45) DEFAULT NULL,
@@ -232,19 +232,19 @@ CREATE TABLE `inventories` (
   `Category_CatId` int(11) NOT NULL,
   PRIMARY KEY (`InventoryId`),
   KEY `fk_Inventory_Supplier1_idx` (`Supplier_UserAccount_Username`),
-  KEY `FK_CategoryInventory_idx` (`InventoryId`),
-  CONSTRAINT `FK_CategoryInventory` FOREIGN KEY (`InventoryId`) REFERENCES `categories` (`CatId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Inventory_Supplier1` FOREIGN KEY (`Supplier_UserAccount_Username`) REFERENCES `suppliers` (`UserAccount_Username`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_Inventory_Category1_idx` (`Category_CatId`),
+  CONSTRAINT `fk_Inventory_Supplier1` FOREIGN KEY (`Supplier_UserAccount_Username`) REFERENCES `supplier` (`UserAccount_Username`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK_CategoryInventory` FOREIGN KEY (`Category_CatId`) REFERENCES `category` (`CatId`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `inventories`
+-- Dumping data for table `inventory`
 --
 
-LOCK TABLES `inventories` WRITE;
-/*!40000 ALTER TABLE `inventories` DISABLE KEYS */;
-/*!40000 ALTER TABLE `inventories` ENABLE KEYS */;
+LOCK TABLES `inventory` WRITE;
+/*!40000 ALTER TABLE `inventory` DISABLE KEYS */;
+/*!40000 ALTER TABLE `inventory` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -260,7 +260,7 @@ CREATE TABLE `keypair` (
   `Employee_UserAccount_Username` varchar(45) NOT NULL,
   PRIMARY KEY (`Private`),
   KEY `fk_KeyPair_Employee1_idx` (`Employee_UserAccount_Username`),
-  CONSTRAINT `fk_KeyPair_Employee1` FOREIGN KEY (`Employee_UserAccount_Username`) REFERENCES `employees` (`UserAccount_Username`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_KeyPair_Employee1` FOREIGN KEY (`Employee_UserAccount_Username`) REFERENCES `employee` (`UserAccount_Username`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -274,13 +274,13 @@ LOCK TABLES `keypair` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `leavepolicies`
+-- Table structure for table `leavepolicy`
 --
 
-DROP TABLE IF EXISTS `leavepolicies`;
+DROP TABLE IF EXISTS `leavepolicy`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `leavepolicies` (
+CREATE TABLE `leavepolicy` (
   `LeavePolicyId` int(11) NOT NULL,
   `PolicyName` varchar(45) NOT NULL,
   `PolicyDescription` varchar(250) NOT NULL,
@@ -293,22 +293,22 @@ CREATE TABLE `leavepolicies` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `leavepolicies`
+-- Dumping data for table `leavepolicy`
 --
 
-LOCK TABLES `leavepolicies` WRITE;
-/*!40000 ALTER TABLE `leavepolicies` DISABLE KEYS */;
-/*!40000 ALTER TABLE `leavepolicies` ENABLE KEYS */;
+LOCK TABLES `leavepolicy` WRITE;
+/*!40000 ALTER TABLE `leavepolicy` DISABLE KEYS */;
+/*!40000 ALTER TABLE `leavepolicy` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `leaverequests`
+-- Table structure for table `leaverequest`
 --
 
-DROP TABLE IF EXISTS `leaverequests`;
+DROP TABLE IF EXISTS `leaverequest`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `leaverequests` (
+CREATE TABLE `leaverequest` (
   `LeaveRequestId` int(11) NOT NULL,
   `StartDate` date NOT NULL,
   `EndDate` date NOT NULL,
@@ -318,56 +318,28 @@ CREATE TABLE `leaverequests` (
   PRIMARY KEY (`LeaveRequestId`),
   KEY `fk_LeaveRequest_Employee1_idx` (`Employee_UserAccount_Username`),
   KEY `fk_LeaveRequest_LeavePolicy1_idx` (`LeavePolicy_LeavePolicyId`),
-  CONSTRAINT `fk_LeaveRequest_Employee1` FOREIGN KEY (`Employee_UserAccount_Username`) REFERENCES `employees` (`UserAccount_Username`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_LeaveRequest_LeavePolicy1` FOREIGN KEY (`LeavePolicy_LeavePolicyId`) REFERENCES `leavepolicies` (`LeavePolicyId`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_LeaveRequest_Employee1` FOREIGN KEY (`Employee_UserAccount_Username`) REFERENCES `employee` (`UserAccount_Username`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_LeaveRequest_LeavePolicy1` FOREIGN KEY (`LeavePolicy_LeavePolicyId`) REFERENCES `leavepolicy` (`LeavePolicyId`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `leaverequests`
+-- Dumping data for table `leaverequest`
 --
 
-LOCK TABLES `leaverequests` WRITE;
-/*!40000 ALTER TABLE `leaverequests` DISABLE KEYS */;
-/*!40000 ALTER TABLE `leaverequests` ENABLE KEYS */;
+LOCK TABLES `leaverequest` WRITE;
+/*!40000 ALTER TABLE `leaverequest` DISABLE KEYS */;
+/*!40000 ALTER TABLE `leaverequest` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `orderitems`
+-- Table structure for table `order`
 --
 
-DROP TABLE IF EXISTS `orderitems`;
+DROP TABLE IF EXISTS `order`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `orderitems` (
-  `OrderItemId` int(11) NOT NULL,
-  `Description` varchar(45) DEFAULT NULL,
-  `UnitPrice` double DEFAULT NULL,
-  `Quantity` int(11) DEFAULT NULL,
-  `Order_OrderId` int(11) NOT NULL,
-  PRIMARY KEY (`OrderItemId`),
-  KEY `fk_OrderItem_Order1_idx` (`Order_OrderId`),
-  CONSTRAINT `fk_OrderItem_Order1` FOREIGN KEY (`Order_OrderId`) REFERENCES `orders` (`OrderId`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `orderitems`
---
-
-LOCK TABLES `orderitems` WRITE;
-/*!40000 ALTER TABLE `orderitems` DISABLE KEYS */;
-/*!40000 ALTER TABLE `orderitems` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `orders`
---
-
-DROP TABLE IF EXISTS `orders`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `orders` (
+CREATE TABLE `order` (
   `OrderId` int(11) NOT NULL,
   `ReceiptId` int(11) NOT NULL,
   `Status` varchar(45) NOT NULL,
@@ -376,27 +348,55 @@ CREATE TABLE `orders` (
   PRIMARY KEY (`OrderId`),
   UNIQUE KEY `ReceiptId_UNIQUE` (`ReceiptId`),
   KEY `fk_Order_Customer1_idx` (`Customer_UserAccount_Username`),
-  CONSTRAINT `fk_Order_Customer1` FOREIGN KEY (`Customer_UserAccount_Username`) REFERENCES `customers` (`UserAccount_Username`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_Order_Customer1` FOREIGN KEY (`Customer_UserAccount_Username`) REFERENCES `customer` (`UserAccount_Username`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `orders`
+-- Dumping data for table `order`
 --
 
-LOCK TABLES `orders` WRITE;
-/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
+LOCK TABLES `order` WRITE;
+/*!40000 ALTER TABLE `order` DISABLE KEYS */;
+/*!40000 ALTER TABLE `order` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `payrollrequests`
+-- Table structure for table `orderitem`
 --
 
-DROP TABLE IF EXISTS `payrollrequests`;
+DROP TABLE IF EXISTS `orderitem`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `payrollrequests` (
+CREATE TABLE `orderitem` (
+  `OrderItemId` int(11) NOT NULL,
+  `Description` varchar(45) DEFAULT NULL,
+  `UnitPrice` double DEFAULT NULL,
+  `Quantity` int(11) DEFAULT NULL,
+  `Order_OrderId` int(11) NOT NULL,
+  PRIMARY KEY (`OrderItemId`),
+  KEY `fk_OrderItem_Order1_idx` (`Order_OrderId`),
+  CONSTRAINT `fk_OrderItem_Order1` FOREIGN KEY (`Order_OrderId`) REFERENCES `order` (`OrderId`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `orderitem`
+--
+
+LOCK TABLES `orderitem` WRITE;
+/*!40000 ALTER TABLE `orderitem` DISABLE KEYS */;
+/*!40000 ALTER TABLE `orderitem` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `payrollrequest`
+--
+
+DROP TABLE IF EXISTS `payrollrequest`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `payrollrequest` (
   `PayrollRequestId` int(11) NOT NULL,
   `TotalAmount` double DEFAULT NULL,
   `RequestTimeStamp` timestamp NULL DEFAULT NULL,
@@ -406,22 +406,22 @@ CREATE TABLE `payrollrequests` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `payrollrequests`
+-- Dumping data for table `payrollrequest`
 --
 
-LOCK TABLES `payrollrequests` WRITE;
-/*!40000 ALTER TABLE `payrollrequests` DISABLE KEYS */;
-/*!40000 ALTER TABLE `payrollrequests` ENABLE KEYS */;
+LOCK TABLES `payrollrequest` WRITE;
+/*!40000 ALTER TABLE `payrollrequest` DISABLE KEYS */;
+/*!40000 ALTER TABLE `payrollrequest` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `suppliers`
+-- Table structure for table `supplier`
 --
 
-DROP TABLE IF EXISTS `suppliers`;
+DROP TABLE IF EXISTS `supplier`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `suppliers` (
+CREATE TABLE `supplier` (
   `FullName` varchar(45) NOT NULL,
   `Address` varchar(100) NOT NULL,
   `PhoneNo` int(8) NOT NULL,
@@ -430,78 +430,77 @@ CREATE TABLE `suppliers` (
   `Description` varchar(45) NOT NULL,
   `UserAccount_Username` varchar(45) NOT NULL,
   PRIMARY KEY (`UserAccount_Username`),
-  CONSTRAINT `fk_Supplier_UserAccount1` FOREIGN KEY (`UserAccount_Username`) REFERENCES `useraccounts` (`Username`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_Supplier_UserAccount1` FOREIGN KEY (`UserAccount_Username`) REFERENCES `useraccount` (`Username`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `suppliers`
+-- Dumping data for table `supplier`
 --
 
-LOCK TABLES `suppliers` WRITE;
-/*!40000 ALTER TABLE `suppliers` DISABLE KEYS */;
-/*!40000 ALTER TABLE `suppliers` ENABLE KEYS */;
+LOCK TABLES `supplier` WRITE;
+/*!40000 ALTER TABLE `supplier` DISABLE KEYS */;
+/*!40000 ALTER TABLE `supplier` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `supporttickets`
+-- Table structure for table `supportticket`
 --
 
-DROP TABLE IF EXISTS `supporttickets`;
+DROP TABLE IF EXISTS `supportticket`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `supporttickets` (
+CREATE TABLE `supportticket` (
   `SupportTicketId` int(11) NOT NULL,
-  `EnquiryType` varchar(45) DEFAULT NULL,
-  `EnquiryPriority` varchar(45) DEFAULT NULL,
-  `ExistingEnquiry` varchar(45) DEFAULT NULL,
-  `Details` varchar(45) DEFAULT NULL,
-  `Reply` varchar(45) DEFAULT NULL,
+  `EnquiryType` varchar(45) NOT NULL,
+  `EnquiryPriority` varchar(45) NOT NULL,
   `Customer_UserAccount_Username` varchar(45) NOT NULL,
   `ReferenceId` int(11) DEFAULT NULL,
   `Employee_UserAccount_Username` varchar(45) DEFAULT NULL,
+  `Details` varchar(45) DEFAULT NULL,
+  `Reply` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`SupportTicketId`),
   KEY `fk_SupportTicket_Customer1_idx` (`Customer_UserAccount_Username`),
   KEY `fk_SupportTicket_SupportTicket1_idx` (`ReferenceId`),
   KEY `fk_SupportTicket_Employee1_idx` (`Employee_UserAccount_Username`),
-  CONSTRAINT `fk_SupportTicket_Customer1` FOREIGN KEY (`Customer_UserAccount_Username`) REFERENCES `customers` (`UserAccount_Username`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_SupportTicket_Employee1` FOREIGN KEY (`Employee_UserAccount_Username`) REFERENCES `employees` (`UserAccount_Username`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_SupportTicket_Customer1` FOREIGN KEY (`Customer_UserAccount_Username`) REFERENCES `customer` (`UserAccount_Username`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_SupportTicket_Employee1` FOREIGN KEY (`Employee_UserAccount_Username`) REFERENCES `employee` (`UserAccount_Username`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `supporttickets`
+-- Dumping data for table `supportticket`
 --
 
-LOCK TABLES `supporttickets` WRITE;
-/*!40000 ALTER TABLE `supporttickets` DISABLE KEYS */;
-/*!40000 ALTER TABLE `supporttickets` ENABLE KEYS */;
+LOCK TABLES `supportticket` WRITE;
+/*!40000 ALTER TABLE `supportticket` DISABLE KEYS */;
+/*!40000 ALTER TABLE `supportticket` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `useraccounts`
+-- Table structure for table `useraccount`
 --
 
-DROP TABLE IF EXISTS `useraccounts`;
+DROP TABLE IF EXISTS `useraccount`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `useraccounts` (
+CREATE TABLE `useraccount` (
   `Username` varchar(45) NOT NULL,
   `Password` varchar(45) NOT NULL,
   `Type` varchar(45) NOT NULL COMMENT 'Customer, Employee and Supplier',
+  `Salt` varchar(45) NOT NULL,
   PRIMARY KEY (`Username`),
   UNIQUE KEY `Username_UNIQUE` (`Username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `useraccounts`
+-- Dumping data for table `useraccount`
 --
 
-LOCK TABLES `useraccounts` WRITE;
-/*!40000 ALTER TABLE `useraccounts` DISABLE KEYS */;
-INSERT INTO `useraccounts` VALUES ('lin','123','Employee');
-/*!40000 ALTER TABLE `useraccounts` ENABLE KEYS */;
+LOCK TABLES `useraccount` WRITE;
+/*!40000 ALTER TABLE `useraccount` DISABLE KEYS */;
+/*!40000 ALTER TABLE `useraccount` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -513,4 +512,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-05 10:33:41
+-- Dump completed on 2013-06-05 21:45:09

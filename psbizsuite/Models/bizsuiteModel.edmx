@@ -108,8 +108,9 @@
           </Key>
           <Property Name="AttendanceId" Type="int" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
-          <Property Name="Time" Type="time" Nullable="false" />
-          <Property Name="Location" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="ClockInTime" Type="time" />
+          <Property Name="ClockOutTime" Type="varchar" MaxLength="45" />
+          <Property Name="Location" Type="varchar" MaxLength="45" />
           <Property Name="Employee_UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
         </EntityType>
         <EntityType Name="category">
@@ -558,10 +559,11 @@
           </Key>
           <Property Name="AttendanceId" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" />
-          <Property Name="Time" Type="Time" Nullable="false" />
           <Property Name="Location" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
           <Property Name="Employee_UserAccount_Username" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
           <NavigationProperty Name="Employee" Relationship="BizSuiteDBModel.fk_Attendance_Employee1" FromRole="Attendance" ToRole="Employee" />
+          <Property Type="Time" Name="ClockInTime" />
+          <Property Type="String" Name="ClockOutTime" MaxLength="45" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -1025,9 +1027,10 @@
           <EntitySetMapping Name="Attendances">
             <EntityTypeMapping TypeName="IsTypeOf(BizSuiteDBModel.Attendance)">
               <MappingFragment StoreEntitySet="attendance">
+                <ScalarProperty Name="ClockOutTime" ColumnName="ClockOutTime" />
+                <ScalarProperty Name="ClockInTime" ColumnName="ClockInTime" />
                 <ScalarProperty Name="Employee_UserAccount_Username" ColumnName="Employee_UserAccount_Username" />
                 <ScalarProperty Name="Location" ColumnName="Location" />
-                <ScalarProperty Name="Time" ColumnName="Time" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="AttendanceId" ColumnName="AttendanceId" />
               </MappingFragment>
