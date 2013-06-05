@@ -56,16 +56,18 @@ namespace psbizsuite.Controllers
                 //username is fullname without space
                 //password is NRIC
                 UserAccount customerAcc = new UserAccount();
-                customerAcc.Username = customer.Email.Replace(" ", string.Empty);
+                customerAcc.Username = customer.UserAccount_Username;
+                customerAcc.Password = customer.Email;
                 customerAcc.Type = "Customer";
                 db.UserAccounts.Add(customerAcc);
 
-                //add employee profile into employee database
-                customer.UserAccount_Username = customerAcc.Username;
 
                 db.Customers.Add(customer);
                 db.SaveChanges();
+                EmailController e = new EmailController();
+                e.submitEmail();
                 return RedirectToAction("Index");
+                
             }
 
             ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Password", customer.UserAccount_Username);
@@ -75,7 +77,7 @@ namespace psbizsuite.Controllers
         //
         // GET: /Customer/Edit/5
 
-        public ActionResult Edit(string id = null)
+        public ActionResult Edit(string id)
         {
             Customer customer = db.Customers.Find(id);
             if (customer == null)

@@ -42,7 +42,7 @@ namespace psbizsuite.Controllers
         {
             ViewBag.Customer_UserAccount_Username = new SelectList(db.Customers, "UserAccount_Username", "FullName");
             ViewBag.Employee_UserAccount_Username = new SelectList(db.Employees, "UserAccount_Username", "FullName");
-            ViewBag.ReferenceId = new SelectList(db.SupportTickets, "SupportTicketId", "EnquiryType");
+            ViewBag.ReferenceId = new SelectList(db.SupportTickets, "SupportTicketId", "SupportTicketId");
             return View();
         }
 

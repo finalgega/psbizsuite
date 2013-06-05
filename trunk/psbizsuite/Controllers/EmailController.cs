@@ -8,7 +8,7 @@ using System.Net.Mail;
 
 namespace psbizsuite.Controllers
 {
-    public class EmailController : ApiController
+    public class EmailController
     {
         public bool submitEmail()
         {
@@ -22,7 +22,7 @@ namespace psbizsuite.Controllers
             string strFromEmail = "BizSuite Admin";
             string email = "yugioh1324@hotmail.com "; //to
 
-            //patient email
+            
             try
             {
                 //create the new mail message[/color]
