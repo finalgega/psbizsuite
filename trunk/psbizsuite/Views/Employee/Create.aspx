@@ -5,7 +5,13 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
+    <style>
+        .address {
+            width: 300px;
+            height: 80px;
+            resize: none;
+        }
+    </style>
     
     <!-- start content-outer -->
     <div id="content-outer">
@@ -37,7 +43,7 @@
                                 <tr style="vertical-align: top">
                                     <td>
 
-                                        <% using (Html.BeginForm())
+                                        <% using (Html.BeginForm("Create","Employee"))
                                            { %>
                                         <%: Html.ValidationSummary(true) %>
 
@@ -70,7 +76,7 @@
                                             </tr>
                                             <tr>
                                                 <th>Position: </th>
-                                                <td><%: Html.DropDownList("EmployeePosition_PositionName", String.Empty) %>
+                                                <td><%: Html.DropDownList("EmployeePosition_PositionName", "Please select") %>
                                                 <%: Html.ValidationMessageFor(model => model.EmployeePosition_PositionName) %></td>
                                             </tr>
                                             <tr>
@@ -85,23 +91,21 @@
                                             </tr>
                                             <tr>
                                                 <th>Start Working Hour:</th>
-                                                <td><%: Html.EditorFor(model => model.StartShiftHour)%>
+                                                <td><%: Html.TextBoxFor(model => model.StartShiftHour)%>
                                                 <%: Html.ValidationMessageFor(model => model.StartShiftHour) %></td>
                                             </tr>
                                             <tr>
                                                 <th>End Working Hour:</th>
-                                                <td><%: Html.EditorFor(model => model.EndShiftHour) %>
+
+                                                <td><%: Html.TextBoxFor(model => model.EndShiftHour) %>
                                                 <%: Html.ValidationMessageFor(model => model.EndShiftHour) %></td>
+
+                                              
                                             </tr>
                                             <tr>
                                                 <th>Salary Per Hour:</th>
                                                 <td><%: Html.EditorFor(model => model.SalaryPerHour) %>
                                                 <%: Html.ValidationMessageFor(model => model.SalaryPerHour) %></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Username:</th>
-                                                <td><%: Html.EditorFor(model => model.UserAccount_Username) %>
-                                                <%: Html.ValidationMessageFor(model => model.UserAccount_Username) %></td>
                                             </tr>
                                             <tr>
                                                 <th>&nbsp;</th>

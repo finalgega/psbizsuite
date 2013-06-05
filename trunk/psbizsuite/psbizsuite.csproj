@@ -160,7 +160,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>bizsuiteModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Category.cs">
+    <Compile Include="Models\category.cs">
       <DependentUpon>bizsuiteModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Customer.cs">
@@ -333,6 +333,10 @@
     <Content Include="Views\Accounting\ManageCashFlow.aspx" />
     <Content Include="Views\Accounting\ViewIR.aspx" />
     <Content Include="Views\Accounting\ViewPL.aspx" />
+    <Content Include="Views\Attendance\Create.aspx" />
+    <Content Include="Views\Attendance\Delete.aspx" />
+    <Content Include="Views\Attendance\Details.aspx" />
+    <Content Include="Views\Attendance\Edit.aspx" />
     <Content Include="Views\Attendance\Index.aspx" />
     <Content Include="Views\Attendance\ViewAttendance.aspx" />
     <Content Include="Views\Attendance\ViewAttendanceSummary.aspx" />

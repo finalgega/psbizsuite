@@ -23,8 +23,9 @@ namespace psbizsuite.Models
         public string Location { get; set; }
         public System.DateTime TimeStamp { get; set; }
         public string Supplier_UserAccount_Username { get; set; }
+        public int Category_CatId { get; set; }
     
         public virtual Supplier Supplier { get; set; }
-        public virtual Category Category { get; set; }
+        public virtual category category { get; set; }
     }
 }

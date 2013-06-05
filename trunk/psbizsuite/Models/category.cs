@@ -12,15 +12,17 @@ namespace psbizsuite.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class UserAccount
+    public partial class category
     {
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string Type { get; set; }
-        public string Salt { get; set; }
+        public category()
+        {
+            this.inventories = new HashSet<Inventory>();
+        }
     
-        public virtual Customer Customer { get; set; }
-        public virtual Employee Employee { get; set; }
-        public virtual Supplier Supplier { get; set; }
+        public int CatId { get; set; }
+        public string CatName { get; set; }
+        public string CatDescription { get; set; }
+    
+        public virtual ICollection<Inventory> inventories { get; set; }
     }
 }
