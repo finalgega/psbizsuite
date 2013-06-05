@@ -160,6 +160,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>bizsuiteModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Category.cs">
+      <DependentUpon>bizsuiteModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Customer.cs">
       <DependentUpon>bizsuiteModel.tt</DependentUpon>
     </Compile>

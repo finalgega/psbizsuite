@@ -36,6 +36,8 @@
         <AssociationConnector Association="BizSuiteDBModel.fk_OrderItem_Order1" ManuallyRouted="false" />
         <AssociationConnector Association="BizSuiteDBModel.fk_Supplier_UserAccount1" ManuallyRouted="false" />
         <AssociationConnector Association="BizSuiteDBModel.fk_SupportTicket_SupportTicket1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BizSuiteDBModel.Category" Width="1.5" PointX="7.875" PointY="19.875" />
+        <AssociationConnector Association="BizSuiteDBModel.CategoryInventory" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

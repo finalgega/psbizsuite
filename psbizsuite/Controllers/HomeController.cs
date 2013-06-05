@@ -37,9 +37,8 @@ namespace psbizsuite.Controllers
                     //to do: add in authentication here
                     //return to DirectorDashboard view with useraccount object
                     //to retrieve data from the useraccount object in view, eg. <%= Model.username %> 
-                 
-
-                       return View("../Director/DirectorDashboard", useraccount);
+                    Session["username"] = username;
+                    return View("../Employee/Index", useraccount);
                 }
             }
             else

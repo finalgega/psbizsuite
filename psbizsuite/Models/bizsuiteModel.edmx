@@ -22,6 +22,7 @@
     <EntitySet Name="Suppliers" EntityType="BizSuiteDBModel.Store.Suppliers" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SupportTickets" EntityType="BizSuiteDBModel.Store.SupportTickets" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserAccounts" EntityType="BizSuiteDBModel.Store.UserAccounts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Categories" EntityType="BizSuiteDBModel.Store.Categories" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="fk_AccountReceivable_Order1" Association="BizSuiteDBModel.Store.fk_AccountReceivable_Order1">
       <End Role="Order" EntitySet="Orders" />
       <End Role="AccountReceivable" EntitySet="AccountReceivables" />
@@ -81,6 +82,10 @@
     <AssociationSet Name="fk_SupportTicket_SupportTicket1" Association="BizSuiteDBModel.Store.fk_SupportTicket_SupportTicket1">
       <End Role="SupportTicket" EntitySet="SupportTickets" />
       <End Role="SupportTicket1" EntitySet="SupportTickets" />
+    </AssociationSet>
+    <AssociationSet Name="CategoryInventory" Association="BizSuiteDBModel.Store.CategoryInventory">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Inventory" EntitySet="Inventories" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="AccountPayables">
@@ -161,6 +166,7 @@
     <Property Name="Location" Type="varchar" Nullable="true" MaxLength="45" />
     <Property Name="TimeStamp" Type="datetime" Nullable="false" />
     <Property Name="Supplier_UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="Category_CatId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="KeyPairs">
     <Key>
@@ -255,6 +261,14 @@
     <Property Name="Username" Type="varchar" Nullable="false" MaxLength="45" />
     <Property Name="Password" Type="varchar" Nullable="false" MaxLength="45" />
     <Property Name="Type" Type="varchar" Nullable="false" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="CatId" />
+    </Key>
+    <Property Name="CatId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CatName" Type="varchar" Nullable="false" />
+    <Property Name="CatDescription" Type="varchar" Nullable="false" />
   </EntityType>
   <Association Name="fk_AccountReceivable_Order1">
     <End Role="Order" Type="BizSuiteDBModel.Store.Orders" Multiplicity="1" />
@@ -436,6 +450,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="CategoryInventory">
+    <End Role="Category" Type="BizSuiteDBModel.Store.Categories" Multiplicity="1" />
+    <End Role="Inventory" Type="BizSuiteDBModel.Store.Inventories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CatId" />
+      </Principal>
+      <Dependent Role="Inventory">
+        <PropertyRef Name="Category_CatId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -517,6 +543,11 @@
             <End Role="SupportTicket" EntitySet="SupportTickets" />
             <End Role="SupportTicket1" EntitySet="SupportTickets" />
           </AssociationSet>
+          <EntitySet Name="Categories" EntityType="BizSuiteDBModel.Category" />
+          <AssociationSet Name="CategoryInventory" Association="BizSuiteDBModel.CategoryInventory">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Inventory" EntitySet="Inventories" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="AccountPayable">
           <Key>
@@ -575,7 +606,7 @@
           <Property Name="StartEmploymentDate" Type="DateTime" Nullable="false" />
           <Property Name="SalaryPerHour" Type="Double" Nullable="false" />
           <Property Name="StartShiftHour" Type="Time" Nullable="false" />
-          <Property Name="EndShirtHour" Type="Time" Nullable="false" />
+          <Property Name="EndShiftHour" Type="Time" Nullable="false" />
           <Property Name="UserAccount_Username" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
           <Property Name="EmployeePosition_PositionName" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="Attendances" Relationship="BizSuiteDBModel.fk_Attendance_Employee1" FromRole="Employee" ToRole="Attendance" />
@@ -609,6 +640,7 @@
           <Property Name="TimeStamp" Type="DateTime" Nullable="false" />
           <Property Name="Supplier_UserAccount_Username" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="Supplier" Relationship="BizSuiteDBModel.fk_Inventory_Supplier1" FromRole="Inventory" ToRole="Supplier" />
+          <NavigationProperty Name="Category" Relationship="BizSuiteDBModel.CategoryInventory" FromRole="Inventory" ToRole="Category" />
         </EntityType>
         <EntityType Name="KeyPair">
           <Key>
@@ -901,6 +933,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CatId" />
+          </Key>
+          <Property Type="Int32" Name="CatId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="CatName" Nullable="false" />
+          <Property Type="String" Name="CatDescription" Nullable="false" />
+          <NavigationProperty Name="Inventories" Relationship="BizSuiteDBModel.CategoryInventory" FromRole="Category" ToRole="Inventory" />
+        </EntityType>
+        <Association Name="CategoryInventory">
+          <End Type="BizSuiteDBModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="BizSuiteDBModel.Inventory" Role="Inventory" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -963,7 +1008,7 @@
           <ScalarProperty Name="StartEmploymentDate" ColumnName="StartEmploymentDate" />
           <ScalarProperty Name="SalaryPerHour" ColumnName="SalaryPerHour" />
           <ScalarProperty Name="StartShiftHour" ColumnName="StartShiftHour" />
-          <ScalarProperty Name="EndShirtHour" ColumnName="EndShirtHour" />
+          <ScalarProperty Name="EndShiftHour" ColumnName="EndShirtHour" />
           <ScalarProperty Name="EmployeePosition_PositionName" ColumnName="EmployeePosition_PositionName" />
           <ScalarProperty Name="PhoneUid" ColumnName="PhoneUid" />
         </MappingFragment>
@@ -1096,6 +1141,23 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="IsTypeOf(BizSuiteDBModel.Category)">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="CatId" ColumnName="CatId" />
+          <ScalarProperty Name="CatName" ColumnName="CatName" />
+          <ScalarProperty Name="CatDescription" ColumnName="CatDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CategoryInventory" TypeName="BizSuiteDBModel.CategoryInventory" StoreEntitySet="Inventories">
+      <EndProperty Name="Category">
+        <ScalarProperty Name="CatId" ColumnName="Category_CatId" />
+      </EndProperty>
+      <EndProperty Name="Inventory">
+        <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

@@ -98,6 +98,30 @@ LOCK TABLES `attendances` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `categories`
+--
+
+DROP TABLE IF EXISTS `categories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `categories` (
+  `CatId` int(11) NOT NULL,
+  `CatName` varchar(45) NOT NULL,
+  `CatDescription` varchar(45) NOT NULL,
+  PRIMARY KEY (`CatId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `categories`
+--
+
+LOCK TABLES `categories` WRITE;
+/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
+/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `customers`
 --
 
@@ -167,7 +191,7 @@ CREATE TABLE `employees` (
   `StartEmploymentDate` date NOT NULL,
   `SalaryPerHour` double NOT NULL,
   `StartShiftHour` time NOT NULL,
-  `EndShirtHour` time NOT NULL,
+  `EndShiftHour` time NOT NULL,
   `UserAccount_Username` varchar(45) NOT NULL,
   `EmployeePosition_PositionName` varchar(45) NOT NULL,
   `PhoneUid` varchar(45) DEFAULT NULL,
@@ -189,13 +213,13 @@ LOCK TABLES `employees` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `inventorys`
+-- Table structure for table `inventories`
 --
 
-DROP TABLE IF EXISTS `inventorys`;
+DROP TABLE IF EXISTS `inventories`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `inventorys` (
+CREATE TABLE `inventories` (
   `InventoryId` int(11) NOT NULL,
   `ItemDescription` varchar(45) NOT NULL,
   `Image` varchar(45) DEFAULT NULL,
@@ -205,19 +229,22 @@ CREATE TABLE `inventorys` (
   `Location` varchar(45) DEFAULT NULL,
   `TimeStamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `Supplier_UserAccount_Username` varchar(45) NOT NULL,
+  `Category_CatId` int(11) NOT NULL,
   PRIMARY KEY (`InventoryId`),
   KEY `fk_Inventory_Supplier1_idx` (`Supplier_UserAccount_Username`),
+  KEY `FK_CategoryInventory_idx` (`InventoryId`),
+  CONSTRAINT `FK_CategoryInventory` FOREIGN KEY (`InventoryId`) REFERENCES `categories` (`CatId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Inventory_Supplier1` FOREIGN KEY (`Supplier_UserAccount_Username`) REFERENCES `suppliers` (`UserAccount_Username`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `inventorys`
+-- Dumping data for table `inventories`
 --
 
-LOCK TABLES `inventorys` WRITE;
-/*!40000 ALTER TABLE `inventorys` DISABLE KEYS */;
-/*!40000 ALTER TABLE `inventorys` ENABLE KEYS */;
+LOCK TABLES `inventories` WRITE;
+/*!40000 ALTER TABLE `inventories` DISABLE KEYS */;
+/*!40000 ALTER TABLE `inventories` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -247,13 +274,13 @@ LOCK TABLES `keypair` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `leavepolicys`
+-- Table structure for table `leavepolicies`
 --
 
-DROP TABLE IF EXISTS `leavepolicys`;
+DROP TABLE IF EXISTS `leavepolicies`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `leavepolicys` (
+CREATE TABLE `leavepolicies` (
   `LeavePolicyId` int(11) NOT NULL,
   `PolicyName` varchar(45) NOT NULL,
   `PolicyDescription` varchar(250) NOT NULL,
@@ -266,12 +293,12 @@ CREATE TABLE `leavepolicys` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `leavepolicys`
+-- Dumping data for table `leavepolicies`
 --
 
-LOCK TABLES `leavepolicys` WRITE;
-/*!40000 ALTER TABLE `leavepolicys` DISABLE KEYS */;
-/*!40000 ALTER TABLE `leavepolicys` ENABLE KEYS */;
+LOCK TABLES `leavepolicies` WRITE;
+/*!40000 ALTER TABLE `leavepolicies` DISABLE KEYS */;
+/*!40000 ALTER TABLE `leavepolicies` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -292,7 +319,7 @@ CREATE TABLE `leaverequests` (
   KEY `fk_LeaveRequest_Employee1_idx` (`Employee_UserAccount_Username`),
   KEY `fk_LeaveRequest_LeavePolicy1_idx` (`LeavePolicy_LeavePolicyId`),
   CONSTRAINT `fk_LeaveRequest_Employee1` FOREIGN KEY (`Employee_UserAccount_Username`) REFERENCES `employees` (`UserAccount_Username`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_LeaveRequest_LeavePolicy1` FOREIGN KEY (`LeavePolicy_LeavePolicyId`) REFERENCES `leavepolicys` (`LeavePolicyId`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_LeaveRequest_LeavePolicy1` FOREIGN KEY (`LeavePolicy_LeavePolicyId`) REFERENCES `leavepolicies` (`LeavePolicyId`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -486,4 +513,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-04 21:02:20
+-- Dump completed on 2013-06-05 10:33:41
