@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<psbizsuite.Models.Inventory>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     CreateInventoryItem
@@ -15,7 +15,7 @@
         }
         $( document ).ready( function ()
         {
-            $( '.show-normal' ).click( function () 
+            $('.show-normal').click(function ()
             {
                 var itemName = $('#MainContent_itemName').val();
                 var messageTitle = "Inventory Item Added Successfully!";
@@ -47,7 +47,7 @@
                 var notice = '<div class="notice">'
                           + '<div class="notice-body">' 
                               + '<img src="../../Assets/Images/shared/logo.png" alt="" />'
-                              + '<a class="close"/>'
+                              + '<a class="close" onclick="removeNotice"/>'
                               + '<h3>' + messageTitle + '</h3>'
                               + '<p>' + messageBody + '</p>'
                           + '</div>'
@@ -67,10 +67,45 @@
             );
         }
                );
+        function useHTML5Notifications() {
+            //  Checks if notifications is supported
+            /**
+            *
+            *   @return true if browser supports
+            */
+            if (webkitNotifications) {
+                console.log("Notifications are supported!");
+                if (webkitNotifications.checkPermission() == 0) {
+                   notification_test = webkitNotifications.createNotification('../../Assets/Images/shared/logo.png', 'Hello', 'We ARE LIVE!');
+                   notification_test.show();
+                } else {
+                    webkitNotifications.requestPermission();
+                }
+            } else {
+                console.log("Notifications are not supported in this browser/OS!");
+                alert("Notifications are not supported in this browser!");
+            }
+        }
+
+
+            function plaintextNotification(image, title, content) {
+                if (window.webkitNotifications.checkPermission == 0) {
+                    return window.webkitNotifications.createNotification(image, title, content);
+                }
+            }
+
+            function htmlNotification(url) {
+                if (window.webkitNotifications.checkPermission() == 0) {
+                    return window.webkitNotifications.createHTMLNotification(url);
+                }
+            }
+        
     </script>
     <h2>CreateInventoryItem</h2>
-    <form id="createInventoryForm" runat="server" method="POST" action="CreateItemRecord">
-    <!-- using (Html.BeginForm("CreateInventoryItem","Inventory","POST")); -->
+ <!--   <form id="createInventoryForm" runat="server" method="POST" action="CreateItemRecord"> -->
+    <% using (Html.BeginForm("CreateItemRecord","Inventory","Post")) 
+          %>
+    
         <table>
             <tr>
                 <th colspan="4" id="tblFormHeader">New Inventory Item</th>
@@ -78,10 +113,10 @@
             <tr>
                 <th>Item ID : </th>
                 <td>
-                    <asp:Label ID="lblItemID" runat="server" Text="1"></asp:Label>
+                    <asp:Label runat="server" ID="itemID" value="1"></asp:Label>
                 </td>
                 <td id="tblImg" colspan="2" rowspan="4">
-                    <asp:Image ID="Image1" runat="server" CssClass="imgWell" />
+                  <p>Just a test</p>
                 </td>
             </tr>
             <tr>
@@ -125,11 +160,8 @@
             <tr>
                 <th>Category : </th>
                 <td>
-                    <select name="categories" id="categories">
-                        <option value="1">Electronic Parts</option>
-                        <option value="2">Sundries</option>
-                        <option value="3">Stationery</option>
-                    </select>
+                   <select>
+                   </select>
                 </td>
                 <th>Location : </th>
                 <td>
@@ -149,14 +181,18 @@
             <tr>
                 <td></td>
                 <td>
-                    <asp:Button Text="Create Record" UseSubmitBehavior="true" ID="inventoryFormSubmit" runat="server" CssClass="show-normal" />
+<!--                    <asp:Button Text="Create Record" UseSubmitBehavior="true" ID="inventoryFormSubmit" runat="server" /> -->
+                    <input type="submit" value="Create Item" class="show-normal" />
                 </td>
                 <td>
                     <input type="button" class="show-sticky" value="HELLO NOTIFICATION!" /></td>
             </tr>
+            <tr>
+                <td><input type="button" onclick="useHTML5Notifications()" value="HTML5 Native Notification" /></td>
+            </tr>
         </table>
-    <!-- using (Html.EndForm()); -->
-    </form>
+    <% Html.EndForm(); %>
+  <!--  </form> -->
 
 </asp:Content>
 
