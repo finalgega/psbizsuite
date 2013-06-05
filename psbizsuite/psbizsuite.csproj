@@ -122,6 +122,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccountingController.cs" />
+    <Compile Include="Controllers\AccountPayableController.cs" />
+    <Compile Include="Controllers\AccountReceivableController.cs" />
     <Compile Include="Controllers\AttendanceController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
@@ -333,6 +335,16 @@
     <Content Include="Views\Accounting\ManageCashFlow.aspx" />
     <Content Include="Views\Accounting\ViewIR.aspx" />
     <Content Include="Views\Accounting\ViewPL.aspx" />
+    <Content Include="Views\AccountPayable\Create.aspx" />
+    <Content Include="Views\AccountPayable\Delete.aspx" />
+    <Content Include="Views\AccountPayable\Details.aspx" />
+    <Content Include="Views\AccountPayable\Edit.aspx" />
+    <Content Include="Views\AccountPayable\Index.aspx" />
+    <Content Include="Views\AccountReceivable\Create.aspx" />
+    <Content Include="Views\AccountReceivable\Delete.aspx" />
+    <Content Include="Views\AccountReceivable\Details.aspx" />
+    <Content Include="Views\AccountReceivable\Edit.aspx" />
+    <Content Include="Views\AccountReceivable\Index.aspx" />
     <Content Include="Views\Attendance\Create.aspx" />
     <Content Include="Views\Attendance\Delete.aspx" />
     <Content Include="Views\Attendance\Details.aspx" />
