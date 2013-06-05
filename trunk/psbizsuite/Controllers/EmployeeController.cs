@@ -44,16 +44,14 @@ namespace psbizsuite.Controllers
                 //username is fullname without space
                 //password is NRIC
                 UserAccount employeeAcc = new UserAccount();
-                employeeAcc.Username = employee.FullName.Replace(" ", string.Empty);
+                employeeAcc.Username = employee.UserAccount_Username;
                 employeeAcc.Password = employee.NRIC;
                 employeeAcc.Type = "Employee";
                 db.UserAccounts.Add(employeeAcc);
 
                 //add employee profile into employee database
-                employee.UserAccount_Username = employeeAcc.Username;
                 db.Employees.Add(employee);
 
-                
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

@@ -11,7 +11,6 @@ namespace psbizsuite.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class Employee
     {
@@ -22,41 +21,19 @@ namespace psbizsuite.Models
             this.LeaveRequests = new HashSet<LeaveRequest>();
             this.SupportTickets = new HashSet<SupportTicket>();
         }
-
-        [Required(ErrorMessage = "This field is required")]
+    
         public string FullName { get; set; }
-        [Required(ErrorMessage = "This field is required")]
         public string Address { get; set; }
-        [Required(ErrorMessage = "This field is required")]
         public int PhoneNo { get; set; }
-        [Required(ErrorMessage = "This field is required")]
-        [MaxLength(9)]
         public string NRIC { get; set; }
-        [Required(ErrorMessage = "This field is required")]
-        [DataType(DataType.Date)] 
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public System.DateTime DOB { get; set; }
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
-        [DataType(DataType.Date)] 
         public Nullable<System.DateTime> EndEmploymentDate { get; set; }
-        [Required(ErrorMessage = "This field is required")]
-        [DataType(DataType.Date)] 
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public System.DateTime StartEmploymentDate { get; set; }
-        [Required(ErrorMessage = "This field is required")]
         public double SalaryPerHour { get; set; }
-        [Required(ErrorMessage = "This field is required")]
-        [DataType(DataType.Time)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = @"{0:HH\:mm}")]
         public System.TimeSpan StartShiftHour { get; set; }
-        [Required(ErrorMessage = "This field is required")]
-        [DataType(DataType.Time)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = @"{0:HH\:mm}")]
-        public System.TimeSpan EndShirtHour { get; set; }
-        [Required(ErrorMessage = "This field is required")]
+        public System.TimeSpan EndShiftHour { get; set; }
         public string UserAccount_Username { get; set; }
         public string EmployeePosition_PositionName { get; set; }
-        [Required(ErrorMessage = "This field is required")]
         public string PhoneUid { get; set; }
     
         public virtual ICollection<Attendance> Attendances { get; set; }

@@ -1750,6 +1750,13 @@ select {
     height: 25px;
 }
 
+.address {
+    width: 300px;
+    height: 80px;
+    resize: none;
+}
+
+
 /* Styles for validation helpers
 -----------------------------------------------------------*/
 .field-validation-error {
@@ -1762,5 +1769,4 @@ select {
 
 .input-validation-error {
     border: 1px solid #ff0000;
-
 }

@@ -25,5 +25,6 @@ namespace psbizsuite.Models
         public string Supplier_UserAccount_Username { get; set; }
     
         public virtual Supplier Supplier { get; set; }
+        public virtual Category Category { get; set; }
     }
 }

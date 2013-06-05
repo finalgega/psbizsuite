@@ -5,13 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <style>
-        .address {
-            width: 300px;
-            height: 80px;
-            resize: none;
-        }
-    </style>
+
     
     <!-- start content-outer -->
     <div id="content-outer">
@@ -96,13 +90,18 @@
                                             </tr>
                                             <tr>
                                                 <th>End Working Hour:</th>
-                                                <td><%: Html.EditorFor(model => model.EndShirtHour) %>
-                                                <%: Html.ValidationMessageFor(model => model.EndShirtHour) %></td>
+                                                <td><%: Html.EditorFor(model => model.EndShiftHour) %>
+                                                <%: Html.ValidationMessageFor(model => model.EndShiftHour) %></td>
                                             </tr>
                                             <tr>
                                                 <th>Salary Per Hour:</th>
                                                 <td><%: Html.EditorFor(model => model.SalaryPerHour) %>
                                                 <%: Html.ValidationMessageFor(model => model.SalaryPerHour) %></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Username:</th>
+                                                <td><%: Html.EditorFor(model => model.UserAccount_Username) %>
+                                                <%: Html.ValidationMessageFor(model => model.UserAccount_Username) %></td>
                                             </tr>
                                             <tr>
                                                 <th>&nbsp;</th>

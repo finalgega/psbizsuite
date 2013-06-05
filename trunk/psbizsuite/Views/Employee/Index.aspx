@@ -7,7 +7,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <div id="page-heading">
-        <h1>Manage Employee Details</h1>
+        <h1>Manage Employee Details <%= (string)(Session["username"]) %></h1>
     </div>
 
     <table border="0" class="zeroPS" id="content-table" style="width: 100%;">
@@ -55,7 +55,7 @@
                                     <%: Html.DisplayFor(modelItem => item.PhoneNo) %>
                                 </td>
                                <td>
-                                   <%= item.SalaryPerHour * 30 * (item.EndShirtHour.TotalHours-item.StartShiftHour.TotalHours) %>
+                                   <%= item.SalaryPerHour * 30 * (item.EndShiftHour.TotalHours-item.StartShiftHour.TotalHours) %>
                                </td>
                                 <td>
                                     <%: Html.DisplayFor(modelItem => item.EmployeePosition.PositionName) %>

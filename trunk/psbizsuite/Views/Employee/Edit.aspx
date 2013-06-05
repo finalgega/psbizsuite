@@ -88,8 +88,8 @@
                                             </tr>
                                             <tr>
                                                 <th>End Working Hour:</th>
-                                                <td><%: Html.EditorFor(model => model.EndShirtHour) %></td>
-                                                <td><%: Html.ValidationMessageFor(model => model.EndShirtHour) %></td>
+                                                <td><%: Html.EditorFor(model => model.EndShiftHour) %></td>
+                                                <td><%: Html.ValidationMessageFor(model => model.EndShiftHour) %></td>
                                             </tr>
                                             <tr>
                                                 <th>Salary Per Hour:</th>
