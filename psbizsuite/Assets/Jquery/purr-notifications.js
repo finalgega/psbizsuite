@@ -52,22 +52,26 @@
 		notify();
 
 		function notify ()
-		{	
+		{
+		    alert('In function notify');
 			// Set up the close button
-			var close = document.createElement( 'a' );
-			$( close ).attr(	
+		//	var close = document.createElement( 'a' );
+			$( '.close' ).attr(	
 				{
+
 					className: 'close',
 					href: '#close',
 					innerHTML: 'Close'
 				}
+      
 			)
 				.appendTo( notice )
 					.click( function ()
-						{
+					{
+					    alert('in click event handler');
 							removeNotice();
 							
-							return false;
+							return true;
 						}
 					);
 			

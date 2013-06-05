@@ -5,25 +5,18 @@ using System.Text;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using psbizsuite.Models;
+using psbizsuite.Models.Utilities;
 
 namespace psbizsuite.Controllers
 {
     public class InventoryController : Controller
     {
+        private BizSuiteDBEntities db = new BizSuiteDBEntities();
         //
-        // GET: /Inventory/
-        public ActionResult CreateInventoryItem(string itemName)
+        // GET: /Inventory/CreateInvetoryItem
+        public ActionResult CreateInventoryItem()
         {
-            Console.WriteLine("POST MADE IT!");
-            if (itemName != null)
-            {
-                ViewBag.Message = "Succeed!";
-                ViewBag.Message = itemName;
-            }
-            else
-            {
-                ViewBag.Message = "Failed!";
-            }
             return View();
         }
         public ActionResult RetrieveInventoryItem()
@@ -47,14 +40,22 @@ namespace psbizsuite.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateItemRecord()
+        public ActionResult CreateItemRecord(Inventory inventoryItem)
         {
+            if (ModelState.IsValid)
+            {
+                Inventory item = new Inventory();
+                item = inventoryItem;
+                db.Inventories.Add(item);
+                db.SaveChanges();
+                return RedirectToAction("RetrieveInventoryItem");
+            }
             Debug.WriteLine("POST MADE IT!");
             EncryptionController encrypt = new EncryptionController();
             StringBuilder randStr = new StringBuilder("Hello World!\n");
             StringBuilder nXtString = encrypt.SimpleXORAlgorithm(randStr);
-            MySQLController mysql = new MySQLController();
-            mysql.SetUp();
+           // MySQLController mysql = new MySQLController();
+           // mysql.SetUp();
            // byte[] test = encrypt.RSAEncrypt(randStr);
            // StringBuilder nXtString = new StringBuilder(encrypt.RSADecrypt(test));
             return Content(nXtString.ToString());
