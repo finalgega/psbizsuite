@@ -13,7 +13,13 @@
 
     <fieldset>
         <legend>Inventory</legend>
-
+        <div class="editor-label">
+            <%: Html.LabelFor(model => model.ItemName) %>
+        </div>
+        <div class="editor-field">
+            <%: Html.EditorFor(model => model.ItemName) %>
+            <%: Html.ValidationMessageFor(model => model.ItemName) %>
+        </div>
         <div class="editor-label">
             <%: Html.LabelFor(model => model.ItemDescription) %>
         </div>
@@ -71,10 +77,19 @@
         </div>
 
         <div class="editor-label">
+            <%: Html.LabelFor(model => model.category.CatName) %>
+        </div> 
+      
+        <div class="editor-field">
+            <%: Html.DropDownList("category_CatName",String.Empty) %>
+            <%: Html.ValidationMessageFor(model => model.category.CatName) %>
+        </div> 
+        <div class="editor-label">
             <%: Html.LabelFor(model => model.Supplier_UserAccount_Username, "Supplier") %>
         </div>
+  
         <div class="editor-field">
-            <%: Html.DropDownList("Supplier_UserAccount_Username", String.Empty) %>
+            <%: Html.DropDownList("Supplier_UserAccount_Username","Please select the supplier the good came from") %>
             <%: Html.ValidationMessageFor(model => model.Supplier_UserAccount_Username) %>
         </div>
 
