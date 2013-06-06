@@ -1,65 +1,125 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using psbizsuite.Models;
-using psbizsuite.Models.Utilities;
 
 namespace psbizsuite.Controllers
 {
     public class InventoryController : Controller
     {
         private BizSuiteDBEntities db = new BizSuiteDBEntities();
+
         //
-        // GET: /Inventory/CreateInvetoryItem
-        public ActionResult CreateInventoryItem()
+        // GET: /Inventory/
+
+        public ActionResult Index()
         {
-            return View();
+            var inventories = db.Inventories.Include(i => i.Supplier);
+            return View(inventories.ToList());
         }
-        public ActionResult RetrieveInventoryItem()
+
+        //
+        // GET: /Inventory/Details/5
+
+        public ActionResult Details(int id = 0)
         {
+            Inventory inventory = db.Inventories.Find(id);
+            if (inventory == null)
+            {
+                return HttpNotFound();
+            }
+            return View(inventory);
+        }
+
+        //
+        // GET: /Inventory/Create
+
+        public ActionResult Create()
+        {
+            ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName");
             return View();
         }
 
-        public ActionResult UpdateInventoryItem()
-        {
-            return View();
-        }
-
-        public ActionResult InventoryDashboard()
-        {
-            return View();
-        }
-
-        public ActionResult ViewInventory()
-        {
-            return View();
-        }
+        //
+        // POST: /Inventory/Create
 
         [HttpPost]
-        public ActionResult CreateItemRecord(Inventory inventoryItem)
+        public ActionResult Create(Inventory inventory)
         {
             if (ModelState.IsValid)
             {
-                Inventory item = new Inventory();
-                item = inventoryItem;
-                db.Inventories.Add(item);
+                db.Inventories.Add(inventory);
                 db.SaveChanges();
-                return RedirectToAction("RetrieveInventoryItem");
+                return RedirectToAction("Index");
             }
-            Debug.WriteLine("POST MADE IT!");
-            EncryptionController encrypt = new EncryptionController();
-            StringBuilder randStr = new StringBuilder("Hello World!\n");
-            StringBuilder nXtString = encrypt.SimpleXORAlgorithm(randStr);
-         //   MySQLController mysql = new MySQLController();
-         //   mysql.SetUp();
-           // byte[] test = encrypt.RSAEncrypt(randStr);
-           // StringBuilder nXtString = new StringBuilder(encrypt.RSADecrypt(test));
-            return Content(nXtString.ToString());
+
+            ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName", inventory.Supplier_UserAccount_Username);
+            return View(inventory);
         }
 
+        //
+        // GET: /Inventory/Edit/5
+
+        public ActionResult Edit(int id = 0)
+        {
+            Inventory inventory = db.Inventories.Find(id);
+            if (inventory == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName", inventory.Supplier_UserAccount_Username);
+            return View(inventory);
+        }
+
+        //
+        // POST: /Inventory/Edit/5
+
+        [HttpPost]
+        public ActionResult Edit(Inventory inventory)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(inventory).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName", inventory.Supplier_UserAccount_Username);
+            return View(inventory);
+        }
+
+        //
+        // GET: /Inventory/Delete/5
+
+        public ActionResult Delete(int id = 0)
+        {
+            Inventory inventory = db.Inventories.Find(id);
+            if (inventory == null)
+            {
+                return HttpNotFound();
+            }
+            return View(inventory);
+        }
+
+        //
+        // POST: /Inventory/Delete/5
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Inventory inventory = db.Inventories.Find(id);
+            db.Inventories.Remove(inventory);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+            base.Dispose(disposing);
+        }
     }
 }
