@@ -123,6 +123,7 @@
   <ItemGroup>
     <Compile Include="Controllers\AccountingController.cs" />
     <Compile Include="Controllers\AttendanceController.cs" />
+    <Compile Include="Controllers\CashFlowController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
@@ -131,6 +132,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventoryController.cs" />
     <Compile Include="Controllers\InventoryController2.cs" />
+    <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\LeaveController.cs" />
     <Compile Include="Controllers\SupportTicketController.cs" />
@@ -353,6 +355,11 @@
     <Content Include="Views\Attendance\Index.aspx" />
     <Content Include="Views\Attendance\ViewAttendance.aspx" />
     <Content Include="Views\Attendance\ViewAttendanceSummary.aspx" />
+    <Content Include="Views\CashFlow\Create.aspx" />
+    <Content Include="Views\CashFlow\Delete.aspx" />
+    <Content Include="Views\CashFlow\Details.aspx" />
+    <Content Include="Views\CashFlow\Edit.aspx" />
+    <Content Include="Views\CashFlow\Index.aspx" />
     <Content Include="Views\Customer\Create.aspx" />
     <Content Include="Views\Customer\CreateCustomerProfile.aspx" />
     <Content Include="Views\Customer\Delete.aspx" />
@@ -378,6 +385,11 @@
     <Content Include="Views\Inventory\RetrieveInventoryItem.aspx" />
     <Content Include="Views\Inventory\UpdateInventoryItem.aspx" />
     <Content Include="Views\Inventory\ViewInventory.aspx" />
+    <Content Include="Views\Invoice\Create.aspx" />
+    <Content Include="Views\Invoice\Delete.aspx" />
+    <Content Include="Views\Invoice\Details.aspx" />
+    <Content Include="Views\Invoice\Edit.aspx" />
+    <Content Include="Views\Invoice\Index.aspx" />
     <Content Include="Views\Leave\ApplyLeave.aspx" />
     <Content Include="Views\Leave\EditLeavePolicy.aspx" />
     <Content Include="Views\Leave\ViewLeavePolicy.aspx" />
