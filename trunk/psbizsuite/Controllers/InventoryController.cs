@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using psbizsuite.Models;
-
 namespace psbizsuite.Controllers
 {
     public class InventoryController : Controller
@@ -41,6 +42,7 @@ namespace psbizsuite.Controllers
         public ActionResult Create()
         {
             ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName");
+            ViewBag.category_CatName = new SelectList(db.categories, "CatName", "CatName");
             return View();
         }
 
@@ -52,7 +54,9 @@ namespace psbizsuite.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Inventories.Add(inventory);
+                Inventory inventoryItem = inventory;
+                inventoryItem.Category_CatId = 1;
+                db.Inventories.Add(inventoryItem);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -84,6 +88,8 @@ namespace psbizsuite.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(inventory).State = EntityState.Modified;
+              //  Inventory inventoryItem = inventory;
+               // inventoryItem.Category_CatId = 1;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -113,6 +119,27 @@ namespace psbizsuite.Controllers
             Inventory inventory = db.Inventories.Find(id);
             db.Inventories.Remove(inventory);
             db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult CreateInventoryItem()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateItemRecord()
+        {
+            Debug.WriteLine("POST MADE IT!");
+            EncryptionController encrypt = new EncryptionController();
+            StringBuilder randStr = new StringBuilder("Hello World!\n");
+            StringBuilder nXtString = encrypt.SimpleXORAlgorithm(randStr);
+            Debug.WriteLine("randStr : " + randStr);
+            Debug.WriteLine("nXtString : " + nXtString);
+            Debug.WriteLine("x0r of nXtString : " + encrypt.SimpleXORAlgorithm(nXtString));
+            string pbkdf2Pwd = EncryptionController.CreatePasswordHash("Sypeskder");
+            Debug.WriteLine("Original Password :  Sypeskder");
+            Debug.WriteLine("Hash of password using PBKDF2 : " + pbkdf2Pwd);
             return RedirectToAction("Index");
         }
 

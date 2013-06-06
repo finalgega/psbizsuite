@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="BizSuiteDBModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="BizSuiteDBModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="BizSuiteDBModelStoreContainer">
           <EntitySet Name="attendance" EntityType="BizSuiteDBModel.Store.attendance" store:Type="Tables" Schema="bizsuitedb" />
           <EntitySet Name="cashflow" EntityType="BizSuiteDBModel.Store.cashflow" store:Type="Tables" Schema="bizsuitedb" />
@@ -112,8 +112,8 @@
             <PropertyRef Name="CatId" />
           </Key>
           <Property Name="CatId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="CatName" Type="varchar" Nullable="false" MaxLength="45" />
-          <Property Name="CatDescription" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="CatName" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="CatDescription" Type="varchar" Nullable="false" MaxLength="255" />
         </EntityType>
         <EntityType Name="customer">
           <Key>
@@ -157,16 +157,16 @@
             <PropertyRef Name="InventoryId" />
           </Key>
           <Property Name="InventoryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="ItemDescription" Type="varchar" Nullable="false" MaxLength="45" />
-          <Property Name="Image" Type="blob" />
-          <Property Name="UnitCost" Type="varchar" Nullable="false" MaxLength="45" />
-          <Property Name="UnitWeightKilo" Type="varchar" MaxLength="45" />
-          <Property Name="Quantity" Type="varchar" Nullable="false" MaxLength="45" />
-          <Property Name="Location" Type="varchar" MaxLength="45" />
-          <Property Name="TimeStamp" Type="timestamp" Nullable="false" />
+          <Property Name="ItemName" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="ItemDescription" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Image" Type="mediumblob" />
+          <Property Name="UnitCost" Type="decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="UnitWeightKilo" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="Location" Type="varchar" MaxLength="255" />
+          <Property Name="TimeStamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Supplier_UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="Category_CatId" Type="int" Nullable="false" />
-          <Property Name="ItemName" Type="varchar" Nullable="false" MaxLength="45" />
         </EntityType>
         <EntityType Name="invoice">
           <Key>
@@ -235,7 +235,7 @@
           </Key>
           <Property Name="PayrollRequestId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="TotalAmount" Type="double" />
-          <Property Name="RequestTimeStamp" Type="timestamp" />
+          <Property Name="RequestTimeStamp" Type="timestamp" StoreGeneratedPattern="Identity" />
           <Property Name="Status" Type="varchar" MaxLength="45" />
         </EntityType>
         <EntityType Name="profitloss">
@@ -555,11 +555,11 @@
             <PropertyRef Name="AttendanceId" />
           </Key>
           <Property Name="AttendanceId" Type="Int32" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" />
-          <Property Name="Location" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Location" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
           <Property Name="Employee_UserAccount_Username" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
           <NavigationProperty Name="Employee" Relationship="BizSuiteDBModel.fk_Attendance_Employee1" FromRole="Attendance" ToRole="Employee" />
-          <Property Type="Time" Name="ClockInTime" />
+          <Property Type="Time" Name="ClockInTime" Precision="0" />
           <Property Type="String" Name="ClockOutTime" MaxLength="45" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Customer">
@@ -584,12 +584,12 @@
           <Property Name="Address" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
           <Property Name="PhoneNo" Type="Int32" Nullable="false" />
           <Property Name="NRIC" Type="String" Nullable="false" MaxLength="9" Unicode="false" FixedLength="false" />
-          <Property Name="DOB" Type="DateTime" Nullable="false" />
-          <Property Name="EndEmploymentDate" Type="DateTime" />
-          <Property Name="StartEmploymentDate" Type="DateTime" Nullable="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndEmploymentDate" Type="DateTime" Precision="0" />
+          <Property Name="StartEmploymentDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="SalaryPerHour" Type="Double" Nullable="false" />
-          <Property Name="StartShiftHour" Type="Time" Nullable="false" />
-          <Property Name="EndShiftHour" Type="Time" Nullable="false" />
+          <Property Name="StartShiftHour" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="EndShiftHour" Type="Time" Nullable="false" Precision="0" />
           <Property Name="UserAccount_Username" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
           <Property Name="EmployeePosition_PositionName" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="Attendances" Relationship="BizSuiteDBModel.fk_Attendance_Employee1" FromRole="Employee" ToRole="Attendance" />
@@ -614,25 +614,25 @@
             <PropertyRef Name="InventoryId" />
           </Key>
           <Property Name="InventoryId" Type="Int32" Nullable="false" />
-          <Property Name="ItemDescription" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
-          <Property Name="Image" Type="Binary" />
-          <Property Name="UnitCost" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
-          <Property Name="UnitWeightKilo" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
-          <Property Name="Quantity" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
-          <Property Name="Location" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
-          <Property Name="TimeStamp" Type="DateTime" Nullable="false" />
+          <Property Type="String" Name="ItemName" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="ItemDescription" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Image" Type="Binary" MaxLength="16777215" FixedLength="false" />
+          <Property Name="UnitCost" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="UnitWeightKilo" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Location" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Supplier_UserAccount_Username" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="Supplier" Relationship="BizSuiteDBModel.fk_Inventory_Supplier1" FromRole="Inventory" ToRole="Supplier" />
           <Property Type="Int32" Name="Category_CatId" Nullable="false" />
           <NavigationProperty Name="category" Relationship="BizSuiteDBModel.FK_CategoryInventory" FromRole="Inventory" ToRole="category" />
-          <Property Type="String" Name="ItemName" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="KeyPair">
           <Key>
             <PropertyRef Name="Private" />
           </Key>
-          <Property Name="Private" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
-          <Property Name="Public" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="Private" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="Public" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
           <Property Name="Employee_UserAccount_Username" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="Employee" Relationship="BizSuiteDBModel.fk_KeyPair_Employee1" FromRole="KeyPair" ToRole="Employee" />
         </EntityType>
@@ -654,8 +654,8 @@
             <PropertyRef Name="LeaveRequestId" />
           </Key>
           <Property Name="LeaveRequestId" Type="Int32" Nullable="false" />
-          <Property Name="StartDate" Type="DateTime" Nullable="false" />
-          <Property Name="EndDate" Type="DateTime" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Reason" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
           <Property Name="Employee_UserAccount_Username" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
           <Property Name="LeavePolicy_LeavePolicyId" Type="Int32" Nullable="false" />
@@ -692,7 +692,7 @@
           </Key>
           <Property Name="PayrollRequestId" Type="Int32" Nullable="false" />
           <Property Name="TotalAmount" Type="Double" />
-          <Property Name="RequestTimeStamp" Type="DateTime" />
+          <Property Name="RequestTimeStamp" Type="DateTime" Precision="0" />
           <Property Name="Status" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
         </EntityType>
         <EntityType Name="Supplier">
@@ -714,10 +714,10 @@
             <PropertyRef Name="SupportTicketId" />
           </Key>
           <Property Name="SupportTicketId" Type="Int32" Nullable="false" />
-          <Property Type="String" Name="EnquiryType" Nullable="false" />
-          <Property Type="String" Name="EnquiryPriority" Nullable="false" />
-          <Property Type="String" Name="Details" Nullable="false" />
-          <Property Type="String" Name="Reply" Nullable="true" />
+          <Property Type="String" Name="EnquiryType" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Type="String" Name="EnquiryPriority" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Type="String" Name="Details" Unicode="false" FixedLength="false" MaxLength="45" />
+          <Property Type="String" Name="Reply" Nullable="true" MaxLength="45" Unicode="false" FixedLength="false" />
           <Property Name="Customer_UserAccount_Username" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
           <Property Name="ReferenceId" Type="Int32" />
           <Property Name="Employee_UserAccount_Username" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
@@ -911,8 +911,8 @@
             <PropertyRef Name="CatId" />
           </Key>
           <Property Type="Int32" Name="CatId" Nullable="false" />
-          <Property Type="String" Name="CatName" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="CatDescription" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CatName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CatDescription" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="inventories" Relationship="BizSuiteDBModel.FK_CategoryInventory" FromRole="category" ToRole="Inventory" />
         </EntityType>
         <Association Name="FK_CategoryInventory">
@@ -932,7 +932,7 @@
             <PropertyRef Name="CashFlowId" />
           </Key>
           <Property Type="Int32" Name="CashFlowId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="DateTime" Name="Date" />
+          <Property Type="DateTime" Name="Date" Precision="0" />
           <Property Type="String" Name="Description" MaxLength="160" FixedLength="false" Unicode="false" />
           <Property Type="Double" Name="CashIn" />
           <Property Type="Double" Name="CashOut" />
@@ -943,8 +943,8 @@
             <PropertyRef Name="invoiceId" />
           </Key>
           <Property Type="Int32" Name="invoiceId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="DateTime" Name="StartDate" />
-          <Property Type="DateTime" Name="DueDate" />
+          <Property Type="DateTime" Name="StartDate" Precision="0" />
+          <Property Type="DateTime" Name="DueDate" Precision="0" />
           <Property Type="Double" Name="OtherOptions" />
           <Property Type="Int32" Name="Order_OrderId" />
           <NavigationProperty Name="order" Relationship="BizSuiteDBModel.fk_Invoice_Order1" FromRole="invoice" ToRole="Order" />
@@ -954,7 +954,7 @@
             <PropertyRef Name="profitLossId" />
           </Key>
           <Property Type="Int32" Name="profitLossId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="DateTime" Name="Date" />
+          <Property Type="DateTime" Name="Date" Precision="0" />
           <Property Type="Double" Name="Income" />
           <Property Type="Double" Name="Expenses" />
           <Property Type="Double" Name="CashOnHand" />

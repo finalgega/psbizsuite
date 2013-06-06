@@ -15,16 +15,16 @@ namespace psbizsuite.Models
     public partial class Inventory
     {
         public int InventoryId { get; set; }
+        public string ItemName { get; set; }
         public string ItemDescription { get; set; }
         public byte[] Image { get; set; }
-        public string UnitCost { get; set; }
-        public string UnitWeightKilo { get; set; }
-        public string Quantity { get; set; }
+        public decimal UnitCost { get; set; }
+        public Nullable<decimal> UnitWeightKilo { get; set; }
+        public int Quantity { get; set; }
         public string Location { get; set; }
         public System.DateTime TimeStamp { get; set; }
         public string Supplier_UserAccount_Username { get; set; }
         public int Category_CatId { get; set; }
-        public string ItemName { get; set; }
     
         public virtual Supplier Supplier { get; set; }
         public virtual category category { get; set; }
