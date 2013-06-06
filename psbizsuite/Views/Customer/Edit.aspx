@@ -13,8 +13,10 @@
 
     <fieldset>
         <legend>Customer</legend>
-
+        Note: Usernames cannot be changed once registered <br />
         <table>
+            <%: Html.HiddenFor(model => model.UserAccount_Username) %>
+            
             <tr>
                 <td><div class="editor-label">Full Name</div></td>
                 <td><div class="editor-field">
@@ -50,6 +52,7 @@
                     <input type="submit" value="Update Customer Details" />
                 </td>
             </tr>
+            </table>
     </fieldset>
 <% } %>
 
