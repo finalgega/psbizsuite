@@ -46,7 +46,7 @@
             <td><div class="editor-label">Existing Enquiry</div></td>
             <td><div class="editor-field">
             <%: Html.DropDownList("ReferenceId", String.Empty) %>
-            <%: Html.ValidationMessageFor(model => model.ExistingEnquiry) %></div></td>
+            <%: Html.ValidationMessageFor(model => model.ReferenceId) %></div></td>
         </tr>
         <tr>
             <td><div class="editor-label">Enquiry Details</div></td>
