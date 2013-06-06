@@ -34,7 +34,7 @@ CREATE TABLE `attendance` (
   PRIMARY KEY (`AttendanceId`),
   KEY `fk_Attendance_Employee1_idx` (`Employee_UserAccount_Username`),
   CONSTRAINT `fk_Attendance_Employee1` FOREIGN KEY (`Employee_UserAccount_Username`) REFERENCES `employee` (`UserAccount_Username`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,6 +43,7 @@ CREATE TABLE `attendance` (
 
 LOCK TABLES `attendance` WRITE;
 /*!40000 ALTER TABLE `attendance` DISABLE KEYS */;
+INSERT INTO `attendance` VALUES (3,'2013-06-06','17:06:00',NULL,'NYP','WinnieThePooh'),(4,'2013-06-06','17:06:00',NULL,'NYP','WinnieThePooh');
 /*!40000 ALTER TABLE `attendance` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -159,6 +160,7 @@ CREATE TABLE `employee` (
 
 LOCK TABLES `employee` WRITE;
 /*!40000 ALTER TABLE `employee` DISABLE KEYS */;
+INSERT INTO `employee` VALUES ('Winnie The Pooh','NYP',98776788,'S8799380H','2004-01-06','2013-06-26','2013-06-12',5,'10:00:00','12:00:00','WinnieThePooh','HR Manager','uid');
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -197,7 +199,7 @@ DROP TABLE IF EXISTS `inventory`;
 CREATE TABLE `inventory` (
   `InventoryId` int(11) NOT NULL AUTO_INCREMENT,
   `ItemDescription` varchar(45) NOT NULL,
-  `Image` varchar(45) DEFAULT NULL,
+  `Image` blob,
   `UnitCost` varchar(45) NOT NULL,
   `UnitWeightKilo` varchar(45) DEFAULT NULL,
   `Quantity` varchar(45) NOT NULL,
@@ -205,6 +207,7 @@ CREATE TABLE `inventory` (
   `TimeStamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `Supplier_UserAccount_Username` varchar(45) NOT NULL,
   `Category_CatId` int(11) NOT NULL,
+  `ItemName` varchar(45) NOT NULL,
   PRIMARY KEY (`InventoryId`),
   KEY `fk_Inventory_Supplier1_idx` (`Supplier_UserAccount_Username`),
   KEY `fk_Inventory_Category1_idx` (`Category_CatId`),
@@ -529,6 +532,7 @@ CREATE TABLE `useraccount` (
 
 LOCK TABLES `useraccount` WRITE;
 /*!40000 ALTER TABLE `useraccount` DISABLE KEYS */;
+INSERT INTO `useraccount` VALUES ('TeddyBear','teddybear','Employee','Nil'),('WinnieThePooh','S8799380H','Employee','null');
 /*!40000 ALTER TABLE `useraccount` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -541,4 +545,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-06 18:34:43
+-- Dump completed on 2013-06-07  1:30:33

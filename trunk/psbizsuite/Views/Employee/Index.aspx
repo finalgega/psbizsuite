@@ -7,9 +7,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <div id="page-heading">
-        <h1>Manage Employee Details <%= (string)(Session["username"]) %></h1>
+        <h1>Manage Employee Details </h1>
     </div>
-
     <table border="0" class="zeroPS" id="content-table" style="width: 100%;">
         <tr>
             <th rowspan="3" class="sized">
@@ -41,36 +40,36 @@
                             <% foreach (var item in Model)
                                { %>
                             <tr>
-
                                 <td>
                                     <input type="checkbox" />
                                 </td>
                                 <td>
                                     <%: Html.DisplayFor(modelItem => item.FullName) %>
                                 </td>
-                                 <td>
+                                <td>
                                     <%: Html.DisplayFor(modelItem => item.NRIC) %>
                                 </td>
                                 <td>
                                     <%: Html.DisplayFor(modelItem => item.PhoneNo) %>
                                 </td>
-                               <td>
-                                   <%= item.SalaryPerHour * 30 * (item.EndShiftHour.TotalHours-item.StartShiftHour.TotalHours) %>
-                               </td>
                                 <td>
                                     <%: Html.DisplayFor(modelItem => item.EmployeePosition.PositionName) %>
+                                   
+                                </td>
+                                <td>
+                                     <%= item.SalaryPerHour * 30 * (item.EndShiftHour.TotalHours-item.StartShiftHour.TotalHours) %>
                                 </td>
                                 <td class="options-width">
                                     <%: Html.ActionLink(" ", "Edit", new { id = item.UserAccount_Username }, new { @class = "icon-1", title="More details/Edit" }) %>
-                                    <%: Html.ActionLink(" ", "Delete", new { id = item.UserAccount_Username }, new { @class = "icon-2", title="Delete" }) %>         
+                                    <%: Html.ActionLink(" ", "Delete", new { id = item.UserAccount_Username }, new { @class = "icon-2", title="Delete" }) %>      
                                 </td>
                             </tr>
                             <% } %>
                         </table>
-                           <div class="clear"></div>
+                        <div class="clear"></div>
 
-                </div>
-                <!--  end content-table-inner ............................................END  -->
+                    </div>
+                    <!--  end content-table-inner ............................................END  -->
             </td>
             <td id="tbl-border-right"></td>
         </tr>
@@ -81,7 +80,7 @@
         </tr>
     </table>
     <div class="clear">&nbsp;</div>
-          
+
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="NavContent" runat="server">

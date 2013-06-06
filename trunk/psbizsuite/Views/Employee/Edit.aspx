@@ -5,6 +5,13 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <style>
+        .address {
+            width: 300px;
+            height: 80px;
+            resize: none;
+        }
+    </style>
   <!-- start content-outer -->
     <div id="content-outer">
         <!-- start content -->
@@ -48,7 +55,7 @@
                                             </tr>
                                             <tr>
                                                 <th>NRIC:</th>
-                                                <td><%: Html.EditorFor(model => model.NRIC) %></td>
+                                                <td><%:Html.EditorFor(model => model.NRIC)%>
                                                 <td><%: Html.ValidationMessageFor(model => model.NRIC) %></td>
                                             </tr>
                                             <tr>
@@ -63,8 +70,18 @@
                                             </tr>
                                             <tr>
                                                 <th>Address:</th>
-                                                <td><%: Html.TextAreaFor(model => model.Address) %></td>
+                                                <td><%: Html.TextAreaFor(model => model.Address, new { @class = "address" })%></td>
                                                 <td><%: Html.ValidationMessageFor(model => model.Address) %></td>
+                                            </tr>
+                                             <tr>
+                                                <th>User Account: </th>
+                                                <td><%: Html.EditorFor(model => model.UserAccount_Username) %>
+                                                <%: Html.ValidationMessageFor(model => model.UserAccount_Username) %></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Phone Uid: </th>
+                                                <td><%: Html.EditorFor(model => model.PhoneUid) %>
+                                                <%: Html.ValidationMessageFor(model => model.PhoneUid) %></td>
                                             </tr>
                                             <tr>
                                                 <th>Position: </th>
