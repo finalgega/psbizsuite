@@ -58,15 +58,14 @@ namespace psbizsuite.Controllers
                 UserAccount customerAcc = new UserAccount();
                 customerAcc.Username = customer.UserAccount_Username;
                 customerAcc.Password = customerAcc.Username;
-                customerAcc.Salt = "james";
+                customerAcc.Salt = "lol";
                 customerAcc.Type = "Customer";
                 db.UserAccounts.Add(customerAcc);
 
 
                 db.Customers.Add(customer);
                 db.SaveChanges();
-                EmailController e = new EmailController();
-                e.submitEmail();
+                
                 return RedirectToAction("Index");
                 
             }

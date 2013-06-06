@@ -62,8 +62,8 @@
         </td>
         <td>
             <%: Html.ActionLink("Edit", "Edit", new { id=item.UserAccount_Username }) %> |
-            <%: Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) %> |
-            <%: Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) %>
+            <%: Html.ActionLink("Details", "Details", new { id=item.UserAccount_Username }) %> |
+            <%: Html.ActionLink("Delete", "Delete", new { id=item.UserAccount_Username }) %>
         </td>
     </tr>
 <% } %>

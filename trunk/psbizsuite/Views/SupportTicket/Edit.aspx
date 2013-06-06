@@ -14,14 +14,19 @@
     <fieldset>
         <legend>SupportTicket</legend>
         <table>
-        <%: Html.HiddenFor(model => model.SupportTicketId) %>
+            <%: Html.HiddenFor(model => model.SupportTicketId) %>
+            <%: Html.HiddenFor(model => model.EnquiryType) %>
+            <%: Html.HiddenFor(model => model.EnquiryPriority) %>
+            <%: Html.HiddenFor(model => model.Customer_UserAccount_Username) %>
+            <%: Html.HiddenFor(model => model.ReferenceId) %>
+            <%: Html.HiddenFor(model => model.Details) %>
             <tr>
                 <td><div class="display-label">Previous Enquiry</div></td>
                 <td><div class="display-field"><%: Html.DisplayFor(model => model.ReferenceId) %></div></td>
             </tr>
             <tr>
                 <td> <div class="editor-label">Customer Enquiry </div> </td>
-                <td> <%: Html.DisplayFor(model => model.Details %></td>
+                <td> <div class="display-field"><%: Html.DisplayFor(model => model.Details) %></div></td>
             </tr>
             <tr>
                 <td><div class="editor-label"> Your reply </div></td>
@@ -32,7 +37,7 @@
         </table>
         
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Reply" />
         </p>
     </fieldset>
 <% } %>

@@ -55,9 +55,11 @@ namespace psbizsuite.Controllers
             if (ModelState.IsValid)
             {
                 
-                supportticket.Customer_UserAccount_Username = "jaack";
+                supportticket.Customer_UserAccount_Username = "jack";
                 db.SupportTickets.Add(supportticket);
                 db.SaveChanges();
+                EmailController e = new EmailController();
+                e.submitEmail();
                 return RedirectToAction("Index");
             }
 
@@ -91,13 +93,19 @@ namespace psbizsuite.Controllers
         {
             if (ModelState.IsValid)
             {
+                supportticket.Employee_UserAccount_Username = "mary";
                 db.Entry(supportticket).State = EntityState.Modified;
+                
                 db.SaveChanges();
+                EmailController e = new EmailController();
+                int count = 10;
+                e.submitEmail(count);
                 return RedirectToAction("Index");
             }
-            ViewBag.Customer_UserAccount_Username = new SelectList(db.Customers, "UserAccount_Username", "FullName", supportticket.Customer_UserAccount_Username);
-            ViewBag.Employee_UserAccount_Username = new SelectList(db.Employees, "UserAccount_Username", "FullName", supportticket.Employee_UserAccount_Username);
-            ViewBag.ReferenceId = new SelectList(db.SupportTickets, "SupportTicketId", "EnquiryType", supportticket.ReferenceId);
+           // ViewBag.Customer_UserAccount_Username = new SelectList(db.Customers, "UserAccount_Username", "FullName", supportticket.Customer_UserAccount_Username);
+           // ViewBag.Employee_UserAccount_Username = new SelectList(db.Employees, "UserAccount_Username", "FullName", supportticket.Employee_UserAccount_Username);
+           // ViewBag.ReferenceId = new SelectList(db.SupportTickets, "SupportTicketId", "EnquiryType", supportticket.ReferenceId);
+            
             return View(supportticket);
         }
 
