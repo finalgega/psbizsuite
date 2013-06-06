@@ -25,8 +25,6 @@ namespace psbizsuite.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<AccountPayable> AccountPayables { get; set; }
-        public DbSet<AccountReceivable> AccountReceivables { get; set; }
         public DbSet<Attendance> Attendances { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Employee> Employees { get; set; }
@@ -42,5 +40,8 @@ namespace psbizsuite.Models
         public DbSet<SupportTicket> SupportTickets { get; set; }
         public DbSet<UserAccount> UserAccounts { get; set; }
         public DbSet<category> categories { get; set; }
+        public DbSet<cashflow> cashflows { get; set; }
+        public DbSet<invoice> invoices { get; set; }
+        public DbSet<profitloss> profitlosses { get; set; }
     }
 }

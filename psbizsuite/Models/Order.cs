@@ -16,8 +16,8 @@ namespace psbizsuite.Models
     {
         public Order()
         {
-            this.AccountReceivables = new HashSet<AccountReceivable>();
             this.OrderItems = new HashSet<OrderItem>();
+            this.invoices = new HashSet<invoice>();
         }
     
         public int OrderId { get; set; }
@@ -26,8 +26,8 @@ namespace psbizsuite.Models
         public string Customer_UserAccount_Username { get; set; }
         public double TotalAmount { get; set; }
     
-        public virtual ICollection<AccountReceivable> AccountReceivables { get; set; }
         public virtual Customer Customer { get; set; }
         public virtual ICollection<OrderItem> OrderItems { get; set; }
+        public virtual ICollection<invoice> invoices { get; set; }
     }
 }

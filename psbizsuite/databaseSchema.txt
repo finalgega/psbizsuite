@@ -18,58 +18,6 @@ USE `bizsuitedb`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `accountpayable`
---
-
-DROP TABLE IF EXISTS `accountpayable`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `accountpayable` (
-  `AccountPayableId` int(11) NOT NULL,
-  `Status` varchar(45) NOT NULL,
-  `TotalAmount` double NOT NULL,
-  `ReferenceId` int(11) NOT NULL COMMENT 'either payroll request id or inventory purchase id\\n',
-  PRIMARY KEY (`AccountPayableId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `accountpayable`
---
-
-LOCK TABLES `accountpayable` WRITE;
-/*!40000 ALTER TABLE `accountpayable` DISABLE KEYS */;
-/*!40000 ALTER TABLE `accountpayable` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `accountreceivable`
---
-
-DROP TABLE IF EXISTS `accountreceivable`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `accountreceivable` (
-  `AccountReceivableId` int(11) NOT NULL,
-  `Status` varchar(45) NOT NULL,
-  `TotalAmount` double NOT NULL,
-  `Order_OrderId` int(11) NOT NULL,
-  PRIMARY KEY (`AccountReceivableId`),
-  KEY `fk_AccountReceivable_Order1_idx` (`Order_OrderId`),
-  CONSTRAINT `fk_AccountReceivable_Order1` FOREIGN KEY (`Order_OrderId`) REFERENCES `order` (`OrderId`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `accountreceivable`
---
-
-LOCK TABLES `accountreceivable` WRITE;
-/*!40000 ALTER TABLE `accountreceivable` DISABLE KEYS */;
-/*!40000 ALTER TABLE `accountreceivable` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `attendance`
 --
 
@@ -77,7 +25,7 @@ DROP TABLE IF EXISTS `attendance`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `attendance` (
-  `AttendanceId` int(11) NOT NULL,
+  `AttendanceId` int(11) NOT NULL AUTO_INCREMENT,
   `Date` date NOT NULL,
   `ClockInTime` time DEFAULT NULL,
   `ClockOutTime` varchar(45) DEFAULT NULL,
@@ -99,6 +47,33 @@ LOCK TABLES `attendance` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `cashflow`
+--
+
+DROP TABLE IF EXISTS `cashflow`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cashflow` (
+  `CashFlowId` int(11) NOT NULL AUTO_INCREMENT,
+  `Date` date DEFAULT NULL,
+  `Description` varchar(160) DEFAULT NULL,
+  `CashIn` double DEFAULT NULL,
+  `CashOut` double DEFAULT NULL,
+  `TotalAmt` double DEFAULT NULL,
+  PRIMARY KEY (`CashFlowId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cashflow`
+--
+
+LOCK TABLES `cashflow` WRITE;
+/*!40000 ALTER TABLE `cashflow` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cashflow` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `category`
 --
 
@@ -106,7 +81,7 @@ DROP TABLE IF EXISTS `category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `category` (
-  `CatId` int(11) NOT NULL,
+  `CatId` int(11) NOT NULL AUTO_INCREMENT,
   `CatName` varchar(45) NOT NULL,
   `CatDescription` varchar(45) NOT NULL,
   PRIMARY KEY (`CatId`)
@@ -220,7 +195,7 @@ DROP TABLE IF EXISTS `inventory`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `inventory` (
-  `InventoryId` int(11) NOT NULL,
+  `InventoryId` int(11) NOT NULL AUTO_INCREMENT,
   `ItemDescription` varchar(45) NOT NULL,
   `Image` varchar(45) DEFAULT NULL,
   `UnitCost` varchar(45) NOT NULL,
@@ -233,8 +208,8 @@ CREATE TABLE `inventory` (
   PRIMARY KEY (`InventoryId`),
   KEY `fk_Inventory_Supplier1_idx` (`Supplier_UserAccount_Username`),
   KEY `fk_Inventory_Category1_idx` (`Category_CatId`),
-  CONSTRAINT `fk_Inventory_Supplier1` FOREIGN KEY (`Supplier_UserAccount_Username`) REFERENCES `supplier` (`UserAccount_Username`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `FK_CategoryInventory` FOREIGN KEY (`Category_CatId`) REFERENCES `category` (`CatId`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `FK_CategoryInventory` FOREIGN KEY (`Category_CatId`) REFERENCES `category` (`CatId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Inventory_Supplier1` FOREIGN KEY (`Supplier_UserAccount_Username`) REFERENCES `supplier` (`UserAccount_Username`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -245,6 +220,34 @@ CREATE TABLE `inventory` (
 LOCK TABLES `inventory` WRITE;
 /*!40000 ALTER TABLE `inventory` DISABLE KEYS */;
 /*!40000 ALTER TABLE `inventory` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `invoice`
+--
+
+DROP TABLE IF EXISTS `invoice`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `invoice` (
+  `invoiceId` int(11) NOT NULL AUTO_INCREMENT,
+  `StartDate` date DEFAULT NULL,
+  `DueDate` date DEFAULT NULL,
+  `OtherOptions` double DEFAULT NULL,
+  `Order_OrderId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`invoiceId`),
+  KEY `fk_Invoice_Order1` (`Order_OrderId`),
+  CONSTRAINT `fk_Invoice_Order1` FOREIGN KEY (`Order_OrderId`) REFERENCES `order` (`OrderId`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `invoice`
+--
+
+LOCK TABLES `invoice` WRITE;
+/*!40000 ALTER TABLE `invoice` DISABLE KEYS */;
+/*!40000 ALTER TABLE `invoice` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -281,7 +284,7 @@ DROP TABLE IF EXISTS `leavepolicy`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `leavepolicy` (
-  `LeavePolicyId` int(11) NOT NULL,
+  `LeavePolicyId` int(11) NOT NULL AUTO_INCREMENT,
   `PolicyName` varchar(45) NOT NULL,
   `PolicyDescription` varchar(250) NOT NULL,
   `DaysOfLeave` int(11) NOT NULL,
@@ -309,7 +312,7 @@ DROP TABLE IF EXISTS `leaverequest`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `leaverequest` (
-  `LeaveRequestId` int(11) NOT NULL,
+  `LeaveRequestId` int(11) NOT NULL AUTO_INCREMENT,
   `StartDate` date NOT NULL,
   `EndDate` date NOT NULL,
   `Reason` varchar(100) NOT NULL,
@@ -340,7 +343,7 @@ DROP TABLE IF EXISTS `order`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `order` (
-  `OrderId` int(11) NOT NULL,
+  `OrderId` int(11) NOT NULL AUTO_INCREMENT,
   `ReceiptId` int(11) NOT NULL,
   `Status` varchar(45) NOT NULL,
   `Customer_UserAccount_Username` varchar(45) NOT NULL,
@@ -369,7 +372,7 @@ DROP TABLE IF EXISTS `orderitem`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `orderitem` (
-  `OrderItemId` int(11) NOT NULL,
+  `OrderItemId` int(11) NOT NULL AUTO_INCREMENT,
   `Description` varchar(45) DEFAULT NULL,
   `UnitPrice` double DEFAULT NULL,
   `Quantity` int(11) DEFAULT NULL,
@@ -397,9 +400,9 @@ DROP TABLE IF EXISTS `payrollrequest`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `payrollrequest` (
-  `PayrollRequestId` int(11) NOT NULL,
+  `PayrollRequestId` int(11) NOT NULL AUTO_INCREMENT,
   `TotalAmount` double DEFAULT NULL,
-  `RequestTimeStamp` timestamp NULL DEFAULT NULL,
+  `RequestTimeStamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `Status` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`PayrollRequestId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -412,6 +415,32 @@ CREATE TABLE `payrollrequest` (
 LOCK TABLES `payrollrequest` WRITE;
 /*!40000 ALTER TABLE `payrollrequest` DISABLE KEYS */;
 /*!40000 ALTER TABLE `payrollrequest` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `profitloss`
+--
+
+DROP TABLE IF EXISTS `profitloss`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `profitloss` (
+  `profitLossId` int(11) NOT NULL AUTO_INCREMENT,
+  `Date` date DEFAULT NULL,
+  `Income` double DEFAULT NULL,
+  `Expenses` double DEFAULT NULL,
+  `CashOnHand` double DEFAULT NULL,
+  PRIMARY KEY (`profitLossId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `profitloss`
+--
+
+LOCK TABLES `profitloss` WRITE;
+/*!40000 ALTER TABLE `profitloss` DISABLE KEYS */;
+/*!40000 ALTER TABLE `profitloss` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -451,7 +480,7 @@ DROP TABLE IF EXISTS `supportticket`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `supportticket` (
-  `SupportTicketId` int(11) NOT NULL,
+  `SupportTicketId` int(11) NOT NULL AUTO_INCREMENT,
   `EnquiryType` varchar(45) NOT NULL,
   `EnquiryPriority` varchar(45) NOT NULL,
   `Customer_UserAccount_Username` varchar(45) NOT NULL,
@@ -512,4 +541,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-05 21:45:09
+-- Dump completed on 2013-06-06 18:34:43
