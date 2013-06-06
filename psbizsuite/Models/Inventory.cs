@@ -16,7 +16,7 @@ namespace psbizsuite.Models
     {
         public int InventoryId { get; set; }
         public string ItemDescription { get; set; }
-        public string Image { get; set; }
+        public byte[] Image { get; set; }
         public string UnitCost { get; set; }
         public string UnitWeightKilo { get; set; }
         public string Quantity { get; set; }
@@ -24,6 +24,7 @@ namespace psbizsuite.Models
         public System.DateTime TimeStamp { get; set; }
         public string Supplier_UserAccount_Username { get; set; }
         public int Category_CatId { get; set; }
+        public string ItemName { get; set; }
     
         public virtual Supplier Supplier { get; set; }
         public virtual category category { get; set; }

@@ -6,7 +6,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using psbizsuite.Models;
-using System.Data.Entity.Validation;
 
 namespace psbizsuite.Controllers
 {
@@ -19,10 +18,22 @@ namespace psbizsuite.Controllers
 
         public ActionResult Index()
         {
-          var employees = db.Employees.Include(e => e.EmployeePosition).Include(e => e.UserAccount);
+            var employees = db.Employees.Include(e => e.EmployeePosition).Include(e => e.UserAccount);
             return View(employees.ToList());
         }
 
+        //
+        // GET: /Employee/Details/5
+
+        public ActionResult Details(string id = null)
+        {
+            Employee employee = db.Employees.Find(id);
+            if (employee == null)
+            {
+                return HttpNotFound();
+            }
+            return View(employee);
+        }
 
         //
         // GET: /Employee/Create
@@ -39,42 +50,40 @@ namespace psbizsuite.Controllers
         [HttpPost]
         public ActionResult Create(Employee employee)
         {
+            
             if (ModelState.IsValid)
             {
-               
-                    //add employee useraccount into userAccount database
-                    //username is fullname without space
-                    //password is NRIC
-                    UserAccount employeeAcc = new UserAccount();
+                UserAccount employeeAcc = new UserAccount();
                 employeeAcc.Username = employee.UserAccount_Username;
-                    employeeAcc.Password = employee.NRIC;
-                    employeeAcc.Type = "Employee";
-                    db.UserAccounts.Add(employeeAcc);
+                employeeAcc.Password = employee.NRIC;
+                employeeAcc.Type = "Employee";
+                employeeAcc.Salt = "null";
 
-                    //add employee profile into employee database
-                    db.Employees.Add(employee);
+                db.UserAccounts.Add(employeeAcc);
 
-                return View(employee);
-                
+                db.Employees.Add(employee);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-
-            ViewBag.EmployeePosition_PositionName = new SelectList(db.EmployeePositions, "PositionName", "PositionName");
    
+
+            ViewBag.EmployeePosition_PositionName = new SelectList(db.EmployeePositions, "PositionName", "PositionName", employee.EmployeePosition_PositionName);
+            ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Username", employee.UserAccount_Username);
             return View(employee);
         }
 
         //
         // GET: /Employee/Edit/5
 
-        public ActionResult Edit(string id)
+        public ActionResult Edit(string id = null)
         {
             Employee employee = db.Employees.Find(id);
             if (employee == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.EmployeePosition_PositionName = new SelectList(db.EmployeePositions, "PositionName", "Responsibility", employee.EmployeePosition_PositionName);
-            ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Password", employee.UserAccount_Username);
+            ViewBag.EmployeePosition_PositionName = new SelectList(db.EmployeePositions, "PositionName", "PositionName", employee.EmployeePosition_PositionName);
+            ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Username", employee.UserAccount_Username);
             return View(employee);
         }
 
@@ -86,16 +95,14 @@ namespace psbizsuite.Controllers
         {
             if (ModelState.IsValid)
             {
-                employee.UserAccount_Username = employee.FullName.Replace(" ", string.Empty);
                 db.Entry(employee).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             ViewBag.EmployeePosition_PositionName = new SelectList(db.EmployeePositions, "PositionName", "PositionName", employee.EmployeePosition_PositionName);
+            ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Username", employee.UserAccount_Username);
             return View(employee);
         }
-
-       
 
         //
         // GET: /Employee/Delete/5
@@ -103,12 +110,13 @@ namespace psbizsuite.Controllers
         public ActionResult Delete(string id)
         {
             Employee employee = db.Employees.Find(id);
+            UserAccount employeeAcc = db.UserAccounts.Find(id);
             db.Employees.Remove(employee);
-            UserAccount employeeAcc = db.UserAccounts.Find(employee.UserAccount_Username);
             db.UserAccounts.Remove(employeeAcc);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
 
         protected override void Dispose(bool disposing)
         {

@@ -74,6 +74,16 @@
                                                 <td><%: Html.TextAreaFor(model => model.Address, new { @class = "address" })%>
                                                 <%: Html.ValidationMessageFor(model => model.Address) %></td>
                                             </tr>
+                                             <tr>
+                                                <th>User Account: </th>
+                                                <td><%: Html.EditorFor(model => model.UserAccount_Username) %>
+                                                <%: Html.ValidationMessageFor(model => model.UserAccount_Username) %></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Phone Uid: </th>
+                                                <td><%: Html.EditorFor(model => model.PhoneUid) %>
+                                                <%: Html.ValidationMessageFor(model => model.PhoneUid) %></td>
+                                            </tr>
                                             <tr>
                                                 <th>Position: </th>
                                                 <td><%: Html.DropDownList("EmployeePosition_PositionName", "Please select") %>
