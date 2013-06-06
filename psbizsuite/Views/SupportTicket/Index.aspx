@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
+    <link href="../../Assets/Css/order.css" type="text/css" rel="stylesheet" />
 <h2>Index</h2>
 
 <p>
@@ -20,7 +20,7 @@
             <%: Html.DisplayNameFor(model => model.EnquiryPriority) %>
         </th>
         <th>
-            <%: Html.DisplayNameFor(model => model.ExistingEnquiry) %>
+            <%: Html.DisplayNameFor(model => model.ReferenceId) %>
         </th>
         <th>
             <%: Html.DisplayNameFor(model => model.Details) %>

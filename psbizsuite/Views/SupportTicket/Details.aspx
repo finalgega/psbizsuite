@@ -26,10 +26,10 @@
     </div>
 
     <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.ExistingEnquiry) %>
+        <%: Html.DisplayNameFor(model => model.ReferenceId) %>
     </div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.ExistingEnquiry) %>
+        <%: Html.DisplayFor(model => model.ReferenceId) %>
     </div>
 
     <div class="display-label">

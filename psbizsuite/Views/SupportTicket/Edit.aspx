@@ -33,11 +33,11 @@
         </div>
 
         <div class="editor-label">
-            <%: Html.LabelFor(model => model.ExistingEnquiry) %>
+            <%: Html.LabelFor(model => model.ReferenceId) %>
         </div>
         <div class="editor-field">
-            <%: Html.EditorFor(model => model.ExistingEnquiry) %>
-            <%: Html.ValidationMessageFor(model => model.ExistingEnquiry) %>
+            <%: Html.EditorFor(model => model.ReferenceId) %>
+            <%: Html.ValidationMessageFor(model => model.ReferenceId) %>
         </div>
 
         <div class="editor-label">
