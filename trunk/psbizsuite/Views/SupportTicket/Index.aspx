@@ -31,12 +31,7 @@
         <th>
             <%: Html.DisplayNameFor(model => model.Customer.FullName) %>
         </th>
-        <th>
-            <%: Html.DisplayNameFor(model => model.SupportTicket2.EnquiryType) %>
-        </th>
-        <th>
-            <%: Html.DisplayNameFor(model => model.Employee.FullName) %>
-        </th>
+        
         <th></th>
     </tr>
 
@@ -49,7 +44,7 @@
             <%: Html.DisplayFor(modelItem => item.EnquiryPriority) %>
         </td>
         <td>
-            <%: Html.DisplayFor(modelItem => item.ExistingEnquiry) %>
+            <%: Html.DisplayFor(modelItem => item.ReferenceId) %>
         </td>
         <td>
             <%: Html.DisplayFor(modelItem => item.Details) %>
@@ -60,14 +55,9 @@
         <td>
             <%: Html.DisplayFor(modelItem => item.Customer.FullName) %>
         </td>
+        
         <td>
-            <%: Html.DisplayFor(modelItem => item.SupportTicket2.EnquiryType) %>
-        </td>
-        <td>
-            <%: Html.DisplayFor(modelItem => item.Employee.FullName) %>
-        </td>
-        <td>
-            <%: Html.ActionLink("Edit", "Edit", new { id=item.SupportTicketId }) %> |
+            <%: Html.ActionLink("Reply", "Edit", new { id=item.SupportTicketId }) %> |
             <%: Html.ActionLink("Details", "Details", new { id=item.SupportTicketId }) %> |
             <%: Html.ActionLink("Delete", "Delete", new { id=item.SupportTicketId }) %>
         </td>

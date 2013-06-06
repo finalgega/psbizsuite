@@ -1,85 +1,36 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.master" Inherits="System.Web.Mvc.ViewPage<psbizsuite.Models.SupportTicket>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Edit
+    Reply Support Ticket
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-<h2>Edit</h2>
+    <link href="../../Assets/Css/order.css" type="text/css" rel="stylesheet" />
+<h2>Reply Support Ticket</h2>
 
 <% using (Html.BeginForm()) { %>
     <%: Html.ValidationSummary(true) %>
 
     <fieldset>
         <legend>SupportTicket</legend>
-
+        <table>
         <%: Html.HiddenFor(model => model.SupportTicketId) %>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.EnquiryType) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.EnquiryType) %>
-            <%: Html.ValidationMessageFor(model => model.EnquiryType) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.EnquiryPriority) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.EnquiryPriority) %>
-            <%: Html.ValidationMessageFor(model => model.EnquiryPriority) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.ReferenceId) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.ReferenceId) %>
-            <%: Html.ValidationMessageFor(model => model.ReferenceId) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.Details) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.Details) %>
-            <%: Html.ValidationMessageFor(model => model.Details) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.Reply) %>
-        </div>
-        <div class="editor-field">
+            <tr>
+                <td><div class="display-label">Previous Enquiry</div></td>
+                <td><div class="display-field"><%: Html.DisplayFor(model => model.ReferenceId) %></div></td>
+            </tr>
+            <tr>
+                <td> <div class="editor-label">Customer Enquiry </div> </td>
+                <td> <%: Html.DisplayFor(model => model.Details %></td>
+            </tr>
+            <tr>
+                <td><div class="editor-label"> Your reply </div></td>
+                <td><div class="editor-field">
             <%: Html.EditorFor(model => model.Reply) %>
-            <%: Html.ValidationMessageFor(model => model.Reply) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.Customer_UserAccount_Username, "Customer") %>
-        </div>
-        <div class="editor-field">
-            <%: Html.DropDownList("Customer_UserAccount_Username", String.Empty) %>
-            <%: Html.ValidationMessageFor(model => model.Customer_UserAccount_Username) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.ReferenceId, "SupportTicket2") %>
-        </div>
-        <div class="editor-field">
-            <%: Html.DropDownList("ReferenceId", String.Empty) %>
-            <%: Html.ValidationMessageFor(model => model.ReferenceId) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.Employee_UserAccount_Username, "Employee") %>
-        </div>
-        <div class="editor-field">
-            <%: Html.DropDownList("Employee_UserAccount_Username", String.Empty) %>
-            <%: Html.ValidationMessageFor(model => model.Employee_UserAccount_Username) %>
-        </div>
-
+            <%: Html.ValidationMessageFor(model => model.Reply) %></div></td>
+            </tr>
+        </table>
+        
         <p>
             <input type="submit" value="Save" />
         </p>

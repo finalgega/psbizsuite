@@ -26,19 +26,19 @@
         Email Us:<br />
         <table>
             <tr>
-                <td><div class="editor-label">Enquiry Type</div></td>
+                <td style="vertical-align:top; padding-top:10px"><div class="editor-label">Enquiry Type</div></td>
                 <td><div class="editor-field">
-            <%: Html.RadioButtonFor(model => model.EnquiryType, "General Enquiry") %> General Enquiry
-            <%: Html.RadioButtonFor(model => model.EnquiryType, "Order Enquiry") %> Order Enquiry
-            <%: Html.RadioButtonFor(model => model.EnquiryType, "Feedback") %> Feedback
+            <label style="padding-bottom:45px"><%: Html.RadioButtonFor(model => model.EnquiryType, "General Enquiry") %> General Enquiry </label> 
+            <label><%: Html.RadioButtonFor(model => model.EnquiryType, "Order Enquiry") %> Order Enquiry </label> 
+            <label><%: Html.RadioButtonFor(model => model.EnquiryType, "Feedback") %> Feedback </label> 
             <%: Html.ValidationMessageFor(model => model.EnquiryType) %></div></td>
             </tr>
         <tr>
-            <td><div class="editor-label">Enquiry Priority</div></td>
+            <td style="vertical-align:top; padding-top:10px"><div class="editor-label">Enquiry Priority</div></td>
             <td><div class="editor-field">
-            <%: Html.RadioButtonFor(model => model.EnquiryPriority, "Critical") %> Critical
-            <%: Html.RadioButtonFor(model => model.EnquiryPriority, "Important") %> Important
-            <%: Html.RadioButtonFor(model => model.EnquiryPriority, "No Reply Required") %> No Reply Required
+            <%: Html.RadioButtonFor(model => model.EnquiryPriority, "Critical") %> Critical <br />
+            <%: Html.RadioButtonFor(model => model.EnquiryPriority, "Important") %> Important <br />
+            <%: Html.RadioButtonFor(model => model.EnquiryPriority, "No Reply Required") %> No Reply Required <br />
             <%: Html.ValidationMessageFor(model => model.EnquiryPriority) %></div></td>
         </tr>
         
