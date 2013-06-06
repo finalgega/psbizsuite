@@ -57,7 +57,8 @@ namespace psbizsuite.Controllers
                 //password is NRIC
                 UserAccount customerAcc = new UserAccount();
                 customerAcc.Username = customer.UserAccount_Username;
-                customerAcc.Password = customer.Email;
+                customerAcc.Password = customerAcc.Username;
+                customerAcc.Salt = "james";
                 customerAcc.Type = "Customer";
                 db.UserAccounts.Add(customerAcc);
 

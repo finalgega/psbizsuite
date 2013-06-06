@@ -54,6 +54,8 @@ namespace psbizsuite.Controllers
         {
             if (ModelState.IsValid)
             {
+                
+                supportticket.Customer_UserAccount_Username = "jaack";
                 db.SupportTickets.Add(supportticket);
                 db.SaveChanges();
                 return RedirectToAction("Index");

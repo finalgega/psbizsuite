@@ -17,6 +17,9 @@
             Full Name
         </th>
         <th>
+            User Name
+        </th>
+        <th>
             Address
         </th>
         <th>
@@ -38,6 +41,9 @@
     <tr>
         <td>
             <%: Html.DisplayFor(modelItem => item.FullName) %>
+        </td>
+        <td>
+            <%: Html.DisplayFor(modelItem => item.UserAccount.Username) %>
         </td>
         <td>
             <%: Html.DisplayFor(modelItem => item.Address) %>
