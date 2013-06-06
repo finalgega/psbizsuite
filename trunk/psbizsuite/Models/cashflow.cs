@@ -12,11 +12,13 @@ namespace psbizsuite.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class AccountPayable
+    public partial class cashflow
     {
-        public int AccountPayableId { get; set; }
-        public string Status { get; set; }
-        public double TotalAmount { get; set; }
-        public int ReferenceId { get; set; }
+        public int CashFlowId { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
+        public string Description { get; set; }
+        public Nullable<double> CashIn { get; set; }
+        public Nullable<double> CashOut { get; set; }
+        public Nullable<double> TotalAmt { get; set; }
     }
 }

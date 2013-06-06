@@ -139,12 +139,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountPayable.cs">
-      <DependentUpon>bizsuiteModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AccountReceivable.cs">
-      <DependentUpon>bizsuiteModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Attendance.cs">
       <DependentUpon>bizsuiteModel.tt</DependentUpon>
     </Compile>
@@ -163,6 +157,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>bizsuiteModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\cashflow.cs">
+      <DependentUpon>bizsuiteModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\category.cs">
       <DependentUpon>bizsuiteModel.tt</DependentUpon>
     </Compile>
@@ -176,6 +173,9 @@
       <DependentUpon>bizsuiteModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Inventory.cs">
+      <DependentUpon>bizsuiteModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\invoice.cs">
       <DependentUpon>bizsuiteModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KeyPair.cs">
@@ -194,6 +194,9 @@
       <DependentUpon>bizsuiteModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PayrollRequest.cs">
+      <DependentUpon>bizsuiteModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\profitloss.cs">
       <DependentUpon>bizsuiteModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Supplier.cs">

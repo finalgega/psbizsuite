@@ -12,13 +12,12 @@ namespace psbizsuite.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class AccountReceivable
+    public partial class profitloss
     {
-        public int AccountReceivableId { get; set; }
-        public string Status { get; set; }
-        public double TotalAmount { get; set; }
-        public int Order_OrderId { get; set; }
-    
-        public virtual Order Order { get; set; }
+        public int profitLossId { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
+        public Nullable<double> Income { get; set; }
+        public Nullable<double> Expenses { get; set; }
+        public Nullable<double> CashOnHand { get; set; }
     }
 }

@@ -6,27 +6,24 @@
     <edmx:StorageModels>
     <Schema Namespace="BizSuiteDBModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="BizSuiteDBModelStoreContainer">
-          <EntitySet Name="accountpayable" EntityType="BizSuiteDBModel.Store.accountpayable" store:Type="Tables" Schema="bizsuitedb" />
-          <EntitySet Name="accountreceivable" EntityType="BizSuiteDBModel.Store.accountreceivable" store:Type="Tables" Schema="bizsuitedb" />
           <EntitySet Name="attendance" EntityType="BizSuiteDBModel.Store.attendance" store:Type="Tables" Schema="bizsuitedb" />
+          <EntitySet Name="cashflow" EntityType="BizSuiteDBModel.Store.cashflow" store:Type="Tables" Schema="bizsuitedb" />
           <EntitySet Name="category" EntityType="BizSuiteDBModel.Store.category" store:Type="Tables" Schema="bizsuitedb" />
           <EntitySet Name="customer" EntityType="BizSuiteDBModel.Store.customer" store:Type="Tables" Schema="bizsuitedb" />
           <EntitySet Name="employee" EntityType="BizSuiteDBModel.Store.employee" store:Type="Tables" Schema="bizsuitedb" />
           <EntitySet Name="employeeposition" EntityType="BizSuiteDBModel.Store.employeeposition" store:Type="Tables" Schema="bizsuitedb" />
           <EntitySet Name="inventory" EntityType="BizSuiteDBModel.Store.inventory" store:Type="Tables" Schema="bizsuitedb" />
+          <EntitySet Name="invoice" EntityType="BizSuiteDBModel.Store.invoice" store:Type="Tables" Schema="bizsuitedb" />
           <EntitySet Name="keypair" EntityType="BizSuiteDBModel.Store.keypair" store:Type="Tables" Schema="bizsuitedb" />
           <EntitySet Name="leavepolicy" EntityType="BizSuiteDBModel.Store.leavepolicy" store:Type="Tables" Schema="bizsuitedb" />
           <EntitySet Name="leaverequest" EntityType="BizSuiteDBModel.Store.leaverequest" store:Type="Tables" Schema="bizsuitedb" />
           <EntitySet Name="order" EntityType="BizSuiteDBModel.Store.order" store:Type="Tables" Schema="bizsuitedb" />
           <EntitySet Name="orderitem" EntityType="BizSuiteDBModel.Store.orderitem" store:Type="Tables" Schema="bizsuitedb" />
           <EntitySet Name="payrollrequest" EntityType="BizSuiteDBModel.Store.payrollrequest" store:Type="Tables" Schema="bizsuitedb" />
+          <EntitySet Name="profitloss" EntityType="BizSuiteDBModel.Store.profitloss" store:Type="Tables" Schema="bizsuitedb" />
           <EntitySet Name="supplier" EntityType="BizSuiteDBModel.Store.supplier" store:Type="Tables" Schema="bizsuitedb" />
           <EntitySet Name="supportticket" EntityType="BizSuiteDBModel.Store.supportticket" store:Type="Tables" Schema="bizsuitedb" />
           <EntitySet Name="useraccount" EntityType="BizSuiteDBModel.Store.useraccount" store:Type="Tables" Schema="bizsuitedb" />
-          <AssociationSet Name="fk_AccountReceivable_Order1" Association="BizSuiteDBModel.Store.fk_AccountReceivable_Order1">
-            <End Role="order" EntitySet="order" />
-            <End Role="accountreceivable" EntitySet="accountreceivable" />
-          </AssociationSet>
           <AssociationSet Name="fk_Attendance_Employee1" Association="BizSuiteDBModel.Store.fk_Attendance_Employee1">
             <End Role="employee" EntitySet="employee" />
             <End Role="attendance" EntitySet="attendance" />
@@ -50,6 +47,10 @@
           <AssociationSet Name="fk_Inventory_Supplier1" Association="BizSuiteDBModel.Store.fk_Inventory_Supplier1">
             <End Role="supplier" EntitySet="supplier" />
             <End Role="inventory" EntitySet="inventory" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Invoice_Order1" Association="BizSuiteDBModel.Store.fk_Invoice_Order1">
+            <End Role="order" EntitySet="order" />
+            <End Role="invoice" EntitySet="invoice" />
           </AssociationSet>
           <AssociationSet Name="fk_KeyPair_Employee1" Association="BizSuiteDBModel.Store.fk_KeyPair_Employee1">
             <End Role="employee" EntitySet="employee" />
@@ -84,40 +85,33 @@
             <End Role="supportticket" EntitySet="supportticket" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="accountpayable">
-          <Key>
-            <PropertyRef Name="AccountPayableId" />
-          </Key>
-          <Property Name="AccountPayableId" Type="int" Nullable="false" />
-          <Property Name="Status" Type="varchar" Nullable="false" MaxLength="45" />
-          <Property Name="TotalAmount" Type="double" Nullable="false" />
-          <Property Name="ReferenceId" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="accountreceivable">
-          <Key>
-            <PropertyRef Name="AccountReceivableId" />
-          </Key>
-          <Property Name="AccountReceivableId" Type="int" Nullable="false" />
-          <Property Name="Status" Type="varchar" Nullable="false" MaxLength="45" />
-          <Property Name="TotalAmount" Type="double" Nullable="false" />
-          <Property Name="Order_OrderId" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="attendance">
           <Key>
             <PropertyRef Name="AttendanceId" />
           </Key>
-          <Property Name="AttendanceId" Type="int" Nullable="false" />
+          <Property Name="AttendanceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="ClockInTime" Type="time" />
           <Property Name="ClockOutTime" Type="varchar" MaxLength="45" />
           <Property Name="Location" Type="varchar" MaxLength="45" />
           <Property Name="Employee_UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
         </EntityType>
+        <EntityType Name="cashflow">
+          <Key>
+            <PropertyRef Name="CashFlowId" />
+          </Key>
+          <Property Name="CashFlowId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Description" Type="varchar" MaxLength="160" />
+          <Property Name="CashIn" Type="double" />
+          <Property Name="CashOut" Type="double" />
+          <Property Name="TotalAmt" Type="double" />
+        </EntityType>
         <EntityType Name="category">
           <Key>
             <PropertyRef Name="CatId" />
           </Key>
-          <Property Name="CatId" Type="int" Nullable="false" />
+          <Property Name="CatId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="CatName" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="CatDescription" Type="varchar" Nullable="false" MaxLength="45" />
         </EntityType>
@@ -162,7 +156,7 @@
           <Key>
             <PropertyRef Name="InventoryId" />
           </Key>
-          <Property Name="InventoryId" Type="int" Nullable="false" />
+          <Property Name="InventoryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ItemDescription" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="Image" Type="varchar" MaxLength="45" />
           <Property Name="UnitCost" Type="varchar" Nullable="false" MaxLength="45" />
@@ -172,6 +166,16 @@
           <Property Name="TimeStamp" Type="timestamp" Nullable="false" />
           <Property Name="Supplier_UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="Category_CatId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="invoice">
+          <Key>
+            <PropertyRef Name="invoiceId" />
+          </Key>
+          <Property Name="invoiceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StartDate" Type="date" />
+          <Property Name="DueDate" Type="date" />
+          <Property Name="OtherOptions" Type="double" />
+          <Property Name="Order_OrderId" Type="int" />
         </EntityType>
         <EntityType Name="keypair">
           <Key>
@@ -185,7 +189,7 @@
           <Key>
             <PropertyRef Name="LeavePolicyId" />
           </Key>
-          <Property Name="LeavePolicyId" Type="int" Nullable="false" />
+          <Property Name="LeavePolicyId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="PolicyName" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="PolicyDescription" Type="varchar" Nullable="false" MaxLength="250" />
           <Property Name="DaysOfLeave" Type="int" Nullable="false" />
@@ -197,7 +201,7 @@
           <Key>
             <PropertyRef Name="LeaveRequestId" />
           </Key>
-          <Property Name="LeaveRequestId" Type="int" Nullable="false" />
+          <Property Name="LeaveRequestId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="StartDate" Type="date" Nullable="false" />
           <Property Name="EndDate" Type="date" Nullable="false" />
           <Property Name="Reason" Type="varchar" Nullable="false" MaxLength="100" />
@@ -208,7 +212,7 @@
           <Key>
             <PropertyRef Name="OrderId" />
           </Key>
-          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ReceiptId" Type="int" Nullable="false" />
           <Property Name="Status" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="Customer_UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
@@ -218,7 +222,7 @@
           <Key>
             <PropertyRef Name="OrderItemId" />
           </Key>
-          <Property Name="OrderItemId" Type="int" Nullable="false" />
+          <Property Name="OrderItemId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Description" Type="varchar" MaxLength="45" />
           <Property Name="UnitPrice" Type="double" />
           <Property Name="Quantity" Type="int" />
@@ -228,10 +232,20 @@
           <Key>
             <PropertyRef Name="PayrollRequestId" />
           </Key>
-          <Property Name="PayrollRequestId" Type="int" Nullable="false" />
+          <Property Name="PayrollRequestId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="TotalAmount" Type="double" />
           <Property Name="RequestTimeStamp" Type="timestamp" />
           <Property Name="Status" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="profitloss">
+          <Key>
+            <PropertyRef Name="profitLossId" />
+          </Key>
+          <Property Name="profitLossId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Income" Type="double" />
+          <Property Name="Expenses" Type="double" />
+          <Property Name="CashOnHand" Type="double" />
         </EntityType>
         <EntityType Name="supplier">
           <Key>
@@ -249,7 +263,7 @@
           <Key>
             <PropertyRef Name="SupportTicketId" />
           </Key>
-          <Property Name="SupportTicketId" Type="int" Nullable="false" />
+          <Property Name="SupportTicketId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="EnquiryType" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="EnquiryPriority" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="Customer_UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
@@ -267,18 +281,6 @@
           <Property Name="Type" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="Salt" Type="varchar" Nullable="false" MaxLength="45" />
         </EntityType>
-        <Association Name="fk_AccountReceivable_Order1">
-          <End Role="order" Type="BizSuiteDBModel.Store.order" Multiplicity="1" />
-          <End Role="accountreceivable" Type="BizSuiteDBModel.Store.accountreceivable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="order">
-              <PropertyRef Name="OrderId" />
-            </Principal>
-            <Dependent Role="accountreceivable">
-              <PropertyRef Name="Order_OrderId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_Attendance_Employee1">
           <End Role="employee" Type="BizSuiteDBModel.Store.employee" Multiplicity="1" />
           <End Role="attendance" Type="BizSuiteDBModel.Store.attendance" Multiplicity="*" />
@@ -348,6 +350,18 @@
             </Principal>
             <Dependent Role="inventory">
               <PropertyRef Name="Supplier_UserAccount_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Invoice_Order1">
+          <End Role="order" Type="BizSuiteDBModel.Store.order" Multiplicity="0..1" />
+          <End Role="invoice" Type="BizSuiteDBModel.Store.invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="invoice">
+              <PropertyRef Name="Order_OrderId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -452,8 +466,6 @@
     <edmx:ConceptualModels>
       <Schema Namespace="BizSuiteDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="BizSuiteDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AccountPayables" EntityType="BizSuiteDBModel.AccountPayable" />
-          <EntitySet Name="AccountReceivables" EntityType="BizSuiteDBModel.AccountReceivable" />
           <EntitySet Name="Attendances" EntityType="BizSuiteDBModel.Attendance" />
           <EntitySet Name="Customers" EntityType="BizSuiteDBModel.Customer" />
           <EntitySet Name="Employees" EntityType="BizSuiteDBModel.Employee" />
@@ -468,10 +480,6 @@
           <EntitySet Name="Suppliers" EntityType="BizSuiteDBModel.Supplier" />
           <EntitySet Name="SupportTickets" EntityType="BizSuiteDBModel.SupportTicket" />
           <EntitySet Name="UserAccounts" EntityType="BizSuiteDBModel.UserAccount" />
-          <AssociationSet Name="fk_AccountReceivable_Order1" Association="BizSuiteDBModel.fk_AccountReceivable_Order1">
-            <End Role="Order" EntitySet="Orders" />
-            <End Role="AccountReceivable" EntitySet="AccountReceivables" />
-          </AssociationSet>
           <AssociationSet Name="fk_Attendance_Employee1" Association="BizSuiteDBModel.fk_Attendance_Employee1">
             <End EntitySet="Employees" Role="Employee" />
             <End EntitySet="Attendances" Role="Attendance" />
@@ -533,26 +541,14 @@
             <End Role="category" EntitySet="categories" />
             <End Role="Inventory" EntitySet="Inventories" />
           </AssociationSet>
+          <EntitySet Name="cashflows" EntityType="BizSuiteDBModel.cashflow" />
+          <EntitySet Name="invoices" EntityType="BizSuiteDBModel.invoice" />
+          <EntitySet Name="profitlosses" EntityType="BizSuiteDBModel.profitloss" />
+          <AssociationSet Name="fk_Invoice_Order1" Association="BizSuiteDBModel.fk_Invoice_Order1">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="invoice" EntitySet="invoices" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="AccountPayable">
-          <Key>
-            <PropertyRef Name="AccountPayableId" />
-          </Key>
-          <Property Name="AccountPayableId" Type="Int32" Nullable="false" />
-          <Property Name="Status" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
-          <Property Name="TotalAmount" Type="Double" Nullable="false" />
-          <Property Name="ReferenceId" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="AccountReceivable">
-          <Key>
-            <PropertyRef Name="AccountReceivableId" />
-          </Key>
-          <Property Name="AccountReceivableId" Type="Int32" Nullable="false" />
-          <Property Name="Status" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
-          <Property Name="TotalAmount" Type="Double" Nullable="false" />
-          <Property Name="Order_OrderId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Order" Relationship="BizSuiteDBModel.fk_AccountReceivable_Order1" FromRole="AccountReceivable" ToRole="Order" />
-        </EntityType>
         <EntityType Name="Attendance">
           <Key>
             <PropertyRef Name="AttendanceId" />
@@ -673,9 +669,9 @@
           <Property Name="Status" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
           <Property Name="Customer_UserAccount_Username" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
           <Property Name="TotalAmount" Type="Double" Nullable="false" />
-          <NavigationProperty Name="AccountReceivables" Relationship="BizSuiteDBModel.fk_AccountReceivable_Order1" FromRole="Order" ToRole="AccountReceivable" />
           <NavigationProperty Name="Customer" Relationship="BizSuiteDBModel.fk_Order_Customer1" FromRole="Order" ToRole="Customer" />
           <NavigationProperty Name="OrderItems" Relationship="BizSuiteDBModel.fk_OrderItem_Order1" FromRole="Order" ToRole="OrderItem" />
+          <NavigationProperty Name="invoices" Relationship="BizSuiteDBModel.fk_Invoice_Order1" FromRole="Order" ToRole="invoice" />
         </EntityType>
         <EntityType Name="OrderItem">
           <Key>
@@ -740,18 +736,6 @@
           <NavigationProperty Name="Supplier" Relationship="BizSuiteDBModel.fk_Supplier_UserAccount1" FromRole="UserAccount" ToRole="Supplier" />
           <Property Type="String" Name="Salt" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
         </EntityType>
-        <Association Name="fk_AccountReceivable_Order1">
-          <End Role="Order" Type="BizSuiteDBModel.Order" Multiplicity="1" />
-          <End Role="AccountReceivable" Type="BizSuiteDBModel.AccountReceivable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="OrderId" />
-            </Principal>
-            <Dependent Role="AccountReceivable">
-              <PropertyRef Name="Order_OrderId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_Attendance_Employee1">
           <End Type="BizSuiteDBModel.Employee" Multiplicity="1" Role="Employee" />
           <End Type="BizSuiteDBModel.Attendance" Multiplicity="*" Role="Attendance" />
@@ -941,6 +925,50 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="cashflow">
+          <Key>
+            <PropertyRef Name="CashFlowId" />
+          </Key>
+          <Property Type="Int32" Name="CashFlowId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="Date" />
+          <Property Type="String" Name="Description" MaxLength="160" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="CashIn" />
+          <Property Type="Double" Name="CashOut" />
+          <Property Type="Double" Name="TotalAmt" />
+        </EntityType>
+        <EntityType Name="invoice">
+          <Key>
+            <PropertyRef Name="invoiceId" />
+          </Key>
+          <Property Type="Int32" Name="invoiceId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="StartDate" />
+          <Property Type="DateTime" Name="DueDate" />
+          <Property Type="Double" Name="OtherOptions" />
+          <Property Type="Int32" Name="Order_OrderId" />
+          <NavigationProperty Name="order" Relationship="BizSuiteDBModel.fk_Invoice_Order1" FromRole="invoice" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="profitloss">
+          <Key>
+            <PropertyRef Name="profitLossId" />
+          </Key>
+          <Property Type="Int32" Name="profitLossId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="Date" />
+          <Property Type="Double" Name="Income" />
+          <Property Type="Double" Name="Expenses" />
+          <Property Type="Double" Name="CashOnHand" />
+        </EntityType>
+        <Association Name="fk_Invoice_Order1">
+          <End Type="BizSuiteDBModel.Order" Role="Order" Multiplicity="0..1" />
+          <End Type="BizSuiteDBModel.invoice" Role="invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="invoice">
+              <PropertyRef Name="Order_OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -981,16 +1009,6 @@
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="ReceiptId" ColumnName="ReceiptId" />
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AccountReceivables">
-            <EntityTypeMapping TypeName="IsTypeOf(BizSuiteDBModel.AccountReceivable)">
-              <MappingFragment StoreEntitySet="accountreceivable">
-                <ScalarProperty Name="Order_OrderId" ColumnName="Order_OrderId" />
-                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="AccountReceivableId" ColumnName="AccountReceivableId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1099,16 +1117,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AccountPayables">
-            <EntityTypeMapping TypeName="IsTypeOf(BizSuiteDBModel.AccountPayable)">
-              <MappingFragment StoreEntitySet="accountpayable">
-                <ScalarProperty Name="ReferenceId" ColumnName="ReferenceId" />
-                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="AccountPayableId" ColumnName="AccountPayableId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PayrollRequests">
             <EntityTypeMapping TypeName="IsTypeOf(BizSuiteDBModel.PayrollRequest)">
               <MappingFragment StoreEntitySet="payrollrequest">
@@ -1144,6 +1152,40 @@
                 <ScalarProperty Name="Employee_UserAccount_Username" ColumnName="Employee_UserAccount_Username" />
                 <ScalarProperty Name="Public" ColumnName="Public" />
                 <ScalarProperty Name="Private" ColumnName="Private" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cashflows">
+            <EntityTypeMapping TypeName="BizSuiteDBModel.cashflow">
+              <MappingFragment StoreEntitySet="cashflow">
+                <ScalarProperty Name="TotalAmt" ColumnName="TotalAmt" />
+                <ScalarProperty Name="CashOut" ColumnName="CashOut" />
+                <ScalarProperty Name="CashIn" ColumnName="CashIn" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CashFlowId" ColumnName="CashFlowId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="invoices">
+            <EntityTypeMapping TypeName="BizSuiteDBModel.invoice">
+              <MappingFragment StoreEntitySet="invoice">
+                <ScalarProperty Name="Order_OrderId" ColumnName="Order_OrderId" />
+                <ScalarProperty Name="OtherOptions" ColumnName="OtherOptions" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="invoiceId" ColumnName="invoiceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="profitlosses">
+            <EntityTypeMapping TypeName="BizSuiteDBModel.profitloss">
+              <MappingFragment StoreEntitySet="profitloss">
+                <ScalarProperty Name="CashOnHand" ColumnName="CashOnHand" />
+                <ScalarProperty Name="Expenses" ColumnName="Expenses" />
+                <ScalarProperty Name="Income" ColumnName="Income" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="profitLossId" ColumnName="profitLossId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

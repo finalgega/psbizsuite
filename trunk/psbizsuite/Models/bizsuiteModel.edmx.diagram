@@ -5,8 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="1dec702aeaa24e4d8a1dfb4dbfea4cbb" Name="Diagram1" ZoomLevel="82">
-        <EntityTypeShape EntityType="BizSuiteDBModel.AccountPayable" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BizSuiteDBModel.AccountReceivable" Width="1.5" PointX="7.5" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSuiteDBModel.Attendance" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSuiteDBModel.Customer" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSuiteDBModel.Employee" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
@@ -21,7 +19,6 @@
         <EntityTypeShape EntityType="BizSuiteDBModel.Supplier" Width="1.5" PointX="3" PointY="19.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSuiteDBModel.SupportTicket" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSuiteDBModel.UserAccount" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
-        <AssociationConnector Association="BizSuiteDBModel.fk_AccountReceivable_Order1" ManuallyRouted="false" />
         <AssociationConnector ManuallyRouted="false" Association="BizSuiteDBModel.fk_Attendance_Employee1" />
         <AssociationConnector Association="BizSuiteDBModel.fk_Customer_UserAccount" ManuallyRouted="false" />
         <AssociationConnector Association="BizSuiteDBModel.fk_Order_Customer1" ManuallyRouted="false" />
@@ -38,6 +35,10 @@
         <AssociationConnector Association="BizSuiteDBModel.fk_SupportTicket_SupportTicket1" ManuallyRouted="false" />
         <EntityTypeShape EntityType="BizSuiteDBModel.category" Width="1.5" PointX="3.625" PointY="23.25" />
         <AssociationConnector Association="BizSuiteDBModel.FK_CategoryInventory" />
+        <EntityTypeShape EntityType="BizSuiteDBModel.cashflow" Width="1.5" PointX="3.5138109678001195" PointY="16.152550660144794" />
+        <EntityTypeShape EntityType="BizSuiteDBModel.invoice" Width="1.5" PointX="10.576269925840325" PointY="20.224170053482133" />
+        <EntityTypeShape EntityType="BizSuiteDBModel.profitloss" Width="1.5" PointX="9.6525229912495814" PointY="1.9901685127942677" />
+        <AssociationConnector Association="BizSuiteDBModel.fk_Invoice_Order1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
