@@ -102,9 +102,7 @@
         
     </script>
     <h2>CreateInventoryItem</h2>
- <!--   <form id="createInventoryForm" runat="server" method="POST" action="CreateItemRecord"> -->
-    <% using (Html.BeginForm("CreateItemRecord","Inventory","Post")) 
-          %>
+  <form id="createInventoryForm" runat="server" method="POST" action="CreateItemRecord">
     
         <table>
             <tr>
@@ -181,8 +179,7 @@
             <tr>
                 <td></td>
                 <td>
-<!--                    <asp:Button Text="Create Record" UseSubmitBehavior="true" ID="inventoryFormSubmit" runat="server" /> -->
-                    <input type="submit" value="Create Item" class="show-normal" />
+                    <asp:Button Text="Create Record" UseSubmitBehavior="true" ID="inventoryFormSubmit" runat="server" CssClass="show-normal" /> 
                 </td>
                 <td>
                     <input type="button" class="show-sticky" value="HELLO NOTIFICATION!" /></td>
@@ -191,8 +188,7 @@
                 <td><input type="button" onclick="useHTML5Notifications()" value="HTML5 Native Notification" /></td>
             </tr>
         </table>
-    <% Html.EndForm(); %>
-  <!--  </form> -->
+    </form> 
 
 </asp:Content>
 
