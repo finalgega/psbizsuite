@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
+    <link href="../../Assets/Css/inventory.css" rel="stylesheet" type="text/css" />
 <h2>Details</h2>
 
 <fieldset>
