@@ -56,6 +56,7 @@ namespace psbizsuite.Controllers
             {
                 Inventory inventoryItem = inventory;
                 inventoryItem.Category_CatId = 1;
+                inventoryItem.TimeStamp = System.DateTime.Now;
                 db.Inventories.Add(inventoryItem);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -141,6 +142,31 @@ namespace psbizsuite.Controllers
             Debug.WriteLine("Original Password :  Sypeskder");
             Debug.WriteLine("Hash of password using PBKDF2 : " + pbkdf2Pwd);
             return RedirectToAction("Index");
+        }
+
+        public ActionResult CreateAccount()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateAccount(UserAccount user)
+        {
+            if (ModelState.IsValid)
+            {
+                UserAccount usrAc = user;
+                string hashData = EncryptionController.CreatePasswordHash(usrAc.Password);
+                char[] delimiter = { ':' };
+                string[] split = hashData.Split(delimiter);
+                string salt = split[EncryptionController.SALT_INDEX];
+                string hash = split[EncryptionController.PBKDF2_INDEX];
+                usrAc.Password = hash;
+                usrAc.Salt = salt;
+                db.UserAccounts.Add(usrAc);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
         }
 
         protected override void Dispose(bool disposing)
