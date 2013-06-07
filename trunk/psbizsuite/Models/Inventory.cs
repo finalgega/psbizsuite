@@ -11,15 +11,18 @@ namespace psbizsuite.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Inventory
     {
         public int InventoryId { get; set; }
+        [Required(ErrorMessage = "This field is required!")]
         public string ItemName { get; set; }
         public string ItemDescription { get; set; }
         public byte[] Image { get; set; }
         public decimal UnitCost { get; set; }
         public Nullable<decimal> UnitWeightKilo { get; set; }
+        [Required(ErrorMessage = "Please make sure quantity is a valid whole number!")]
         public int Quantity { get; set; }
         public string Location { get; set; }
         public System.DateTime TimeStamp { get; set; }
