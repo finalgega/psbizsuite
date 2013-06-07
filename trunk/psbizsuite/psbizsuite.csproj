@@ -334,7 +334,6 @@
     <Content Include="Assets\Jquery\purr-notifications.js" />
     <Content Include="databaseSchema.txt" />
     <Content Include="Global.asax" />
-    <Content Include="Models\bizsuiteModel.edmx.sql" />
     <Content Include="Views\Accounting\GenerateIR.aspx" />
     <Content Include="Views\Accounting\ManageCashFlow.aspx" />
     <Content Include="Views\Accounting\ViewIR.aspx" />

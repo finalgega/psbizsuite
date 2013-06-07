@@ -66,8 +66,8 @@
         </div> 
       
         <div class="editor-field">
-            <%: Html.DropDownList("category_CatName",String.Empty) %>
-            <%: Html.ValidationMessageFor(model => model.category.CatName) %>
+            <%: Html.DropDownList("Category_CatId",String.Empty) %>
+            <%: Html.ValidationMessageFor(model => model.Category_CatId) %>
         </div> 
         <div class="editor-label">
             <%: Html.LabelFor(model => model.Supplier_UserAccount_Username, "Supplier") %>
