@@ -5,14 +5,15 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
+    <link href="../../Assets/Css/inventory.css" type="text/css" rel="stylesheet" />
 <h2>Create</h2>
-
+<div class="contentWrapper">
 <% using (Html.BeginForm()) { %>
     <%: Html.ValidationSummary(true) %>
 
     <fieldset>
         <legend>Inventory</legend>
+        <div class="FormWrapper">
         <div class="editor-label">
             <%: Html.LabelFor(model => model.ItemName) %>
         </div>
@@ -26,14 +27,6 @@
         <div class="editor-field">
             <%: Html.EditorFor(model => model.ItemDescription) %>
             <%: Html.ValidationMessageFor(model => model.ItemDescription) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.Image) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.Image) %>
-            <%: Html.ValidationMessageFor(model => model.Image) %>
         </div>
 
         <div class="editor-label">
@@ -88,9 +81,11 @@
         <p>
             <input type="submit" value="Create" />
         </p>
+            </div>
     </fieldset>
 <% } %>
-
+       </table>
+    </div>
 <div>
     <%: Html.ActionLink("Back to List", "Index") %>
 </div>

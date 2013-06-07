@@ -13,11 +13,29 @@
 input {
     height:25px;
 }
-.formValues:valid {
+.editor-field input :valid {
           border-color:rgba(0,255,0,.7);
 }
-.formValues:invalid {
+.editor-field input :invalid {
            border-color:rgba(255,0,0,0.7);
+}
+
+.editor-label {
+    width:15%;
+    margin-left:5%;
+    flex:auto;
+}
+.editor-field {
+    width:50%;
+    margin-left:1%;
+    flex:auto;
+}
+
+.display-label {
+    margin-left:3%;
+}
+.display-field {
+    margin-left:3%;
 }
 
 #MainContent_inventoryFormSubmit {
