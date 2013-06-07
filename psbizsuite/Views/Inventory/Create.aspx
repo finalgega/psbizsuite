@@ -69,14 +69,6 @@
         </div>
 
         <div class="editor-label">
-            <%: Html.LabelFor(model => model.TimeStamp) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.TimeStamp) %>
-            <%: Html.ValidationMessageFor(model => model.TimeStamp) %>
-        </div>
-
-        <div class="editor-label">
             <%: Html.LabelFor(model => model.category.CatName) %>
         </div> 
       

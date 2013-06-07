@@ -377,6 +377,7 @@
     <Content Include="Views\Employee\Index.aspx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Inventory\Create.aspx" />
+    <Content Include="Views\Inventory\CreateAccount.aspx" />
     <Content Include="Views\Inventory\CreateInventoryItem.aspx" />
     <Content Include="Views\Inventory\Delete.aspx" />
     <Content Include="Views\Inventory\Details.aspx" />

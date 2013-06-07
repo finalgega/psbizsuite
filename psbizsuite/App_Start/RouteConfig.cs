@@ -46,6 +46,10 @@ namespace psbizsuite
                 name: "ViewIR",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Accounting", action = "ViewIR", id = UrlParameter.Optional });
+            routes.MapRoute(
+                name: "CreateAccount",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Inventory", action = "CreateAccount",id = UrlParameter.Optional });
         }
     }
 }

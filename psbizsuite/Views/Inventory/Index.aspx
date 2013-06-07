@@ -5,13 +5,20 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
+    <style>
+        .tbl-class {
+            padding-left:3%;
+        }
+        .tbl-class th,td {
+            padding: 20px;
+            }
+    </style>
 <h2>Index</h2>
 
 <p>
     <%: Html.ActionLink("Create New", "Create") %>
 </p>
-<table>
+<table class="tbl-class" border="1">
     <tr>
         <th>
             <%: Html.DisplayNameFor(model => model.ItemDescription) %>

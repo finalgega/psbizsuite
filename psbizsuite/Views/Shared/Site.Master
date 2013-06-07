@@ -129,6 +129,7 @@
                                         <li><a href="../Inventory/Index">View inventory</a></li>
                                         <li><a href="../Inventory/Edit">Edit inventory item</a></li>
                                         <li><a href="#nogo">Generate Inventory Report</a></li>
+                                        <li><a href="../Inventory/CreateAccount">Create Account</a></li>
                                     </ul>
                                 </div>
                             </li>
