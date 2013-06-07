@@ -34,21 +34,30 @@ namespace psbizsuite.Controllers
                 }
                 else
                 {
-                    //to do: add in authentication here
-                    //return to DirectorDashboard view with useraccount object
-                    //to retrieve data from the useraccount object in view, eg. <%= Model.username %> 
-                    Session["username"] = username;
-                    return View("../Employee/Index", useraccount);
+                    //validate password
+                    string goodHash = useraccount.Password;
+                    bool isValidUser = EncryptionController.ValidatePassword(password, goodHash);
+
+                    if (isValidUser)
+                    {
+                        Session["username"] = username;
+                        return View("../Employee/Index", useraccount);
+                    }
+                    else
+                    {
+                        ViewBag.errorMsg = "unsuccessful login";
+                        return View();
+                    }
                 }
             }
             else
             {
-                return HttpNotFound();
+                ViewBag.errorMsg = "unsuccessful login";
+                return View();
             }
         }
 
        
-
 
         //
         // GET: /Home/Details/5

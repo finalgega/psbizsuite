@@ -42,7 +42,7 @@ namespace psbizsuite.Controllers
         public ActionResult Create()
         {
             ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName");
-            ViewBag.category_CatName = new SelectList(db.categories, "CatName", "CatName");
+            ViewBag.Category_CatId = new SelectList(db.categories, "CatId", "CatName");
             return View();
         }
 
@@ -54,8 +54,9 @@ namespace psbizsuite.Controllers
         {
             if (ModelState.IsValid)
             {
+              
                 Inventory inventoryItem = inventory;
-                inventoryItem.Category_CatId = 1;
+
                 inventoryItem.TimeStamp = System.DateTime.Now;
                 db.Inventories.Add(inventoryItem);
                 db.SaveChanges();
@@ -89,8 +90,7 @@ namespace psbizsuite.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(inventory).State = EntityState.Modified;
-              //  Inventory inventoryItem = inventory;
-               // inventoryItem.Category_CatId = 1;
+ 
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

@@ -53,16 +53,31 @@ namespace psbizsuite.Controllers
             
             if (ModelState.IsValid)
             {
+                //create employee account
                 UserAccount employeeAcc = new UserAccount();
                 employeeAcc.Username = employee.UserAccount_Username;
                 employeeAcc.Password = employee.NRIC;
                 employeeAcc.Type = "Employee";
-                employeeAcc.Salt = "null";
 
+                //generate salt and hashed password
+                string hashData = EncryptionController.CreatePasswordHash(employeeAcc.Password);
+                char[] delimiter = { ':' };
+                string[] split = hashData.Split(delimiter);
+                string salt = split[EncryptionController.SALT_INDEX];
+                string hash = split[EncryptionController.PBKDF2_INDEX];
+                employeeAcc.Salt = salt;
+                employeeAcc.Password = hash;
+
+                //add employeAcc to UserAccount table
                 db.UserAccounts.Add(employeeAcc);
 
+                //add employee to Employee table
                 db.Employees.Add(employee);
+
+                //save db query
                 db.SaveChanges();
+
+                //return to index page
                 return RedirectToAction("Index");
             }
    
