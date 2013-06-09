@@ -11,7 +11,6 @@
         <EntityTypeShape EntityType="BizSuiteDBModel.EmployeePosition" Width="1.5" PointX="0.75" PointY="14.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSuiteDBModel.Inventory" Width="1.5" PointX="5.25" PointY="19.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSuiteDBModel.KeyPair" Width="1.5" PointX="5.25" PointY="16" IsExpanded="true" />
-        <EntityTypeShape EntityType="BizSuiteDBModel.LeavePolicy" Width="1.5" PointX="6" PointY="23.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSuiteDBModel.LeaveRequest" Width="1.5" PointX="8.25" PointY="14.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSuiteDBModel.Order" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSuiteDBModel.OrderItem" Width="1.5" PointX="7.5" PointY="10.875" IsExpanded="true" />
@@ -29,16 +28,17 @@
         <AssociationConnector Association="BizSuiteDBModel.fk_LeaveRequest_Employee1" ManuallyRouted="false" />
         <AssociationConnector Association="BizSuiteDBModel.fk_SupportTicket_Employee1" ManuallyRouted="false" />
         <AssociationConnector Association="BizSuiteDBModel.fk_Inventory_Supplier1" ManuallyRouted="false" />
-        <AssociationConnector Association="BizSuiteDBModel.fk_LeaveRequest_LeavePolicy1" ManuallyRouted="false" />
         <AssociationConnector Association="BizSuiteDBModel.fk_OrderItem_Order1" ManuallyRouted="false" />
         <AssociationConnector Association="BizSuiteDBModel.fk_Supplier_UserAccount1" ManuallyRouted="false" />
         <AssociationConnector Association="BizSuiteDBModel.fk_SupportTicket_SupportTicket1" ManuallyRouted="false" />
         <EntityTypeShape EntityType="BizSuiteDBModel.category" Width="1.5" PointX="3.625" PointY="23.25" />
         <AssociationConnector Association="BizSuiteDBModel.FK_CategoryInventory" />
-        <EntityTypeShape EntityType="BizSuiteDBModel.cashflow" Width="1.5" PointX="3.5138109678001195" PointY="16.152550660144794" />
+        <EntityTypeShape EntityType="BizSuiteDBModel.cashflow" Width="1.5" PointX="8" PointY="17" />
         <EntityTypeShape EntityType="BizSuiteDBModel.invoice" Width="1.5" PointX="10.576269925840325" PointY="20.224170053482133" />
         <EntityTypeShape EntityType="BizSuiteDBModel.profitloss" Width="1.5" PointX="9.6525229912495814" PointY="1.9901685127942677" />
         <AssociationConnector Association="BizSuiteDBModel.fk_Invoice_Order1" />
+        <EntityTypeShape EntityType="BizSuiteDBModel.LeavePolicy" Width="1.5" PointX="8.0944913700662973" PointY="4.8820789926136277" />
+        <AssociationConnector Association="BizSuiteDBModel.fk_LeaveRequest_LeavePolicy1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

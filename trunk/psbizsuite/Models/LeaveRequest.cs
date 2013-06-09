@@ -22,6 +22,6 @@ namespace psbizsuite.Models
         public int LeavePolicy_LeavePolicyId { get; set; }
     
         public virtual Employee Employee { get; set; }
-        public virtual LeavePolicy LeavePolicy { get; set; }
+        public virtual LeavePolicy leavepolicy { get; set; }
     }
 }

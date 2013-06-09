@@ -27,28 +27,28 @@ namespace psbizsuite.Controllers
             if (ModelState.IsValid)
             {
                 UserAccount useraccount = db.UserAccounts.Find(username);
-                if (useraccount == null)
-                {
-                    ModelState.AddModelError("LoginError", "unsuccessful login");
-                    return View();
-                }
-                else
-                {
-                    //validate password
-                    string goodHash = useraccount.Password;
-                    bool isValidUser = EncryptionController.ValidatePassword(password, goodHash);
+                //if (useraccount == null)
+                //{
+                //    ModelState.AddModelError("LoginError", "unsuccessful login");
+                //    return View();
+                //}
+                //else
+                //{
+                //    //validate password
+                //    string goodHash = useraccount.Password;
+                //    bool isValidUser = EncryptionController.ValidatePassword(password, goodHash);
 
-                    if (isValidUser)
-                    {
-                        Session["username"] = username;
+                //    if (isValidUser)
+                //    {
+               
                         return View("../Employee/Index", useraccount);
-                    }
-                    else
-                    {
-                        ViewBag.errorMsg = "unsuccessful login";
-                        return View();
-                    }
-                }
+            //        }
+            //        else
+            //        {
+            //            ViewBag.errorMsg = "unsuccessful login";
+            //            return View();
+            //        }
+            //    }
             }
             else
             {

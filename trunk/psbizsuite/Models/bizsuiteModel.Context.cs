@@ -31,7 +31,6 @@ namespace psbizsuite.Models
         public DbSet<EmployeePosition> EmployeePositions { get; set; }
         public DbSet<Inventory> Inventories { get; set; }
         public DbSet<KeyPair> KeyPairs { get; set; }
-        public DbSet<LeavePolicy> LeavePolicies { get; set; }
         public DbSet<LeaveRequest> LeaveRequests { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
@@ -43,5 +42,6 @@ namespace psbizsuite.Models
         public DbSet<cashflow> cashflows { get; set; }
         public DbSet<invoice> invoices { get; set; }
         public DbSet<profitloss> profitlosses { get; set; }
+        public DbSet<LeavePolicy> LeavePolicies { get; set; }
     }
 }

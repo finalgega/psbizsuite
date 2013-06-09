@@ -133,6 +133,8 @@
     <Compile Include="Controllers\InventoryController.cs" />
     <Compile Include="Controllers\InventoryController2.cs" />
     <Compile Include="Controllers\InvoiceController.cs" />
+    <Compile Include="Controllers\LeavePolicyController.cs" />
+    <Compile Include="Controllers\LeaveRequestController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\LeaveController.cs" />
     <Compile Include="Controllers\SupportTicketController.cs" />
@@ -391,6 +393,14 @@
     <Content Include="Views\Invoice\Details.aspx" />
     <Content Include="Views\Invoice\Edit.aspx" />
     <Content Include="Views\Invoice\Index.aspx" />
+    <Content Include="Views\LeavePolicy\Create.aspx" />
+    <Content Include="Views\LeavePolicy\Edit.aspx" />
+    <Content Include="Views\LeavePolicy\Index.aspx" />
+    <Content Include="Views\LeaveRequest\Create.aspx" />
+    <Content Include="Views\LeaveRequest\Delete.aspx" />
+    <Content Include="Views\LeaveRequest\Details.aspx" />
+    <Content Include="Views\LeaveRequest\Edit.aspx" />
+    <Content Include="Views\LeaveRequest\Index.aspx" />
     <Content Include="Views\Leave\ApplyLeave.aspx" />
     <Content Include="Views\Leave\EditLeavePolicy.aspx" />
     <Content Include="Views\Leave\ViewLeavePolicy.aspx" />

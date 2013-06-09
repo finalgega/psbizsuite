@@ -13,7 +13,7 @@
 
     <fieldset>
         <legend>LeavePolicy</legend>
-
+          <%: Html.HiddenFor(model => model.LeavePolicyId) %>
         <div class="editor-label">
             <%: Html.LabelFor(model => model.PolicyName) %>
         </div>
