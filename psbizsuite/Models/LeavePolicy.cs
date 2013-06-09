@@ -16,7 +16,7 @@ namespace psbizsuite.Models
     {
         public LeavePolicy()
         {
-            this.LeaveRequests = new HashSet<LeaveRequest>();
+            this.leaverequests = new HashSet<LeaveRequest>();
         }
     
         public int LeavePolicyId { get; set; }
@@ -27,6 +27,6 @@ namespace psbizsuite.Models
         public bool Paid { get; set; }
         public string Period { get; set; }
     
-        public virtual ICollection<LeaveRequest> LeaveRequests { get; set; }
+        public virtual ICollection<LeaveRequest> leaverequests { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<psbizsuite.Models.LeavePolicy>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.master" Inherits="System.Web.Mvc.ViewPage<psbizsuite.Models.LeaveRequest>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Delete
@@ -10,51 +10,45 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <fieldset>
-    <legend>LeavePolicy</legend>
+    <legend>LeaveRequest</legend>
 
     <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.PolicyName) %>
+        <%: Html.DisplayNameFor(model => model.StartDate) %>
     </div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.PolicyName) %>
-    </div>
-
-    <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.PolicyDescription) %>
-    </div>
-    <div class="display-field">
-        <%: Html.DisplayFor(model => model.PolicyDescription) %>
+        <%: Html.DisplayFor(model => model.StartDate) %>
     </div>
 
     <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.DaysOfLeave) %>
+        <%: Html.DisplayNameFor(model => model.EndDate) %>
     </div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.DaysOfLeave) %>
+        <%: Html.DisplayFor(model => model.EndDate) %>
     </div>
 
     <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.MinServiceYear) %>
+        <%: Html.DisplayNameFor(model => model.Reason) %>
     </div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.MinServiceYear) %>
+        <%: Html.DisplayFor(model => model.Reason) %>
     </div>
 
     <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.Paid) %>
+        <%: Html.DisplayNameFor(model => model.Employee.FullName) %>
     </div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.Paid) %>
+        <%: Html.DisplayFor(model => model.Employee.FullName) %>
     </div>
 
     <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.Period) %>
+        <%: Html.DisplayNameFor(model => model.leavepolicy.PolicyName) %>
     </div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.Period) %>
+        <%: Html.DisplayFor(model => model.leavepolicy.PolicyName) %>
     </div>
 </fieldset>
 <% using (Html.BeginForm()) { %>
+    <%: Html.AntiForgeryToken() %>
     <p>
         <input type="submit" value="Delete" /> |
         <%: Html.ActionLink("Back to List", "Index") %>
