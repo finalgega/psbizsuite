@@ -20,6 +20,7 @@ namespace psbizsuite.Models
         public string Reason { get; set; }
         public string Employee_UserAccount_Username { get; set; }
         public int LeavePolicy_LeavePolicyId { get; set; }
+        public string Status { get; set; }
     
         public virtual Employee Employee { get; set; }
         public virtual LeavePolicy leavepolicy { get; set; }

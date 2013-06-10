@@ -6,65 +6,99 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-<h2>Create</h2>
+    <style>
+        .details {
+            width: 300px;
+            height: 80px;
+            resize: none;
+        }
+    </style>
+    <!-- start content-outer -->
+    <div id="content-outer">
+        <!-- start content -->
+        <div id="content">
 
-<% using (Html.BeginForm()) { %>
-    <%: Html.AntiForgeryToken() %>
-    <%: Html.ValidationSummary(true) %>
+            <div id="page-heading">
+                <h1>Send Leave Request</h1>
+            </div>
 
-    <fieldset>
-        <legend>LeaveRequest</legend>
 
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.StartDate) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.StartDate) %>
-            <%: Html.ValidationMessageFor(model => model.StartDate) %>
-        </div>
+            <table border="0" class="zeroPS" style="width: 100%" id="content-table">
+                <tr>
+                    <th rowspan="3" class="sized">
+                        <img src="../../Assets/Images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
+                    <th class="topleft"></th>
+                    <td id="tbl-border-top">&nbsp;</td>
+                    <th class="topright"></th>
+                    <th rowspan="3" class="sized">
+                        <img src="../../Assets/Images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
+                </tr>
+                <tr>
+                    <td id="tbl-border-left"></td>
+                    <td>
+                        <!--  start content-table-inner -->
+                        <div id="content-table-inner">
 
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.EndDate) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.EndDate) %>
-            <%: Html.ValidationMessageFor(model => model.EndDate) %>
-        </div>
+                            <table border="0" class="zeroPS" style="width: 100%">
+                                <tr style="vertical-align: top">
+                                    <td>
+                                        <% using (Html.BeginForm())
+                                           { %>
+                                        <%: Html.AntiForgeryToken() %>
+                                        <%: Html.ValidationSummary(true) %>
 
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.Reason) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.Reason) %>
-            <%: Html.ValidationMessageFor(model => model.Reason) %>
-        </div>
+                                        <!-- start id-form -->
+                                        <table border="0" class="zeroPS id-form">
+                                            <tr>
+                                                <th>Start Date:</th>
+                                                <td><%: Html.EditorFor(model => model.StartDate) %>
+                                                    <%: Html.ValidationMessageFor(model => model.StartDate) %></td>
+                                            </tr>
+                                            <tr>
+                                                <th>End Date:</th>
+                                                <td><%: Html.EditorFor(model => model.EndDate) %>
+                                                    <%: Html.ValidationMessageFor(model => model.EndDate) %></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Reason:</th>
+                                                <td><%: Html.TextAreaFor(model => model.Reason, new { @class = "details" })%>
+                                                    <%: Html.ValidationMessageFor(model => model.Reason) %></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Leave Type:</th>
+                                                <%: Html.DropDownList("LeavePolicy_LeavePolicyId", String.Empty) %>
+                                                <%: Html.ValidationMessageFor(model => model.LeavePolicy_LeavePolicyId) %>
+                                            </tr>
+                                            <tr>
+                                                <th>&nbsp;</th>
+                                                <td style="vertical-align: top">
+                                                    <input type="submit" class="form-submit" />
+                                                    <input type="reset" class="form-reset" />
+                                                </td>
+                                                <td></td>
+                                            </tr>
 
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.Employee_UserAccount_Username, "Employee") %>
+                                        </table>
+                                        <!-- end id-form  -->
+                                        <% } %>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="clear"></div>
+                        </div>
+                        <!--  end content-table-inner  -->
+                    </td>
+                    <td id="tbl-border-right"></td>
+                </tr>
+                <tr>
+                    <th class="sized bottomleft"></th>
+                    <td id="tbl-border-bottom">&nbsp;</td>
+                    <th class="sized bottomright"></th>
+                </tr>
+            </table>
         </div>
-        <div class="editor-field">
-            <%: Html.DropDownList("Employee_UserAccount_Username", String.Empty) %>
-            <%: Html.ValidationMessageFor(model => model.Employee_UserAccount_Username) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.LeavePolicy_LeavePolicyId, "leavepolicy") %>
-        </div>
-        <div class="editor-field">
-            <%: Html.DropDownList("LeavePolicy_LeavePolicyId", String.Empty) %>
-            <%: Html.ValidationMessageFor(model => model.LeavePolicy_LeavePolicyId) %>
-        </div>
-
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
-<% } %>
-
-<div>
-    <%: Html.ActionLink("Back to List", "Index") %>
-</div>
-
+    </div>
+    <div class="clear">&nbsp;</div>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="NavContent" runat="server">

@@ -51,33 +51,33 @@
                                         <table border="0" class="zeroPS id-form">
                                             <tr>
                                                 <th>Policy Name:</th>
-                                                <td><%: Html.EditorFor(model => model.PolicyName) %></td>
-                                                <td><%: Html.ValidationMessageFor(model => model.PolicyName) %></td>
+                                                <td><%: Html.EditorFor(model => model.PolicyName) %>
+                                                <%: Html.ValidationMessageFor(model => model.PolicyName) %></td>
                                             </tr>
                                             <tr>
                                                 <th>Policy Description:</th>
-                                                <td><%: Html.EditorFor(model => model.PolicyDescription) %></td>
-                                                <td><%: Html.ValidationMessageFor(model => model.PolicyDescription) %></td>
+                                                <td><%: Html.EditorFor(model => model.PolicyDescription) %>
+                                                <%: Html.ValidationMessageFor(model => model.PolicyDescription) %></td>
                                             </tr>
                                             <tr>
                                                 <th>Entitled Days of Leave:</th>
-                                                <td><%: Html.EditorFor(model => model.DaysOfLeave) %></td>
-                                                <td><%: Html.ValidationMessageFor(model => model.DaysOfLeave) %></td>
+                                                <td><%: Html.EditorFor(model => model.DaysOfLeave) %>
+                                                <%: Html.ValidationMessageFor(model => model.DaysOfLeave) %></td>
                                             </tr>
                                             <tr>
                                                 <th>Minimum Years of Service:</th>
-                                                <td><%: Html.EditorFor(model => model.MinServiceYear) %></td>
-                                                <td><%: Html.ValidationMessageFor(model => model.MinServiceYear) %></td>
+                                                <td><%: Html.EditorFor(model => model.MinServiceYear) %>
+                                                <%: Html.ValidationMessageFor(model => model.MinServiceYear) %></td>
                                             </tr>
                                             <tr>
                                                 <th>Paid/Unpaid Leave:</th>
-                                                <td><%: Html.EditorFor(model => model.Paid) %></td>
-                                                <td><%: Html.ValidationMessageFor(model => model.Paid) %></td>
+                                                <td><%: Html.EditorFor(model => model.Paid) %>
+                                                <%: Html.ValidationMessageFor(model => model.Paid) %></td>
                                             </tr>
                                             <tr>
                                                 <th>Monthly/Yearly Leave:</th>
-                                                <td><%: Html.EditorFor(model => model.Period) %></td>
-                                                <td><%: Html.ValidationMessageFor(model => model.Period) %></td>
+                                                <td><%: Html.EditorFor(model => model.Period) %><
+                                                <%: Html.ValidationMessageFor(model => model.Period) %></td>
                                             </tr>
 
 
