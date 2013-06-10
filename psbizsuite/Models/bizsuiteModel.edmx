@@ -208,6 +208,7 @@
           <Property Name="Reason" Type="varchar" Nullable="false" MaxLength="100" />
           <Property Name="Employee_UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="LeavePolicy_LeavePolicyId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="varchar" Nullable="false" MaxLength="45" />
         </EntityType>
         <EntityType Name="order">
           <Key>
@@ -648,6 +649,7 @@
           <Property Name="LeavePolicy_LeavePolicyId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Employee" Relationship="BizSuiteDBModel.fk_LeaveRequest_Employee1" FromRole="LeaveRequest" ToRole="Employee" />
           <NavigationProperty Name="leavepolicy" Relationship="BizSuiteDBModel.fk_LeaveRequest_LeavePolicy1" FromRole="LeaveRequest" ToRole="leavepolicy" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -1059,6 +1061,7 @@
           <EntitySetMapping Name="LeaveRequests">
             <EntityTypeMapping TypeName="IsTypeOf(BizSuiteDBModel.LeaveRequest)">
               <MappingFragment StoreEntitySet="leaverequest">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="LeavePolicy_LeavePolicyId" ColumnName="LeavePolicy_LeavePolicyId" />
                 <ScalarProperty Name="Employee_UserAccount_Username" ColumnName="Employee_UserAccount_Username" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />

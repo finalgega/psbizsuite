@@ -35,6 +35,7 @@
                                 <th class="table-header-repeat line-left"><a href="">Entitle Days</a></th>
                                 <th class="table-header-repeat line-left"><a href="">Min Years of Service</a></th>
                                 <th class="table-header-repeat line-left"><a href="">Paid/UnPaid</a></th>
+                                <th class="table-header-repeat line-left"><a href="">Period</a></th>
                                 <th class="table-header-options line-left"><a href="">Options</a></th>
                             </tr>
 

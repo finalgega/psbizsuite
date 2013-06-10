@@ -322,6 +322,7 @@ CREATE TABLE `leaverequest` (
   `Reason` varchar(100) NOT NULL,
   `Employee_UserAccount_Username` varchar(45) NOT NULL,
   `LeavePolicy_LeavePolicyId` int(11) NOT NULL,
+  `Status` varchar(45) NOT NULL,
   PRIMARY KEY (`LeaveRequestId`),
   KEY `fk_LeaveRequest_Employee1_idx` (`Employee_UserAccount_Username`),
   KEY `fk_LeaveRequest_LeavePolicy1_idx` (`LeavePolicy_LeavePolicyId`),
