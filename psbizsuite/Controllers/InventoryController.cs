@@ -50,14 +50,17 @@ namespace psbizsuite.Controllers
         // POST: /Inventory/Create
 
         [HttpPost]
-        public ActionResult Create(Inventory inventory)
+        public ActionResult Create(Inventory inventory,HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
               
                 Inventory inventoryItem = inventory;
-
                 inventoryItem.TimeStamp = System.DateTime.Now;
+                if (file != null && file.ContentLength > 0)
+                {
+                    //  extracts filename
+                }
                 db.Inventories.Add(inventoryItem);
                 db.SaveChanges();
                 return RedirectToAction("Index");
