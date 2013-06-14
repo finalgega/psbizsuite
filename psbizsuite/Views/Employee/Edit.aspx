@@ -12,7 +12,7 @@
             resize: none;
         }
     </style>
-  <!-- start content-outer -->
+    <!-- start content-outer -->
     <div id="content-outer">
         <!-- start content -->
         <div id="content">
@@ -73,15 +73,15 @@
                                                 <td><%: Html.TextAreaFor(model => model.Address, new { @class = "address" })%></td>
                                                 <td><%: Html.ValidationMessageFor(model => model.Address) %></td>
                                             </tr>
-                                             <tr>
+                                            <tr>
                                                 <th>User Account: </th>
                                                 <td><%: Html.EditorFor(model => model.UserAccount_Username) %>
-                                                <%: Html.ValidationMessageFor(model => model.UserAccount_Username) %></td>
+                                                    <%: Html.ValidationMessageFor(model => model.UserAccount_Username) %></td>
                                             </tr>
                                             <tr>
                                                 <th>Phone Uid: </th>
                                                 <td><%: Html.EditorFor(model => model.PhoneUid) %>
-                                                <%: Html.ValidationMessageFor(model => model.PhoneUid) %></td>
+                                                    <%: Html.ValidationMessageFor(model => model.PhoneUid) %></td>
                                             </tr>
                                             <tr>
                                                 <th>Position: </th>
@@ -147,4 +147,14 @@
 
 
 <asp:Content ID="Content3" ContentPlaceHolderID="NavContent" runat="server">
+    <% if (User.IsInRole("HR Manager")) %>
+    <% Html.RenderPartial("../Shared/Menu/HrMenu"); %>
+    <% if (User.IsInRole("Sale")) %>
+    <% Html.RenderPartial("../Shared/Menu/SaleMenu"); %>
+    <% if (User.IsInRole("Customer")) %>
+    <% Html.RenderPartial("../Shared/Menu/CustomerMenu"); %>
+    <% if (User.IsInRole("Logistic")) %>
+    <% Html.RenderPartial("../Shared/Menu/LogisticMenu"); %>
+    <% if (User.IsInRole("Accountant")) %>
+    <% Html.RenderPartial("../Shared/Menu/AccountantMenu"); %>
 </asp:Content>

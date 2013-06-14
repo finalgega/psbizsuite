@@ -57,7 +57,7 @@
                                    
                                 </td>
                                 <td>
-                                     <%= item.SalaryPerHour * 30 * (item.EndShiftHour.TotalHours-item.StartShiftHour.TotalHours) %>
+                                    <%= item.SalaryPerHour * 30 * (item.EndShiftHour.TotalHours-item.StartShiftHour.TotalHours) %>
                                 </td>
                                 <td class="options-width">
                                     <%: Html.ActionLink(" ", "Edit", new { id = item.UserAccount_Username }, new { @class = "icon-1", title="More details/Edit" }) %>
@@ -84,4 +84,14 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="NavContent" runat="server">
+    <% if (User.IsInRole("HR Manager")) %>
+    <% Html.RenderPartial("../Shared/Menu/HrMenu"); %>
+    <% if (User.IsInRole("Sale")) %>
+    <% Html.RenderPartial("../Shared/Menu/SaleMenu"); %>
+    <% if (User.IsInRole("Customer")) %>
+    <% Html.RenderPartial("../Shared/Menu/CustomerMenu"); %>
+    <% if (User.IsInRole("Logistic")) %>
+    <% Html.RenderPartial("../Shared/Menu/LogisticMenu"); %>
+    <% if (User.IsInRole("Accountant")) %>
+    <% Html.RenderPartial("../Shared/Menu/AccountantMenu"); %>
 </asp:Content>
