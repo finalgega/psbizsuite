@@ -411,6 +411,11 @@
     <Content Include="Views\Order\CreateOrder.aspx" />
     <Content Include="Views\Leave\ViewIndividualLeave.aspx" />
     <Content Include="Views\Order\ViewEditOrder.aspx" />
+    <Content Include="Views\Shared\Menu\AccountantMenu.ascx" />
+    <Content Include="Views\Shared\Menu\CustomerMenu.ascx" />
+    <Content Include="Views\Shared\Menu\HrMenu.ascx" />
+    <Content Include="Views\Shared\Menu\LogisticMenu.ascx" />
+    <Content Include="Views\Shared\Menu\SaleMenu.ascx" />
     <Content Include="Views\SupportTicket\Create.aspx" />
     <Content Include="Views\SupportTicket\Delete.aspx" />
     <Content Include="Views\SupportTicket\Details.aspx" />
@@ -451,9 +456,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\Site.Master" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Shared\Accounting.Master" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Models\bizsuiteModel.edmx">
