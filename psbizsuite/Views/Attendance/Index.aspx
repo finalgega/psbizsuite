@@ -63,18 +63,19 @@
                                             <% foreach(var item in Model){ %>
                                             <tr>
                                                 <td>
-                                                    
+                                                     <%: Html.DisplayFor(modelItem => item.Employee.FullName) %>
                                                 </td>
                                                 <td>
-                                                    09:00
+                                                     <%: Html.DisplayFor(modelItem => item.ClockInTime) %>
                                                 </td>
                                                 <td>
-                                                    18:00
+                                                     <%: Html.DisplayFor(modelItem => item.ClockOutTime) %>
+                                                </td>
+                                                 <td>
+                                                     <%: Html.DisplayFor(modelItem => item.Location) %>
                                                 </td>
                                             </tr>
-                                            <% } %>
-                                            
-                                            
+                                            <% } %>   
                                         </table>
                                     </td>
                                 </tr>

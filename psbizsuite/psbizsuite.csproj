@@ -227,7 +227,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Assets\Css\datePicker.css" />
     <Content Include="Assets\Css\inventory.css" />
-    <Content Include="Assets\Css\jquery.flot.min.js" />
     <Content Include="Assets\Css\notifications.css" />
     <Content Include="Assets\Css\pro_dropline.css" />
     <Content Include="Assets\Css\pro_dropline_ie.css" />
@@ -405,8 +404,8 @@
     <Content Include="Views\LeavePolicy\Edit.aspx" />
     <Content Include="Views\LeavePolicy\Index.aspx" />
     <Content Include="Views\LeaveRequest\Create.aspx" />
-    <Content Include="Views\LeaveRequest\Edit.aspx" />
-    <Content Include="Views\LeaveRequest\Index.aspx" />
+    <Content Include="Views\LeaveRequest\AllList.aspx" />
+    <Content Include="Views\LeaveRequest\MyList.aspx" />
     <Content Include="Views\Leave\EditLeavePolicy.aspx" />
     <Content Include="Views\Leave\ViewLeavePolicy.aspx" />
     <Content Include="Views\Order\CreateOrder.aspx" />
