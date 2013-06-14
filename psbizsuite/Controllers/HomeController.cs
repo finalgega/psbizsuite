@@ -6,6 +6,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using psbizsuite.Models;
+using psbizsuite.Models.AccessControl;
+using System.Web.Routing;
+using System.Web.Security;
 
 namespace psbizsuite.Controllers
 {
@@ -13,6 +16,18 @@ namespace psbizsuite.Controllers
     {
         private BizSuiteDBEntities db = new BizSuiteDBEntities();
 
+        public BizsuiteMembershipProvider MembershipService { get; set; }
+        public BizsuiteRoleProvider AuthorizationService { get; set; }
+
+        protected override void Initialize(RequestContext requestContext)
+        {
+            if (MembershipService == null)
+                MembershipService = new BizsuiteMembershipProvider();
+            if (AuthorizationService == null)
+                AuthorizationService = new BizsuiteRoleProvider();
+
+            base.Initialize(requestContext);
+        }
         //
         // GET: /Home/
 
@@ -26,38 +41,22 @@ namespace psbizsuite.Controllers
         {
             if (ModelState.IsValid)
             {
-                UserAccount useraccount = db.UserAccounts.Find(username);
-                //if (useraccount == null)
-                //{
-                //    ModelState.AddModelError("LoginError", "unsuccessful login");
-                //    return View();
-                //}
-                //else
-                //{
-                //    //validate password
-                //    string goodHash = useraccount.Password;
-                //    bool isValidUser = EncryptionController.ValidatePassword(password, goodHash);
+                if (MembershipService.ValidateUser(username, password))
+                {
+                    FormsAuthentication.SetAuthCookie(username, false);
+                    return RedirectToAction("Index", "Employee");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                }
+            }
 
-                //    if (isValidUser)
-                //    {
-               
-                        return View("../Employee/Index", useraccount);
-            //        }
-            //        else
-            //        {
-            //            ViewBag.errorMsg = "unsuccessful login";
-            //            return View();
-            //        }
-            //    }
-            }
-            else
-            {
-                ViewBag.errorMsg = "unsuccessful login";
-                return View();
-            }
+            // If we got this far, something failed, redisplay form
+            return View("Index");
         }
 
-       
+
 
         //
         // GET: /Home/Details/5

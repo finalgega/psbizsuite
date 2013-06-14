@@ -17,9 +17,16 @@ namespace psbizsuite.Controllers
         // GET: /Employee/
 
         public ActionResult Index()
-        {
-            var employees = db.Employees.Include(e => e.EmployeePosition).Include(e => e.UserAccount);
-            return View(employees.ToList());
+        {            
+            if (User.IsInRole("HR Manager"))
+            {
+                var employees = db.Employees.Include(e => e.EmployeePosition).Include(e => e.UserAccount);
+                return View(employees.ToList());
+            }
+            else
+            {
+                return HttpNotFound("Not HR");
+            }
         }
 
         //
