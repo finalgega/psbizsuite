@@ -45,6 +45,9 @@
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MvcMembership">
+      <HintPath>..\packages\MvcMembership.3.8.0\lib\40\MvcMembership.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
@@ -53,6 +56,9 @@
     </Reference>
     <Reference Include="MySql.Web, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.15.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -141,6 +147,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccessControl\BizsuiteMembershipProvider.cs" />
     <Compile Include="Models\Attendance.cs">
       <DependentUpon>bizsuiteModel.tt</DependentUpon>
     </Compile>
@@ -201,6 +208,7 @@
     <Compile Include="Models\profitloss.cs">
       <DependentUpon>bizsuiteModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccessControl\BizsuiteRoleProvider.cs" />
     <Compile Include="Models\Supplier.cs">
       <DependentUpon>bizsuiteModel.tt</DependentUpon>
     </Compile>
@@ -399,7 +407,6 @@
     <Content Include="Views\LeaveRequest\Create.aspx" />
     <Content Include="Views\LeaveRequest\Edit.aspx" />
     <Content Include="Views\LeaveRequest\Index.aspx" />
-    <Content Include="Views\Leave\ApplyLeave.aspx" />
     <Content Include="Views\Leave\EditLeavePolicy.aspx" />
     <Content Include="Views\Leave\ViewLeavePolicy.aspx" />
     <Content Include="Views\Order\CreateOrder.aspx" />
@@ -430,7 +437,9 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Images\shared\nav\Thumbs.db" />
@@ -490,7 +499,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>21732</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:27996/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
