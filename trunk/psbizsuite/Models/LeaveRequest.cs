@@ -11,11 +11,18 @@ namespace psbizsuite.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class LeaveRequest
     {
         public int LeaveRequestId { get; set; }
+        [Required(ErrorMessage = "This field is required")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public System.DateTime StartDate { get; set; }
+        [Required(ErrorMessage = "This field is required")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public System.DateTime EndDate { get; set; }
         public string Reason { get; set; }
         public string Employee_UserAccount_Username { get; set; }

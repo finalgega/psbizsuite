@@ -13,13 +13,22 @@
             resize: none;
         }
     </style>
+      <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.date').datepicker({
+                minDate: 0
+            });
+        });
+    </script>
     <!-- start content-outer -->
     <div id="content-outer">
         <!-- start content -->
         <div id="content">
 
             <div id="page-heading">
-                <h1>Send Leave Request</h1>
+                <h1>Apply Leave</h1>
             </div>
 
 
@@ -46,17 +55,18 @@
                                            { %>
                                         <%: Html.AntiForgeryToken() %>
                                         <%: Html.ValidationSummary(true) %>
-
+                                        <div style="color: red;font-weight:900;"><%= TempData["message"] %></div><br />
                                         <!-- start id-form -->
                                         <table border="0" class="zeroPS id-form">
                                             <tr>
                                                 <th>Start Date:</th>
-                                                <td><%: Html.EditorFor(model => model.StartDate) %>
+                                                <td>
+                                                    <%: Html.TextBoxFor(model => model.StartDate, new {@class = "date"}) %>
                                                     <%: Html.ValidationMessageFor(model => model.StartDate) %></td>
                                             </tr>
                                             <tr>
                                                 <th>End Date:</th>
-                                                <td><%: Html.EditorFor(model => model.EndDate) %>
+                                                <td><%: Html.TextBoxFor(model => model.EndDate, new {@class = "date"}) %>
                                                     <%: Html.ValidationMessageFor(model => model.EndDate) %></td>
                                             </tr>
                                             <tr>
@@ -66,8 +76,8 @@
                                             </tr>
                                             <tr>
                                                 <th>Leave Type:</th>
-                                                <%: Html.DropDownList("LeavePolicy_LeavePolicyId", String.Empty) %>
-                                                <%: Html.ValidationMessageFor(model => model.LeavePolicy_LeavePolicyId) %>
+                                                <td><%: Html.DropDownList("LeavePolicy_LeavePolicyId", String.Empty) %>
+                                                <%: Html.ValidationMessageFor(model => model.LeavePolicy_LeavePolicyId) %></td>
                                             </tr>
                                             <tr>
                                                 <th>&nbsp;</th>
