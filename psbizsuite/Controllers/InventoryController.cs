@@ -1,4 +1,4 @@
-﻿using System;
+ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -50,17 +50,18 @@ namespace psbizsuite.Controllers
         // POST: /Inventory/Create
 
         [HttpPost]
-        public ActionResult Create(Inventory inventory,HttpPostedFileBase file)
+        public ActionResult Create(Inventory inventory,HttpPostedFileBase uploadFile)
         {
             if (ModelState.IsValid)
             {
               
                 Inventory inventoryItem = inventory;
                 inventoryItem.TimeStamp = System.DateTime.Now;
-                if (file != null && file.ContentLength > 0)
+                if (uploadFile != null && uploadFile.ContentLength > 0)
                 {
                     //  extracts filename
-                }
+                                inventoryItem.Image = new byte[uploadFile.ContentLength];
+            uploadFile.InputStream.Read(inventoryItem.Image, 0, uploadFile.ContentLength);
                 db.Inventories.Add(inventoryItem);
                 db.SaveChanges();
                 return RedirectToAction("Index");
