@@ -66,6 +66,8 @@ namespace psbizsuite.Controllers
                 db.Customers.Add(customer);
                 db.SaveChanges();
                 
+                EmailController email = new EmailController();
+                bool ok =email.createAndEmailOTP();
                 return RedirectToAction("Index");
                 
             }

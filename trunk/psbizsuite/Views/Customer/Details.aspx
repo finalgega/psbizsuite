@@ -1,57 +1,64 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.master" Inherits="System.Web.Mvc.ViewPage<psbizsuite.Models.Customer>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Details
+    ViewCustomerDetails
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-<h2>Details</h2>
+    <link href="../../Assets/Css/order.css" type="text/css" rel="stylesheet" />
+<h2>View Customer Details</h2>
 
 <fieldset>
     <legend>Customer</legend>
-
-    <div class="display-label">
+    <table>
+        <tr>
+    <td><div class="display-label">
         Full Name
-    </div>
-    <div class="display-field">
+    </div></td>
+    <td><div class="display-field">
         <%: Html.DisplayFor(model => model.FullName) %>
-    </div>
+    </div></td></tr>
 
-    <div class="display-label">
+        <tr>
+    <td><div class="display-label">
         Address
-    </div>
-    <div class="display-field">
+    </div></td>
+    <td><div class="display-field">
         <%: Html.DisplayFor(model => model.Address) %>
-    </div>
+    </div></td></tr>
 
-    <div class="display-label">
+        <tr>
+    <td><div class="display-label">
         Phone Number
-    </div>
-    <div class="display-field">
+    </div></td>
+    <td><div class="display-field">
         <%: Html.DisplayFor(model => model.PhoneNo) %>
-    </div>
+    </div></td></tr>
 
-    <div class="display-label">
+        <tr>
+    <td><div class="display-label">
         Email Address
-    </div>
-    <div class="display-field">
+    </div></td>
+    <td><div class="display-field">
         <%: Html.DisplayFor(model => model.Email) %>
-    </div>
+    </div></td></tr>
 
-    <div class="display-label">
+        <tr>
+    <td><div class="display-label">
         Fax Number
-    </div>
-    <div class="display-field">
+    </div></td>
+    <td><div class="display-field">
         <%: Html.DisplayFor(model => model.FaxNo) %>
-    </div>
+    </div></td></tr>
 
-    <div class="display-label">
+        <tr>
+    <td><div class="display-label">
         Password
-    </div>
-    <div class="display-field">
+    </div></td>
+    <td><div class="display-field">
         <%: Html.DisplayFor(model => model.UserAccount.Password) %>
-    </div>
+    </div></td></tr>
+        </table>
 </fieldset>
 <p>
     <%: Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) %> |

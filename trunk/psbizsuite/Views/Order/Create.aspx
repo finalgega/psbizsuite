@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
+    <link href="../../Assets/Css/order.css" type="text/css" rel="stylesheet" />
 <h2>Create Order</h2>
 
 <% using (Html.BeginForm()) { %>

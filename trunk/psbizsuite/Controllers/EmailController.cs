@@ -181,7 +181,7 @@ namespace psbizsuite.Controllers
                 MailMsg.IsBodyHtml = true; //I decided to make it html - so I could format the text.
                 MailMsg.Body = "<h3>To, " + username + "</h3><br /><br/>";
                 MailMsg.Body += "<p><b>Please complete your login by entering the code below: <br/>";
-                MailMsg.Body += "<p><b>Reply:" + NewPassword + "<br/>";
+                MailMsg.Body += "<p><b>Key:" + NewPassword + "<br/>";
                 MailMsg.Body += "<p>Thank you for using BizSuite and we are always happy to serve you,<br />";
                 MailMsg.Body += "<p>" + username + "<br/>";
                 MailMsg.Body += "<p><b>From:" + strFromEmail + "<br/>";

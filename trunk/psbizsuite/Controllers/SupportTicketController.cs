@@ -54,7 +54,7 @@ namespace psbizsuite.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+
                 supportticket.Customer_UserAccount_Username = "jack";
                 db.SupportTickets.Add(supportticket);
                 db.SaveChanges();
@@ -93,7 +93,7 @@ namespace psbizsuite.Controllers
         {
             if (ModelState.IsValid)
             {
-                supportticket.Employee_UserAccount_Username = "mary";
+                supportticket.Employee_UserAccount_Username = "WinnieThePooh";
                 db.Entry(supportticket).State = EntityState.Modified;
                 
                 db.SaveChanges();
