@@ -50,24 +50,26 @@ namespace psbizsuite.Controllers
         // POST: /Inventory/Create
 
         [HttpPost]
-        public ActionResult Create(Inventory inventory,HttpPostedFileBase uploadFile)
+        public ActionResult Create(Inventory inventory, HttpPostedFileBase uploadFile)
         {
             if (ModelState.IsValid)
             {
-              
+
                 Inventory inventoryItem = inventory;
                 inventoryItem.TimeStamp = System.DateTime.Now;
                 if (uploadFile != null && uploadFile.ContentLength > 0)
                 {
                     //  extracts filename
-                                inventoryItem.Image = new byte[uploadFile.ContentLength];
-            uploadFile.InputStream.Read(inventoryItem.Image, 0, uploadFile.ContentLength);
-                db.Inventories.Add(inventoryItem);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                    inventoryItem.Image = new byte[uploadFile.ContentLength];
+                    uploadFile.InputStream.Read(inventoryItem.Image, 0, uploadFile.ContentLength);
+                    db.Inventories.Add(inventoryItem);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
 
-            ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName", inventory.Supplier_UserAccount_Username);
+                ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName", inventory.Supplier_UserAccount_Username);
+                return View(inventory);
+            }
             return View(inventory);
         }
 
