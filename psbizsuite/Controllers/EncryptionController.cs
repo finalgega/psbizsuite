@@ -1,4 +1,4 @@
-﻿using System;
+ using System;
 using System.Collections.Generic;
 using System.Collections;
 using System.IO;
@@ -281,6 +281,32 @@ namespace psbizsuite.Controllers
                                       Type.GetType("System.Byte")) as byte[]);
         }
 
+      // code snippet to integrate into encryptioncontroller. prelim testing before encapsulation works.
+      /*
+         string cleartxt = "Ambitio Via Virtus";
+            Console.WriteLine("Cleartext : " + cleartxt);
+            byte[] byteText = Encoding.UTF8.GetBytes(cleartxt);
+            SymmetricAlgorithm sa = TripleDESCryptoServiceProvider.Create();
+            sa.GenerateKey();
+            //  Establish the relevant crypto streams
+            MemoryStream ms = new MemoryStream();
+            CryptoStream cs = new CryptoStream(ms, sa.CreateEncryptor(), CryptoStreamMode.Write);
+            cs.Write(byteText, 0, byteText.Length);
+            cs.Close();
+            byte[] byteCipher = ms.ToArray();
+            ms.Close();
 
+            string cipher = Encoding.UTF8.GetString(byteCipher);
+            Console.WriteLine(" Cipher Text : " + cipher);
+            MemoryStream mac = new MemoryStream(byteCipher);
+            CryptoStream dcs = new CryptoStream(mac, sa.CreateDecryptor(sa.Key,sa.IV), CryptoStreamMode.Read);
+            StreamReader sr = new StreamReader(dcs);
+            string decryptedText = sr.ReadToEnd();
+            dcs.Close();
+            mac.Close();
+            Console.WriteLine("Decrypted Text : " + decryptedText);
+
+            Console.ReadKey();
+            */
     }
 }
