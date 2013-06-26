@@ -46,16 +46,21 @@ namespace psbizsuite.Controllers
             return View();
         }*/
 
-        public ActionResult Create(int InventoryId)
+        public ActionResult Create( FormCollection collection, int InventoryId =2)
         {
+            
             //ViewBag.Order_OrderId = new SelectList(db.Orders, "OrderId", "Status");
-            
             ViewBag.OrderItemId = new SelectList(db.Inventories, "InventoryId", "ItemName");
-            
-                OrderItem o = new OrderItem();
-                TempData["price"] = o.UnitPrice = (double)db.Inventories.Find(InventoryId).UnitCost;
 
-                return View();
+            OrderItem o = new OrderItem();
+            TempData["price"] = o.UnitPrice = (double)db.Inventories.Find(InventoryId).UnitCost;
+            o.UnitPrice = (double)db.Inventories.Find(InventoryId).UnitCost;
+            
+            IQueryable<Object> getAllEvents = ViewBag.OrderItemId.GetEventsSelectlist();
+            int selectedvalue = Convert.ToInt32(collection["selectedValue"]);
+            ViewData["dropdownlist"] = new SelectList(getAllEvents.ToList(), "InventoryId", "ItemName", selectedvalue);// your dropdownlist
+
+            return View();
             
         }
 
