@@ -92,7 +92,7 @@
           <Property Name="AttendanceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="ClockInTime" Type="time" />
-          <Property Name="ClockOutTime" Type="varchar" MaxLength="45" />
+          <Property Name="ClockOutTime" Type="time" />
           <Property Name="Location" Type="varchar" MaxLength="45" />
           <Property Name="Employee_UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
         </EntityType>
@@ -561,7 +561,7 @@
           <Property Name="Employee_UserAccount_Username" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
           <NavigationProperty Name="Employee" Relationship="BizSuiteDBModel.fk_Attendance_Employee1" FromRole="Attendance" ToRole="Employee" />
           <Property Type="Time" Name="ClockInTime" Precision="0" />
-          <Property Type="String" Name="ClockOutTime" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Type="Time" Name="ClockOutTime" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>

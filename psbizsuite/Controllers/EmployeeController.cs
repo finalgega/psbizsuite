@@ -17,7 +17,7 @@ namespace psbizsuite.Controllers
         // GET: /Employee/
 
         public ActionResult Index()
-        {            
+        {          
             if (User.IsInRole("HR Manager"))
             {
                 var employees = db.Employees.Include(e => e.EmployeePosition).Include(e => e.UserAccount);
@@ -25,7 +25,7 @@ namespace psbizsuite.Controllers
             }
             else
             {
-                return HttpNotFound("Not HR");
+                return HttpNotFound("Unauthorized access");
             }
         }
 

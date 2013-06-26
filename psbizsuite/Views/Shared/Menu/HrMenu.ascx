@@ -8,9 +8,9 @@
     <li><a href="#nogo"><b>Employee</b></a>
         <div class="select_sub">
             <ul class="sub">
-                <li><a href="../Attendance/ViewAttendanceSummary">Manage employee profile</a></li>
-                <li><a href="../Employee/EditEmployeeDetail">Add new employee</a></li>
-                <li><a href="../Employee/EditEmployeeDetail">Manage employee position</a></li>
+                <li> <%: Html.ActionLink("Manage employee profile", "Index", "Employee", null, null) %> </li>
+                <li> <%: Html.ActionLink("Add new employee", "Create", "Employee", null, null) %> </li>
+                <li> <%: Html.ActionLink("Manage employee position", "Index", "EmployePosition", null, null) %> </li>
             </ul>
         </div>
     </li>
@@ -40,6 +40,6 @@
 </ul>
 
 
-<!-- END Order Nav Bar-->
+
 
 
