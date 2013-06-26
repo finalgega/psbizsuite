@@ -11,6 +11,7 @@ namespace psbizsuite.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class SupportTicket
     {
@@ -22,6 +23,7 @@ namespace psbizsuite.Models
         public int SupportTicketId { get; set; }
         public string EnquiryType { get; set; }
         public string EnquiryPriority { get; set; }
+        [MaxLength(999)]
         public string Details { get; set; }
         public string Reply { get; set; }
         public string Customer_UserAccount_Username { get; set; }
