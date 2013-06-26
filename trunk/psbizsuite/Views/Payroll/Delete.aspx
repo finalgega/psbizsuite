@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.master" Inherits="System.Web.Mvc.ViewPage<psbizsuite.Models.AccountReceivable>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<psbizsuite.Models.PayrollRequest>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Delete
@@ -10,14 +10,7 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <fieldset>
-    <legend>AccountReceivable</legend>
-
-    <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.Status) %>
-    </div>
-    <div class="display-field">
-        <%: Html.DisplayFor(model => model.Status) %>
-    </div>
+    <legend>PayrollRequest</legend>
 
     <div class="display-label">
         <%: Html.DisplayNameFor(model => model.TotalAmount) %>
@@ -27,10 +20,17 @@
     </div>
 
     <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.Order.Status) %>
+        <%: Html.DisplayNameFor(model => model.RequestTimeStamp) %>
     </div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.Order.Status) %>
+        <%: Html.DisplayFor(model => model.RequestTimeStamp) %>
+    </div>
+
+    <div class="display-label">
+        <%: Html.DisplayNameFor(model => model.Status) %>
+    </div>
+    <div class="display-field">
+        <%: Html.DisplayFor(model => model.Status) %>
     </div>
 </fieldset>
 <% using (Html.BeginForm()) { %>

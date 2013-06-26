@@ -19,7 +19,7 @@ namespace psbizsuite.Models
         public string Location { get; set; }
         public string Employee_UserAccount_Username { get; set; }
         public Nullable<System.TimeSpan> ClockInTime { get; set; }
-        public string ClockOutTime { get; set; }
+        public Nullable<System.TimeSpan> ClockOutTime { get; set; }
     
         public virtual Employee Employee { get; set; }
     }
