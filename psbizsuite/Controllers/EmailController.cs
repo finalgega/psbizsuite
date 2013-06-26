@@ -5,10 +5,11 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Net.Mail;
+using System.Web.Mvc;
 
 namespace psbizsuite.Controllers
 {
-    public class EmailController
+    public class EmailController : Controller
     {
         public bool submitEmail()
         {
@@ -124,8 +125,8 @@ namespace psbizsuite.Controllers
 
         public bool createAndEmailOTP(){
 
-            string username = "Jack";
-
+            //string username = "Jack";
+            string username = User.Identity.Name;
             string strSubject = "Your Account is being accessed... ";
             //string message = "Please complete your login by entering this: ";
             string adminEmail = "secuca53study@gmail.com"; //from

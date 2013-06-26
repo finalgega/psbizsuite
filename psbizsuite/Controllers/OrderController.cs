@@ -38,11 +38,25 @@ namespace psbizsuite.Controllers
         //
         // GET: /Order/Create
 
-        public ActionResult Create()
+        /*public ActionResult Create()
         {
             //ViewBag.Order_OrderId = new SelectList(db.Orders, "OrderId", "Status");
-            ViewBag.OrderItemId = new SelectList(db.Inventories, "ItemName", "ItemName");
+            ViewBag.OrderItemId = new SelectList(db.Inventories, "InventoryId", "ItemName");
+            
             return View();
+        }*/
+
+        public ActionResult Create(int InventoryId)
+        {
+            //ViewBag.Order_OrderId = new SelectList(db.Orders, "OrderId", "Status");
+            
+            ViewBag.OrderItemId = new SelectList(db.Inventories, "InventoryId", "ItemName");
+            
+                OrderItem o = new OrderItem();
+                TempData["price"] = o.UnitPrice = (double)db.Inventories.Find(InventoryId).UnitCost;
+
+                return View();
+            
         }
 
         //
@@ -65,6 +79,7 @@ namespace psbizsuite.Controllers
             }
 
             ViewBag.Order_OrderId = new SelectList(db.Orders, "OrderId", "Status", orderitem.Order_OrderId);
+            
             return View(orderitem);
         }
 

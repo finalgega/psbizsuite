@@ -112,8 +112,8 @@
             <PropertyRef Name="CatId" />
           </Key>
           <Property Name="CatId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="CatName" Type="varchar" Nullable="false" MaxLength="45" />
-          <Property Name="CatDescription" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="CatName" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="CatDescription" Type="varchar" Nullable="false" MaxLength="255" />
         </EntityType>
         <EntityType Name="customer">
           <Key>
@@ -157,16 +157,16 @@
             <PropertyRef Name="InventoryId" />
           </Key>
           <Property Name="InventoryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="ItemDescription" Type="varchar" Nullable="false" MaxLength="45" />
-          <Property Name="Image" Type="blob" />
+          <Property Name="ItemName" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="ItemDescription" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Image" Type="mediumblob" />
           <Property Name="UnitCost" Type="decimal" Nullable="false" Precision="8" Scale="2" />
-          <Property Name="UnitWeightKilo" Type="decimal" Precision="8" Scale="2" />
           <Property Name="Quantity" Type="int" Nullable="false" />
-          <Property Name="Location" Type="varchar" MaxLength="45" />
+          <Property Name="UnitWeightKilo" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="Location" Type="varchar" MaxLength="255" />
           <Property Name="TimeStamp" Type="timestamp" Nullable="false" />
           <Property Name="Supplier_UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="Category_CatId" Type="int" Nullable="false" />
-          <Property Name="ItemName" Type="varchar" Nullable="false" MaxLength="45" />
         </EntityType>
         <EntityType Name="invoice">
           <Key>
@@ -561,7 +561,7 @@
           <Property Name="Employee_UserAccount_Username" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
           <NavigationProperty Name="Employee" Relationship="BizSuiteDBModel.fk_Attendance_Employee1" FromRole="Attendance" ToRole="Employee" />
           <Property Type="Time" Name="ClockInTime" Precision="0" />
-          <Property Type="Time" Name="ClockOutTime" />
+          <Property Type="Time" Name="ClockOutTime" Precision="0" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
