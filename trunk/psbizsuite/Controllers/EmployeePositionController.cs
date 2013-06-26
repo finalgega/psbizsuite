@@ -15,89 +15,143 @@ namespace psbizsuite.Controllers
 
         //
         // GET: /EmployeePosition/
-
+        [Authorize]
         public ActionResult Index()
         {
-            return View(db.EmployeePositions.ToList());
+            if (User.IsInRole("HR Manager"))
+            {
+                return View(db.EmployeePositions.ToList());
+            }
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
-   
+
 
         //
         // GET: /EmployeePosition/Create
-
+        [Authorize]
         public ActionResult Create()
         {
-            return View();
+            if (User.IsInRole("HR Manager"))
+            {
+                return View();
+            }
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
+
         }
 
         //
         // POST: /EmployeePosition/Create
-
+        [Authorize]
         [HttpPost]
         public ActionResult Create(EmployeePosition employeeposition)
         {
-            if (ModelState.IsValid)
+            if (User.IsInRole("HR Manager"))
             {
-                db.EmployeePositions.Add(employeeposition);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.EmployeePositions.Add(employeeposition);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
+                return View(employeeposition);
+            }
+            else
+            {
+                return HttpNotFound("Unauthorized access");
             }
 
-            return View(employeeposition);
         }
 
         //
         // GET: /EmployeePosition/Edit/5
-
+        [Authorize]
         public ActionResult Edit(string id)
         {
-            EmployeePosition employeeposition = db.EmployeePositions.Find(id);
-            if (employeeposition == null)
+            if (User.IsInRole("HR Manager"))
             {
-                return HttpNotFound();
+                EmployeePosition employeeposition = db.EmployeePositions.Find(id);
+                if (employeeposition == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(employeeposition);
             }
-            return View(employeeposition);
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
         //
         // POST: /EmployeePosition/Edit/5
-
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(EmployeePosition employeeposition)
         {
-            if (ModelState.IsValid)
+            if (User.IsInRole("HR Manager"))
             {
-                db.Entry(employeeposition).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(employeeposition).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(employeeposition);
             }
-            return View(employeeposition);
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
+
         }
 
         //
         // GET: /EmployeePosition/Delete/5
-
+        [Authorize]
         public ActionResult Delete(string id = null)
         {
-            EmployeePosition employeeposition = db.EmployeePositions.Find(id);
-            if (employeeposition == null)
+            if (User.IsInRole("HR Manager"))
             {
-                return HttpNotFound();
+                EmployeePosition employeeposition = db.EmployeePositions.Find(id);
+                if (employeeposition == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(employeeposition);
             }
-            return View(employeeposition);
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
+
         }
 
         //
         // POST: /EmployeePosition/Delete/5
-
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(string id)
         {
-            EmployeePosition employeeposition = db.EmployeePositions.Find(id);
-            db.EmployeePositions.Remove(employeeposition);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (User.IsInRole("HR Manager"))
+            {
+                EmployeePosition employeeposition = db.EmployeePositions.Find(id);
+                db.EmployeePositions.Remove(employeeposition);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
+
         }
 
         protected override void Dispose(bool disposing)

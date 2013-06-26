@@ -15,9 +15,9 @@ namespace psbizsuite.Controllers
 
         //
         // GET: /Employee/
-
+        [Authorize]
         public ActionResult Index()
-        {          
+        {
             if (User.IsInRole("HR Manager"))
             {
                 var employees = db.Employees.Include(e => e.EmployeePosition).Include(e => e.UserAccount);
@@ -44,74 +44,99 @@ namespace psbizsuite.Controllers
 
         //
         // GET: /Employee/Create
-
+        [Authorize]
         public ActionResult Create()
         {
-            ViewBag.EmployeePosition_PositionName = new SelectList(db.EmployeePositions, "PositionName", "PositionName");
-            return View();
+            if (User.IsInRole("HR Manager"))
+            {
+                ViewBag.EmployeePosition_PositionName = new SelectList(db.EmployeePositions, "PositionName", "PositionName");
+                return View();
+            }
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
+
         }
 
         //
         // POST: /Employee/Create
-
+        [Authorize]
         [HttpPost]
         public ActionResult Create(Employee employee)
         {
-            
-            if (ModelState.IsValid)
+            if (User.IsInRole("HR Manager"))
             {
-                //create employee account
-                UserAccount employeeAcc = new UserAccount();
-                employeeAcc.Username = employee.UserAccount_Username;
-                employeeAcc.Password = employee.NRIC;
-                employeeAcc.Type = "Employee";
+                if (ModelState.IsValid)
+                {
+                    //create employee account
+                    UserAccount employeeAcc = new UserAccount();
+                    employeeAcc.Username = employee.UserAccount_Username;
+                    employeeAcc.Password = employee.NRIC;
+                    employeeAcc.Type = "Employee";
 
-                //generate salt and hashed password
-                string hashData = EncryptionController.CreatePasswordHash(employeeAcc.Password);
-                char[] delimiter = { ':' };
-                string[] split = hashData.Split(delimiter);
-                string salt = split[EncryptionController.SALT_INDEX];
-                string hash = split[EncryptionController.PBKDF2_INDEX];
-                employeeAcc.Salt = salt;
-                employeeAcc.Password = hash;
+                    //generate salt and hashed password
+                    string hashData = EncryptionController.CreatePasswordHash(employeeAcc.Password);
+                    char[] delimiter = { ':' };
+                    string[] split = hashData.Split(delimiter);
+                    string salt = split[EncryptionController.SALT_INDEX];
+                    string hash = split[EncryptionController.PBKDF2_INDEX];
+                    employeeAcc.Salt = salt;
+                    employeeAcc.Password = hash;
 
-                //add employeAcc to UserAccount table
-                db.UserAccounts.Add(employeeAcc);
+                    //add employeAcc to UserAccount table
+                    db.UserAccounts.Add(employeeAcc);
 
-                //add employee to Employee table
-                db.Employees.Add(employee);
+                    //add employee to Employee table
+                    db.Employees.Add(employee);
 
-                //save db query
-                db.SaveChanges();
+                    //save db query
+                    db.SaveChanges();
 
-                //return to index page
-                return RedirectToAction("Index");
+                    //return to index page
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.EmployeePosition_PositionName = new SelectList(db.EmployeePositions, "PositionName", "PositionName", employee.EmployeePosition_PositionName);
+                    ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Username", employee.UserAccount_Username);
+                    return View(employee);
+                }
             }
-   
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
 
-            ViewBag.EmployeePosition_PositionName = new SelectList(db.EmployeePositions, "PositionName", "PositionName", employee.EmployeePosition_PositionName);
-            ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Username", employee.UserAccount_Username);
-            return View(employee);
         }
 
         //
         // GET: /Employee/Edit/5
-
-        public ActionResult Edit(string id = null)
+        [Authorize]
+        public ActionResult Edit(string id)
         {
             Employee employee = db.Employees.Find(id);
             if (employee == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.EmployeePosition_PositionName = new SelectList(db.EmployeePositions, "PositionName", "PositionName", employee.EmployeePosition_PositionName);
-            ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Username", employee.UserAccount_Username);
-            return View(employee);
+
+            if (User.IsInRole("HR Manager") || User.Identity.Name == employee.UserAccount_Username)
+            {
+                ViewBag.EmployeePosition_PositionName = new SelectList(db.EmployeePositions, "PositionName", "PositionName", employee.EmployeePosition_PositionName);
+                ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Username", employee.UserAccount_Username);
+                return View(employee);
+            }
+
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
         //
         // POST: /Employee/Edit/5
-
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(Employee employee)
         {
@@ -128,18 +153,25 @@ namespace psbizsuite.Controllers
 
         //
         // GET: /Employee/Delete/5
-
+        [Authorize]
         public ActionResult Delete(string id)
         {
-            Employee employee = db.Employees.Find(id);
-            UserAccount employeeAcc = db.UserAccounts.Find(id);
-            db.Employees.Remove(employee);
-            db.UserAccounts.Remove(employeeAcc);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (User.IsInRole("HR Manager"))
+            {
+                Employee employee = db.Employees.Find(id);
+                UserAccount employeeAcc = db.UserAccounts.Find(id);
+                db.Employees.Remove(employee);
+                db.UserAccounts.Remove(employeeAcc);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
-
+        [Authorize]
         protected override void Dispose(bool disposing)
         {
             db.Dispose();
