@@ -17,7 +17,7 @@
             <tr>
         <td><div class="editor-label">Item ID</div></td>
         <td><div class="editor-field">
-            <%: @Html.DropDownListFor(model => model.OrderItemId, (SelectList)ViewBag.OrganisationList, new { onChange = "document.location.href = 'Create?InventoryId=' + this.options[this.selectedIndex].value;" }) %>
+            <%: @Html.DropDownListFor(model => model.OrderItemId, (SelectList)ViewData["dropdownlist"], new { onChange = "document.location.href = 'Create?InventoryId=' + this.options[this.selectedIndex].value;" }) %>
             <%: Html.ValidationMessageFor(model => model.OrderItemId) %>
         </div></td>
             </tr>
@@ -33,7 +33,7 @@
             <tr>
         <td><div class="editor-label">Unit Price</div></td>
         <td><div class="editor-field">
-            <%: Html.EditorFor(model => model.UnitPrice) %>
+            <%: Html.DisplayFor(model => model.UnitPrice) %>
             <%= TempData["price"] %>
             <%: Html.ValidationMessageFor(model => model.UnitPrice) %>
         </div></td>
