@@ -56,7 +56,7 @@
         Password
     </div></td>
     <td><div class="display-field">
-        <%: Html.DisplayFor(model => model.UserAccount.Password) %>
+        ***PROTECTED***
     </div></td></tr>
         </table>
 </fieldset>

@@ -5,54 +5,53 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
+    <link href="../../Assets/Css/order.css" type="text/css" rel="stylesheet" />
 <h2>Delete</h2>
 
 <h3>Are you sure you want to delete this?</h3>
 <fieldset>
     <legend>Customer</legend>
-
-    <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.FullName) %>
-    </div>
-    <div class="display-field">
+    <table>
+        <tr>
+    <td><div class="display-label">
+        Full Name
+    </div></td>
+    <td><div class="display-field">
         <%: Html.DisplayFor(model => model.FullName) %>
-    </div>
+    </div></td></tr>
 
-    <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.Address) %>
-    </div>
-    <div class="display-field">
+        <tr>
+    <td><div class="display-label">
+        Address
+    </div></td>
+    <td><div class="display-field">
         <%: Html.DisplayFor(model => model.Address) %>
-    </div>
+    </div></td></tr>
 
-    <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.PhoneNo) %>
-    </div>
-    <div class="display-field">
+        <tr>
+    <td><div class="display-label">
+        Phone Number
+    </div></td>
+    <td><div class="display-field">
         <%: Html.DisplayFor(model => model.PhoneNo) %>
-    </div>
+    </div></td></tr>
 
-    <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.Email) %>
-    </div>
-    <div class="display-field">
+        <tr>
+    <td><div class="display-label">
+        Email Address
+    </div></td>
+    <td><div class="display-field">
         <%: Html.DisplayFor(model => model.Email) %>
-    </div>
+    </div></td></tr>
 
-    <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.FaxNo) %>
-    </div>
-    <div class="display-field">
+        <tr>
+    <td><div class="display-label">
+        Fax Number
+    </div></td>
+    <td><div class="display-field">
         <%: Html.DisplayFor(model => model.FaxNo) %>
-    </div>
-
-    <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.UserAccount.Password) %>
-    </div>
-    <div class="display-field">
-        <%: Html.DisplayFor(model => model.UserAccount.Password) %>
-    </div>
+    </div></td></tr>
+        </table>
 </fieldset>
 <% using (Html.BeginForm()) { %>
     <p>
