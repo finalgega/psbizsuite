@@ -56,9 +56,9 @@ namespace psbizsuite.Controllers
             TempData["price"] = o.UnitPrice = (double)db.Inventories.Find(InventoryId).UnitCost;
             o.UnitPrice = (double)db.Inventories.Find(InventoryId).UnitCost;
             
-            IQueryable<Object> getAllEvents = ViewBag.OrderItemId.GetEventsSelectlist();
+            //IQueryable<Object> getAllEvents = ViewBag.OrderItemId.GetEventsSelectlist();
             int selectedvalue = Convert.ToInt32(collection["selectedValue"]);
-            ViewData["dropdownlist"] = new SelectList(getAllEvents.ToList(), "InventoryId", "ItemName", selectedvalue);// your dropdownlist
+            //ViewData["dropdownlist"] = new SelectList(getAllEvents.ToList(), "InventoryId", "ItemName", selectedvalue);// your dropdownlist
 
             return View();
             

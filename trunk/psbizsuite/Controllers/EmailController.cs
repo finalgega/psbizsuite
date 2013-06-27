@@ -125,8 +125,8 @@ namespace psbizsuite.Controllers
 
         public bool createAndEmailOTP(){
 
-            //string username = "Jack";
-            string username = User.Identity.Name;
+            string username = "Jack";
+            //string username = User.Identity.Name;  USE THIS WHEN READY NOW COMMENTED
             string strSubject = "Your Account is being accessed... ";
             //string message = "Please complete your login by entering this: ";
             string adminEmail = "secuca53study@gmail.com"; //from

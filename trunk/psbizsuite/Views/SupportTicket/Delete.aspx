@@ -5,69 +5,103 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
+    <link href="../../Assets/Css/order.css" type="text/css" rel="stylesheet" />
 <h2>Delete</h2>
 
 <h3>Are you sure you want to delete this?</h3>
 <fieldset>
-    <legend>SupportTicket</legend>
+        <legend>SupportTicket</legend>
+        <table>
+            <tr>
+                <td>
+                    <div class="display-label">
+                        Enquiry Type
+                    </div>
+                </td>
+                <td>
+                    <div class="display-field">
+                        <%: Html.DisplayFor(model => model.EnquiryType) %>
+                    </div>
+                </td>
+            </tr>
 
-    <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.EnquiryType) %>
-    </div>
-    <div class="display-field">
-        <%: Html.DisplayFor(model => model.EnquiryType) %>
-    </div>
+            <tr>
+                <td>
+                    <div class="display-label">Enquiry Priority</div>
+                </td>
+                <td>
+                    <div class="display-field">
+                        <%: Html.DisplayFor(model => model.EnquiryPriority) %>
+                    </div>
+                </td>
+            </tr>
 
-    <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.EnquiryPriority) %>
-    </div>
-    <div class="display-field">
-        <%: Html.DisplayFor(model => model.EnquiryPriority) %>
-    </div>
+            <tr>
+                <td>
+                    <div class="display-label">
+                        Previous Enquiry (if applicable)
+                    </div>
+                </td>
+                <td>
+                    <div class="display-field">
+                        <%: Html.DisplayFor(model => model.ReferenceId) %>
+                    </div>
+                </td>
+            </tr>
 
-    <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.ReferenceId) %>
-    </div>
-    <div class="display-field">
-        <%: Html.DisplayFor(model => model.ReferenceId) %>
-    </div>
+            <tr>
+                <td>
+                    <div class="display-label">
+                        Enquiry Details
+                    </div>
+                </td>
+                <td>
+                    <div class="display-field">
+                        <%: Html.DisplayFor(model => model.Details) %>
+                    </div>
+                </td>
+            </tr>
 
-    <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.Details) %>
-    </div>
-    <div class="display-field">
-        <%: Html.DisplayFor(model => model.Details) %>
-    </div>
+            <tr>
+                <td>
+                    <div class="display-label">
+                        Employee's reply
+                    </div>
+                </td>
+                <td>
+                    <div class="display-field">
+                        <%: Html.DisplayFor(model => model.Reply) %>
+                    </div>
+                </td>
+            </tr>
 
-    <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.Reply) %>
-    </div>
-    <div class="display-field">
-        <%: Html.DisplayFor(model => model.Reply) %>
-    </div>
+            <tr>
+                <td>
+                    <div class="display-label">
+                        Customer Name
+                    </div>
+                </td>
+                <td>
+                    <div class="display-field">
+                        <%: Html.DisplayFor(model => model.Customer.FullName) %>
+                    </div>
+                </td>
+            </tr>
 
-    <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.Customer.FullName) %>
-    </div>
-    <div class="display-field">
-        <%: Html.DisplayFor(model => model.Customer.FullName) %>
-    </div>
-
-    <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.SupportTicket2.EnquiryType) %>
-    </div>
-    <div class="display-field">
-        <%: Html.DisplayFor(model => model.SupportTicket2.EnquiryType) %>
-    </div>
-
-    <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.Employee.FullName) %>
-    </div>
-    <div class="display-field">
-        <%: Html.DisplayFor(model => model.Employee.FullName) %>
-    </div>
-</fieldset>
+            <tr>
+                <td>
+                    <div class="display-label">
+                        Replied by
+                    </div>
+                </td>
+                <td>
+                    <div class="display-field">
+                        <%: Html.DisplayFor(model => model.Employee.FullName) %>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
 <% using (Html.BeginForm()) { %>
     <p>
         <input type="submit" value="Delete" /> |
