@@ -11,14 +11,14 @@ namespace psbizsuite.Controllers
 {
     public class EmailController : Controller
     {
-        public bool submitEmail()
+        public bool submitEmail(string username, string type, string priority, string message)
         {
-            string username = "Jack";
+            //string username = "Jack";
             
             string strSubject = "Your support ticket has been sent";
-            string type = "General Enquiry";
-            string priority = "Urgent";
-            string message = "Help, error 404 in site";
+            //string type = "General Enquiry";
+            //string priority = "Urgent";
+            //string message = "Help, error 404 in site";
             string adminEmail = "secuca53study@gmail.com"; //from
             string strFromEmail = "BizSuite Admin";
             string email = "yugioh1324@hotmail.com "; //to
@@ -41,12 +41,12 @@ namespace psbizsuite.Controllers
                 MailMsg.IsBodyHtml = true; //I decided to make it html - so I could format the text.
                 MailMsg.Body = "<h3>To, " + username + "</h3><br /><br/>";
                 MailMsg.Body += "<p><b>You have successfully submitted your message to the Support Center<br />";
-                MailMsg.Body += "<p><b>Message type:" + type +"<br/>";
-                MailMsg.Body += "<p><b>Message priority:" + priority + "<br/>";
-                MailMsg.Body += "<p><b>Message sent:" + message + "<br/>";
+                MailMsg.Body += "<p><b>Message type: " + type +"<br/>";
+                MailMsg.Body += "<p><b>Message priority: " + priority + "<br/>";
+                MailMsg.Body += "<p><b>Message sent: " + message + "<br/>";
                 MailMsg.Body += "<p>Thank you and we will reply you shortly,<br />";
                 MailMsg.Body += "<p>" + username + "<br/>";
-                MailMsg.Body += "<p><b>From:" + strFromEmail + "<br/>";
+                MailMsg.Body += "<p><b>From: " + strFromEmail + "<br/>";
 
 
                 //utilizing SMTP (simple mail transfer protocol)
@@ -66,17 +66,17 @@ namespace psbizsuite.Controllers
             }
         }
 
-        public bool submitEmail(int smth)
+        public bool submitEmail(string username, string type, string priority, string message, string reply, string employee, int smth)
         {
-            string username = "Jack";
+            //string username = "Jack";
 
             string strSubject = "Your support ticket has been replied";
-            string type = "General Enquiry";
-            string priority = "Urgent";
-            string message = "Help, error 404 in site";
-            string reply = "We are sorry for the inconvenience caused. We will look into it immediately.";
+            //string type = "General Enquiry";
+            //string priority = "Urgent";
+            //string message = "Help, error 404 in site";
+            //string reply = "We are sorry for the inconvenience caused. We will look into it immediately.";
             string adminEmail = "secuca53study@gmail.com"; //from
-            string strFromEmail = "BizSuite Admin";
+            //string strFromEmail = "BizSuite Admin";
             string email = "yugioh1324@hotmail.com "; //to
 
 
@@ -97,13 +97,13 @@ namespace psbizsuite.Controllers
                 MailMsg.IsBodyHtml = true; //I decided to make it html - so I could format the text.
                 MailMsg.Body = "<h3>To, " + username + "</h3><br /><br/>";
                 MailMsg.Body += "<p><b>You have received a reply from the Support Center<br />";
-                MailMsg.Body += "<p><b>Message type:" + type + "<br/>";
-                MailMsg.Body += "<p><b>Message priority:" + priority + "<br/>";
-                MailMsg.Body += "<p><b>Original Message:" + message + "<br/>";
-                MailMsg.Body += "<p><b>Reply:" + reply + "<br/>";
+                MailMsg.Body += "<p><b>Message type: " + type + "<br/>";
+                MailMsg.Body += "<p><b>Message priority: " + priority + "<br/>";
+                MailMsg.Body += "<p><b>Original Message: " + message + "<br/>";
+                MailMsg.Body += "<p><b>Reply: " + reply + "<br/>";
                 MailMsg.Body += "<p>Thank you for using BizSuite and we are always happy to serve you,<br />";
                 MailMsg.Body += "<p>" + username + "<br/>";
-                MailMsg.Body += "<p><b>From:" + strFromEmail + "<br/>";
+                MailMsg.Body += "<p><b>From: " + employee + "<br/>";
 
 
                 //utilizing SMTP (simple mail transfer protocol)
