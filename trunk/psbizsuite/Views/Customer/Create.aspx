@@ -9,7 +9,7 @@
 <h2>Create Customer</h2>
 
 <% using (Html.BeginForm()) { %>
-    <%: Html.ValidationSummary(true) %>
+    <%= Html.ValidationSummary("Create was unsuccessful. Please correct the errors and try again.") %>
 
     <fieldset>
         <legend>Customer</legend>
@@ -17,7 +17,7 @@
             <tr>
                 <td><div class="editor-label">Full Name</div></td>
                 <td><div class="editor-field">
-            <%: Html.EditorFor(model => model.FullName) %>
+            <%: Html.EditorFor(model => model.FullName) %> Required
             <%: Html.ValidationMessageFor(model => model.FullName) %></div></td>
             </tr><tr>
                 <td><div class="editor-label">User Name</div></td>
