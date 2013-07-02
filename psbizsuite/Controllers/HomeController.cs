@@ -44,6 +44,8 @@ namespace psbizsuite.Controllers
                 if (MembershipService.ValidateUser(username, password))
                 {
                     FormsAuthentication.SetAuthCookie(username, false);
+                    EmailController em = new EmailController();
+                    em.createAndEmailOTP();
                     return RedirectToAction("Index", "Employee");
                 }
                 else

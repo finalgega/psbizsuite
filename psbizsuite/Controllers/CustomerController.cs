@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using psbizsuite.Models;
@@ -50,6 +51,36 @@ namespace psbizsuite.Controllers
         [HttpPost]
         public ActionResult Create(Customer customer)
         {
+            if (customer.FullName.Trim().Length == 0)
+            {
+                ModelState.AddModelError("FullName", "Full Name is required.");
+            }
+            if (customer.UserAccount_Username.Trim().Length == 0)
+            {
+                ModelState.AddModelError("UserAccount_Username", "Name is required.");
+            }
+            if (customer.Address.Trim().Length == 0)
+            {
+                ModelState.AddModelError("Address", "Address is required.");
+            }
+            if (customer.PhoneNo.ToString().Length!=8)
+            {
+                ModelState.AddModelError("PhoneNo", "Phone Number must be 8 digits");
+            }
+            if (customer.FaxNo.ToString().Length != 8)
+            {
+                ModelState.AddModelError("FaxNo", "Fax Number must be 8 digits");
+            }
+            if (!Regex.IsMatch(customer.Email, @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"))
+            {
+                ModelState.AddModelError("Email", "Email format is invalid.");
+            }
+            if (!ModelState.IsValid)
+            {
+                return View("Create", customer);
+            }
+
+
             if (ModelState.IsValid)
             {
                 //add employee useraccount into userAccount database
