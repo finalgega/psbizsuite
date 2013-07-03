@@ -112,8 +112,8 @@
             <PropertyRef Name="CatId" />
           </Key>
           <Property Name="CatId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="CatName" Type="varchar" Nullable="false" MaxLength="255" />
-          <Property Name="CatDescription" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="CatName" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="CatDescription" Type="varchar" Nullable="false" MaxLength="45" />
         </EntityType>
         <EntityType Name="customer">
           <Key>
@@ -157,16 +157,16 @@
             <PropertyRef Name="InventoryId" />
           </Key>
           <Property Name="InventoryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="ItemName" Type="varchar" Nullable="false" MaxLength="255" />
-          <Property Name="ItemDescription" Type="varchar" Nullable="false" MaxLength="255" />
-          <Property Name="Image" Type="mediumblob" />
+          <Property Name="ItemDescription" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="Image" Type="blob" />
           <Property Name="UnitCost" Type="decimal" Nullable="false" Precision="8" Scale="2" />
-          <Property Name="Quantity" Type="int" Nullable="false" />
           <Property Name="UnitWeightKilo" Type="decimal" Precision="8" Scale="2" />
-          <Property Name="Location" Type="varchar" MaxLength="255" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Location" Type="varchar" MaxLength="45" />
           <Property Name="TimeStamp" Type="timestamp" Nullable="false" />
           <Property Name="Supplier_UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="Category_CatId" Type="int" Nullable="false" />
+          <Property Name="ItemName" Type="varchar" Nullable="false" MaxLength="45" />
         </EntityType>
         <EntityType Name="invoice">
           <Key>
@@ -271,8 +271,8 @@
           <Property Name="Customer_UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="ReferenceId" Type="int" />
           <Property Name="Employee_UserAccount_Username" Type="varchar" MaxLength="45" />
-          <Property Name="Details" Type="varchar" MaxLength="45" />
-          <Property Name="Reply" Type="varchar" MaxLength="45" />
+          <Property Name="Details" Type="varchar" MaxLength="5000" />
+          <Property Name="Reply" Type="varchar" MaxLength="5000" />
         </EntityType>
         <EntityType Name="useraccount">
           <Key>
@@ -282,6 +282,8 @@
           <Property Name="Password" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="Type" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="Salt" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="Otp" Type="varchar" MaxLength="45" />
+          <Property Name="OtpExpiry" Type="datetime" />
         </EntityType>
         <Association Name="fk_Attendance_Employee1">
           <End Role="employee" Type="BizSuiteDBModel.Store.employee" Multiplicity="1" />
@@ -726,6 +728,8 @@
           <NavigationProperty Name="Employee" Relationship="BizSuiteDBModel.fk_Employee_UserAccount1" FromRole="UserAccount" ToRole="Employee" />
           <NavigationProperty Name="Supplier" Relationship="BizSuiteDBModel.fk_Supplier_UserAccount1" FromRole="UserAccount" ToRole="Supplier" />
           <Property Type="String" Name="Salt" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Otp" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="OtpExpiry" />
         </EntityType>
         <Association Name="fk_Attendance_Employee1">
           <End Type="BizSuiteDBModel.Employee" Multiplicity="1" Role="Employee" />
@@ -1123,6 +1127,8 @@
           <EntitySetMapping Name="UserAccounts">
             <EntityTypeMapping TypeName="IsTypeOf(BizSuiteDBModel.UserAccount)">
               <MappingFragment StoreEntitySet="useraccount">
+                <ScalarProperty Name="OtpExpiry" ColumnName="OtpExpiry" />
+                <ScalarProperty Name="Otp" ColumnName="Otp" />
                 <ScalarProperty Name="Salt" ColumnName="Salt" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Password" ColumnName="Password" />

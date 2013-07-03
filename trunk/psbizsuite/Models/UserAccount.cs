@@ -18,6 +18,8 @@ namespace psbizsuite.Models
         public string Password { get; set; }
         public string Type { get; set; }
         public string Salt { get; set; }
+        public Nullable<string> Otp { get; set; }
+        public Nullable<System.DateTime> OtpExpiry { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual Employee Employee { get; set; }
