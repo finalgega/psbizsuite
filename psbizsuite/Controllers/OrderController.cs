@@ -46,7 +46,7 @@ namespace psbizsuite.Controllers
             return View();
         }*/
 
-        public ActionResult Create( FormCollection collection, int InventoryId =2)
+        public ActionResult Create(OrderItem orderitem, FormCollection collection, int InventoryId =2)
         {
             
             //ViewBag.Order_OrderId = new SelectList(db.Orders, "OrderId", "Status");
@@ -60,7 +60,7 @@ namespace psbizsuite.Controllers
             int selectedvalue = Convert.ToInt32(collection["selectedValue"]);
             //ViewData["dropdownlist"] = new SelectList(getAllEvents.ToList(), "InventoryId", "ItemName", selectedvalue);// your dropdownlist
 
-            return View();
+            return View("Create", orderitem);
             
         }
 
