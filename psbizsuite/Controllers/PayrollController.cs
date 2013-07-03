@@ -19,8 +19,8 @@ namespace psbizsuite.Controllers
 
             //use raw SQL query
             //alias or column name must match property name in the specified class. In this case is CalculatePayrollViewModel
-            var model = db.Database.SqlQuery<CalculatePayrollViewModel>("SELECT Employee_UserAccount_Username as name, SEC_TO_TIME(Sum(TIME_TO_SEC(TIMEDIFF(ClockOutTime,ClockInTime)))) as totalHours FROM Attendance GROUP BY Employee_UserAccount_Username").ToList();
-
+            var model = db.Database.SqlQuery<CalculatePayrollViewModel>("SELECT Employee_UserAccount_Username as name, SEC_TO_TIME(Sum(TIME_TO_SEC(TIMEDIFF(ClockOutTime,ClockInTime)))) as totalHours, SEC_TO_TIME(Sum(TIME_TO_SEC(TIMEDIFF(EndShirtHour,StartShiftHour)))) as normalHours FROM Attendance a INNER JOIN employee e ON a.Employee_UserAccount_Username = e.UserAccount_Username GROUP BY Employee_UserAccount_Username").ToList();
+  
             return View(model);
         }
 
