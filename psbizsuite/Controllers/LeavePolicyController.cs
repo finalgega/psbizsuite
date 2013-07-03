@@ -17,23 +17,38 @@ namespace psbizsuite.Controllers
 
         //
         // GET: /LeavePolicy/
-
+        [Authorize]
         public ActionResult Index()
         {
-            return View(db.LeavePolicies.ToList());
+            if (User.IsInRole("HR Manager"))
+            {
+                return View(db.LeavePolicies.ToList());
+            }
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
         //
         // GET: /LeavePolicy/Details/5
-
+        [Authorize]
         public ActionResult Details(int id = 0)
         {
-            LeavePolicy leavepolicy = db.LeavePolicies.Find(id);
-            if (leavepolicy == null)
+            if (User.IsInRole("HR Manager"))
             {
-                return HttpNotFound();
+                LeavePolicy leavepolicy = db.LeavePolicies.Find(id);
+                if (leavepolicy == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(leavepolicy);
             }
-            return View(leavepolicy);
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
+           
         }
 
         //
@@ -41,64 +56,86 @@ namespace psbizsuite.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            if (User.IsInRole("HR Manager"))
+            {
+                return View();
+            }
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
         //
         // POST: /LeavePolicy/Create
         //exclude id from checking in ModelState.IsValid as LeavePolicyId is autoincremented in db
+        [Authorize]
         [HttpPost]
         public ActionResult Create([Bind(Exclude = "LeavePolicyId")]LeavePolicy leavepolicy)
         {
-            var errors = ModelState.Values.SelectMany(v => v.Errors);
-            if (ModelState.IsValid)
+            if (User.IsInRole("HR Manager"))
             {
-                db.LeavePolicies.Add(leavepolicy);
-                try
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                if (ModelState.IsValid)
                 {
-                    db.SaveChanges();
-                }
-                catch (DbEntityValidationException ex)
-                {
-                    StringBuilder sb = new StringBuilder();
-
-                    foreach (var failure in ex.EntityValidationErrors)
+                    db.LeavePolicies.Add(leavepolicy);
+                    try
                     {
-                        sb.AppendFormat("{0} failed validation\n", failure.Entry.Entity.GetType());
-                        foreach (var error in failure.ValidationErrors)
-                        {
-                            sb.AppendFormat("- {0} : {1}", error.PropertyName, error.ErrorMessage);
-                            sb.AppendLine();
-                        }
+                        db.SaveChanges();
                     }
+                    catch (DbEntityValidationException ex)
+                    {
+                        StringBuilder sb = new StringBuilder();
 
-                    throw new DbEntityValidationException(
-                        "Entity Validation Failed - errors follow:\n" +
-                        sb.ToString(), ex
-                    ); // Add the original exception as the innerException
+                        foreach (var failure in ex.EntityValidationErrors)
+                        {
+                            sb.AppendFormat("{0} failed validation\n", failure.Entry.Entity.GetType());
+                            foreach (var error in failure.ValidationErrors)
+                            {
+                                sb.AppendFormat("- {0} : {1}", error.PropertyName, error.ErrorMessage);
+                                sb.AppendLine();
+                            }
+                        }
+
+                        throw new DbEntityValidationException(
+                            "Entity Validation Failed - errors follow:\n" +
+                            sb.ToString(), ex
+                        ); // Add the original exception as the innerException
+                    }
+                    return RedirectToAction("Index");
                 }
-                return RedirectToAction("Index");
-            }
 
-            return View(leavepolicy);
+                return View(leavepolicy);
+            }
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
         //
         // GET: /LeavePolicy/Edit/5
-
+        [Authorize]
         public ActionResult Edit(int id = 0)
         {
-            LeavePolicy leavepolicy = db.LeavePolicies.Find(id);
-            if (leavepolicy == null)
+            if (User.IsInRole("HR Manager"))
             {
-                return HttpNotFound();
+                LeavePolicy leavepolicy = db.LeavePolicies.Find(id);
+                if (leavepolicy == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(leavepolicy);
             }
-            return View(leavepolicy);
+            else
+            {
+                return HttpNotFound("Unauthorized Access");
+            }
         }
 
         //
         // POST: /LeavePolicy/Edit/5
-
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(LeavePolicy leavepolicy)
         {
@@ -113,16 +150,23 @@ namespace psbizsuite.Controllers
 
         //
         // GET: /LeavePolicy/Delete/5
-
+        [Authorize]
         public ActionResult Delete(int id)
         {
-            LeavePolicy leavepolicy = db.LeavePolicies.Find(id);
-            db.LeavePolicies.Remove(leavepolicy);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (User.IsInRole("HR Manager"))
+            {
+                LeavePolicy leavepolicy = db.LeavePolicies.Find(id);
+                db.LeavePolicies.Remove(leavepolicy);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
-       
+
 
         protected override void Dispose(bool disposing)
         {
