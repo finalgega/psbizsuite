@@ -10,62 +10,38 @@
 
 <fieldset>
     <legend>Inventory</legend>
-
-    <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.ItemDescription) %>
-    </div>
-    <div class="display-field">
-        <%: Html.DisplayFor(model => model.ItemDescription) %>
-    </div>
-
-    <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.Image) %>
-    </div>
-    <div class="display-field">
-        <%: Html.DisplayFor(model => model.Image) %>
-    </div>
-
-    <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.UnitCost) %>
-    </div>
-    <div class="display-field">
-        <%: Html.DisplayFor(model => model.UnitCost) %>
-    </div>
-
-    <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.UnitWeightKilo) %>
-    </div>
-    <div class="display-field">
-        <%: Html.DisplayFor(model => model.UnitWeightKilo) %>
-    </div>
-
-    <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.Quantity) %>
-    </div>
-    <div class="display-field">
-        <%: Html.DisplayFor(model => model.Quantity) %>
-    </div>
-
-    <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.Location) %>
-    </div>
-    <div class="display-field">
-        <%: Html.DisplayFor(model => model.Location) %>
-    </div>
-
-    <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.TimeStamp) %>
-    </div>
-    <div class="display-field">
-        <%: Html.DisplayFor(model => model.TimeStamp) %>
-    </div>
-
-    <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.Supplier.FullName) %>
-    </div>
-    <div class="display-field">
-        <%: Html.DisplayFor(model => model.Supplier.FullName) %>
-    </div>
+    <table class="details-table">
+        <tr>
+            <th><%: Html.DisplayNameFor(model => model.ItemName) %></th>
+            <td><%: Html.DisplayFor(model => model.ItemName) %></td>
+            <th> <%: Html.DisplayNameFor(model => model.ItemDescription) %></th>
+            <td><%: Html.DisplayFor(model => model.ItemDescription) %></td>
+            <td rowspan="5" colspan="2"> <img src="../../Assets/Images/ItemImg.jpg"</td>
+        </tr>
+        <tr>
+            <th> <%: Html.DisplayNameFor(model => model.UnitCost) %></th>
+            <td> <%: Html.DisplayFor(model => model.UnitCost) %></td>
+            <th> <%: Html.DisplayNameFor(model => model.UnitWeightKilo) %></th>
+            <td> <%: Html.DisplayFor(model => model.UnitWeightKilo) %></td>
+        </tr>
+        <tr>
+            <th> <%: Html.DisplayNameFor(model => model.Quantity) %></th>
+            <td> <%: Html.DisplayFor(model => model.Quantity) %></td>
+            <th> <%: Html.DisplayNameFor(model => model.Location) %></th>
+            <td><%: Html.DisplayFor(model => model.Location) %></td>
+        </tr>
+        <tr>
+            <th> <%: Html.DisplayNameFor(model => model.TimeStamp) %>
+            </th>
+            <td> <%: Html.DisplayFor(model => model.TimeStamp) %></td>
+            <th> <%: Html.DisplayNameFor(model => model.Supplier.FullName) %></th>
+            <td><%: Html.DisplayFor(model => model.Supplier.FullName) %></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td></td>
+        </tr>
+    </table>
 </fieldset>
 <p>
 

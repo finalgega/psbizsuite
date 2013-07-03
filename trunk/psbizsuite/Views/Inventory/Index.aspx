@@ -21,10 +21,10 @@
 <table class="tbl-class" border="1">
     <tr>
         <th>
-            <%: Html.DisplayNameFor(model => model.ItemDescription) %>
+            <%: Html.DisplayNameFor(model => model.ItemName) %>
         </th>
         <th>
-            <%: Html.DisplayNameFor(model => model.Image) %>
+            <%: Html.DisplayNameFor(model => model.ItemDescription) %>
         </th>
         <th>
             <%: Html.DisplayNameFor(model => model.UnitCost) %>
@@ -50,10 +50,10 @@
 <% foreach (var item in Model) { %>
     <tr>
         <td>
-            <%: Html.DisplayFor(modelItem => item.ItemDescription) %>
+            <%: Html.DisplayFor(model => item.ItemName) %>
         </td>
         <td>
-            <%: Html.DisplayFor(modelItem => item.Image) %>
+            <%: Html.DisplayFor(modelItem => item.ItemDescription) %>
         </td>
         <td>
             <%: Html.DisplayFor(modelItem => item.UnitCost) %>

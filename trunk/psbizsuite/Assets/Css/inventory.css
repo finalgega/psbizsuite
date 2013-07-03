@@ -1,4 +1,4 @@
-﻿table td,th {
+﻿table th,td {
     padding:5px;
     text-align:right;
 }
@@ -43,4 +43,12 @@ input {
 }
 #tblFormHeader {
     text-align:center;
+}
+.details-table {
+    padding:5px 25px 5px 5px;
+    margin:5px 5px 5px 5px;
+}
+.details-table th,td {
+    margin-right:4px;
+    text-align:left;
 }
