@@ -20,10 +20,10 @@
     <li><a href="#nogo"><b>Leave</b></a>
         <div class="select_sub">
             <ul class="sub">
-                <li><a href="../Employee/EditEmployeeDetail">Apply leave</a></li>
-                <li><a href="../Employee/EditEmployeeDetail">Manage my leave</a></li>
-                <li><a href="../Attendance/ViewAttendanceSummary">Manage leave policy</a></li>
-                <li><a href="../Employee/EditEmployeeDetail">Manage leave request</a></li>
+                <li><%: Html.ActionLink("Apply leave", "Create", "LeaveRequest", null, null) %></li>
+                <li><%: Html.ActionLink("Manage my leave", "MyList", "LeaveRequest", null, null) %></li>
+                <li><%: Html.ActionLink("Manage leave policies", "Index", "LeavePolicy", null, null) %></li>
+                <li><%: Html.ActionLink("Manage leave requests", "AllList", "LeaveRequest", null, null) %>></li>
             </ul>
         </div>
     </li>

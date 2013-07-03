@@ -1,13 +1,12 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<dynamic>" %>
 
 <ul class="select">
-    <li><a href="#nogo"><b>Cash Flow</b></a>
+    <li><a href="#nogo"><b>Expenses</b></a>
         <div class="select_sub">
             <ul class="sub">
-                <li> <%: Html.ActionLink("Manage cash flow", "Index", "CashFlow", null, null) %> </li>
-                <li> <%: Html.ActionLink("Create cash flow", "Create", "CashFlow", null, null) %> </li>
+                <li> <%: Html.ActionLink("Add expenses", "Create", "CashFlow", null, null) %> </li>
             </ul>
-         </div>
+         </div>                                                    
     </li>
 </ul>
   <div class="nav-divider">&nbsp;</div>
@@ -23,11 +22,21 @@
 </ul>
 <div class="nav-divider">&nbsp;</div>
 <ul class="select">
+    <li><a href="#nogo"><b>Profit and Loss</b></a>
+        <div class="select_sub">
+            <ul class="sub">
+                <li> <%: Html.ActionLink("View P&L report", "Index", "Invoice", null, null) %> </li>
+            </ul>
+         </div>
+    </li>
+</ul>
+<div class="nav-divider">&nbsp;</div>
+<ul class="select">
     <li><a href="#nogo"><b>Leave</b></a>
         <div class="select_sub">
             <ul class="sub">
-                <li><a href="../Employee/EditEmployeeDetail">Apply leave</a></li>
-                <li><a href="../Employee/EditEmployeeDetail">Manage my leave</a></li>
+                <li><%: Html.ActionLink("Apply leave", "Create", "LeaveRequest", null, null) %></li>
+                <li><%: Html.ActionLink("Manage my leave", "MyList", "LeaveRequest", null, null) %>
             </ul>
         </div>
     </li>

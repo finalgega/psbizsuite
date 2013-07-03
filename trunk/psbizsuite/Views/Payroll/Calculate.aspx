@@ -7,9 +7,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
 <h2>Index</h2>
-
-
-
 <p>
     <%: Html.ActionLink("Create New", "Create") %>
 </p>
@@ -25,4 +22,14 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="NavContent" runat="server">
+    <% if (User.IsInRole("HR Manager")) %>
+    <% Html.RenderPartial("../Shared/Menu/HrMenu"); %>
+    <% if (User.IsInRole("Sale")) %>
+    <% Html.RenderPartial("../Shared/Menu/SaleMenu"); %>
+    <% if (User.IsInRole("Customer")) %>
+    <% Html.RenderPartial("../Shared/Menu/CustomerMenu"); %>
+    <% if (User.IsInRole("Logistic")) %>
+    <% Html.RenderPartial("../Shared/Menu/LogisticMenu"); %>
+    <% if (User.IsInRole("Accountant")) %>
+    <% Html.RenderPartial("../Shared/Menu/AccountantMenu"); %>
 </asp:Content>
