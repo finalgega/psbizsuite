@@ -159,6 +159,7 @@ namespace psbizsuite.Controllers
 
         /// <summary>
         /// Validates a password given a hash of the correct one.
+        /// NOTE: You need to concat the password and hash of the userccout and separate them with a :
         /// </summary>
         /// <param name="password">The password to verify</param>
         /// <param name="goodHash">A hash of the correct password</param>
@@ -168,7 +169,7 @@ namespace psbizsuite.Controllers
             //  Extract the parameters from the hash
             char[] delimiter = { ':' };
             string[] split = goodHash.Split(delimiter);
-            int iterations = Int32.Parse(split[ITERATION_INDEX]);
+            int iterations = PBKDF2_ITERATIONS;
             byte[] salt = Convert.FromBase64String(split[SALT_INDEX]);
             byte[] hash = Convert.FromBase64String(split[PBKDF2_INDEX]);
 

@@ -64,7 +64,6 @@ namespace psbizsuite.Controllers
                     uploadFile.InputStream.Read(inventoryItem.Image, 0, uploadFile.ContentLength);
                     db.Inventories.Add(inventoryItem);
                     db.SaveChanges();
-                    return RedirectToAction("Index");
                 }
 
                 ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName", inventory.Supplier_UserAccount_Username);

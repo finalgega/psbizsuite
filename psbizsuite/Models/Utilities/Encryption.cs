@@ -19,41 +19,11 @@ namespace psbizsuite.Models.Utilities
         public const int PBKDF2_INDEX = 2;
 
         /// <summary>
-        /// Lightweight XOR algorithm
-        /// </summary>
-        /// <param name="dataInput"></param>
-        /// <returns></returns>
-        public StringBuilder SimpleXORAlgorithm(StringBuilder dataInput)
-        {
-            RandomNumberGenerator rng = new RNGCryptoServiceProvider();
-            byte[] key = new byte[1024];
-            rng.GetBytes(key);
-            StringBuilder dataOutput = new StringBuilder(dataInput.ToString());
-            for (int i = 0; i < dataInput.Length; i++)
-            {
-                int character = ((int)dataInput[i] ^ key[i]);
-                dataOutput[i] = (char)character;
-            }
-            return dataOutput;
-        }
-
-        public StringBuilder SimpleXORAlgorithm(StringBuilder dataInput, byte[] key)
-        {
-            StringBuilder dataOutput = new StringBuilder(dataInput.ToString());
-            for (int i = 0; i < dataInput.Length; i++)
-            {
-                int character = ((int)dataInput[i] ^ key[i]);
-                dataOutput[i] = (char)character;
-            }
-            return dataOutput;
-        }
-
-        /// <summary>
         /// Encryption portion of RSA
         /// </summary>
         /// <param name="dataInput"></param>
         /// <returns></returns>
-        public byte[] RSAEncrypt(StringBuilder dataInput)
+        public byte[] RSAEncrypt(string dataInput)
         {
             try
             {
@@ -96,25 +66,24 @@ namespace psbizsuite.Models.Utilities
             }
         }
 
-        private byte[] StringToByte(StringBuilder dataInput)
+        /// <summary>
+        /// Converts a given string to its byte counterparts
+        /// </summary>
+        /// <param name="dataInput"></param>
+        /// <returns>byte[] byteData</returns>
+        private byte[] StringToByte(string dataInput)
         {
-            //  Creates a UnicodeEncoder to convert between a byte array and string
-            UnicodeEncoding ByteConverter = new UnicodeEncoding();
-            //  Create byte arrays to hold original data and encrypted data
-            byte[] dataToEncrypt = ByteConverter.GetBytes(dataInput.ToString());
-
-            return dataToEncrypt;
+            return Encoding.UTF8.GetBytes(dataInput);
         }
 
         /// <summary>
         /// Converts a given byte to its string counterpart
         /// </summary>
         /// <param name="byteData">Byte array to be converted</param>
-        /// <returns></returns>
+        /// <returns>string text</returns>
         private string ByteToString(byte[] byteData)
         {
-            string strData = Convert.ToString(byteData);
-            return strData;
+            return Encoding.UTF8.GetString(byteData) ;
         }
 
         /// <summary>
