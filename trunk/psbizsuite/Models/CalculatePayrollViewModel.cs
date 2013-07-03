@@ -9,7 +9,7 @@ namespace psbizsuite.Models
     {
         public string name { get; set; }
         public TimeSpan totalHours { get; set; }
-       
+        public TimeSpan normalHours { get; set; }
 
 
     }
