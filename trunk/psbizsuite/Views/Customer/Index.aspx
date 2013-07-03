@@ -58,7 +58,7 @@
             <%: Html.DisplayFor(modelItem => item.FaxNo) %>
         </td>
         <td>
-            <%: Html.DisplayFor(modelItem => item.UserAccount.Password) %>
+            ***PROTECTED***
         </td>
         <td>
             <%: Html.ActionLink("Edit", "Edit", new { id=item.UserAccount_Username }) %> |

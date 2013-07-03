@@ -48,6 +48,11 @@
             <%: Html.ValidationMessageFor(model => model.Email) %></div></td>
             </tr>
             <tr>
+                <td><div class="editor-label">Password</div></td>
+                <td><div class="editor-field">
+            <input type="password" placeholder="yourpassword" name="password" /></div></td>
+            </tr>
+            <tr>
                 <td>
                     <input type="submit" value="Update Customer Details" />
                 </td>

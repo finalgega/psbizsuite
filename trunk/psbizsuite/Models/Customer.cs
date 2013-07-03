@@ -11,6 +11,7 @@ namespace psbizsuite.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Customer
     {
@@ -19,12 +20,17 @@ namespace psbizsuite.Models
             this.Orders = new HashSet<Order>();
             this.SupportTickets = new HashSet<SupportTicket>();
         }
-    
+        [Required(ErrorMessage = "Full name field is required")]
         public string FullName { get; set; }
+        [Required(ErrorMessage = "Address field is required")]
         public string Address { get; set; }
+        [Required(ErrorMessage = "Phone number field is required")]
         public int PhoneNo { get; set; }
+        [Required(ErrorMessage = "Email field is required")]
         public string Email { get; set; }
+        
         public Nullable<int> FaxNo { get; set; }
+        [Required(ErrorMessage = "Username field is required")]
         public string UserAccount_Username { get; set; }
     
         public virtual UserAccount UserAccount { get; set; }

@@ -51,15 +51,15 @@ namespace psbizsuite.Controllers
         [HttpPost]
         public ActionResult Create(Customer customer)
         {
-            if (customer.FullName.Trim().Length == 0)
+            /*if (customer.FullName==null)
             {
                 ModelState.AddModelError("FullName", "Full Name is required.");
             }
-            if (customer.UserAccount_Username.Trim().Length == 0)
+            if (customer.UserAccount_Username== null)
             {
                 ModelState.AddModelError("UserAccount_Username", "Name is required.");
             }
-            if (customer.Address.Trim().Length == 0)
+            if (customer.Address ==null)
             {
                 ModelState.AddModelError("Address", "Address is required.");
             }
@@ -78,7 +78,7 @@ namespace psbizsuite.Controllers
             if (!ModelState.IsValid)
             {
                 return View("Create", customer);
-            }
+            }*/
 
 
             if (ModelState.IsValid)
@@ -127,16 +127,25 @@ namespace psbizsuite.Controllers
         // POST: /Customer/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(Customer customer)
+        public ActionResult Edit(Customer customer, string password)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(customer).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (password != "")
+                {
+                    UserAccount customerAcc = new UserAccount();
+                    customerAcc=db.UserAccounts.Find(customer.UserAccount_Username);
+                    if (password == customerAcc.Password)
+                    {
+                        db.Entry(customer).State = EntityState.Modified;
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                }
+                else { return View(customer); }
             }
             ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Password", customer.UserAccount_Username);
-            return View(customer);
+            return View("Edit", customer);
         }
 
         //
