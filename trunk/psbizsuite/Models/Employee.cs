@@ -28,6 +28,7 @@ namespace psbizsuite.Models
         [Required(ErrorMessage = "This field is required")]
         public string Address { get; set; }
         [Required(ErrorMessage = "This field is required")]
+        [RegularExpression(@"^(\d{8})$", ErrorMessage = "Please enter only 8 digit")]
         public int PhoneNo { get; set; }
         [Required(ErrorMessage = "This field is required")]
         [MaxLength(9)]
