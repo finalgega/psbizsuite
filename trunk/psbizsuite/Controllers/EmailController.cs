@@ -15,7 +15,7 @@ namespace psbizsuite.Controllers
         {
             //string username = "Jack";
             
-            string strSubject = "Your support ticket has been sent - " +type;
+            string strSubject = "Your support ticket has been sent - " +type+ " #"+id;
             //string type = "General Enquiry";
             //string priority = "Urgent";
             //string message = "Help, error 404 in site";
@@ -71,7 +71,7 @@ namespace psbizsuite.Controllers
         {
             //string username = "Jack";
 
-            string strSubject = "Your support ticket has been replied";
+            string strSubject = "Your support ticket has been replied - " + type + " #" + id;
             //string type = "General Enquiry";
             //string priority = "Urgent";
             //string message = "Help, error 404 in site";

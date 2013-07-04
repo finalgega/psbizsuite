@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
+    <link href="../../Assets/Css/order.css" type="text/css" rel="stylesheet" />
 <h2>Edit</h2>
 
 <% using (Html.BeginForm()) { %>
@@ -48,7 +48,7 @@
             <%: Html.ValidationMessageFor(model => model.Email) %></div></td>
             </tr>
             <tr>
-                <td><div class="editor-label">Password</div></td>
+                <td><div class="editor-label">Confirm your password</div></td>
                 <td><div class="editor-field">
             <input type="password" placeholder="yourpassword" name="password" /></div></td>
             </tr>
