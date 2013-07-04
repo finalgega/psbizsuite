@@ -11,11 +11,11 @@ namespace psbizsuite.Controllers
 {
     public class EmailController : Controller
     {
-        public bool submitEmail(string username, string type, string priority, string message)
+        public bool submitEmail(int id, string username, string type, string priority, string message)
         {
             //string username = "Jack";
             
-            string strSubject = "Your support ticket has been sent";
+            string strSubject = "Your support ticket has been sent - " +type;
             //string type = "General Enquiry";
             //string priority = "Urgent";
             //string message = "Help, error 404 in site";
@@ -44,6 +44,7 @@ namespace psbizsuite.Controllers
                 MailMsg.Body += "<p><b>Message type: " + type +"<br/>";
                 MailMsg.Body += "<p><b>Message priority: " + priority + "<br/>";
                 MailMsg.Body += "<p><b>Message sent: " + message + "<br/>";
+                MailMsg.Body += "<p><b>URL : <a href='http://localhost:27996/SupportTicket/Details/" +id+ "'>Click here to view your enquiry</a><br/>";
                 MailMsg.Body += "<p>Thank you and we will reply you shortly,<br />";
                 MailMsg.Body += "<p>" + username + "<br/>";
                 MailMsg.Body += "<p><b>From: " + strFromEmail + "<br/>";
@@ -66,7 +67,7 @@ namespace psbizsuite.Controllers
             }
         }
 
-        public bool submitEmail(string username, string type, string priority, string message, string reply, string employee, int smth)
+        public bool submitEmail(int id, string username, string type, string priority, string message, string reply, string employee, int smth)
         {
             //string username = "Jack";
 
@@ -101,6 +102,7 @@ namespace psbizsuite.Controllers
                 MailMsg.Body += "<p><b>Message priority: " + priority + "<br/>";
                 MailMsg.Body += "<p><b>Original Message: " + message + "<br/>";
                 MailMsg.Body += "<p><b>Reply: " + reply + "<br/>";
+                MailMsg.Body += "<p><b>URL : <a href='http://localhost:27996/SupportTicket/Details/" + id + "'>Click here to view your enquiry</a><br/>";
                 MailMsg.Body += "<p>Thank you for using BizSuite and we are always happy to serve you,<br />";
                 MailMsg.Body += "<p>" + username + "<br/>";
                 MailMsg.Body += "<p><b>From: " + employee + "<br/>";

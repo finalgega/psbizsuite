@@ -59,7 +59,7 @@ namespace psbizsuite.Controllers
                 db.SupportTickets.Add(supportticket);
                 db.SaveChanges();
                 EmailController e = new EmailController();
-                e.submitEmail(supportticket.Customer_UserAccount_Username, supportticket.EnquiryType, supportticket.EnquiryPriority, supportticket.Details);
+                e.submitEmail(supportticket.SupportTicketId, supportticket.Customer_UserAccount_Username, supportticket.EnquiryType, supportticket.EnquiryPriority, supportticket.Details);
                 return RedirectToAction("Index");
             }
 
@@ -99,7 +99,7 @@ namespace psbizsuite.Controllers
                 db.SaveChanges();
                 EmailController e = new EmailController();
                 int count = 10;
-                e.submitEmail(supportticket.Customer_UserAccount_Username, supportticket.EnquiryType, supportticket.EnquiryPriority, supportticket.Details, supportticket.Reply, supportticket.Employee_UserAccount_Username, count);
+                e.submitEmail(supportticket.SupportTicketId, supportticket.Customer_UserAccount_Username, supportticket.EnquiryType, supportticket.EnquiryPriority, supportticket.Details, supportticket.Reply, supportticket.Employee_UserAccount_Username, count);
                 return RedirectToAction("Index");
             }
            // ViewBag.Customer_UserAccount_Username = new SelectList(db.Customers, "UserAccount_Username", "FullName", supportticket.Customer_UserAccount_Username);
