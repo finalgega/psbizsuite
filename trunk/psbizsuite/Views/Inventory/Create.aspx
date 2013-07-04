@@ -92,7 +92,7 @@
                     <th>Image :  
                     </th>
                     <td>
-                        <input type="file" name="imageFile" />
+                        <input type="file" name="uploadFile" />
                     </td>
                 </tr>
                 <tr>

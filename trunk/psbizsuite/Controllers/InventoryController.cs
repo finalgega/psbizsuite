@@ -54,7 +54,6 @@ namespace psbizsuite.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 Inventory inventoryItem = inventory;
                 inventoryItem.TimeStamp = System.DateTime.Now;
                 if (uploadFile != null && uploadFile.ContentLength > 0)
@@ -67,6 +66,7 @@ namespace psbizsuite.Controllers
                 }
 
                 ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName", inventory.Supplier_UserAccount_Username);
+                 ViewBag.Category_CatId = new SelectList(db.categories, "CatId", "CatName");
                 return View(inventory);
             }
             return View(inventory);
