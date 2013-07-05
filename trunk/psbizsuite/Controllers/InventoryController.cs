@@ -8,6 +8,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using psbizsuite.Models;
+using System.Data.Entity.Validation;
 namespace psbizsuite.Controllers
 {
     public class InventoryController : Controller
@@ -58,10 +59,10 @@ namespace psbizsuite.Controllers
                 inventoryItem.TimeStamp = System.DateTime.Now;
                 if (uploadFile != null && uploadFile.ContentLength > 0)
                 {
-                    //  extracts filename
+                   //  extracts filename
                     inventoryItem.Image = new byte[uploadFile.ContentLength];
-                    uploadFile.InputStream.Read(inventoryItem.Image, 0, uploadFile.ContentLength);
-                    db.Inventories.Add(inventoryItem);
+                    uploadFile.InputStream.Read(inventoryItem.Image, 0, uploadFile.ContentLength);    
+                db.Inventories.Add(inventoryItem);
                     db.SaveChanges();
                 }
 
@@ -92,13 +93,41 @@ namespace psbizsuite.Controllers
         [HttpPost]
         public ActionResult Edit(Inventory inventory)
         {
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
             if (ModelState.IsValid)
             {
-                db.Entry(inventory).State = EntityState.Modified;
- 
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    inventory.TimeStamp = System.DateTime.Now;
+                    db.Entry(inventory).State = EntityState.Modified;
+
+                    db.SaveChanges();
+                    ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName", inventory.Supplier_UserAccount_Username);
+                    return View(inventory);
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    StringBuilder sb = new StringBuilder();
+
+                    foreach (var failure in ex.EntityValidationErrors)
+                    {
+                        sb.AppendFormat("{0} failed validation\n", failure.Entry.Entity.GetType());
+                        foreach (var error in failure.ValidationErrors)
+                        {
+                            sb.AppendFormat("- {0} : {1}", error.PropertyName, error.ErrorMessage);
+                            sb.AppendLine();
+                        }
+                    }
+
+                    throw new DbEntityValidationException(
+                        "Entity Validation Failed - errors follow:\n" +
+                        sb.ToString(), ex
+                    ); // Add the original exception as the innerException
+                }
+                ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName", inventory.Supplier_UserAccount_Username);
+                return View(inventory);
             }
+
             ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName", inventory.Supplier_UserAccount_Username);
             return View(inventory);
         }

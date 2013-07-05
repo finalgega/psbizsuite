@@ -15,21 +15,22 @@
         <legend>Inventory</legend>
 
         <%: Html.HiddenFor(model => model.InventoryId) %>
-
+          <%: Html.HiddenFor(model => model.Category_CatId) %>
+        <%: Html.HiddenFor(model => model.Image) %>
+        
+        <div class="editor-label">
+            <%: Html.LabelFor(model => model.ItemName) %>
+        </div>
+        <div class="editor-field">
+            <%: Html.EditorFor(model => model.ItemName) %>
+            <%: Html.ValidationMessageFor(model => model.ItemName) %>
+        </div>
         <div class="editor-label">
             <%: Html.LabelFor(model => model.ItemDescription) %>
         </div>
         <div class="editor-field">
             <%: Html.EditorFor(model => model.ItemDescription) %>
             <%: Html.ValidationMessageFor(model => model.ItemDescription) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.Image) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.Image) %>
-            <%: Html.ValidationMessageFor(model => model.Image) %>
         </div>
 
         <div class="editor-label">
@@ -62,14 +63,6 @@
         <div class="editor-field">
             <%: Html.EditorFor(model => model.Location) %>
             <%: Html.ValidationMessageFor(model => model.Location) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.TimeStamp) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.TimeStamp) %>
-            <%: Html.ValidationMessageFor(model => model.TimeStamp) %>
         </div>
 
         <div class="editor-label">
