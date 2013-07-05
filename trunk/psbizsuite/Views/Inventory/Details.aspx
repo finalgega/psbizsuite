@@ -17,7 +17,9 @@
             <td><%: Html.DisplayFor(model => model.ItemName) %></td>
             <th> <%: Html.DisplayNameFor(model => model.ItemDescription) %></th>
             <td><%: Html.DisplayFor(model => model.ItemDescription) %></td>
-            <td rowspan="5" colspan="2"> <img src="<%= Url.Action("ShowImage", "Inventory", new { id = ViewData["InventoryId"] }) %>" /></td>
+            <%: Html.ActionLink("click", "ShowImage", new { id = Model.InventoryId }) %>"
+            
+            <td rowspan="5" colspan="2"> <img src="/Inventory/ShowImage?id=<%= Model.InventoryId %>"/></td>
         </tr>
         <tr>
             <th> <%: Html.DisplayNameFor(model => model.UnitCost) %></th>
@@ -53,4 +55,14 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="NavContent" runat="server">
+       <% if (User.IsInRole("HR Manager")) %>
+    <% Html.RenderPartial("../Shared/Menu/HrMenu"); %>
+    <% if (User.IsInRole("Sale")) %>
+    <% Html.RenderPartial("../Shared/Menu/SaleMenu"); %>
+    <% if (User.IsInRole("Customer")) %>
+    <% Html.RenderPartial("../Shared/Menu/CustomerMenu"); %>
+    <% if (User.IsInRole("Logistic")) %>
+    <% Html.RenderPartial("../Shared/Menu/LogisticMenu"); %>
+    <% if (User.IsInRole("Accountant")) %>
+    <% Html.RenderPartial("../Shared/Menu/AccountantMenu"); %>
 </asp:Content>

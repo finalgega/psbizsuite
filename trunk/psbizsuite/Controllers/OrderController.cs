@@ -15,11 +15,18 @@ namespace psbizsuite.Controllers
 
         //
         // GET: /Order/
-
+        [Authorize]
         public ActionResult Index()
         {
-            var orderitems = db.OrderItems.Include(o => o.Order);
-            return View(orderitems.ToList());
+            if (User.IsInRole("Sale"))
+            {
+                var orderitems = db.OrderItems.Include(o => o.Order);
+                return View(orderitems.ToList());
+            }
+            else
+            {
+                return HttpNotFound("Unauthorized Accessed");
+            }
         }
 
         //
@@ -46,22 +53,22 @@ namespace psbizsuite.Controllers
             return View();
         }*/
 
-        public ActionResult Create(OrderItem orderitem, FormCollection collection, int InventoryId =2)
+        public ActionResult Create(OrderItem orderitem, FormCollection collection, int InventoryId = 2)
         {
-            
+
             //ViewBag.Order_OrderId = new SelectList(db.Orders, "OrderId", "Status");
             ViewBag.OrderItemId = new SelectList(db.Inventories, "InventoryId", "ItemName");
 
             OrderItem o = new OrderItem();
             TempData["price"] = o.UnitPrice = (double)db.Inventories.Find(InventoryId).UnitCost;
             o.UnitPrice = (double)db.Inventories.Find(InventoryId).UnitCost;
-            
+
             //IQueryable<Object> getAllEvents = ViewBag.OrderItemId.GetEventsSelectlist();
             int selectedvalue = Convert.ToInt32(collection["selectedValue"]);
             //ViewData["dropdownlist"] = new SelectList(getAllEvents.ToList(), "InventoryId", "ItemName", selectedvalue);// your dropdownlist
 
             return View("Create", orderitem);
-            
+
         }
 
         //
@@ -84,7 +91,7 @@ namespace psbizsuite.Controllers
             }
 
             ViewBag.Order_OrderId = new SelectList(db.Orders, "OrderId", "Status", orderitem.Order_OrderId);
-            
+
             return View(orderitem);
         }
 

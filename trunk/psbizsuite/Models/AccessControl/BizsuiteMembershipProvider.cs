@@ -154,7 +154,7 @@ namespace psbizsuite.Models.AccessControl
 
             UserAccount acc = db.UserAccounts.Find(username);
             //TODO: do compare hash password here
-            return Encryption.ValidatePassword(password,acc.Password) ? true : false;
+            return Encryption.ValidatePassword(password,acc.Password,acc.Salt) ? true : false;
         }
     }
 }
