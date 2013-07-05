@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
-
+using psbizsuite.Models.Utilities;
 namespace psbizsuite.Models.AccessControl
 {
     public class BizsuiteMembershipProvider : MembershipProvider
@@ -154,14 +154,7 @@ namespace psbizsuite.Models.AccessControl
 
             UserAccount acc = db.UserAccounts.Find(username);
             //TODO: do compare hash password here
-            if (acc != null && acc.Password == password)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return Encryption.ValidatePassword(password,acc.Password) ? true : false;
         }
     }
 }

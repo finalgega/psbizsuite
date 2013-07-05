@@ -12,11 +12,12 @@
     <legend>Inventory</legend>
     <table class="details-table">
         <tr>
+            <%: Html.HiddenFor(model => model.InventoryId) %>
             <th><%: Html.DisplayNameFor(model => model.ItemName) %></th>
             <td><%: Html.DisplayFor(model => model.ItemName) %></td>
             <th> <%: Html.DisplayNameFor(model => model.ItemDescription) %></th>
             <td><%: Html.DisplayFor(model => model.ItemDescription) %></td>
-            <td rowspan="5" colspan="2"> <img src="../../Assets/Images/ItemImg.jpg"</td>
+            <td rowspan="5" colspan="2"> <img src="<%= Url.Action("ShowImage", "Inventory", new { id = ViewData["InventoryId"] }) %>" /></td>
         </tr>
         <tr>
             <th> <%: Html.DisplayNameFor(model => model.UnitCost) %></th>
