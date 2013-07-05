@@ -1,4 +1,4 @@
- using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -207,6 +207,13 @@ namespace psbizsuite.Controllers
         {
             db.Dispose();
             base.Dispose(disposing);
+        }
+
+        public ActionResult ShowImage(int id)
+        {
+            Inventory inventory = db.Inventories.Find(id);
+            var imageData = inventory.Image;
+            return File(imageData,"image/jpg");
         }
     }
 }
