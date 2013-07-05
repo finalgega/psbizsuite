@@ -106,19 +106,16 @@ namespace psbizsuite.Models.Utilities
 
         /// <summary>
         /// Validates a password given a hash of the correct one.
-        /// /// NOTE: You need to concat the password and hash of the userccout and separate them with a :
+        /// /// NOTE: You need to concat the password hash and the salt of the userccout and separate them with a :
         /// </summary>
         /// <param name="password">The password to verify</param>
         /// <param name="goodHash">A hash of the correct password</param>
         /// <returns>True if the password is correct. False otherwise</returns>
-        public static bool ValidatePassword(string password, string goodHash)
+        public static bool ValidatePassword(string password, string goodHash,string goodSalt)
         {
-            //  Extract the parameters from the hash
-            char[] delimiter = { ':' };
-            string[] split = goodHash.Split(delimiter);
             int iterations = PBKDF2_ITERATIONS;
-            byte[] salt = Convert.FromBase64String(split[SALT_INDEX]);
-            byte[] hash = Convert.FromBase64String(split[PBKDF2_INDEX]);
+            byte[] salt = Convert.FromBase64String(goodSalt);
+            byte[] hash = Convert.FromBase64String(goodHash);
 
             byte[] testHash = PBKDF2(password, salt, iterations, hash.Length);
             return SlowEquals(hash, testHash);

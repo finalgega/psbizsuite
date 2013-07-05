@@ -34,6 +34,8 @@ namespace psbizsuite.Controllers
             {
                 return HttpNotFound();
             }
+            var imageData = inventory.Image;
+            TempData["filepath"] = File(imageData, "image/jpg");
             return View(inventory);
         }
 
@@ -142,6 +144,7 @@ namespace psbizsuite.Controllers
             {
                 return HttpNotFound();
             }
+           
             return View(inventory);
         }
 
@@ -213,7 +216,7 @@ namespace psbizsuite.Controllers
         {
             Inventory inventory = db.Inventories.Find(id);
             var imageData = inventory.Image;
-            return File(imageData,"image/jpg");
+            return File(imageData, "image/jpg");
         }
     }
 }

@@ -372,6 +372,7 @@
     <Content Include="Views\EmployeePosition\Edit.aspx" />
     <Content Include="Views\EmployeePosition\Index.aspx" />
     <Content Include="Views\Employee\Create.aspx" />
+    <Content Include="Views\Employee\Details.aspx" />
     <Content Include="Views\Employee\Edit.aspx" />
     <Content Include="Views\Employee\Index.aspx" />
     <Content Include="Views\Home\Index.aspx" />

@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <div id="page-heading">
-        <h1>Manage Leave Policies </h1>
+        <h1>Payroll</h1>
     </div>
     <table border="0" class="zeroPS" id="content-table" style="width: 100%;">
         <tr>
@@ -32,15 +32,22 @@
                                 <th class="table-header-repeat line-left minwidth-1"><a href="">Normal Hours</a></th>
                                 <th class="table-header-repeat line-left"><a href="">OT Hours</a></th>
                                 <th class="table-header-repeat line-left"><a href="">Total Hours</a></th>
+                                <th class="table-header-repeat line-left"><a href="">Total Salary</a></th>
                             </tr>
+                            <% double totalAllEmployeeSalary = 0; %>
                             <% foreach (var item in Model){ %>
                             <tr>
                                 <td><%= item.name %> <br /></td>
                                 <td><%= item.normalHours %></td>
                                 <td><%= item.totalHours - item.normalHours %></td>
                                 <td><%= item.totalHours %></td>
+                                <td>$<%= item.totalHours.Hours * item.salaryPerHour %></td>
+                                <% totalAllEmployeeSalary += item.totalHours.Hours * item.salaryPerHour;%>
                             </tr>
                              <% } %>
+                            <tr><td colspan="4" style="color:red"> Total Salary</td>
+                            <td style="font-weight:bold">$<%= totalAllEmployeeSalary %>  </td>
+                                </tr>
                             </table>
                         <div class="clear"></div>
 

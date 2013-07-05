@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using psbizsuite.Models;
+using psbizsuite.Models.Utilities;
 
 namespace psbizsuite.Controllers
 {
@@ -44,43 +45,43 @@ namespace psbizsuite.Controllers
 
         //
         // GET: /Employee/Create
-        [Authorize]
+        //[Authorize]
         public ActionResult Create()
         {
-            if (User.IsInRole("HR Manager"))
-            {
+            //if (User.IsInRole("HR Manager"))
+            //{
                 ViewBag.EmployeePosition_PositionName = new SelectList(db.EmployeePositions, "PositionName", "PositionName");
                 return View();
-            }
-            else
-            {
-                return HttpNotFound("Unauthorized access");
-            }
+            //}
+            //else
+            //{
+            //    return HttpNotFound("Unauthorized access");
+            //}
 
         }
 
         //
         // POST: /Employee/Create
-        [Authorize]
+        //[Authorize]
         [HttpPost]
         public ActionResult Create(Employee employee)
         {
-            if (User.IsInRole("HR Manager"))
-            {
+            //if (User.IsInRole("HR Manager"))
+            //{
                 if (ModelState.IsValid)
                 {
                     //create employee account
                     UserAccount employeeAcc = new UserAccount();
                     employeeAcc.Username = employee.UserAccount_Username;
-                    employeeAcc.Password = employee.NRIC;
+                    employeeAcc.Password = employee.UserAccount_Username;
                     employeeAcc.Type = "Employee";
 
                     //generate salt and hashed password
-                    string hashData = EncryptionController.CreatePasswordHash(employeeAcc.Password);
+                    string hashData = Encryption.CreatePasswordHash(employeeAcc.Password);                                    
                     char[] delimiter = { ':' };
                     string[] split = hashData.Split(delimiter);
-                    string salt = split[EncryptionController.SALT_INDEX];
-                    string hash = split[EncryptionController.PBKDF2_INDEX];
+                    string salt = split[Encryption.SALT_INDEX];
+                    string hash = split[Encryption.PBKDF2_INDEX];
                     employeeAcc.Salt = salt;
                     employeeAcc.Password = hash;
 
@@ -103,12 +104,12 @@ namespace psbizsuite.Controllers
                     return View(employee);
                 }
             }
-            else
-            {
-                return HttpNotFound("Unauthorized access");
-            }
+            //else
+            //{
+            //    return HttpNotFound("Unauthorized access");
+            //}
 
-        }
+        
 
         //
         // GET: /Employee/Edit/5
@@ -127,7 +128,6 @@ namespace psbizsuite.Controllers
                 ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Username", employee.UserAccount_Username);
                 return View(employee);
             }
-
             else
             {
                 return HttpNotFound("Unauthorized access");
