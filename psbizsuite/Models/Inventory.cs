@@ -16,7 +16,7 @@ namespace psbizsuite.Models
     public partial class Inventory
     {
         public int InventoryId { get; set; }
-        [Required(ErrorMessage = "This field is required!")]
+        [Required(ErrorMessage = "Itemname field is required!")]
         public string ItemName { get; set; }
         public string ItemDescription { get; set; }
         public byte[] Image { get; set; }
