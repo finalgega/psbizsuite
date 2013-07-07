@@ -1,16 +1,15 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<psbizsuite.Models.invoice>>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<psbizsuite.Models.purchase>>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Index
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
     <p>
     &nbsp;&nbsp;&nbsp;<%: Html.ActionLink("Create New", "Create") %>
 </p>
     <div id="page-heading">
-        <h1>Invoices <%= (string)(Session["username"]) %></h1>
+        <h1>Purchases <%= (string)(Session["username"]) %></h1>
     </div>
 
     <table border="0" class="zeroPS" id="content-table" style="width: 100%;">
@@ -34,13 +33,15 @@
                         <table border="0" class="zeroPS" style="width: 100%;" id="product-table">
                             <tr>
                                 <th class="table-header-check"><a id="toggle-all"></a></th>
-                                <th class="table-header-repeat line-left minwidth-1"><a href="">Invoice Number</a></th>
-                                <th class="table-header-repeat line-left minwidth-1"><a href="">Name</a></th>
+                                <th class="table-header-repeat line-left minwidth-1"><a href="">PurchaseID</a></th>
+                                <th class="table-header-repeat line-left minwidth-1"><a href="">Purchase Description</a></th>
+                                <th class="table-header-repeat line-left minwidth-1"><a href="">Price</a></th>
+                                <th class="table-header-repeat line-left"><a href="">Value Added Tax</a></th>
                                 <th class="table-header-repeat line-left"><a href="">Notes</a></th>
-                                <th class="table-header-repeat line-left"><a href="">Created Time</a></th>
-                                <th class="table-header-repeat line-left"><a href="">AdvancePaymentTax</a></th>
-                                <th class="table-header-repeat line-left"><a href="">Paid</a></th>
-                             <th class="table-header-repeat line-left"><a href="">Order</a></th>
+                                <th class="table-header-repeat line-left"><a href="">Advance Payment tax</a></th>
+                                <th class="table-header-repeat line-left"><a href="">TimeStamp</a></th>
+                                <th class="table-header-repeat line-left"><a href="">Supplier</a></th>
+                             <th class="table-header-repeat line-left"><a href="">PurchaseType</a></th>
                           
                                 
                                 <th class="table-header-repeat line-left"><a href=""></a></th>
@@ -54,31 +55,37 @@
                                     <input type="checkbox" />
                                 </td>
                                 <td>
-                                    <%: Html.DisplayFor(modelItem => item.InvoiceNumber) %>
+                                    <%: Html.DisplayFor(modelItem => item.PurchaseID) %>
                                 </td>
                                  <td>
-                                    <%: Html.DisplayFor(modelItem => item.Name) %>
+                                    <%: Html.DisplayFor(modelItem => item.Article) %>
+                                </td>
+                                <td >
+                                    <%: Html.DisplayFor(modelItem => item.Price) %>
+                                </td>
+                                <td >
+                                    <%: Html.DisplayFor(modelItem => item.VAT) %>
                                 </td>
                                 <td >
                                     <%: Html.DisplayFor(modelItem => item.Notes) %>
                                 </td>
                                 <td >
-                                    <%: Html.DisplayFor(modelItem => item.TimeStamp) %>
-                                </td>
-                                <td >
                                     <%: Html.DisplayFor(modelItem => item.AdvancePaymentTax) %>
                                 </td>
                                 <td >
-                                    <%: Html.DisplayFor(modelItem => item.Paid) %>
+                                    <%: Html.DisplayFor(modelItem => item.TimeStamp) %>
                                 </td>
-                                <td >
-                                    <%: Html.DisplayFor(modelItem => item.Order_OrderId) %>
-                                </td
+                                    <td >
+                                    <%: Html.DisplayFor(modelItem => item.supplier.FullName) %>
+                                </td>
+                                        <td >
+                                    <%: Html.DisplayFor(modelItem => item.purchasetype.Name) %>
+                                </td>
                                 
                                 <td>
-            <%: Html.ActionLink("Edit", "Edit", new { id=item.InvoiceId }) %> |
-            <%: Html.ActionLink("Details", "Details", new { id=item.InvoiceId }) %> |
-            <%: Html.ActionLink("Delete", "Delete", new { id=item.InvoiceId }) %>
+            <%: Html.ActionLink("Edit", "Edit", new { id=item.PurchaseID }) %> |
+            <%: Html.ActionLink("Details", "Details", new { id=item.PurchaseID }) %> |
+            <%: Html.ActionLink("Delete", "Delete", new { id=item.PurchaseID }) %>
         </td>
                               
                             </tr>
@@ -99,6 +106,7 @@
     </table>
     <div class="clear">&nbsp;</div>
 
+
     <!--
 <h2>Index</h2>
 
@@ -108,16 +116,16 @@
 <table>
     <tr>
         <th>
-            <%: Html.DisplayNameFor(model => model.InvoiceNumber) %>
+            <%: Html.DisplayNameFor(model => model.Article) %>
         </th>
         <th>
-            <%: Html.DisplayNameFor(model => model.Name) %>
+            <%: Html.DisplayNameFor(model => model.Price) %>
+        </th>
+        <th>
+            <%: Html.DisplayNameFor(model => model.VAT) %>
         </th>
         <th>
             <%: Html.DisplayNameFor(model => model.Notes) %>
-        </th>
-        <th>
-            <%: Html.DisplayNameFor(model => model.ProposalDetails) %>
         </th>
         <th>
             <%: Html.DisplayNameFor(model => model.TimeStamp) %>
@@ -126,10 +134,10 @@
             <%: Html.DisplayNameFor(model => model.AdvancePaymentTax) %>
         </th>
         <th>
-            <%: Html.DisplayNameFor(model => model.Paid) %>
+            <%: Html.DisplayNameFor(model => model.supplier.FullName) %>
         </th>
         <th>
-            <%: Html.DisplayNameFor(model => model.order.Status) %>
+            <%: Html.DisplayNameFor(model => model.purchasetype.Name) %>
         </th>
         <th></th>
     </tr>
@@ -137,16 +145,16 @@
 <% foreach (var item in Model) { %>
     <tr>
         <td>
-            <%: Html.DisplayFor(modelItem => item.InvoiceNumber) %>
+            <%: Html.DisplayFor(modelItem => item.Article) %>
         </td>
         <td>
-            <%: Html.DisplayFor(modelItem => item.Name) %>
+            <%: Html.DisplayFor(modelItem => item.Price) %>
+        </td>
+        <td>
+            <%: Html.DisplayFor(modelItem => item.VAT) %>
         </td>
         <td>
             <%: Html.DisplayFor(modelItem => item.Notes) %>
-        </td>
-        <td>
-            <%: Html.DisplayFor(modelItem => item.ProposalDetails) %>
         </td>
         <td>
             <%: Html.DisplayFor(modelItem => item.TimeStamp) %>
@@ -155,15 +163,15 @@
             <%: Html.DisplayFor(modelItem => item.AdvancePaymentTax) %>
         </td>
         <td>
-            <%: Html.DisplayFor(modelItem => item.Paid) %>
+            <%: Html.DisplayFor(modelItem => item.supplier.FullName) %>
         </td>
         <td>
-            <%: Html.DisplayFor(modelItem => item.order.Status) %>
+            <%: Html.DisplayFor(modelItem => item.purchasetype.Name) %>
         </td>
         <td>
-            <%: Html.ActionLink("Edit", "Edit", new { id=item.InvoiceId }) %> |
-            <%: Html.ActionLink("Details", "Details", new { id=item.InvoiceId }) %> |
-            <%: Html.ActionLink("Delete", "Delete", new { id=item.InvoiceId }) %>
+            <%: Html.ActionLink("Edit", "Edit", new { id=item.PurchaseID }) %> |
+            <%: Html.ActionLink("Details", "Details", new { id=item.PurchaseID }) %> |
+            <%: Html.ActionLink("Delete", "Delete", new { id=item.PurchaseID }) %>
         </td>
     </tr>
 <% } %>

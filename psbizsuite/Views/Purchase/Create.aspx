@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<psbizsuite.Models.invoice>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<psbizsuite.Models.purchase>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Create
@@ -20,7 +20,7 @@
         <div id="content">
 
             <div id="page-heading">
-                <h1>Add New Purchase</h1>
+                <h1>Add New Invoice</h1>
             </div>
 
 
@@ -44,7 +44,7 @@
                                 <tr style="vertical-align: top">
                                     <td>
 
-                                        <% using (Html.BeginForm("Create","Invoice"))
+                                        <% using (Html.BeginForm("Create","Purchase"))
                                            { %>
                                         <%: Html.AntiForgeryToken() %>
                                         <%: Html.ValidationSummary(true) %>
@@ -52,24 +52,24 @@
                                         <!-- start id-form -->
                                         <table border="0" class="zeroPS id-form">
                                             <tr>
-                                                <th>InvoiceNumber:</th>
-                                                <td><%: Html.EditorFor(model => model.InvoiceNumber) %>
-                                                <%: Html.ValidationMessageFor(model => model.InvoiceNumber) %></td>
+                                                <th>PurchaseID:</th>
+                                                <td><%: Html.EditorFor(model => model.PurchaseID) %>
+                                                <%: Html.ValidationMessageFor(model => model.PurchaseID) %></td>
                                             </tr>
                                             <tr>
-                                                <th>TimeStamp:</th>
-                                                <td><%: Html.EditorFor(model => model.TimeStamp) %>
-                                                <%: Html.ValidationMessageFor(model => model.TimeStamp) %></td>
+                                                <th>Purchase Name:</th>
+                                                <td><%: Html.EditorFor(model => model.Article) %>
+                                                <%: Html.ValidationMessageFor(model => model.Article) %></td>
                                             </tr>
                                             <tr>
-                                                <th>Name:</th>
-                                                <td><%: Html.EditorFor(model => model.Name) %>
-                                                <%: Html.ValidationMessageFor(model => model.Name) %></td>
+                                                <th>Price:</th>
+                                                <td><%: Html.EditorFor(model => model.Price) %>
+                                                <%: Html.ValidationMessageFor(model => model.Price) %></td>
                                             </tr>
                                             <tr>
-                                                <th>Notes:</th>
-                                                <td><%: Html.EditorFor(model => model.Notes) %>
-                                                <%: Html.ValidationMessageFor(model => model.Notes) %></td>
+                                                <th>Value Added Tax:</th>
+                                                <td><%: Html.EditorFor(model => model.VAT) %>
+                                                <%: Html.ValidationMessageFor(model => model.VAT) %></td>
                                             </tr>
                                             <tr>
                                                 <th>AdvancePaymentTax:</th>
@@ -77,14 +77,19 @@
                                                 <%: Html.ValidationMessageFor(model => model.AdvancePaymentTax)%></td>
                                             </tr>
                                             <tr>
-                                                <th>Paid:</th>
-                                                <td><%: Html.EditorFor(model => model.Paid) %>
-                                                <%: Html.ValidationMessageFor(model => model.Paid) %></td>
+                                                <th>Notes:</th>
+                                                <td><%: Html.EditorFor(model => model.Notes) %>
+                                                <%: Html.ValidationMessageFor(model => model.Notes) %></td>
                                             </tr>
                                             <tr>
-                                                <th>OrderID:</th>
-                                                <td><%: Html.DropDownList("Order_OrderId", String.Empty) %>
-            <%: Html.ValidationMessageFor(model => model.Order_OrderId) %></td>
+                                                <th>Supplier</th>
+                                                <td><%: Html.DropDownList("Supplier_UserAccount_Username", String.Empty) %>
+            <%: Html.ValidationMessageFor(model => model.Supplier_UserAccount_Username) %></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Purchase Type</th>
+                                                <td><%: Html.DropDownList("Purchasetype_PurchaseTypeID", String.Empty) %>
+            <%: Html.ValidationMessageFor(model => model.Purchasetype_PurchaseTypeID) %></td>
                                             </tr>
                                             
                                             <tr>
@@ -128,22 +133,30 @@
     <%: Html.ValidationSummary(true) %>
 
     <fieldset>
-        <legend>invoice</legend>
+        <legend>purchase</legend>
 
         <div class="editor-label">
-            <%: Html.LabelFor(model => model.InvoiceNumber) %>
+            <%: Html.LabelFor(model => model.Article) %>
         </div>
         <div class="editor-field">
-            <%: Html.EditorFor(model => model.InvoiceNumber) %>
-            <%: Html.ValidationMessageFor(model => model.InvoiceNumber) %>
+            <%: Html.EditorFor(model => model.Article) %>
+            <%: Html.ValidationMessageFor(model => model.Article) %>
         </div>
 
         <div class="editor-label">
-            <%: Html.LabelFor(model => model.Name) %>
+            <%: Html.LabelFor(model => model.Price) %>
         </div>
         <div class="editor-field">
-            <%: Html.EditorFor(model => model.Name) %>
-            <%: Html.ValidationMessageFor(model => model.Name) %>
+            <%: Html.EditorFor(model => model.Price) %>
+            <%: Html.ValidationMessageFor(model => model.Price) %>
+        </div>
+
+        <div class="editor-label">
+            <%: Html.LabelFor(model => model.VAT) %>
+        </div>
+        <div class="editor-field">
+            <%: Html.EditorFor(model => model.VAT) %>
+            <%: Html.ValidationMessageFor(model => model.VAT) %>
         </div>
 
         <div class="editor-label">
@@ -152,14 +165,6 @@
         <div class="editor-field">
             <%: Html.EditorFor(model => model.Notes) %>
             <%: Html.ValidationMessageFor(model => model.Notes) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.ProposalDetails) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.ProposalDetails) %>
-            <%: Html.ValidationMessageFor(model => model.ProposalDetails) %>
         </div>
 
         <div class="editor-label">
@@ -179,19 +184,19 @@
         </div>
 
         <div class="editor-label">
-            <%: Html.LabelFor(model => model.Paid) %>
+            <%: Html.LabelFor(model => model.Supplier_UserAccount_Username, "supplier") %>
         </div>
         <div class="editor-field">
-            <%: Html.EditorFor(model => model.Paid) %>
-            <%: Html.ValidationMessageFor(model => model.Paid) %>
+            <%: Html.DropDownList("Supplier_UserAccount_Username", String.Empty) %>
+            <%: Html.ValidationMessageFor(model => model.Supplier_UserAccount_Username) %>
         </div>
 
         <div class="editor-label">
-            <%: Html.LabelFor(model => model.Order_OrderId, "order") %>
+            <%: Html.LabelFor(model => model.Purchasetype_PurchaseTypeID, "purchasetype") %>
         </div>
         <div class="editor-field">
-            <%: Html.DropDownList("Order_OrderId", String.Empty) %>
-            <%: Html.ValidationMessageFor(model => model.Order_OrderId) %>
+            <%: Html.DropDownList("Purchasetype_PurchaseTypeID", String.Empty) %>
+            <%: Html.ValidationMessageFor(model => model.Purchasetype_PurchaseTypeID) %>
         </div>
 
         <p>
@@ -202,8 +207,8 @@
 
 <div>
     <%: Html.ActionLink("Back to List", "Index") %>
-</div> -->
-
+</div>
+    -->
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="NavContent" runat="server">
