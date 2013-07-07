@@ -62,7 +62,7 @@
 </fieldset>
 <p>
     <%: Html.ActionLink("Edit", "Edit", new { id=Model.UserAccount_Username }) %> |
-    <%:  Html.ActionLink("Reset Password", "Reset Password", "") %>
+    <%:  Html.ActionLink("EditPassword", "EditPassword", new { id=Model.UserAccount_Username }) %> |
     <%: Html.ActionLink("Back to List", "Index") %>
 </p>
 

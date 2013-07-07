@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using psbizsuite.Models;
+using psbizsuite.Models.Utilities;
 
 namespace psbizsuite.Controllers
 {
@@ -87,9 +88,17 @@ namespace psbizsuite.Controllers
                 //username is fullname without space
                 //password is NRIC
                 UserAccount customerAcc = new UserAccount();
+                EncryptionController ec = new EncryptionController();
                 customerAcc.Username = customer.UserAccount_Username;
                 customerAcc.Password = customerAcc.Username;
-                customerAcc.Salt = "lol";
+                string hashData = Encryption.CreatePasswordHash(customerAcc.Password);
+                char[] delimiter = { ':' };
+                string[] split = hashData.Split(delimiter);
+                string salt = split[Encryption.SALT_INDEX];
+                string hash = split[Encryption.PBKDF2_INDEX];
+                customerAcc.Salt = salt;
+                customerAcc.Password = hash;
+               
                 customerAcc.Type = "Customer";
                 db.UserAccounts.Add(customerAcc);
 
@@ -138,6 +147,48 @@ namespace psbizsuite.Controllers
                     if (password == customerAcc.Password)
                     {
                         db.Entry(customer).State = EntityState.Modified;
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                }
+                else { return View(customer); }
+            }
+            ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Password", customer.UserAccount_Username);
+            return View("Edit", customer);
+        }
+
+        //
+        // GET: /Customer/EditPassword/5
+
+        public ActionResult EditPassword(string id)
+        {
+            Customer customer = db.Customers.Find(id);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Password", customer.UserAccount_Username);
+            return View(customer);
+        }
+
+        //
+        // POST: /Customer/EditPassword/5
+
+        [HttpPost]
+        public ActionResult EditPassword(Customer customer, string password, string newpassword)
+        {
+            if (ModelState.IsValid)
+            {
+                if (password != "")
+                {
+                    UserAccount customerAcc = new UserAccount();
+                    customerAcc = db.UserAccounts.Find(customer.UserAccount_Username);
+                    if (password == customerAcc.Password)
+                    {
+                        db.Entry(customer).State = EntityState.Modified;
+                        customerAcc.Password = newpassword;
+                        EmailController ec = new EmailController();
+                        ec.confirmAndEmailOTP(customer.UserAccount_Username);
                         db.SaveChanges();
                         return RedirectToAction("Index");
                     }

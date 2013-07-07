@@ -45,7 +45,7 @@ namespace psbizsuite.Controllers
                 {
                     FormsAuthentication.SetAuthCookie(username, false);
                     EmailController em = new EmailController();
-                    em.createAndEmailOTP();
+                    em.createAndEmailOTP(username);
                     return RedirectToAction("Index", "Employee");
                 }
                 else
