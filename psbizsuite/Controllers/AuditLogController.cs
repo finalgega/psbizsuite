@@ -10,39 +10,36 @@ namespace psbizsuite.Controllers
 {
     public class AuditLogController
     {
-        public void writeRecords()
+        public void writeRecords(string actor, string action, string particulars)
         {
-            /*FileStream ostrm;
-            StreamWriter writer;
-            TextWriter oldOut = Console.Out;
-            try
+            string path = "../../../Users/Roy/AuditLog.txt";
+            
+            if (!File.Exists(path))
             {
-                ostrm = new FileStream("CustomerLog.txt", FileMode.OpenOrCreate, FileAccess.Write);
-                writer = new StreamWriter(ostrm);
+                // Create a file to write to. 
+                using (StreamWriter sw = File.CreateText(path))
+                {
+                    sw.WriteLine("BizSuite Audit Log : Created on " +DateTime.Now);
+                }
             }
-            catch (Exception e)
+
+            // This text is always added, making the file longer over time 
+            // if it is not deleted. 
+            using (StreamWriter sw = File.AppendText(path))
             {
-                Console.WriteLine("Cannot open CustomerLog.txt for writing");
-                Console.WriteLine(e.Message);
-                return;
+                sw.WriteLine(DateTime.Now + " : " + actor + " has attempted to " + action + " - " + particulars);
             }
-            Console.SetOut(writer);
-            Console.WriteLine("A customer has been created!");
-            Console.WriteLine("Name -> Jack");
-            Console.WriteLine("ID -> 1");
-            Console.SetOut(oldOut);
-            writer.Close();
-            ostrm.Close();*/
-            Console.WriteLine("Hello World");
-            FileStream fs = new FileStream("../../../Users/Roy/CustomerLog.txt", FileMode.Create);
-            // First, save the standard output.
-            TextWriter tmp = Console.Out;
-            StreamWriter sw = new StreamWriter(fs);
-            Console.SetOut(sw);
-            Console.WriteLine("A new customer has been created: Name -> Jack, ID -> 1");
-            Console.SetOut(tmp);
-            //Console.WriteLine("ID -> 1");
-            sw.Close();
+
+            // Open the file to read from. 
+            using (StreamReader sr = File.OpenText(path))
+            {
+                string s = "";
+                while ((s = sr.ReadLine()) != null)
+                {
+                    Console.WriteLine(s);
+                }
+            }
+
         }
     }
 }

@@ -84,9 +84,7 @@ namespace psbizsuite.Controllers
 
             if (ModelState.IsValid)
             {
-                //add employee useraccount into userAccount database
-                //username is fullname without space
-                //password is NRIC
+                
                 UserAccount customerAcc = new UserAccount();
                 EncryptionController ec = new EncryptionController();
                 customerAcc.Username = customer.UserAccount_Username;
@@ -109,7 +107,7 @@ namespace psbizsuite.Controllers
                 //EmailController email = new EmailController();
                 //bool ok =email.createAndEmailOTP();
                 AuditLogController alc = new AuditLogController();
-                alc.writeRecords();
+                alc.writeRecords("The Employee", "create customer", customer.UserAccount_Username);
                 return RedirectToAction("Index");
                 
             }
