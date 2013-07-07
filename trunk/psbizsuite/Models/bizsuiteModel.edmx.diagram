@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1dec702aeaa24e4d8a1dfb4dbfea4cbb" Name="Diagram1" ZoomLevel="82">
+      <Diagram DiagramId="1dec702aeaa24e4d8a1dfb4dbfea4cbb" Name="Diagram1" ZoomLevel="69">
         <EntityTypeShape EntityType="BizSuiteDBModel.Attendance" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSuiteDBModel.Customer" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSuiteDBModel.Employee" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
@@ -33,12 +33,14 @@
         <AssociationConnector Association="BizSuiteDBModel.fk_SupportTicket_SupportTicket1" ManuallyRouted="false" />
         <EntityTypeShape EntityType="BizSuiteDBModel.category" Width="1.5" PointX="3.625" PointY="23.25" />
         <AssociationConnector Association="BizSuiteDBModel.FK_CategoryInventory" />
-        <EntityTypeShape EntityType="BizSuiteDBModel.cashflow" Width="1.5" PointX="8" PointY="17" />
-        <EntityTypeShape EntityType="BizSuiteDBModel.invoice" Width="1.5" PointX="10.576269925840325" PointY="20.224170053482133" />
-        <EntityTypeShape EntityType="BizSuiteDBModel.profitloss" Width="1.5" PointX="9.6525229912495814" PointY="1.9901685127942677" />
-        <AssociationConnector Association="BizSuiteDBModel.fk_Invoice_Order1" />
         <EntityTypeShape EntityType="BizSuiteDBModel.LeavePolicy" Width="1.5" PointX="8.0944913700662973" PointY="4.8820789926136277" />
         <AssociationConnector Association="BizSuiteDBModel.fk_LeaveRequest_LeavePolicy1" />
+        <EntityTypeShape EntityType="BizSuiteDBModel.purchase" Width="1.5" PointX="0.70415954510875034" PointY="14.581022537583962" />
+        <EntityTypeShape EntityType="BizSuiteDBModel.purchasetype" Width="1.5" PointX="4.3731997275600207" PointY="26.909700436009885" />
+        <AssociationConnector Association="BizSuiteDBModel.fk_Purchase_Supplier" />
+        <AssociationConnector Association="BizSuiteDBModel.fk_Purchase_Purchasetype" />
+        <EntityTypeShape EntityType="BizSuiteDBModel.invoice" Width="1.5" PointX="11.832486340698083" PointY="27.773047966776904" />
+        <AssociationConnector Association="BizSuiteDBModel.fk_Invoice_Order1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
