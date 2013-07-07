@@ -1,29 +1,35 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<psbizsuite.Models.invoice>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<psbizsuite.Models.purchase>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Delete
+    Details
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-<h2>Delete</h2>
+<h2>Details</h2>
 
-<h3>Are you sure you want to delete this?</h3>
 <fieldset>
-    <legend>invoice</legend>
+    <legend>purchase</legend>
 
     <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.InvoiceNumber) %>
+        <%: Html.DisplayNameFor(model => model.Article) %>
     </div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.InvoiceNumber) %>
+        <%: Html.DisplayFor(model => model.Article) %>
     </div>
 
     <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.Name) %>
+        <%: Html.DisplayNameFor(model => model.Price) %>
     </div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.Name) %>
+        <%: Html.DisplayFor(model => model.Price) %>
+    </div>
+
+    <div class="display-label">
+        <%: Html.DisplayNameFor(model => model.VAT) %>
+    </div>
+    <div class="display-field">
+        <%: Html.DisplayFor(model => model.VAT) %>
     </div>
 
     <div class="display-label">
@@ -31,13 +37,6 @@
     </div>
     <div class="display-field">
         <%: Html.DisplayFor(model => model.Notes) %>
-    </div>
-
-    <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.ProposalDetails) %>
-    </div>
-    <div class="display-field">
-        <%: Html.DisplayFor(model => model.ProposalDetails) %>
     </div>
 
     <div class="display-label">
@@ -55,26 +54,24 @@
     </div>
 
     <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.Paid) %>
+        <%: Html.DisplayNameFor(model => model.supplier.FullName) %>
     </div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.Paid) %>
+        <%: Html.DisplayFor(model => model.supplier.FullName) %>
     </div>
 
     <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.order.Status) %>
+        <%: Html.DisplayNameFor(model => model.purchasetype.Name) %>
     </div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.order.Status) %>
+        <%: Html.DisplayFor(model => model.purchasetype.Name) %>
     </div>
 </fieldset>
-<% using (Html.BeginForm()) { %>
-    <%: Html.AntiForgeryToken() %>
-    <p>
-        <input type="submit" value="Delete" /> |
-        <%: Html.ActionLink("Back to List", "Index") %>
-    </p>
-<% } %>
+<p>
+
+    <%: Html.ActionLink("Edit", "Edit", new { id=Model.PurchaseID }) %> |
+    <%: Html.ActionLink("Back to List", "Index") %>
+</p>
 
 </asp:Content>
 

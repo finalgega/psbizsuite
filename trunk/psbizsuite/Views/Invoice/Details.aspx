@@ -12,24 +12,52 @@
     <legend>invoice</legend>
 
     <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.StartDate) %>
+        <%: Html.DisplayNameFor(model => model.InvoiceNumber) %>
     </div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.StartDate) %>
+        <%: Html.DisplayFor(model => model.InvoiceNumber) %>
     </div>
 
     <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.DueDate) %>
+        <%: Html.DisplayNameFor(model => model.Name) %>
     </div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.DueDate) %>
+        <%: Html.DisplayFor(model => model.Name) %>
     </div>
 
     <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.OtherOptions) %>
+        <%: Html.DisplayNameFor(model => model.Notes) %>
     </div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.OtherOptions) %>
+        <%: Html.DisplayFor(model => model.Notes) %>
+    </div>
+
+    <div class="display-label">
+        <%: Html.DisplayNameFor(model => model.ProposalDetails) %>
+    </div>
+    <div class="display-field">
+        <%: Html.DisplayFor(model => model.ProposalDetails) %>
+    </div>
+
+    <div class="display-label">
+        <%: Html.DisplayNameFor(model => model.TimeStamp) %>
+    </div>
+    <div class="display-field">
+        <%: Html.DisplayFor(model => model.TimeStamp) %>
+    </div>
+
+    <div class="display-label">
+        <%: Html.DisplayNameFor(model => model.AdvancePaymentTax) %>
+    </div>
+    <div class="display-field">
+        <%: Html.DisplayFor(model => model.AdvancePaymentTax) %>
+    </div>
+
+    <div class="display-label">
+        <%: Html.DisplayNameFor(model => model.Paid) %>
+    </div>
+    <div class="display-field">
+        <%: Html.DisplayFor(model => model.Paid) %>
     </div>
 
     <div class="display-label">
@@ -41,7 +69,7 @@
 </fieldset>
 <p>
 
-    <%: Html.ActionLink("Edit", "Edit", new { id=Model.invoiceId }) %> |
+    <%: Html.ActionLink("Edit", "Edit", new { id=Model.InvoiceId }) %> |
     <%: Html.ActionLink("Back to List", "Index") %>
 </p>
 

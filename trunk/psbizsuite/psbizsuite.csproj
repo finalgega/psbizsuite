@@ -137,10 +137,12 @@
     <Compile Include="Controllers\EncryptionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventoryController.cs" />
+    <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\LeavePolicyController.cs" />
     <Compile Include="Controllers\LeaveRequestController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\PayrollController.cs" />
+    <Compile Include="Controllers\PurchaseController.cs" />
     <Compile Include="Controllers\SupportTicketController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -407,6 +409,11 @@
     <Content Include="Views\Payroll\Delete.aspx" />
     <Content Include="Views\Payroll\Details.aspx" />
     <Content Include="Views\Payroll\Calculate.aspx" />
+    <Content Include="Views\Purchase\Create.aspx" />
+    <Content Include="Views\Purchase\Delete.aspx" />
+    <Content Include="Views\Purchase\Details.aspx" />
+    <Content Include="Views\Purchase\Edit.aspx" />
+    <Content Include="Views\Purchase\Index.aspx" />
     <Content Include="Views\Shared\Menu\AccountantMenu.ascx" />
     <Content Include="Views\Shared\Menu\CustomerMenu.ascx" />
     <Content Include="Views\Shared\Menu\HrMenu.ascx" />
