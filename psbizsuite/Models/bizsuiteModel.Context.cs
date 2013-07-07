@@ -39,9 +39,9 @@ namespace psbizsuite.Models
         public DbSet<SupportTicket> SupportTickets { get; set; }
         public DbSet<UserAccount> UserAccounts { get; set; }
         public DbSet<category> categories { get; set; }
-        public DbSet<cashflow> cashflows { get; set; }
-        public DbSet<invoice> invoices { get; set; }
-        public DbSet<profitloss> profitlosses { get; set; }
         public DbSet<LeavePolicy> LeavePolicies { get; set; }
+        public DbSet<purchase> purchases { get; set; }
+        public DbSet<purchasetype> purchasetypes { get; set; }
+        public DbSet<invoice> invoices { get; set; }
     }
 }

@@ -7,7 +7,6 @@
     <Schema Namespace="BizSuiteDBModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="BizSuiteDBModelStoreContainer">
           <EntitySet Name="attendance" EntityType="BizSuiteDBModel.Store.attendance" store:Type="Tables" Schema="bizsuitedb" />
-          <EntitySet Name="cashflow" EntityType="BizSuiteDBModel.Store.cashflow" store:Type="Tables" Schema="bizsuitedb" />
           <EntitySet Name="category" EntityType="BizSuiteDBModel.Store.category" store:Type="Tables" Schema="bizsuitedb" />
           <EntitySet Name="customer" EntityType="BizSuiteDBModel.Store.customer" store:Type="Tables" Schema="bizsuitedb" />
           <EntitySet Name="employee" EntityType="BizSuiteDBModel.Store.employee" store:Type="Tables" Schema="bizsuitedb" />
@@ -20,7 +19,8 @@
           <EntitySet Name="order" EntityType="BizSuiteDBModel.Store.order" store:Type="Tables" Schema="bizsuitedb" />
           <EntitySet Name="orderitem" EntityType="BizSuiteDBModel.Store.orderitem" store:Type="Tables" Schema="bizsuitedb" />
           <EntitySet Name="payrollrequest" EntityType="BizSuiteDBModel.Store.payrollrequest" store:Type="Tables" Schema="bizsuitedb" />
-          <EntitySet Name="profitloss" EntityType="BizSuiteDBModel.Store.profitloss" store:Type="Tables" Schema="bizsuitedb" />
+          <EntitySet Name="purchase" EntityType="BizSuiteDBModel.Store.purchase" store:Type="Tables" Schema="bizsuitedb" />
+          <EntitySet Name="purchasetype" EntityType="BizSuiteDBModel.Store.purchasetype" store:Type="Tables" Schema="bizsuitedb" />
           <EntitySet Name="supplier" EntityType="BizSuiteDBModel.Store.supplier" store:Type="Tables" Schema="bizsuitedb" />
           <EntitySet Name="supportticket" EntityType="BizSuiteDBModel.Store.supportticket" store:Type="Tables" Schema="bizsuitedb" />
           <EntitySet Name="useraccount" EntityType="BizSuiteDBModel.Store.useraccount" store:Type="Tables" Schema="bizsuitedb" />
@@ -72,6 +72,14 @@
             <End Role="order" EntitySet="order" />
             <End Role="orderitem" EntitySet="orderitem" />
           </AssociationSet>
+          <AssociationSet Name="fk_Purchase_Purchasetype" Association="BizSuiteDBModel.Store.fk_Purchase_Purchasetype">
+            <End Role="purchasetype" EntitySet="purchasetype" />
+            <End Role="purchase" EntitySet="purchase" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Purchase_Supplier" Association="BizSuiteDBModel.Store.fk_Purchase_Supplier">
+            <End Role="supplier" EntitySet="supplier" />
+            <End Role="purchase" EntitySet="purchase" />
+          </AssociationSet>
           <AssociationSet Name="fk_Supplier_UserAccount1" Association="BizSuiteDBModel.Store.fk_Supplier_UserAccount1">
             <End Role="useraccount" EntitySet="useraccount" />
             <End Role="supplier" EntitySet="supplier" />
@@ -95,17 +103,6 @@
           <Property Name="ClockOutTime" Type="time" />
           <Property Name="Location" Type="varchar" MaxLength="45" />
           <Property Name="Employee_UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
-        </EntityType>
-        <EntityType Name="cashflow">
-          <Key>
-            <PropertyRef Name="CashFlowId" />
-          </Key>
-          <Property Name="CashFlowId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Date" Type="date" />
-          <Property Name="Description" Type="varchar" MaxLength="160" />
-          <Property Name="CashIn" Type="double" />
-          <Property Name="CashOut" Type="double" />
-          <Property Name="TotalAmt" Type="double" />
         </EntityType>
         <EntityType Name="category">
           <Key>
@@ -170,13 +167,17 @@
         </EntityType>
         <EntityType Name="invoice">
           <Key>
-            <PropertyRef Name="invoiceId" />
+            <PropertyRef Name="InvoiceId" />
           </Key>
-          <Property Name="invoiceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="StartDate" Type="date" />
-          <Property Name="DueDate" Type="date" />
-          <Property Name="OtherOptions" Type="double" />
-          <Property Name="Order_OrderId" Type="int" />
+          <Property Name="InvoiceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceNumber" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="4000" />
+          <Property Name="Notes" Type="varchar" Nullable="false" MaxLength="4000" />
+          <Property Name="ProposalDetails" Type="varchar" MaxLength="4000" />
+          <Property Name="TimeStamp" Type="datetime" Nullable="false" />
+          <Property Name="AdvancePaymentTax" Type="double" Nullable="false" />
+          <Property Name="Paid" Type="bit" Nullable="false" />
+          <Property Name="Order_OrderId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="keypair">
           <Key>
@@ -239,15 +240,27 @@
           <Property Name="RequestTimeStamp" Type="timestamp" />
           <Property Name="Status" Type="varchar" MaxLength="45" />
         </EntityType>
-        <EntityType Name="profitloss">
+        <EntityType Name="purchase">
           <Key>
-            <PropertyRef Name="profitLossId" />
+            <PropertyRef Name="PurchaseID" />
           </Key>
-          <Property Name="profitLossId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Date" Type="date" />
-          <Property Name="Income" Type="double" />
-          <Property Name="Expenses" Type="double" />
-          <Property Name="CashOnHand" Type="double" />
+          <Property Name="PurchaseID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Article" Type="varchar" Nullable="false" MaxLength="4000" />
+          <Property Name="Price" Type="double" Nullable="false" />
+          <Property Name="VAT" Type="double" Nullable="false" />
+          <Property Name="Notes" Type="varchar" MaxLength="4000" />
+          <Property Name="TimeStamp" Type="datetime" Nullable="false" />
+          <Property Name="AdvancePaymentTax" Type="double" Nullable="false" />
+          <Property Name="Supplier_UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="Purchasetype_PurchaseTypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="purchasetype">
+          <Key>
+            <PropertyRef Name="PurchaseTypeID" />
+          </Key>
+          <Property Name="PurchaseTypeID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="4000" />
+          <Property Name="Descr" Type="varchar" MaxLength="4000" />
         </EntityType>
         <EntityType Name="supplier">
           <Key>
@@ -358,7 +371,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_Invoice_Order1">
-          <End Role="order" Type="BizSuiteDBModel.Store.order" Multiplicity="0..1" />
+          <End Role="order" Type="BizSuiteDBModel.Store.order" Multiplicity="1" />
           <End Role="invoice" Type="BizSuiteDBModel.Store.invoice" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="order">
@@ -426,6 +439,30 @@
             </Principal>
             <Dependent Role="orderitem">
               <PropertyRef Name="Order_OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Purchase_Purchasetype">
+          <End Role="purchasetype" Type="BizSuiteDBModel.Store.purchasetype" Multiplicity="1" />
+          <End Role="purchase" Type="BizSuiteDBModel.Store.purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="purchasetype">
+              <PropertyRef Name="PurchaseTypeID" />
+            </Principal>
+            <Dependent Role="purchase">
+              <PropertyRef Name="Purchasetype_PurchaseTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Purchase_Supplier">
+          <End Role="supplier" Type="BizSuiteDBModel.Store.supplier" Multiplicity="1" />
+          <End Role="purchase" Type="BizSuiteDBModel.Store.purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="supplier">
+              <PropertyRef Name="UserAccount_Username" />
+            </Principal>
+            <Dependent Role="purchase">
+              <PropertyRef Name="Supplier_UserAccount_Username" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -540,17 +577,25 @@
             <End Role="category" EntitySet="categories" />
             <End Role="Inventory" EntitySet="Inventories" />
           </AssociationSet>
-          <EntitySet Name="cashflows" EntityType="BizSuiteDBModel.cashflow" />
-          <EntitySet Name="invoices" EntityType="BizSuiteDBModel.invoice" />
-          <EntitySet Name="profitlosses" EntityType="BizSuiteDBModel.profitloss" />
-          <AssociationSet Name="fk_Invoice_Order1" Association="BizSuiteDBModel.fk_Invoice_Order1">
-            <End Role="Order" EntitySet="Orders" />
-            <End Role="invoice" EntitySet="invoices" />
-          </AssociationSet>
           <EntitySet Name="LeavePolicies" EntityType="BizSuiteDBModel.LeavePolicy" />
           <AssociationSet Name="fk_LeaveRequest_LeavePolicy1" Association="BizSuiteDBModel.fk_LeaveRequest_LeavePolicy1">
             <End Role="leavepolicy" EntitySet="LeavePolicies" />
             <End Role="LeaveRequest" EntitySet="LeaveRequests" />
+          </AssociationSet>
+          <EntitySet Name="purchases" EntityType="BizSuiteDBModel.purchase" />
+          <EntitySet Name="purchasetypes" EntityType="BizSuiteDBModel.purchasetype" />
+          <AssociationSet Name="fk_Purchase_Supplier" Association="BizSuiteDBModel.fk_Purchase_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="purchase" EntitySet="purchases" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Purchase_Purchasetype" Association="BizSuiteDBModel.fk_Purchase_Purchasetype">
+            <End Role="purchasetype" EntitySet="purchasetypes" />
+            <End Role="purchase" EntitySet="purchases" />
+          </AssociationSet>
+          <EntitySet Name="invoices" EntityType="BizSuiteDBModel.invoice" />
+          <AssociationSet Name="fk_Invoice_Order1" Association="BizSuiteDBModel.fk_Invoice_Order1">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="invoice" EntitySet="invoices" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Attendance">
@@ -699,6 +744,7 @@
           <Property Name="UserAccount_Username" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="Inventories" Relationship="BizSuiteDBModel.fk_Inventory_Supplier1" FromRole="Supplier" ToRole="Inventory" />
           <NavigationProperty Name="UserAccount" Relationship="BizSuiteDBModel.fk_Supplier_UserAccount1" FromRole="Supplier" ToRole="UserAccount" />
+          <NavigationProperty Name="purchases" Relationship="BizSuiteDBModel.fk_Purchase_Supplier" FromRole="Supplier" ToRole="purchase" />
         </EntityType>
         <EntityType Name="SupportTicket">
           <Key>
@@ -908,50 +954,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="cashflow">
-          <Key>
-            <PropertyRef Name="CashFlowId" />
-          </Key>
-          <Property Type="Int32" Name="CashFlowId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="DateTime" Name="Date" Precision="0" />
-          <Property Type="String" Name="Description" MaxLength="160" FixedLength="false" Unicode="false" />
-          <Property Type="Double" Name="CashIn" />
-          <Property Type="Double" Name="CashOut" />
-          <Property Type="Double" Name="TotalAmt" />
-        </EntityType>
-        <EntityType Name="invoice">
-          <Key>
-            <PropertyRef Name="invoiceId" />
-          </Key>
-          <Property Type="Int32" Name="invoiceId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="DateTime" Name="StartDate" Precision="0" />
-          <Property Type="DateTime" Name="DueDate" Precision="0" />
-          <Property Type="Double" Name="OtherOptions" />
-          <Property Type="Int32" Name="Order_OrderId" />
-          <NavigationProperty Name="order" Relationship="BizSuiteDBModel.fk_Invoice_Order1" FromRole="invoice" ToRole="Order" />
-        </EntityType>
-        <EntityType Name="profitloss">
-          <Key>
-            <PropertyRef Name="profitLossId" />
-          </Key>
-          <Property Type="Int32" Name="profitLossId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="DateTime" Name="Date" Precision="0" />
-          <Property Type="Double" Name="Income" />
-          <Property Type="Double" Name="Expenses" />
-          <Property Type="Double" Name="CashOnHand" />
-        </EntityType>
-        <Association Name="fk_Invoice_Order1">
-          <End Type="BizSuiteDBModel.Order" Role="Order" Multiplicity="0..1" />
-          <End Type="BizSuiteDBModel.invoice" Role="invoice" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="OrderId" />
-            </Principal>
-            <Dependent Role="invoice">
-              <PropertyRef Name="Order_OrderId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="LeavePolicy">
           <Key>
             <PropertyRef Name="LeavePolicyId" />
@@ -974,6 +976,82 @@
             </Principal>
             <Dependent Role="LeaveRequest">
               <PropertyRef Name="LeavePolicy_LeavePolicyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="purchase">
+          <Key>
+            <PropertyRef Name="PurchaseID" />
+          </Key>
+          <Property Type="Int32" Name="PurchaseID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Article" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="Price" Nullable="false" />
+          <Property Type="Double" Name="VAT" Nullable="false" />
+          <Property Type="String" Name="Notes" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="TimeStamp" Nullable="false" />
+          <Property Type="Double" Name="AdvancePaymentTax" Nullable="false" />
+          <Property Type="String" Name="Supplier_UserAccount_Username" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="supplier" Relationship="BizSuiteDBModel.fk_Purchase_Supplier" FromRole="purchase" ToRole="Supplier" />
+          <Property Type="Int32" Name="Purchasetype_PurchaseTypeID" Nullable="false" />
+          <NavigationProperty Name="purchasetype" Relationship="BizSuiteDBModel.fk_Purchase_Purchasetype" FromRole="purchase" ToRole="purchasetype" />
+        </EntityType>
+        <EntityType Name="purchasetype">
+          <Key>
+            <PropertyRef Name="PurchaseTypeID" />
+          </Key>
+          <Property Type="Int32" Name="PurchaseTypeID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Descr" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="purchases" Relationship="BizSuiteDBModel.fk_Purchase_Purchasetype" FromRole="purchasetype" ToRole="purchase" />
+        </EntityType>
+        <Association Name="fk_Purchase_Supplier">
+          <End Type="BizSuiteDBModel.Supplier" Role="Supplier" Multiplicity="1" />
+          <End Type="BizSuiteDBModel.purchase" Role="purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="UserAccount_Username" />
+            </Principal>
+            <Dependent Role="purchase">
+              <PropertyRef Name="Supplier_UserAccount_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Purchase_Purchasetype">
+          <End Type="BizSuiteDBModel.purchasetype" Role="purchasetype" Multiplicity="1" />
+          <End Type="BizSuiteDBModel.purchase" Role="purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="purchasetype">
+              <PropertyRef Name="PurchaseTypeID" />
+            </Principal>
+            <Dependent Role="purchase">
+              <PropertyRef Name="Purchasetype_PurchaseTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="invoice">
+          <Key>
+            <PropertyRef Name="InvoiceId" />
+          </Key>
+          <Property Type="Int32" Name="InvoiceId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="InvoiceNumber" Nullable="false" />
+          <Property Type="String" Name="Name" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Notes" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ProposalDetails" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="TimeStamp" Nullable="false" />
+          <Property Type="Double" Name="AdvancePaymentTax" Nullable="false" />
+          <Property Type="Boolean" Name="Paid" Nullable="false" />
+          <Property Type="Int32" Name="Order_OrderId" Nullable="false" />
+          <NavigationProperty Name="order" Relationship="BizSuiteDBModel.fk_Invoice_Order1" FromRole="invoice" ToRole="Order" />
+        </EntityType>
+        <Association Name="fk_Invoice_Order1">
+          <End Type="BizSuiteDBModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="BizSuiteDBModel.invoice" Role="invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="invoice">
+              <PropertyRef Name="Order_OrderId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1154,40 +1232,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="cashflows">
-            <EntityTypeMapping TypeName="BizSuiteDBModel.cashflow">
-              <MappingFragment StoreEntitySet="cashflow">
-                <ScalarProperty Name="TotalAmt" ColumnName="TotalAmt" />
-                <ScalarProperty Name="CashOut" ColumnName="CashOut" />
-                <ScalarProperty Name="CashIn" ColumnName="CashIn" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="CashFlowId" ColumnName="CashFlowId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="invoices">
-            <EntityTypeMapping TypeName="BizSuiteDBModel.invoice">
-              <MappingFragment StoreEntitySet="invoice">
-                <ScalarProperty Name="Order_OrderId" ColumnName="Order_OrderId" />
-                <ScalarProperty Name="OtherOptions" ColumnName="OtherOptions" />
-                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
-                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-                <ScalarProperty Name="invoiceId" ColumnName="invoiceId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="profitlosses">
-            <EntityTypeMapping TypeName="BizSuiteDBModel.profitloss">
-              <MappingFragment StoreEntitySet="profitloss">
-                <ScalarProperty Name="CashOnHand" ColumnName="CashOnHand" />
-                <ScalarProperty Name="Expenses" ColumnName="Expenses" />
-                <ScalarProperty Name="Income" ColumnName="Income" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="profitLossId" ColumnName="profitLossId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="LeavePolicies">
             <EntityTypeMapping TypeName="BizSuiteDBModel.LeavePolicy">
               <MappingFragment StoreEntitySet="leavepolicy">
@@ -1198,6 +1242,45 @@
                 <ScalarProperty Name="PolicyDescription" ColumnName="PolicyDescription" />
                 <ScalarProperty Name="PolicyName" ColumnName="PolicyName" />
                 <ScalarProperty Name="LeavePolicyId" ColumnName="LeavePolicyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="purchases">
+            <EntityTypeMapping TypeName="BizSuiteDBModel.purchase">
+              <MappingFragment StoreEntitySet="purchase">
+                <ScalarProperty Name="Purchasetype_PurchaseTypeID" ColumnName="Purchasetype_PurchaseTypeID" />
+                <ScalarProperty Name="Supplier_UserAccount_Username" ColumnName="Supplier_UserAccount_Username" />
+                <ScalarProperty Name="AdvancePaymentTax" ColumnName="AdvancePaymentTax" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="VAT" ColumnName="VAT" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Article" ColumnName="Article" />
+                <ScalarProperty Name="PurchaseID" ColumnName="PurchaseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="purchasetypes">
+            <EntityTypeMapping TypeName="BizSuiteDBModel.purchasetype">
+              <MappingFragment StoreEntitySet="purchasetype">
+                <ScalarProperty Name="Descr" ColumnName="Descr" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PurchaseTypeID" ColumnName="PurchaseTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="invoices">
+            <EntityTypeMapping TypeName="BizSuiteDBModel.invoice">
+              <MappingFragment StoreEntitySet="invoice">
+                <ScalarProperty Name="Order_OrderId" ColumnName="Order_OrderId" />
+                <ScalarProperty Name="Paid" ColumnName="Paid" />
+                <ScalarProperty Name="AdvancePaymentTax" ColumnName="AdvancePaymentTax" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="ProposalDetails" ColumnName="ProposalDetails" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -12,18 +12,19 @@ namespace psbizsuite.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class invoice
+    public partial class purchase
     {
-        public int InvoiceId { get; set; }
-        public int InvoiceNumber { get; set; }
-        public string Name { get; set; }
+        public int PurchaseID { get; set; }
+        public string Article { get; set; }
+        public double Price { get; set; }
+        public double VAT { get; set; }
         public string Notes { get; set; }
-        public string ProposalDetails { get; set; }
         public System.DateTime TimeStamp { get; set; }
         public double AdvancePaymentTax { get; set; }
-        public bool Paid { get; set; }
-        public int Order_OrderId { get; set; }
+        public string Supplier_UserAccount_Username { get; set; }
+        public int Purchasetype_PurchaseTypeID { get; set; }
     
-        public virtual Order order { get; set; }
+        public virtual Supplier supplier { get; set; }
+        public virtual purchasetype purchasetype { get; set; }
     }
 }

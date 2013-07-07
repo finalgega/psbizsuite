@@ -12,12 +12,17 @@ namespace psbizsuite.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class profitloss
+    public partial class purchasetype
     {
-        public int profitLossId { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
-        public Nullable<double> Income { get; set; }
-        public Nullable<double> Expenses { get; set; }
-        public Nullable<double> CashOnHand { get; set; }
+        public purchasetype()
+        {
+            this.purchases = new HashSet<purchase>();
+        }
+    
+        public int PurchaseTypeID { get; set; }
+        public string Name { get; set; }
+        public string Descr { get; set; }
+    
+        public virtual ICollection<purchase> purchases { get; set; }
     }
 }

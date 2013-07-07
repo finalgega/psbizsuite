@@ -130,7 +130,6 @@
     <Compile Include="Controllers\AccountingController.cs" />
     <Compile Include="Controllers\AttendanceController.cs" />
     <Compile Include="Controllers\AuditLogController.cs" />
-    <Compile Include="Controllers\CashFlowController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
@@ -138,7 +137,6 @@
     <Compile Include="Controllers\EncryptionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventoryController.cs" />
-    <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\LeavePolicyController.cs" />
     <Compile Include="Controllers\LeaveRequestController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -167,9 +165,7 @@
       <DependentUpon>bizsuiteModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\CalculatePayrollViewModel.cs" />
-    <Compile Include="Models\cashflow.cs">
-      <DependentUpon>bizsuiteModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\AccessControl\BizsuiteRoleProvider.cs" />
     <Compile Include="Models\category.cs">
       <DependentUpon>bizsuiteModel.tt</DependentUpon>
     </Compile>
@@ -206,10 +202,12 @@
     <Compile Include="Models\PayrollRequest.cs">
       <DependentUpon>bizsuiteModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\profitloss.cs">
+    <Compile Include="Models\purchase.cs">
       <DependentUpon>bizsuiteModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccessControl\BizsuiteRoleProvider.cs" />
+    <Compile Include="Models\purchasetype.cs">
+      <DependentUpon>bizsuiteModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Supplier.cs">
       <DependentUpon>bizsuiteModel.tt</DependentUpon>
     </Compile>
