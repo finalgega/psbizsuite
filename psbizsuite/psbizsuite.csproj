@@ -360,6 +360,7 @@
     <Content Include="Views\CashFlow\Details.aspx" />
     <Content Include="Views\CashFlow\Edit.aspx" />
     <Content Include="Views\CashFlow\Index.aspx" />
+    <Content Include="Views\Customer\EditPassword.aspx" />
     <Content Include="Views\Customer\Create.aspx" />
     <Content Include="Views\Customer\CreateCustomerProfile.aspx" />
     <Content Include="Views\Customer\Delete.aspx" />
