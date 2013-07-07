@@ -17,6 +17,7 @@ namespace psbizsuite.Models
         public Supplier()
         {
             this.Inventories = new HashSet<Inventory>();
+            this.purchases = new HashSet<purchase>();
         }
     
         public string FullName { get; set; }
@@ -29,5 +30,6 @@ namespace psbizsuite.Models
     
         public virtual ICollection<Inventory> Inventories { get; set; }
         public virtual UserAccount UserAccount { get; set; }
+        public virtual ICollection<purchase> purchases { get; set; }
     }
 }
