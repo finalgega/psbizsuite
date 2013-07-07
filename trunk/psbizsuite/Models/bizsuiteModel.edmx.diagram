@@ -15,7 +15,7 @@
         <EntityTypeShape EntityType="BizSuiteDBModel.Order" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSuiteDBModel.OrderItem" Width="1.5" PointX="7.5" PointY="10.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSuiteDBModel.PayrollRequest" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BizSuiteDBModel.Supplier" Width="1.5" PointX="3" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BizSuiteDBModel.Supplier" Width="1.5" PointX="2.75" PointY="18.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSuiteDBModel.SupportTicket" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSuiteDBModel.UserAccount" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
         <AssociationConnector ManuallyRouted="false" Association="BizSuiteDBModel.fk_Attendance_Employee1" />
@@ -35,7 +35,7 @@
         <AssociationConnector Association="BizSuiteDBModel.FK_CategoryInventory" />
         <EntityTypeShape EntityType="BizSuiteDBModel.LeavePolicy" Width="1.5" PointX="8.0944913700662973" PointY="4.8820789926136277" />
         <AssociationConnector Association="BizSuiteDBModel.fk_LeaveRequest_LeavePolicy1" />
-        <EntityTypeShape EntityType="BizSuiteDBModel.purchase" Width="1.5" PointX="0.70415954510875034" PointY="14.581022537583962" />
+        <EntityTypeShape EntityType="BizSuiteDBModel.purchase" Width="1.5" PointX="0.5" PointY="18.375" />
         <EntityTypeShape EntityType="BizSuiteDBModel.purchasetype" Width="1.5" PointX="4.3731997275600207" PointY="26.909700436009885" />
         <AssociationConnector Association="BizSuiteDBModel.fk_Purchase_Supplier" />
         <AssociationConnector Association="BizSuiteDBModel.fk_Purchase_Purchasetype" />
