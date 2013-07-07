@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `bizsuitedb` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `bizsuitedb`;
--- MySQL dump 10.13  Distrib 5.6.11, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.16, for Win32 (x86)
 --
--- Host: localhost    Database: bizsuitedb
+-- Host: 127.0.0.1    Database: bizsuitedb
 -- ------------------------------------------------------
--- Server version	5.6.11-log
+-- Server version	5.5.28
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -34,7 +34,7 @@ CREATE TABLE `attendance` (
   PRIMARY KEY (`AttendanceId`),
   KEY `fk_Attendance_Employee1_idx` (`Employee_UserAccount_Username`),
   CONSTRAINT `fk_Attendance_Employee1` FOREIGN KEY (`Employee_UserAccount_Username`) REFERENCES `employee` (`UserAccount_Username`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,6 @@ CREATE TABLE `attendance` (
 
 LOCK TABLES `attendance` WRITE;
 /*!40000 ALTER TABLE `attendance` DISABLE KEYS */;
-INSERT INTO `attendance` VALUES (3,'2013-06-06','17:06:00',NULL,'NYP','WinnieThePooh'),(4,'2013-06-06','17:06:00',NULL,'NYP','WinnieThePooh');
 /*!40000 ALTER TABLE `attendance` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -83,10 +82,10 @@ DROP TABLE IF EXISTS `category`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `category` (
   `CatId` int(11) NOT NULL AUTO_INCREMENT,
-  `CatName` varchar(255) NOT NULL,
-  `CatDescription` varchar(255) NOT NULL,
+  `CatName` varchar(45) NOT NULL,
+  `CatDescription` varchar(45) NOT NULL,
   PRIMARY KEY (`CatId`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,7 +94,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'Computer Parts','Parts like hard disks,motherboards,cpu,gpu'),(2,'Food','Edible');
+INSERT INTO `category` VALUES (1,'TestCat','TestCatDesc');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -161,7 +160,7 @@ CREATE TABLE `employee` (
 
 LOCK TABLES `employee` WRITE;
 /*!40000 ALTER TABLE `employee` DISABLE KEYS */;
-INSERT INTO `employee` VALUES ('Winnie The Pooh','NYP',98776788,'S8799380H','2004-01-06','2013-06-26','2013-06-12',5,'10:00:00','12:00:00','WinnieThePooh','HR Manager','uid');
+INSERT INTO `employee` VALUES ('Piglet','Simei',87654444,'S8333740U','1990-01-01',NULL,'2012-04-01',12,'09:00:00','18:00:00','Piglet','HR Manager','Null'),('TeddyBear','Orchard',87559000,'S7644298O','1989-11-01',NULL,'2012-04-01',12,'09:00:00','18:00:00','TeddyBear','Accountant','Null'),('Tigger','Jurong',87991222,'S8799000J','1990-07-05',NULL,'2013-06-01',10,'09:00:00','18:00:00','Tigger','Logistic','Null'),('WinnieThePooh','Yio Chu Kang',84667488,'S8222000P','1989-01-01',NULL,'2011-02-01',15,'09:00:00','18:00:00','WinnieThePooh','Sale','Null');
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -186,7 +185,7 @@ CREATE TABLE `employeeposition` (
 
 LOCK TABLES `employeeposition` WRITE;
 /*!40000 ALTER TABLE `employeeposition` DISABLE KEYS */;
-INSERT INTO `employeeposition` VALUES (0,'HR Manager','Manage Human resources');
+INSERT INTO `employeeposition` VALUES (2,'Accountant','Manage cashflow'),(3,'HR Manager','Manage Human resources'),(4,'Logistic','Manage inventory'),(1,'Sale','Sale person');
 /*!40000 ALTER TABLE `employeeposition` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,22 +198,22 @@ DROP TABLE IF EXISTS `inventory`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `inventory` (
   `InventoryId` int(11) NOT NULL AUTO_INCREMENT,
-  `ItemName` varchar(255) NOT NULL,
-  `ItemDescription` varchar(255) NOT NULL,
-  `Image` mediumblob,
+  `ItemDescription` varchar(45) NOT NULL,
+  `Image` blob,
   `UnitCost` decimal(8,2) NOT NULL,
-  `Quantity` int(11) NOT NULL,
   `UnitWeightKilo` decimal(8,2) DEFAULT NULL,
-  `Location` varchar(255) DEFAULT NULL,
+  `Quantity` int(11) NOT NULL,
+  `Location` varchar(45) DEFAULT NULL,
   `TimeStamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `Supplier_UserAccount_Username` varchar(45) NOT NULL,
   `Category_CatId` int(11) NOT NULL,
+  `ItemName` varchar(45) NOT NULL,
   PRIMARY KEY (`InventoryId`),
   KEY `fk_Inventory_Supplier1_idx` (`Supplier_UserAccount_Username`),
   KEY `fk_Inventory_Category1_idx` (`Category_CatId`),
   CONSTRAINT `FK_CategoryInventory` FOREIGN KEY (`Category_CatId`) REFERENCES `category` (`CatId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Inventory_Supplier1` FOREIGN KEY (`Supplier_UserAccount_Username`) REFERENCES `supplier` (`UserAccount_Username`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -234,13 +233,17 @@ DROP TABLE IF EXISTS `invoice`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `invoice` (
-  `invoiceId` int(11) NOT NULL AUTO_INCREMENT,
-  `StartDate` date DEFAULT NULL,
-  `DueDate` date DEFAULT NULL,
-  `OtherOptions` double DEFAULT NULL,
-  `Order_OrderId` int(11) DEFAULT NULL,
-  PRIMARY KEY (`invoiceId`),
-  KEY `fk_Invoice_Order1` (`Order_OrderId`),
+  `InvoiceId` int(11) NOT NULL AUTO_INCREMENT,
+  `InvoiceNumber` int(11) NOT NULL,
+  `Name` varchar(4000) DEFAULT NULL,
+  `Notes` varchar(4000) NOT NULL,
+  `ProposalDetails` varchar(4000) DEFAULT NULL,
+  `TimeStamp` datetime NOT NULL,
+  `AdvancePaymentTax` double NOT NULL,
+  `Paid` bit(1) NOT NULL,
+  `Order_OrderId` int(11) NOT NULL,
+  PRIMARY KEY (`InvoiceId`),
+  KEY `fk_Invoice_Order1_idx` (`Order_OrderId`),
   CONSTRAINT `fk_Invoice_Order1` FOREIGN KEY (`Order_OrderId`) REFERENCES `order` (`OrderId`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -296,7 +299,7 @@ CREATE TABLE `leavepolicy` (
   `Paid` tinyint(1) NOT NULL,
   `Period` varchar(45) NOT NULL COMMENT 'Monthly,yearly',
   PRIMARY KEY (`LeavePolicyId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -305,6 +308,7 @@ CREATE TABLE `leavepolicy` (
 
 LOCK TABLES `leavepolicy` WRITE;
 /*!40000 ALTER TABLE `leavepolicy` DISABLE KEYS */;
+INSERT INTO `leavepolicy` VALUES (1,'Annual Leave','Annual Leave for employee whose minimum year of service is 1',7,1,1,'yearly'),(2,'Holiday Leave','Holiday Leave for employee whose minimum year of service is 5',15,5,0,'yearly');
 /*!40000 ALTER TABLE `leavepolicy` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -322,13 +326,13 @@ CREATE TABLE `leaverequest` (
   `Reason` varchar(100) NOT NULL,
   `Employee_UserAccount_Username` varchar(45) NOT NULL,
   `LeavePolicy_LeavePolicyId` int(11) NOT NULL,
-  `Status` varchar(45) NOT NULL,
+  `Status` varchar(45) NOT NULL DEFAULT 'Pending',
   PRIMARY KEY (`LeaveRequestId`),
   KEY `fk_LeaveRequest_Employee1_idx` (`Employee_UserAccount_Username`),
   KEY `fk_LeaveRequest_LeavePolicy1_idx` (`LeavePolicy_LeavePolicyId`),
   CONSTRAINT `fk_LeaveRequest_Employee1` FOREIGN KEY (`Employee_UserAccount_Username`) REFERENCES `employee` (`UserAccount_Username`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_LeaveRequest_LeavePolicy1` FOREIGN KEY (`LeavePolicy_LeavePolicyId`) REFERENCES `leavepolicy` (`LeavePolicyId`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -423,29 +427,58 @@ LOCK TABLES `payrollrequest` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `profitloss`
+-- Table structure for table `purchase`
 --
 
-DROP TABLE IF EXISTS `profitloss`;
+DROP TABLE IF EXISTS `purchase`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `profitloss` (
-  `profitLossId` int(11) NOT NULL AUTO_INCREMENT,
-  `Date` date DEFAULT NULL,
-  `Income` double DEFAULT NULL,
-  `Expenses` double DEFAULT NULL,
-  `CashOnHand` double DEFAULT NULL,
-  PRIMARY KEY (`profitLossId`)
+CREATE TABLE `purchase` (
+  `PurchaseID` int(11) NOT NULL AUTO_INCREMENT,
+  `Article` varchar(4000) NOT NULL,
+  `Price` double NOT NULL,
+  `VAT` double NOT NULL,
+  `Notes` varchar(4000) DEFAULT NULL,
+  `TimeStamp` datetime NOT NULL,
+  `AdvancePaymentTax` double NOT NULL,
+  `Supplier_UserAccount_Username` varchar(45) NOT NULL,
+  PRIMARY KEY (`PurchaseID`),
+  KEY `fk_Purchase_Supplier_idx` (`Supplier_UserAccount_Username`),
+  CONSTRAINT `fk_Purchase_Supplier` FOREIGN KEY (`Supplier_UserAccount_Username`) REFERENCES `supplier` (`UserAccount_Username`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `profitloss`
+-- Dumping data for table `purchase`
 --
 
-LOCK TABLES `profitloss` WRITE;
-/*!40000 ALTER TABLE `profitloss` DISABLE KEYS */;
-/*!40000 ALTER TABLE `profitloss` ENABLE KEYS */;
+LOCK TABLES `purchase` WRITE;
+/*!40000 ALTER TABLE `purchase` DISABLE KEYS */;
+/*!40000 ALTER TABLE `purchase` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `purchasetype`
+--
+
+DROP TABLE IF EXISTS `purchasetype`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `purchasetype` (
+  `PurchaseTypeID` int(11) NOT NULL,
+  `Name` varchar(4000) NOT NULL,
+  `Descr` varchar(4000) DEFAULT NULL,
+  PRIMARY KEY (`PurchaseTypeID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `purchasetype`
+--
+
+LOCK TABLES `purchasetype` WRITE;
+/*!40000 ALTER TABLE `purchasetype` DISABLE KEYS */;
+/*!40000 ALTER TABLE `purchasetype` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -474,7 +507,6 @@ CREATE TABLE `supplier` (
 
 LOCK TABLES `supplier` WRITE;
 /*!40000 ALTER TABLE `supplier` DISABLE KEYS */;
-INSERT INTO `supplier` VALUES ('Claptrap','Sanctuary, Pandora',81324123,'claptrap@hyperiontech.com',91238231,'Supplier of electronic computer parts','Claptrap'),('Wilson Wex','Canberra Road Dr 10 Lot 13',98123923,'wilsonWex@dontstarve.com',91831231,'Supplier of perishable goods','Wilson');
 /*!40000 ALTER TABLE `supplier` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -524,6 +556,8 @@ CREATE TABLE `useraccount` (
   `Password` varchar(45) NOT NULL,
   `Type` varchar(45) NOT NULL COMMENT 'Customer, Employee and Supplier',
   `Salt` varchar(45) NOT NULL,
+  `Otp` varchar(45) DEFAULT NULL,
+  `OtpExpiry` datetime DEFAULT NULL,
   PRIMARY KEY (`Username`),
   UNIQUE KEY `Username_UNIQUE` (`Username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -535,7 +569,7 @@ CREATE TABLE `useraccount` (
 
 LOCK TABLES `useraccount` WRITE;
 /*!40000 ALTER TABLE `useraccount` DISABLE KEYS */;
-INSERT INTO `useraccount` VALUES ('Claptrap','hyperion','Supplier','380jf31f99'),('Jaack','pandora','Customer','9fj24bunfos'),('TeddyBear','teddybear','Employee','Nil'),('Wilson','starving','Supplier','2139fn31f3'),('WinnieThePooh','S8799380H','Employee','null');
+INSERT INTO `useraccount` VALUES ('Piglet','dRC8h9iYPVjUanGRRee1NEM6L3beRKMh','Employee','UhUNhEtx7onDrIn1haXQD+gsCt6CVkSR',NULL,NULL),('TeddyBear','3va7EuF364m/6JnJOyXfN2SLWy+NvHRO','Employee','/ZGrVzNRmEnzq1OJYcCbfjbJoX8mInPV',NULL,NULL),('Tigger','t6T022C8u82gc7FLeAkdvnoKTVvVQRAx','Employee','TsimorktMp5RU/ArRvfH4+ExfLlHssfK',NULL,NULL),('WinnieThePooh','bD9bGqe6aGtBbaOmDo4KguqTMKrlJXEr','Employee','+w8zuHOeim/uyfcbZbbXNJkTcSDU1PWX',NULL,NULL);
 /*!40000 ALTER TABLE `useraccount` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -548,4 +582,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-07  1:59:08
+-- Dump completed on 2013-07-07 18:12:18
