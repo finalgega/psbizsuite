@@ -1,10 +1,11 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<dynamic>" %>
 
 <ul class="select">
-    <li><a href="#nogo"><b>Expenses</b></a>
+    <li><a href="#nogo"><b>Purchases</b></a>
         <div class="select_sub">
             <ul class="sub">
-                <li> <%: Html.ActionLink("Add expenses", "Create", "CashFlow", null, null) %> </li>
+                <li> <%: Html.ActionLink("Add Purchases", "Create", "Purchase", null, null) %> </li>
+                <li> <%: Html.ActionLink("Manage Purchases", "Index", "Purchase", null, null) %> </li>
             </ul>
          </div>                                                    
     </li>
@@ -20,16 +21,7 @@
          </div>
     </li>
 </ul>
-<div class="nav-divider">&nbsp;</div>
-<ul class="select">
-    <li><a href="#nogo"><b>Profit and Loss</b></a>
-        <div class="select_sub">
-            <ul class="sub">
-                <li> <%: Html.ActionLink("View P&L report", "Index", "Invoice", null, null) %> </li>
-            </ul>
-         </div>
-    </li>
-</ul>
+
 <div class="nav-divider">&nbsp;</div>
 <ul class="select">
     <li><a href="#nogo"><b>Leave</b></a>
