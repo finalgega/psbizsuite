@@ -33,7 +33,7 @@ namespace psbizsuite.Controllers
 
         public ActionResult Index()
         {
-            return View(db.UserAccounts.ToList());
+            return View();
         }
 
         [HttpPost]
@@ -44,9 +44,37 @@ namespace psbizsuite.Controllers
                 if (MembershipService.ValidateUser(username, password))
                 {
                     FormsAuthentication.SetAuthCookie(username, false);
+
                     EmailController em = new EmailController();
                     em.createAndEmailOTP(username);
-                    return RedirectToAction("Index", "Employee");
+
+                    UserAccount user = db.UserAccounts.Find(username);
+
+                    if (user.Type == "Employee")
+                    {
+                        Employee employee = db.Employees.Find(username);
+                        if (employee.EmployeePosition_PositionName == "HR Manager")
+                        {
+                            return RedirectToAction("Index", "Employee");
+                        }
+                        if (employee.EmployeePosition_PositionName == "Sale")
+                        {
+                            return RedirectToAction("Index", "Order");
+                        }
+                        if (employee.EmployeePosition_PositionName == "Logistic")
+                        {
+                            return RedirectToAction("Index", "Inventory");
+                        }
+                        if (employee.EmployeePosition_PositionName == "Accountant")
+                        {
+                            //return RedirectToAction("Index", "Employee");
+                        }
+                    }
+                    else
+                    {   //redirect to customer page
+                       //return RedirectToAction("Index", "Employee"); 
+                    }
+
                 }
                 else
                 {
