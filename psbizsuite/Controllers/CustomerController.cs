@@ -20,8 +20,14 @@ namespace psbizsuite.Controllers
 
         public ActionResult Index()
         {
-            var customers = db.Customers.Include(c => c.UserAccount);
-            return View(customers.ToList());
+            if (User.IsInRole("Sale"))
+            {
+                var customers = db.Customers.Include(c => c.UserAccount);
+                return View(customers.ToList());
+            }
+            else{
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
         //
@@ -29,12 +35,20 @@ namespace psbizsuite.Controllers
 
         public ActionResult Details(string id = null)
         {
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
+            if (User.IsInRole("Sale") || User.IsInRole("Customer"))
             {
-                return HttpNotFound();
+                Customer customer = db.Customers.Find(id);
+                if (customer == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(customer);
             }
-            return View(customer);
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
+           
         }
 
         //
@@ -42,8 +56,17 @@ namespace psbizsuite.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Password");
-            return View();
+
+            if (User.IsInRole("Sale"))
+            {
+                ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Password");
+                return View();
+            }
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
+           
         }
 
         //
@@ -80,40 +103,47 @@ namespace psbizsuite.Controllers
             {
                 return View("Create", customer);
             }*/
-
-
-            if (ModelState.IsValid)
+            if (User.IsInRole("Sale"))
             {
-                
-                UserAccount customerAcc = new UserAccount();
-                EncryptionController ec = new EncryptionController();
-                customerAcc.Username = customer.UserAccount_Username;
-                customerAcc.Password = customerAcc.Username;
-                string hashData = Encryption.CreatePasswordHash(customerAcc.Password);
-                char[] delimiter = { ':' };
-                string[] split = hashData.Split(delimiter);
-                string salt = split[Encryption.SALT_INDEX];
-                string hash = split[Encryption.PBKDF2_INDEX];
-                customerAcc.Salt = salt;
-                customerAcc.Password = hash;
-               
-                customerAcc.Type = "Customer";
-                db.UserAccounts.Add(customerAcc);
+                if (ModelState.IsValid)
+                {
+
+                    UserAccount customerAcc = new UserAccount();
+                    EncryptionController ec = new EncryptionController();
+                    customerAcc.Username = customer.UserAccount_Username;
+                    customerAcc.Password = customerAcc.Username;
+                    string hashData = Encryption.CreatePasswordHash(customerAcc.Password);
+                    char[] delimiter = { ':' };
+                    string[] split = hashData.Split(delimiter);
+                    string salt = split[Encryption.SALT_INDEX];
+                    string hash = split[Encryption.PBKDF2_INDEX];
+                    customerAcc.Salt = salt;
+                    customerAcc.Password = hash;
+
+                    customerAcc.Type = "Customer";
+                    db.UserAccounts.Add(customerAcc);
 
 
-                db.Customers.Add(customer);
-                db.SaveChanges();
-                
-                //EmailController email = new EmailController();
-                //bool ok =email.createAndEmailOTP();
-                AuditLogController alc = new AuditLogController();
-                alc.writeRecords("The Employee", "create customer", customer.UserAccount_Username);
-                return RedirectToAction("Index");
-                
+                    db.Customers.Add(customer);
+                    db.SaveChanges();
+
+                    //EmailController email = new EmailController();
+                    //bool ok =email.createAndEmailOTP();
+                    AuditLogController alc = new AuditLogController();
+                    alc.writeRecords("The Employee", "create customer", customer.UserAccount_Username);
+                    return RedirectToAction("Index");
+
+                }
+
+                ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Password", customer.UserAccount_Username);
+                return View(customer);
+            }
+            else
+            {
+                return HttpNotFound("Unauthorized access");
             }
 
-            ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Password", customer.UserAccount_Username);
-            return View(customer);
+           
         }
 
         //
@@ -121,13 +151,21 @@ namespace psbizsuite.Controllers
 
         public ActionResult Edit(string id)
         {
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
+            if (User.IsInRole("Sale") || User.IsInRole("Customer"))
             {
-                return HttpNotFound();
+                Customer customer = db.Customers.Find(id);
+                if (customer == null)
+                {
+                    return HttpNotFound();
+                }
+                ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Password", customer.UserAccount_Username);
+                return View(customer);
             }
-            ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Password", customer.UserAccount_Username);
-            return View(customer);
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
+           
         }
 
         //
@@ -136,23 +174,31 @@ namespace psbizsuite.Controllers
         [HttpPost]
         public ActionResult Edit(Customer customer, string password)
         {
-            if (ModelState.IsValid)
+            
+            if (User.IsInRole("Sale") || User.IsInRole("Customer"))
             {
-                if (password != "")
+                if (ModelState.IsValid)
                 {
-                    UserAccount customerAcc = new UserAccount();
-                    customerAcc=db.UserAccounts.Find(customer.UserAccount_Username);
-                    if (password == customerAcc.Password)
+                    if (password != "")
                     {
-                        db.Entry(customer).State = EntityState.Modified;
-                        db.SaveChanges();
-                        return RedirectToAction("Index");
+                        UserAccount customerAcc = new UserAccount();
+                        customerAcc = db.UserAccounts.Find(customer.UserAccount_Username);
+                        if (password == customerAcc.Password)
+                        {
+                            db.Entry(customer).State = EntityState.Modified;
+                            db.SaveChanges();
+                            return RedirectToAction("Index");
+                        }
                     }
+                    else { return View(customer); }
                 }
-                else { return View(customer); }
+                ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Password", customer.UserAccount_Username);
+                return View("Edit", customer);
             }
-            ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Password", customer.UserAccount_Username);
-            return View("Edit", customer);
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
         //
@@ -160,13 +206,21 @@ namespace psbizsuite.Controllers
 
         public ActionResult EditPassword(string id)
         {
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
+            if (User.IsInRole("Customer"))
             {
-                return HttpNotFound();
+                Customer customer = db.Customers.Find(id);
+                if (customer == null)
+                {
+                    return HttpNotFound();
+                }
+                ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Password", customer.UserAccount_Username);
+                return View(customer);
             }
-            ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Password", customer.UserAccount_Username);
-            return View(customer);
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
+                
         }
 
         //
@@ -175,26 +229,33 @@ namespace psbizsuite.Controllers
         [HttpPost]
         public ActionResult EditPassword(Customer customer, string password, string newpassword)
         {
-            if (ModelState.IsValid)
+            if (User.IsInRole("Customer"))
             {
-                if (password != "")
+                if (ModelState.IsValid)
                 {
-                    UserAccount customerAcc = new UserAccount();
-                    customerAcc = db.UserAccounts.Find(customer.UserAccount_Username);
-                    if (password == customerAcc.Password)
+                    if (password != "")
                     {
-                        db.Entry(customer).State = EntityState.Modified;
-                        customerAcc.Password = newpassword;
-                        EmailController ec = new EmailController();
-                        ec.confirmAndEmailOTP(customer.UserAccount_Username);
-                        db.SaveChanges();
-                        return RedirectToAction("Index");
+                        UserAccount customerAcc = new UserAccount();
+                        customerAcc = db.UserAccounts.Find(customer.UserAccount_Username);
+                        if (password == customerAcc.Password)
+                        {
+                            db.Entry(customer).State = EntityState.Modified;
+                            customerAcc.Password = newpassword;
+                            EmailController ec = new EmailController();
+                            ec.confirmAndEmailOTP(customer.UserAccount_Username);
+                            db.SaveChanges();
+                            return RedirectToAction("Index");
+                        }
                     }
+                    else { return View(customer); }
                 }
-                else { return View(customer); }
+                ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Password", customer.UserAccount_Username);
+                return View("Edit", customer);
+                }
+            else
+            {
+                return HttpNotFound("Unauthorized access");
             }
-            ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Password", customer.UserAccount_Username);
-            return View("Edit", customer);
         }
 
         //
@@ -202,12 +263,20 @@ namespace psbizsuite.Controllers
 
         public ActionResult Delete(string id = null)
         {
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
+            if (User.IsInRole("Sale"))
             {
-                return HttpNotFound();
+                Customer customer = db.Customers.Find(id);
+                if (customer == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(customer);
             }
-            return View(customer);
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
+            
         }
 
         //
@@ -216,10 +285,17 @@ namespace psbizsuite.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(string id)
         {
-            Customer customer = db.Customers.Find(id);
-            db.Customers.Remove(customer);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (User.IsInRole("Sale"))
+            {
+                Customer customer = db.Customers.Find(id);
+                db.Customers.Remove(customer);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
         protected override void Dispose(bool disposing)
