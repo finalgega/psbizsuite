@@ -214,6 +214,8 @@ namespace psbizsuite.Controllers
                     return HttpNotFound();
                 }
                 ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Password", customer.UserAccount_Username);
+                EmailController ec = new EmailController();
+                ec.confirmAndEmailOTP(id);
                 return View(customer);
             }
             else
@@ -227,7 +229,7 @@ namespace psbizsuite.Controllers
         // POST: /Customer/EditPassword/5
 
         [HttpPost]
-        public ActionResult EditPassword(Customer customer, string password, string newpassword)
+        public ActionResult EditPassword(Customer customer, string password, string newpassword, string otp)
         {
             if (User.IsInRole("Customer"))
             {
@@ -239,12 +241,15 @@ namespace psbizsuite.Controllers
                         customerAcc = db.UserAccounts.Find(customer.UserAccount_Username);
                         if (password == customerAcc.Password)
                         {
-                            db.Entry(customer).State = EntityState.Modified;
-                            customerAcc.Password = newpassword;
-                            EmailController ec = new EmailController();
-                            ec.confirmAndEmailOTP(customer.UserAccount_Username);
-                            db.SaveChanges();
-                            return RedirectToAction("Index");
+                            if (customerAcc.Otp == otp)
+                            {
+                                db.Entry(customer).State = EntityState.Modified;
+                                customerAcc.Password = newpassword;
+                                EmailController ec = new EmailController();
+                                ec.confirmAndEmailOTP(customer.UserAccount_Username);
+                                db.SaveChanges();
+                                return RedirectToAction("Index");
+                            }
                         }
                     }
                     else { return View(customer); }
