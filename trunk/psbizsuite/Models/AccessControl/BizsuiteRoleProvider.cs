@@ -49,7 +49,24 @@ namespace psbizsuite.Models.AccessControl
 
         public override string[] GetRolesForUser(string username)
         {
-            return new string[] { db.Employees.Find(username).EmployeePosition_PositionName };
+            UserAccount user = db.UserAccounts.Find(username);
+
+            if (user != null)
+            {
+                if (user.Type == "Employee")
+                {
+                    return new string[] { db.Employees.Find(username).EmployeePosition_PositionName };
+                }
+                else
+                {
+                    return new string[] { user.Type };
+                }
+            }
+            else
+            {
+                return null;
+            }
+            
         }
 
         public override string[] GetUsersInRole(string roleName)

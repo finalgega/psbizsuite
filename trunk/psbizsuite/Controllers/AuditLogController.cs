@@ -12,7 +12,7 @@ namespace psbizsuite.Controllers
     {
         public void writeRecords(string actor, string action, string particulars)
         {
-            string path = "../../../Users/Roy/AuditLog.txt";
+            string path = "../../../Users/Roy/AuditLog.biz";
             
             if (!File.Exists(path))
             {
