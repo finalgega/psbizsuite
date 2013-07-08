@@ -20,8 +20,15 @@ namespace psbizsuite.Controllers
 
         public ActionResult Index()
         {
-            var inventories = db.Inventories.Include(i => i.Supplier);
-            return View(inventories.ToList());
+            if (User.IsInRole("Logistic"))
+            {
+                var inventories = db.Inventories.Include(i => i.Supplier);
+                return View(inventories.ToList());
+            }
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
         //
@@ -29,14 +36,22 @@ namespace psbizsuite.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            Inventory inventory = db.Inventories.Find(id);
-            if (inventory == null)
+            if (User.IsInRole("Logistic"))
             {
-                return HttpNotFound();
+                Inventory inventory = db.Inventories.Find(id);
+                if (inventory == null)
+                {
+                    return HttpNotFound();
+                }
+                var imageData = inventory.Image;
+                TempData["filepath"] = File(imageData, "image/jpg");
+                return View(inventory);
             }
-            var imageData = inventory.Image;
-            TempData["filepath"] = File(imageData, "image/jpg");
-            return View(inventory);
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
+            
         }
 
         //
@@ -44,9 +59,17 @@ namespace psbizsuite.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName");
-            ViewBag.Category_CatId = new SelectList(db.categories, "CatId", "CatName");
-            return View();
+            if (User.IsInRole("Logistic"))
+            {
+                ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName");
+                ViewBag.Category_CatId = new SelectList(db.categories, "CatId", "CatName");
+                return View();
+            }
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
+            
         }
 
         //
@@ -55,24 +78,32 @@ namespace psbizsuite.Controllers
         [HttpPost]
         public ActionResult Create(Inventory inventory, HttpPostedFileBase uploadFile)
         {
-            if (ModelState.IsValid)
+            if (User.IsInRole("Logistic"))
             {
-                Inventory inventoryItem = inventory;
-                inventoryItem.TimeStamp = System.DateTime.Now;
-                if (uploadFile != null && uploadFile.ContentLength > 0)
+                if (ModelState.IsValid)
                 {
-                   //  extracts filename
-                    inventoryItem.Image = new byte[uploadFile.ContentLength];
-                    uploadFile.InputStream.Read(inventoryItem.Image, 0, uploadFile.ContentLength);    
-                db.Inventories.Add(inventoryItem);
-                    db.SaveChanges();
-                }
+                    Inventory inventoryItem = inventory;
+                    inventoryItem.TimeStamp = System.DateTime.Now;
+                    if (uploadFile != null && uploadFile.ContentLength > 0)
+                    {
+                       //  extracts filename
+                        inventoryItem.Image = new byte[uploadFile.ContentLength];
+                        uploadFile.InputStream.Read(inventoryItem.Image, 0, uploadFile.ContentLength);    
+                    db.Inventories.Add(inventoryItem);
+                        db.SaveChanges();
+                    }
 
-                ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName", inventory.Supplier_UserAccount_Username);
-                 ViewBag.Category_CatId = new SelectList(db.categories, "CatId", "CatName");
+                    ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName", inventory.Supplier_UserAccount_Username);
+                     ViewBag.Category_CatId = new SelectList(db.categories, "CatId", "CatName");
+                    return View(inventory);
+                }
                 return View(inventory);
+                }
+            else
+            {
+                return HttpNotFound("Unauthorized access");
             }
-            return View(inventory);
+            
         }
 
         //
@@ -80,13 +111,22 @@ namespace psbizsuite.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            Inventory inventory = db.Inventories.Find(id);
-            if (inventory == null)
+            if (User.IsInRole("Logistic"))
             {
-                return HttpNotFound();
+                Inventory inventory = db.Inventories.Find(id);
+                if (inventory == null)
+                {
+                    return HttpNotFound();
+                }
+                ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName", inventory.Supplier_UserAccount_Username);
+                return View(inventory);
+               
             }
-            ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName", inventory.Supplier_UserAccount_Username);
-            return View(inventory);
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
+            
         }
 
         //
@@ -95,43 +135,51 @@ namespace psbizsuite.Controllers
         [HttpPost]
         public ActionResult Edit(Inventory inventory)
         {
-            var errors = ModelState.Values.SelectMany(v => v.Errors);
-            if (ModelState.IsValid)
+            if (User.IsInRole("Logistic"))
             {
-                try
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                if (ModelState.IsValid)
                 {
-                    inventory.TimeStamp = System.DateTime.Now;
-                    db.Entry(inventory).State = EntityState.Modified;
+                    try
+                    {
+                        inventory.TimeStamp = System.DateTime.Now;
+                        db.Entry(inventory).State = EntityState.Modified;
 
-                    db.SaveChanges();
+                        db.SaveChanges();
+                        ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName", inventory.Supplier_UserAccount_Username);
+                        return View(inventory);
+                    }
+                    catch (DbEntityValidationException ex)
+                    {
+                        StringBuilder sb = new StringBuilder();
+
+                        foreach (var failure in ex.EntityValidationErrors)
+                        {
+                            sb.AppendFormat("{0} failed validation\n", failure.Entry.Entity.GetType());
+                            foreach (var error in failure.ValidationErrors)
+                            {
+                                sb.AppendFormat("- {0} : {1}", error.PropertyName, error.ErrorMessage);
+                                sb.AppendLine();
+                            }
+                        }
+
+                        throw new DbEntityValidationException(
+                            "Entity Validation Failed - errors follow:\n" +
+                            sb.ToString(), ex
+                        ); // Add the original exception as the innerException
+                    }
                     ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName", inventory.Supplier_UserAccount_Username);
                     return View(inventory);
                 }
-                catch (DbEntityValidationException ex)
-                {
-                    StringBuilder sb = new StringBuilder();
 
-                    foreach (var failure in ex.EntityValidationErrors)
-                    {
-                        sb.AppendFormat("{0} failed validation\n", failure.Entry.Entity.GetType());
-                        foreach (var error in failure.ValidationErrors)
-                        {
-                            sb.AppendFormat("- {0} : {1}", error.PropertyName, error.ErrorMessage);
-                            sb.AppendLine();
-                        }
-                    }
-
-                    throw new DbEntityValidationException(
-                        "Entity Validation Failed - errors follow:\n" +
-                        sb.ToString(), ex
-                    ); // Add the original exception as the innerException
-                }
                 ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName", inventory.Supplier_UserAccount_Username);
                 return View(inventory);
+                }
+            else
+            {
+                return HttpNotFound("Unauthorized access");
             }
-
-            ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName", inventory.Supplier_UserAccount_Username);
-            return View(inventory);
+           
         }
 
         //
@@ -139,13 +187,21 @@ namespace psbizsuite.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            Inventory inventory = db.Inventories.Find(id);
-            if (inventory == null)
+            if (User.IsInRole("Logistic"))
             {
-                return HttpNotFound();
-            }
+                    Inventory inventory = db.Inventories.Find(id);
+                if (inventory == null)
+                {
+                    return HttpNotFound();
+                }
            
-            return View(inventory);
+                return View(inventory);
+            }
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
+            
         }
 
         //
@@ -154,10 +210,18 @@ namespace psbizsuite.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Inventory inventory = db.Inventories.Find(id);
-            db.Inventories.Remove(inventory);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (User.IsInRole("Logistic"))
+            {
+                Inventory inventory = db.Inventories.Find(id);
+                db.Inventories.Remove(inventory);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
+          
         }
 
         public ActionResult CreateInventoryItem()

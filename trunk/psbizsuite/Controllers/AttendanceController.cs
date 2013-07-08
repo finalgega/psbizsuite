@@ -18,9 +18,16 @@ namespace psbizsuite.Controllers
 
         public ActionResult Index()
         {
-            var attendances = db.Attendances.Include(a => a.Employee);
-            
-            return View(attendances.ToList());
+            if (User.IsInRole("HR Manager"))
+            {
+                var attendances = db.Attendances.Include(a => a.Employee);
+
+                return View(attendances.ToList());
+            }
+            else
+            {
+                return HttpNotFound("Unauthorized accessed");
+            }
         }
 
         //
@@ -28,68 +35,20 @@ namespace psbizsuite.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            Attendance attendance = db.Attendances.Find(id);
-            if (attendance == null)
+            if (User.IsInRole("HR Manager"))
             {
-                return HttpNotFound();
+                Attendance attendance = db.Attendances.Find(id);
+                if (attendance == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(attendance);
             }
-            return View(attendance);
-        }
-
-        //
-        // GET: /Attendance/Create
-
-        public ActionResult Create()
-        {
-            ViewBag.Employee_UserAccount_Username = new SelectList(db.Employees, "UserAccount_Username", "FullName");
-            return View();
-        }
-
-        //
-        // POST: /Attendance/Create
-
-        [HttpPost]
-        public ActionResult Create(Attendance attendance)
-        {
-            if (ModelState.IsValid)
+            else
             {
-                db.Attendances.Add(attendance);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return HttpNotFound("Unauthorized accessed");
             }
-
-            ViewBag.Employee_UserAccount_Username = new SelectList(db.Employees, "UserAccount_Username", "FullName", attendance.Employee_UserAccount_Username);
-            return View(attendance);
-        }
-
-        //
-        // GET: /Attendance/Edit/5
-
-        public ActionResult Edit(int id = 0)
-        {
-            Attendance attendance = db.Attendances.Find(id);
-            if (attendance == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.Employee_UserAccount_Username = new SelectList(db.Employees, "UserAccount_Username", "FullName", attendance.Employee_UserAccount_Username);
-            return View(attendance);
-        }
-
-        //
-        // POST: /Attendance/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(Attendance attendance)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(attendance).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.Employee_UserAccount_Username = new SelectList(db.Employees, "UserAccount_Username", "FullName", attendance.Employee_UserAccount_Username);
-            return View(attendance);
+         
         }
 
         //
@@ -97,12 +56,21 @@ namespace psbizsuite.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            Attendance attendance = db.Attendances.Find(id);
-            if (attendance == null)
+            if (User.IsInRole("HR Manager"))
             {
-                return HttpNotFound();
+
+                Attendance attendance = db.Attendances.Find(id);
+                if (attendance == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(attendance);
             }
-            return View(attendance);
+            else
+            {
+                return HttpNotFound("Unauthorized accessed");
+            }
+
         }
 
         //
@@ -111,10 +79,18 @@ namespace psbizsuite.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Attendance attendance = db.Attendances.Find(id);
-            db.Attendances.Remove(attendance);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (User.IsInRole("HR Manager"))
+            {
+                Attendance attendance = db.Attendances.Find(id);
+                db.Attendances.Remove(attendance);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return HttpNotFound("Unauthorized accessed");
+            }
+     
         }
 
         protected override void Dispose(bool disposing)
