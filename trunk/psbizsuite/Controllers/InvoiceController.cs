@@ -18,8 +18,17 @@ namespace psbizsuite.Controllers
 
         public ActionResult Index()
         {
-            var invoices = db.invoices.Include(i => i.order);
-            return View(invoices.ToList());
+            if (User.IsInRole("Accountant"))
+            {
+                var invoices = db.invoices.Include(i => i.order);
+                return View(invoices.ToList());
+            }
+
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
+
         }
 
         //
@@ -27,12 +36,19 @@ namespace psbizsuite.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            invoice invoice = db.invoices.Find(id);
-            if (invoice == null)
+            if (User.IsInRole("Accountant"))
             {
-                return HttpNotFound();
+                invoice invoice = db.invoices.Find(id);
+                if (invoice == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(invoice);
             }
-            return View(invoice);
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
         //
@@ -40,8 +56,14 @@ namespace psbizsuite.Controllers
 
         public ActionResult Create()
         {
+            if (User.IsInRole("Accountant"))
+            {     
             ViewBag.Order_OrderId = new SelectList(db.Orders, "OrderId", "Status");
-            return View();
+            return View();}
+        else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
         //
@@ -67,13 +89,22 @@ namespace psbizsuite.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            invoice invoice = db.invoices.Find(id);
-            if (invoice == null)
+            if (User.IsInRole("Accountant"))
             {
-                return HttpNotFound();
+                invoice invoice = db.invoices.Find(id);
+                if (invoice == null)
+                {
+                    return HttpNotFound();
+                }
+                ViewBag.Order_OrderId = new SelectList(db.Orders, "OrderId", "Status", invoice.Order_OrderId);
+                return View(invoice);
             }
-            ViewBag.Order_OrderId = new SelectList(db.Orders, "OrderId", "Status", invoice.Order_OrderId);
-            return View(invoice);
+
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
+            
         }
 
         //

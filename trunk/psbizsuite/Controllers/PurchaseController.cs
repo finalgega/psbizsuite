@@ -18,8 +18,15 @@ namespace psbizsuite.Controllers
 
         public ActionResult Index()
         {
-            var purchases = db.purchases.Include(p => p.supplier).Include(p => p.purchasetype);
-            return View(purchases.ToList());
+            if (User.IsInRole("Accountant"))
+            {
+                var purchases = db.purchases.Include(p => p.supplier).Include(p => p.purchasetype);
+                return View(purchases.ToList());
+            }
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
         //
@@ -27,12 +34,19 @@ namespace psbizsuite.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            purchase purchase = db.purchases.Find(id);
-            if (purchase == null)
+            if (User.IsInRole("Accountant"))
             {
-                return HttpNotFound();
+                purchase purchase = db.purchases.Find(id);
+                if (purchase == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(purchase);
             }
-            return View(purchase);
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
         //
@@ -40,9 +54,16 @@ namespace psbizsuite.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName");
-            ViewBag.Purchasetype_PurchaseTypeID = new SelectList(db.purchasetypes, "PurchaseTypeID", "Name");
-            return View();
+            if (User.IsInRole("Accountant"))
+            {
+                ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName");
+                ViewBag.Purchasetype_PurchaseTypeID = new SelectList(db.purchasetypes, "PurchaseTypeID", "Name");
+                return View();
+            }
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
         //
@@ -69,14 +90,21 @@ namespace psbizsuite.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            purchase purchase = db.purchases.Find(id);
-            if (purchase == null)
+            if (User.IsInRole("Accountant"))
             {
-                return HttpNotFound();
+                purchase purchase = db.purchases.Find(id);
+                if (purchase == null)
+                {
+                    return HttpNotFound();
+                }
+                ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName", purchase.Supplier_UserAccount_Username);
+                ViewBag.Purchasetype_PurchaseTypeID = new SelectList(db.purchasetypes, "PurchaseTypeID", "Name", purchase.Purchasetype_PurchaseTypeID);
+                return View(purchase);
             }
-            ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName", purchase.Supplier_UserAccount_Username);
-            ViewBag.Purchasetype_PurchaseTypeID = new SelectList(db.purchasetypes, "PurchaseTypeID", "Name", purchase.Purchasetype_PurchaseTypeID);
-            return View(purchase);
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
         //
@@ -102,12 +130,19 @@ namespace psbizsuite.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            purchase purchase = db.purchases.Find(id);
-            if (purchase == null)
+            if (User.IsInRole("Accountant"))
             {
-                return HttpNotFound();
+                purchase purchase = db.purchases.Find(id);
+                if (purchase == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(purchase);
             }
-            return View(purchase);
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
         //
