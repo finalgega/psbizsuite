@@ -49,7 +49,10 @@ namespace psbizsuite.Controllers
                     return HttpNotFound();
                 }
                 var imageData = inventory.Image;
-                TempData["filepath"] = File(imageData, "image/jpg");
+                if (imageData != null)
+                {
+                    TempData["filepath"] = File(imageData, "image/jpg");
+                }
                 return View(inventory);
             }
             else
@@ -290,7 +293,14 @@ namespace psbizsuite.Controllers
         {
             Inventory inventory = db.Inventories.Find(id);
             var imageData = inventory.Image;
-            return File(imageData, "image/jpg");
+            if (imageData != null)
+            {
+                return File(imageData, "image/jpg");
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public ActionResult GenerateReport()
