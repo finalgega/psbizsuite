@@ -44,6 +44,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\..\..\..\..\Downloads\itextsharp-all-5\itextsharp-dll-core\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MvcMembership">
       <HintPath>..\packages\MvcMembership.3.8.0\lib\40\MvcMembership.dll</HintPath>
@@ -378,11 +381,12 @@
     <Content Include="Views\Employee\Index.aspx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Inventory\Create.aspx" />
-    <Content Include="Views\Inventory\CreateAccount.aspx" />
+    <Content Include="Views\Inventory\CreateSupplier.aspx" />
     <Content Include="Views\Inventory\CreateInventoryItem.aspx" />
     <Content Include="Views\Inventory\Delete.aspx" />
     <Content Include="Views\Inventory\Details.aspx" />
     <Content Include="Views\Inventory\Edit.aspx" />
+    <Content Include="Views\Inventory\GenerateReport.aspx" />
     <Content Include="Views\Inventory\Index.aspx" />
     <Content Include="Views\Inventory\InventoryDashboard.aspx" />
     <Content Include="Views\Inventory\RetrieveInventoryItem.aspx" />

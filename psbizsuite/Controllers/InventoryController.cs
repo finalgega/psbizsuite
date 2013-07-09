@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using psbizsuite.Models;
+using psbizsuite.Models.Utilities;
 using System.Data.Entity.Validation;
+using iTextSharp;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 namespace psbizsuite.Controllers
 {
     public class InventoryController : Controller
@@ -245,25 +250,30 @@ namespace psbizsuite.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult CreateAccount()
+        public ActionResult CreateSupplier()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult CreateAccount(UserAccount user)
+        public ActionResult CreateSupplier(Supplier supplier)
         {
             if (ModelState.IsValid)
             {
-                UserAccount usrAc = user;
-                string hashData = EncryptionController.CreatePasswordHash(usrAc.Password);
+                Supplier usrAc = supplier;
+                UserAccount uAc = new UserAccount();
+                uAc.Username = usrAc.FullName;
+                uAc.Type = "Supplier";
+                string hashData = Encryption.CreatePasswordHash(usrAc.FullName);
                 char[] delimiter = { ':' };
                 string[] split = hashData.Split(delimiter);
-                string salt = split[EncryptionController.SALT_INDEX];
-                string hash = split[EncryptionController.PBKDF2_INDEX];
-                usrAc.Password = hash;
-                usrAc.Salt = salt;
-                db.UserAccounts.Add(usrAc);
+                string salt = split[Encryption.SALT_INDEX];
+                string hash = split[Encryption.PBKDF2_INDEX];
+                uAc.Password = hash;
+                uAc.Salt = salt;
+                db.UserAccounts.Add(uAc);
+                usrAc.UserAccount_Username = uAc.Username;
+                db.Suppliers.Add(usrAc);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -281,6 +291,82 @@ namespace psbizsuite.Controllers
             Inventory inventory = db.Inventories.Find(id);
             var imageData = inventory.Image;
             return File(imageData, "image/jpg");
+        }
+
+        public ActionResult GenerateReport()
+        {
+            List<Inventory> inventoryList = db.Inventories.ToList();
+            if (inventoryList != null)
+            {
+                for (int i = 0; i < inventoryList.Count; i++)
+                {
+                    Debug.WriteLine(inventoryList[i].ItemName);
+                    Debug.WriteLine(inventoryList[i].ItemDescription);
+                    Debug.WriteLine(inventoryList[i].Quantity);
+                    Debug.WriteLine(inventoryList[i].Supplier);
+                    Debug.WriteLine(inventoryList[i].UnitCost);
+                    Debug.WriteLine(inventoryList[i].UnitWeightKilo);
+                    Debug.WriteLine(inventoryList[i].category.CatName);
+                }
+            }
+            using (MemoryStream ms = new MemoryStream())
+            {
+                Document document = new Document(PageSize.A4, 25, 25, 30, 30);
+                document.SetPageSize(PageSize.A4.Rotate());
+                PdfWriter writer = PdfWriter.GetInstance(document, ms);
+                document.Open();
+                //  Adding meta information to document
+                document.AddAuthor("Tigger");
+                document.AddCreator("Tigger Tigris");
+                document.AddKeywords("Inventory Report;BizSuite");
+                document.AddSubject("Inventory Report as of " + System.DateTime.Now);
+                document.AddTitle("Inventory Report as of " + System.DateTime.Now);
+                PdfPTable table = new PdfPTable(9);
+                //actual width of table in points
+                table.TotalWidth = 800f;
+                //fix the absolute width of the table
+                table.LockedWidth = true;
+
+                //relative col widths in proportions - 1/3 and 2/3
+                float[] widths = new float[] { 1f, 2f,3f,1f,1f,1f,2f,1f,1f,};
+                table.SetWidths(widths);
+                table.HorizontalAlignment = 0;
+                //leave a gap before and after the table
+                table.SpacingBefore = 20f;
+                table.SpacingAfter = 30f;
+
+                PdfPCell cell = new PdfPCell(new Phrase("Inventory"));
+                cell.Colspan = 10;
+                cell.Border = 0;
+                cell.HorizontalAlignment = 1;
+                table.AddCell(cell);
+                string[] columnNames = { "S/N", "Item Name", "Description", "Quantity", "Unit Cost", "Unit Weight (kg)", "Location", "Supplier", "Category" };
+                for(int i = 0; i < columnNames.Length;i++)
+                {
+                    table.AddCell(columnNames[i]);
+                }
+                for (int i = 0; i < inventoryList.Count; i++)
+                {
+                    table.AddCell(inventoryList[i].InventoryId.ToString());
+                    table.AddCell(inventoryList[i].ItemName.ToString());
+                    table.AddCell(inventoryList[i].ItemDescription.ToString());
+                    table.AddCell(inventoryList[i].Quantity.ToString());
+                    table.AddCell(inventoryList[i].UnitCost.ToString());
+                    table.AddCell(inventoryList[i].UnitWeightKilo.ToString());
+                    table.AddCell(inventoryList[i].Location.ToString());
+                    table.AddCell(inventoryList[i].Supplier_UserAccount_Username.ToString());
+                    table.AddCell(inventoryList[i].category.CatName.ToString());
+                }
+                document.Add(table);
+                document.Close();
+                writer.Close();
+                Response.ContentType = "pdf/application";
+                Response.AddHeader("content-disposition",
+                "attachment;filename=Inventory Report as of " + System.DateTime.Now+".pdf");
+                Response.OutputStream.Write(ms.GetBuffer(), 0, ms.GetBuffer().Length);
+            }
+
+            return View();
         }
     }
 }

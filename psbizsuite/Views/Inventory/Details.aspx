@@ -10,14 +10,15 @@
 
 <fieldset>
     <legend>Inventory</legend>
+     <%: Html.HiddenFor(model => model.InventoryId) %>
     <table class="details-table">
         <tr>
-            <%: Html.HiddenFor(model => model.InventoryId) %>
+           
             <th><%: Html.DisplayNameFor(model => model.ItemName) %></th>
             <td><%: Html.DisplayFor(model => model.ItemName) %></td>
             <th> <%: Html.DisplayNameFor(model => model.ItemDescription) %></th>
             <td><%: Html.DisplayFor(model => model.ItemDescription) %></td>
-            <%: Html.ActionLink("click", "ShowImage", new { id = Model.InventoryId }) %>"
+           <td> <%: Html.ActionLink("click", "ShowImage", new { id = Model.InventoryId }) %>"</td>
             
             <td rowspan="5" colspan="2"> <img src="/Inventory/ShowImage?id=<%= Model.InventoryId %>"/></td>
         </tr>

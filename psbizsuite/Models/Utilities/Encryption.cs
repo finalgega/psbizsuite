@@ -4,11 +4,19 @@ using System.Linq;
 using System.Web;
 using System.Security.Cryptography;
 using System.Text;
+using System.IO;
 
 namespace psbizsuite.Models.Utilities
 {
     public class Encryption
     {
+
+        [Flags]
+        public enum ENCRYPTION_OPTION
+        {
+            ENCRYPT_FLAG = 0x01,
+            DECRYPT_FLAG = 0x02
+        };
         // The following constants may be changed without breaking existing hashes.
         public const int SALT_BYTES = 24;
         public const int HASH_BYTES = 24;
@@ -154,6 +162,73 @@ namespace psbizsuite.Models.Utilities
             Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes(password, salt);
             pbkdf2.IterationCount = iterations;
             return pbkdf2.GetBytes(outputBytes);
+        }
+
+        public static byte[] Encrypt(byte[] IV, byte[] key, string clearText)
+        {
+            SymmetricAlgorithm sa = TripleDESCryptoServiceProvider.Create();
+            sa.IV = IV;
+            sa.Key = key;
+            byte[] byteText = Encoding.UTF8.GetBytes(clearText);
+            MemoryStream ms = new MemoryStream();
+            CryptoStream cs = new CryptoStream(ms, sa.CreateEncryptor(sa.Key, sa.IV), CryptoStreamMode.Write);
+            cs.Write(byteText, 0, byteText.Length);
+            cs.Close();
+            byte[] byteCiphertext = ms.ToArray();
+            ms.Close();
+            return byteCiphertext;
+        }
+
+        public static string Decrypt(byte[] IV, byte[] key, byte[] byteCipher)
+        {
+            byte[] cipher = new byte[byteCipher.Length];
+            byteCipher.CopyTo(cipher, 0);
+            SymmetricAlgorithm sa = TripleDESCryptoServiceProvider.Create();
+            sa.IV = IV;
+            sa.Key = key;
+            MemoryStream ms = new MemoryStream(byteCipher);
+            CryptoStream cs = new CryptoStream(ms, sa.CreateDecryptor(sa.Key, sa.IV), CryptoStreamMode.Read);
+            StreamReader sr = new StreamReader(cs);
+            string decryptedText = sr.ReadToEnd();
+            cs.Close();
+            ms.Close();
+            return decryptedText;
+        }
+
+        public static byte[] TripleDESAlgorithm(byte[] IV, byte[] key, byte[] byteText, ENCRYPTION_OPTION flag)
+        {
+            SymmetricAlgorithm sa = new TripleDESCryptoServiceProvider();
+            sa.IV = IV;
+            sa.Key = key;
+            switch(flag)
+            {
+                case ENCRYPTION_OPTION.DECRYPT_FLAG:
+                    {
+                        MemoryStream ms = new MemoryStream(byteText);
+                        CryptoStream cs = new CryptoStream(ms,sa.CreateDecryptor(sa.Key,sa.IV), CryptoStreamMode.Read);
+                        StreamReader sr = new StreamReader(cs);
+                        string decryptedText = sr.ReadToEnd();
+                        cs.Close();
+                        ms.Close();
+                        return Encoding.UTF8.GetBytes(decryptedText);
+                    }
+                case ENCRYPTION_OPTION.ENCRYPT_FLAG:
+                    {
+                        MemoryStream ms = new MemoryStream();
+                        CryptoStream cs = new CryptoStream(ms,sa.CreateEncryptor(sa.Key,sa.IV),CryptoStreamMode.Write);
+                        cs.Write(byteText,0,byteText.Length);
+                        cs.Close();
+                        byte[] byteCipher = ms.ToArray();
+                        ms.Close();
+                        string cipher = Encoding.UTF8.GetString(byteCipher);
+                        byte[] byteCiphered = ms.ToArray();
+                        return byteCiphered;
+                    }
+                default:
+                    {
+                        return null;
+                    }
+            }
         }
     }
 }
