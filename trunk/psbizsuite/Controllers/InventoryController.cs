@@ -314,6 +314,8 @@ namespace psbizsuite.Controllers
                 Document document = new Document(PageSize.A4, 25, 25, 30, 30);
                 document.SetPageSize(PageSize.A4.Rotate());
                 PdfWriter writer = PdfWriter.GetInstance(document, ms);
+                string password = "sypeskder";
+                writer.SetEncryption(Encoding.UTF8.GetBytes(password),Encoding.UTF8.GetBytes("Vivivephua030492"),PdfWriter.ALLOW_PRINTING,PdfWriter.ENCRYPTION_AES_128);
                 document.Open();
                 //  Adding meta information to document
                 document.AddAuthor("Tigger");
@@ -321,6 +323,7 @@ namespace psbizsuite.Controllers
                 document.AddKeywords("Inventory Report;BizSuite");
                 document.AddSubject("Inventory Report as of " + System.DateTime.Now);
                 document.AddTitle("Inventory Report as of " + System.DateTime.Now);
+                
                 PdfPTable table = new PdfPTable(9);
                 //actual width of table in points
                 table.TotalWidth = 800f;
