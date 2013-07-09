@@ -12,6 +12,8 @@ namespace psbizsuite.Controllers
 {
     public class EmailController : Controller
     {
+        private BizSuiteDBEntities db = new BizSuiteDBEntities();
+
         public bool submitEmail(int id, string username, string type, string priority, string message)
         {
             //string username = "Jack";
@@ -184,7 +186,7 @@ namespace psbizsuite.Controllers
                 MailMsg.IsBodyHtml = true; //I decided to make it html - so I could format the text.
                 MailMsg.Body = "<h3>To, " + username + "</h3><br /><br/>";
                 MailMsg.Body += "<p><b>Please complete your login by entering the code below: <br/>";
-                MailMsg.Body += "<p><b>Key:" + NewPassword + "<br/>";
+                MailMsg.Body += "<p><b>Key: " + NewPassword + "<br/>";
                 MailMsg.Body += "<p>Thank you for using BizSuite and we are always happy to serve you,<br />";
                 MailMsg.Body += "<p>" + username + "<br/>";
                 MailMsg.Body += "<p><b>From:" + strFromEmail + "<br/>";
@@ -270,7 +272,7 @@ namespace psbizsuite.Controllers
                 MailMsg.IsBodyHtml = true; //I decided to make it html - so I could format the text.
                 MailMsg.Body = "<h3>To, " + username + "</h3><br /><br/>";
                 MailMsg.Body += "<p><b>Please confirm your changes by entering the code below: <br/>";
-                MailMsg.Body += "<p><b>Key:" + NewPassword + "<br/>";
+                MailMsg.Body += "<p><b>Key: " + NewPassword + "<br/>";
                 MailMsg.Body += "<p>Thank you for using BizSuite and we are always happy to serve you,<br />";
                 MailMsg.Body += "<p>" + username + "<br/>";
                 MailMsg.Body += "<p><b>From:" + strFromEmail + "<br/>";
@@ -286,8 +288,10 @@ namespace psbizsuite.Controllers
                 smtp.Send(MailMsg);
 
                 UserAccount customerAcc = new UserAccount();
+                customerAcc = db.UserAccounts.Find(username);
                 customerAcc.Otp = NewPassword;
                 customerAcc.OtpExpiry = DateTime.Now;
+                db.SaveChanges();
                 return true;
             }
             catch (Exception ex)

@@ -2,6 +2,14 @@
 
 
 <ul class="select">
+    <li><a href="#nogo"><b>Customer</b></a>
+         <div class="select_sub">
+            <ul class="sub">
+                <li><%: Html.ActionLink("View own profile", "Index", "Customer", null, null) %></li>
+            </ul>
+        </div>
+     </li>
+</ul><ul class="select">
     <li><a href="#nogo"><b>Order</b></a>
          <div class="select_sub">
             <ul class="sub">

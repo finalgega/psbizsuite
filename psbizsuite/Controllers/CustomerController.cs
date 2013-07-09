@@ -20,7 +20,7 @@ namespace psbizsuite.Controllers
 
         public ActionResult Index()
         {
-            if (User.IsInRole("Sale"))
+            if (User.IsInRole("Sale") || User.IsInRole("Customer"))
             {
                 var customers = db.Customers.Include(c => c.UserAccount);
                 return View(customers.ToList());
