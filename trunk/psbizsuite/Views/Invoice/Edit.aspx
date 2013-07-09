@@ -16,29 +16,15 @@
         <legend>invoice</legend>
 
         <%: Html.HiddenFor(model => model.InvoiceId) %>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.InvoiceNumber) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.InvoiceNumber) %>
-            <%: Html.ValidationMessageFor(model => model.InvoiceNumber) %>
-        </div>
-
+        <%: Html.HiddenFor(model => model.InvoiceNumber) %>
+        <%: Html.HiddenFor(model => model.Notes) %>
+        <%: Html.HiddenFor(model => model.TimeStamp) %>
         <div class="editor-label">
             <%: Html.LabelFor(model => model.Name) %>
         </div>
         <div class="editor-field">
             <%: Html.EditorFor(model => model.Name) %>
             <%: Html.ValidationMessageFor(model => model.Name) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.Notes) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.Notes) %>
-            <%: Html.ValidationMessageFor(model => model.Notes) %>
         </div>
 
         <div class="editor-label">
@@ -49,13 +35,9 @@
             <%: Html.ValidationMessageFor(model => model.ProposalDetails) %>
         </div>
 
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.TimeStamp) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.TimeStamp) %>
-            <%: Html.ValidationMessageFor(model => model.TimeStamp) %>
-        </div>
+        
+
+        
 
         <div class="editor-label">
             <%: Html.LabelFor(model => model.AdvancePaymentTax) %>

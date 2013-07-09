@@ -21,6 +21,7 @@ namespace psbizsuite.Controllers
             if (User.IsInRole("Accountant"))
             {
                 var invoices = db.invoices.Include(i => i.order);
+
                 return View(invoices.ToList());
             }
 

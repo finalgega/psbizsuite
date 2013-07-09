@@ -20,7 +20,7 @@
         <div id="content">
 
             <div id="page-heading">
-                <h1>Add New Invoice</h1>
+                <h1>Add New Purchase</h1>
             </div>
 
 

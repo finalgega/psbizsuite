@@ -11,19 +11,46 @@ namespace psbizsuite.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Globalization;
     
     public partial class invoice
     {
+
+        
+
+        public invoice() { InvoiceNumber = 1; TimeStamp = DateTime.Now; Notes = "1"; }
+
         public int InvoiceId { get; set; }
+
+        
         public int InvoiceNumber { get; set; }
+
+
+        [DataType(DataType.MultilineText)]
         public string Name { get; set; }
+
+        
+        
         public string Notes { get; set; }
+
+        [Required(ErrorMessage = "Please Select due date")]
+        [DataType(DataType.Date)]
         public string ProposalDetails { get; set; }
+
+        [DataType(DataType.Date)]
         public System.DateTime TimeStamp { get; set; }
+
+        [Required(ErrorMessage = "Please indicate tax rate")]
+        [DataType(DataType.Currency)]
         public double AdvancePaymentTax { get; set; }
+
         public bool Paid { get; set; }
+
+
         public int Order_OrderId { get; set; }
-    
+
+
         public virtual Order order { get; set; }
     }
 }
