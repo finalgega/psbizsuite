@@ -63,7 +63,7 @@
 
 <div>
     <%: Html.ActionLink("Back to List", "Index") %> |
-    <%:  Html.ActionLink("EditPassword", "EditPassword", new { id=Model.UserAccount_Username }) %>
+    <%:  Html.ActionLink("Edit Password", "EditPassword", new { id=Model.UserAccount_Username }) %>
 </div>
 
 </asp:Content>

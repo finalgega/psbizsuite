@@ -34,7 +34,7 @@ namespace psbizsuite.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            if (User.IsInRole("Sale") || User.IsInRole("Customer"))
+            //if (User.IsInRole("Sale") || User.IsInRole("Customer"))
             {
                 SupportTicket supportticket = db.SupportTickets.Find(id);
                 if (supportticket == null)
@@ -43,10 +43,10 @@ namespace psbizsuite.Controllers
                 }
                 return View(supportticket);
             }
-            else
-            {
-                return HttpNotFound("Unauthorized access");
-            }
+            //else
+            //{
+            //    return HttpNotFound("Unauthorized access");
+            //}
         }
 
         //
@@ -78,12 +78,12 @@ namespace psbizsuite.Controllers
                 if (ModelState.IsValid)
                 {
 
-                    supportticket.Customer_UserAccount_Username = "jack";
+                    supportticket.Customer_UserAccount_Username = User.Identity.Name;
                     db.SupportTickets.Add(supportticket);
                     db.SaveChanges();
                     EmailController e = new EmailController();
                     e.submitEmail(supportticket.SupportTicketId, supportticket.Customer_UserAccount_Username, supportticket.EnquiryType, supportticket.EnquiryPriority, supportticket.Details);
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Details/" + User.Identity.Name, "Customer");
                 }
 
                 ViewBag.Customer_UserAccount_Username = new SelectList(db.Customers, "UserAccount_Username", "FullName", supportticket.Customer_UserAccount_Username);
@@ -130,7 +130,7 @@ namespace psbizsuite.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    supportticket.Employee_UserAccount_Username = "WinnieThePooh";
+                    supportticket.Employee_UserAccount_Username = User.Identity.Name;
                     db.Entry(supportticket).State = EntityState.Modified;
 
                     db.SaveChanges();
