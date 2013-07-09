@@ -264,18 +264,14 @@ namespace psbizsuite.Controllers
             if (ModelState.IsValid)
             {
                 Supplier usrAc = supplier;
-                UserAccount uAc = new UserAccount();
-                uAc.Username = usrAc.FullName;
-                uAc.Type = "Supplier";
+                usrAc.UserAccount.Type = "Supplier";
                 string hashData = Encryption.CreatePasswordHash(usrAc.FullName);
                 char[] delimiter = { ':' };
                 string[] split = hashData.Split(delimiter);
                 string salt = split[Encryption.SALT_INDEX];
                 string hash = split[Encryption.PBKDF2_INDEX];
-                uAc.Password = hash;
-                uAc.Salt = salt;
-                db.UserAccounts.Add(uAc);
-                usrAc.UserAccount_Username = uAc.Username;
+                usrAc.UserAccount.Password = hash;
+                usrAc.UserAccount.Salt = salt;
                 db.Suppliers.Add(usrAc);
                 db.SaveChanges();
                 return RedirectToAction("Index");
