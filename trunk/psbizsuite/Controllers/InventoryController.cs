@@ -152,7 +152,7 @@ namespace psbizsuite.Controllers
 
                         db.SaveChanges();
                         ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName", inventory.Supplier_UserAccount_Username);
-                        return View(inventory);
+                        return RedirectToAction("Index");
                     }
                     catch (DbEntityValidationException ex)
                     {
@@ -174,11 +174,11 @@ namespace psbizsuite.Controllers
                         ); // Add the original exception as the innerException
                     }
                     ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName", inventory.Supplier_UserAccount_Username);
-                    return View(inventory);
+                    return RedirectToAction("Index");
                 }
 
                 ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName", inventory.Supplier_UserAccount_Username);
-                return View(inventory);
+                return RedirectToAction("Index");
                 }
             else
             {
