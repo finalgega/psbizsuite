@@ -78,6 +78,8 @@ namespace psbizsuite.Controllers
             {
                 db.invoices.Add(invoice);
                 db.SaveChanges();
+                AuditLogController alc = new AuditLogController();
+                alc.writeRecords("The Employee", "create an invoice", "John");
                 return RedirectToAction("Index");
             }
 
@@ -119,7 +121,10 @@ namespace psbizsuite.Controllers
             {
                 db.Entry(invoice).State = EntityState.Modified;
                 db.SaveChanges();
+                AuditLogController alc = new AuditLogController();
+                alc.writeRecords("The Employee", "edit an invoice", "John");
                 return RedirectToAction("Index");
+                
             }
             ViewBag.Order_OrderId = new SelectList(db.Orders, "OrderId", "Status", invoice.Order_OrderId);
             return View(invoice);
@@ -135,6 +140,7 @@ namespace psbizsuite.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(invoice);
         }
 
@@ -148,6 +154,8 @@ namespace psbizsuite.Controllers
             invoice invoice = db.invoices.Find(id);
             db.invoices.Remove(invoice);
             db.SaveChanges();
+            AuditLogController alc = new AuditLogController();
+            alc.writeRecords("The Employee", "delete an invoice", "John");
             return RedirectToAction("Index");
         }
 
