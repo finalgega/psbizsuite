@@ -25,7 +25,7 @@
     <li><a href="#nogo"><b>Support Ticket</b></a>
          <div class="select_sub">
             <ul class="sub">
-                <li> <%: Html.ActionLink("Manage support ticket", "Index", "SupportTicketController", null, null) %> </li>
+                <li> <%: Html.ActionLink("Manage support ticket", "Index", "SupportTicket", null, null) %> </li>
             </ul>
          </div>
     </li>

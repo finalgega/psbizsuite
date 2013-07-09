@@ -18,8 +18,15 @@ namespace psbizsuite.Controllers
 
         public ActionResult Index()
         {
-            var supporttickets = db.SupportTickets.Include(s => s.Customer).Include(s => s.Employee).Include(s => s.SupportTicket2);
-            return View(supporttickets.ToList());
+            if (User.IsInRole("Sale"))
+            {
+                var supporttickets = db.SupportTickets.Include(s => s.Customer).Include(s => s.Employee).Include(s => s.SupportTicket2);
+                return View(supporttickets.ToList());
+            }
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
         //
@@ -27,12 +34,19 @@ namespace psbizsuite.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            SupportTicket supportticket = db.SupportTickets.Find(id);
-            if (supportticket == null)
+            if (User.IsInRole("Sale") || User.IsInRole("Customer"))
             {
-                return HttpNotFound();
+                SupportTicket supportticket = db.SupportTickets.Find(id);
+                if (supportticket == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(supportticket);
             }
-            return View(supportticket);
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
         //
@@ -40,10 +54,17 @@ namespace psbizsuite.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.Customer_UserAccount_Username = new SelectList(db.Customers, "UserAccount_Username", "FullName");
-            ViewBag.Employee_UserAccount_Username = new SelectList(db.Employees, "UserAccount_Username", "FullName");
-            ViewBag.ReferenceId = new SelectList(db.SupportTickets, "SupportTicketId", "Details");
-            return View();
+            if (User.IsInRole("Customer"))
+            {
+                ViewBag.Customer_UserAccount_Username = new SelectList(db.Customers, "UserAccount_Username", "FullName");
+                ViewBag.Employee_UserAccount_Username = new SelectList(db.Employees, "UserAccount_Username", "FullName");
+                ViewBag.ReferenceId = new SelectList(db.SupportTickets, "SupportTicketId", "Details");
+                return View();
+            }
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
         //
@@ -52,21 +73,28 @@ namespace psbizsuite.Controllers
         [HttpPost]
         public ActionResult Create(SupportTicket supportticket)
         {
-            if (ModelState.IsValid)
+            if (User.IsInRole("Customer"))
             {
+                if (ModelState.IsValid)
+                {
 
-                supportticket.Customer_UserAccount_Username = "jack";
-                db.SupportTickets.Add(supportticket);
-                db.SaveChanges();
-                EmailController e = new EmailController();
-                e.submitEmail(supportticket.SupportTicketId, supportticket.Customer_UserAccount_Username, supportticket.EnquiryType, supportticket.EnquiryPriority, supportticket.Details);
-                return RedirectToAction("Index");
+                    supportticket.Customer_UserAccount_Username = "jack";
+                    db.SupportTickets.Add(supportticket);
+                    db.SaveChanges();
+                    EmailController e = new EmailController();
+                    e.submitEmail(supportticket.SupportTicketId, supportticket.Customer_UserAccount_Username, supportticket.EnquiryType, supportticket.EnquiryPriority, supportticket.Details);
+                    return RedirectToAction("Index");
+                }
+
+                ViewBag.Customer_UserAccount_Username = new SelectList(db.Customers, "UserAccount_Username", "FullName", supportticket.Customer_UserAccount_Username);
+                ViewBag.Employee_UserAccount_Username = new SelectList(db.Employees, "UserAccount_Username", "FullName", supportticket.Employee_UserAccount_Username);
+                ViewBag.ReferenceId = new SelectList(db.SupportTickets, "SupportTicketId", "EnquiryType", supportticket.ReferenceId);
+                return View(supportticket);
             }
-
-            ViewBag.Customer_UserAccount_Username = new SelectList(db.Customers, "UserAccount_Username", "FullName", supportticket.Customer_UserAccount_Username);
-            ViewBag.Employee_UserAccount_Username = new SelectList(db.Employees, "UserAccount_Username", "FullName", supportticket.Employee_UserAccount_Username);
-            ViewBag.ReferenceId = new SelectList(db.SupportTickets, "SupportTicketId", "EnquiryType", supportticket.ReferenceId);
-            return View(supportticket);
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
         //
@@ -74,15 +102,22 @@ namespace psbizsuite.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            SupportTicket supportticket = db.SupportTickets.Find(id);
-            if (supportticket == null)
+            if (User.IsInRole("Sale"))
             {
-                return HttpNotFound();
+                SupportTicket supportticket = db.SupportTickets.Find(id);
+                if (supportticket == null)
+                {
+                    return HttpNotFound();
+                }
+                ViewBag.Customer_UserAccount_Username = new SelectList(db.Customers, "UserAccount_Username", "FullName", supportticket.Customer_UserAccount_Username);
+                ViewBag.Employee_UserAccount_Username = new SelectList(db.Employees, "UserAccount_Username", "FullName", supportticket.Employee_UserAccount_Username);
+                ViewBag.ReferenceId = new SelectList(db.SupportTickets, "SupportTicketId", "EnquiryType", supportticket.ReferenceId);
+                return View(supportticket);
             }
-            ViewBag.Customer_UserAccount_Username = new SelectList(db.Customers, "UserAccount_Username", "FullName", supportticket.Customer_UserAccount_Username);
-            ViewBag.Employee_UserAccount_Username = new SelectList(db.Employees, "UserAccount_Username", "FullName", supportticket.Employee_UserAccount_Username);
-            ViewBag.ReferenceId = new SelectList(db.SupportTickets, "SupportTicketId", "EnquiryType", supportticket.ReferenceId);
-            return View(supportticket);
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
         //
@@ -91,22 +126,29 @@ namespace psbizsuite.Controllers
         [HttpPost]
         public ActionResult Edit(SupportTicket supportticket)
         {
-            if (ModelState.IsValid)
+            if (User.IsInRole("Sale"))
             {
-                supportticket.Employee_UserAccount_Username = "WinnieThePooh";
-                db.Entry(supportticket).State = EntityState.Modified;
-                
-                db.SaveChanges();
-                EmailController e = new EmailController();
-                int count = 10;
-                e.submitEmail(supportticket.SupportTicketId, supportticket.Customer_UserAccount_Username, supportticket.EnquiryType, supportticket.EnquiryPriority, supportticket.Details, supportticket.Reply, supportticket.Employee_UserAccount_Username, count);
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    supportticket.Employee_UserAccount_Username = "WinnieThePooh";
+                    db.Entry(supportticket).State = EntityState.Modified;
+
+                    db.SaveChanges();
+                    EmailController e = new EmailController();
+                    int count = 10;
+                    e.submitEmail(supportticket.SupportTicketId, supportticket.Customer_UserAccount_Username, supportticket.EnquiryType, supportticket.EnquiryPriority, supportticket.Details, supportticket.Reply, supportticket.Employee_UserAccount_Username, count);
+                    return RedirectToAction("Index");
+                }
+                // ViewBag.Customer_UserAccount_Username = new SelectList(db.Customers, "UserAccount_Username", "FullName", supportticket.Customer_UserAccount_Username);
+                // ViewBag.Employee_UserAccount_Username = new SelectList(db.Employees, "UserAccount_Username", "FullName", supportticket.Employee_UserAccount_Username);
+                // ViewBag.ReferenceId = new SelectList(db.SupportTickets, "SupportTicketId", "EnquiryType", supportticket.ReferenceId);
+
+                return View(supportticket);
             }
-           // ViewBag.Customer_UserAccount_Username = new SelectList(db.Customers, "UserAccount_Username", "FullName", supportticket.Customer_UserAccount_Username);
-           // ViewBag.Employee_UserAccount_Username = new SelectList(db.Employees, "UserAccount_Username", "FullName", supportticket.Employee_UserAccount_Username);
-           // ViewBag.ReferenceId = new SelectList(db.SupportTickets, "SupportTicketId", "EnquiryType", supportticket.ReferenceId);
-            
-            return View(supportticket);
+            else 
+            {
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
         //
@@ -114,12 +156,19 @@ namespace psbizsuite.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            SupportTicket supportticket = db.SupportTickets.Find(id);
-            if (supportticket == null)
+            if (User.IsInRole("Sale"))
             {
-                return HttpNotFound();
+                SupportTicket supportticket = db.SupportTickets.Find(id);
+                if (supportticket == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(supportticket);
             }
-            return View(supportticket);
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
         //
@@ -128,10 +177,17 @@ namespace psbizsuite.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            SupportTicket supportticket = db.SupportTickets.Find(id);
-            db.SupportTickets.Remove(supportticket);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (User.IsInRole("Sale"))
+            {
+                SupportTicket supportticket = db.SupportTickets.Find(id);
+                db.SupportTickets.Remove(supportticket);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
         protected override void Dispose(bool disposing)

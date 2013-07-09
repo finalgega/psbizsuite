@@ -28,7 +28,7 @@
             <input type="password" placeholder="newpassword" name="newpassword" /></td>
             </tr>
             <tr>
-                <td><div class="editor-label">Confirm your password</div></td>
+                <td><div class="editor-label">Confirm your existing password</div></td>
                 <td><div class="editor-field">
             <input type="password" placeholder="yourpassword" name="password" /></div></td>
             </tr>

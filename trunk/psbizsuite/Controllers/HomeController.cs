@@ -73,6 +73,7 @@ namespace psbizsuite.Controllers
                     else
                     {   //redirect to customer page
                        //return RedirectToAction("Index", "Employee"); 
+                        return RedirectToAction("Details/"+username, "Customer");
                     }
 
                 }
