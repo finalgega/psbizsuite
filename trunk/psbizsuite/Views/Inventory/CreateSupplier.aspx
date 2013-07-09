@@ -18,6 +18,8 @@
                 <th><%: Html.LabelFor(model => model.FullName) %></th>
                 <td><%: Html.EditorFor(model => model.FullName) %>
             </td>
+                <th><%: Html.LabelFor(model => model.UserAccount.Username) %></th>
+                <td><%: Html.EditorFor(model => model.UserAccount.Username) %></td>
                 <th><%: Html.LabelFor(model => model.Description) %></th>
                 <td><%: Html.EditorFor(model => model.Description) %><%: Html.ValidationMessageFor(model => model.Description) %></td>
                 
