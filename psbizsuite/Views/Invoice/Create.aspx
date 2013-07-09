@@ -51,30 +51,23 @@
 
                                         <!-- start id-form -->
                                         <table border="0" class="zeroPS id-form">
+                                          
                                             <tr>
-                                                <th>InvoiceNumber:</th>
-                                                <td><%: Html.EditorFor(model => model.InvoiceNumber) %>
-                                                <%: Html.ValidationMessageFor(model => model.InvoiceNumber) %></td>
+                                                <th>Due Date:</th>
+                                                <td><%: Html.EditorFor(model => model.ProposalDetails) %>
+                                                <%: Html.ValidationMessageFor(model => model.ProposalDetails) %></td>
                                             </tr>
+                                            
                                             <tr>
-                                                <th>TimeStamp:</th>
-                                                <td><%: Html.EditorFor(model => model.TimeStamp) %>
-                                                <%: Html.ValidationMessageFor(model => model.TimeStamp) %></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Name:</th>
+                                                <th>Notes:</th>
                                                 <td><%: Html.EditorFor(model => model.Name) %>
                                                 <%: Html.ValidationMessageFor(model => model.Name) %></td>
                                             </tr>
                                             <tr>
-                                                <th>Notes:</th>
-                                                <td><%: Html.EditorFor(model => model.Notes) %>
-                                                <%: Html.ValidationMessageFor(model => model.Notes) %></td>
-                                            </tr>
-                                            <tr>
-                                                <th>AdvancePaymentTax:</th>
+                                                <th>Amount Payable:</th>
                                                 <td><%: Html.TextBoxFor(model => model.AdvancePaymentTax )%>
-                                                <%: Html.ValidationMessageFor(model => model.AdvancePaymentTax)%></td>
+                                                    <%: Html.ValidationMessageFor(model => model.AdvancePaymentTax) %></td>
+                                                
                                             </tr>
                                             <tr>
                                                 <th>Paid:</th>
@@ -82,11 +75,12 @@
                                                 <%: Html.ValidationMessageFor(model => model.Paid) %></td>
                                             </tr>
                                             <tr>
-                                                <th>OrderID:</th>
-                                                <td><%: Html.DropDownList("Order_OrderId", String.Empty) %>
-            <%: Html.ValidationMessageFor(model => model.Order_OrderId) %></td>
+                                                <th>Order:</th>
+                                                <td><%: Html.DropDownList("Order_OrderId") %>
+                                                <%: Html.ValidationMessageFor(model => model.Order_OrderId) %></td>
                                             </tr>
                                             
+
                                             <tr>
                                                 <th>&nbsp;</th>
                                                 <td style="vertical-align: top">

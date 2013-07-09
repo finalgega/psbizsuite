@@ -12,13 +12,8 @@
 <fieldset>
     <legend>invoice</legend>
 
-    <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.InvoiceNumber) %>
-    </div>
-    <div class="display-field">
-        <%: Html.DisplayFor(model => model.InvoiceNumber) %>
-    </div>
-
+    
+    <br/>
     <div class="display-label">
         <%: Html.DisplayNameFor(model => model.Name) %>
     </div>
@@ -26,12 +21,7 @@
         <%: Html.DisplayFor(model => model.Name) %>
     </div>
 
-    <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.Notes) %>
-    </div>
-    <div class="display-field">
-        <%: Html.DisplayFor(model => model.Notes) %>
-    </div>
+    <br/>
 
     <div class="display-label">
         <%: Html.DisplayNameFor(model => model.ProposalDetails) %>
@@ -39,34 +29,35 @@
     <div class="display-field">
         <%: Html.DisplayFor(model => model.ProposalDetails) %>
     </div>
-
+    <br/>
     <div class="display-label">
         <%: Html.DisplayNameFor(model => model.TimeStamp) %>
     </div>
     <div class="display-field">
         <%: Html.DisplayFor(model => model.TimeStamp) %>
     </div>
-
+    <br/>
     <div class="display-label">
         <%: Html.DisplayNameFor(model => model.AdvancePaymentTax) %>
     </div>
     <div class="display-field">
         <%: Html.DisplayFor(model => model.AdvancePaymentTax) %>
     </div>
-
+    <br/>
     <div class="display-label">
         <%: Html.DisplayNameFor(model => model.Paid) %>
     </div>
     <div class="display-field">
         <%: Html.DisplayFor(model => model.Paid) %>
     </div>
-
+    <br/>
     <div class="display-label">
         <%: Html.DisplayNameFor(model => model.order.Status) %>
     </div>
     <div class="display-field">
         <%: Html.DisplayFor(model => model.order.Status) %>
     </div>
+    <br/>
 </fieldset>
 <% using (Html.BeginForm()) { %>
     <%: Html.AntiForgeryToken() %>
