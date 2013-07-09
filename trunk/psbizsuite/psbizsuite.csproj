@@ -44,8 +44,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="itextsharp">
-      <HintPath>..\..\..\..\..\Downloads\itextsharp-all-5\itextsharp-dll-core\itextsharp.dll</HintPath>
+    <Reference Include="itextsharp, Version=5.3.4.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Assets\Libraries\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MvcMembership">
@@ -345,6 +346,7 @@
     <Content Include="Assets\Jquery\jquery-ui-1.10.3.custom.js" />
     <Content Include="Assets\Jquery\jquery-1.7.2.js" />
     <Content Include="Assets\Jquery\purr-notifications.js" />
+    <Content Include="Assets\Libraries\itextsharp.dll" />
     <Content Include="databaseSchema.txt" />
     <Content Include="Global.asax" />
     <Content Include="Views\Accounting\GenerateIR.aspx" />
