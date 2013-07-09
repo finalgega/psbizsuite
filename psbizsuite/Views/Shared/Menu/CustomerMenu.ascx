@@ -23,8 +23,8 @@
     <li><a href="#nogo"><b>Support Ticket</b></a>
         <div class="select_sub">
             <ul class="sub">
-                <li><%: Html.ActionLink("Send support ticket", "Create", "SupportTicketController", null, null) %></li>
-                <li><%: Html.ActionLink("View support tickets", "Index", "SupportTicketController", null, null) %></li>
+                <li><%: Html.ActionLink("Send support ticket", "Create", "SupportTicket", null, null) %></li>
+                <li><%: Html.ActionLink("View support tickets", "Index", "SupportTicket", null, null) %></li>
             </ul>
         </div>
     </li>

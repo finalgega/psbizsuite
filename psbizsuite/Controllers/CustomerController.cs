@@ -130,7 +130,7 @@ namespace psbizsuite.Controllers
                     //EmailController email = new EmailController();
                     //bool ok =email.createAndEmailOTP();
                     AuditLogController alc = new AuditLogController();
-                    alc.writeRecords("The Employee", "create customer", customer.UserAccount_Username);
+                    alc.writeRecords(User.Identity.Name, "create customer", customer.UserAccount_Username);
                     return RedirectToAction("Index");
 
                 }
@@ -187,7 +187,7 @@ namespace psbizsuite.Controllers
                         {
                             db.Entry(customer).State = EntityState.Modified;
                             db.SaveChanges();
-                            return RedirectToAction("Index");
+                            return RedirectToAction("Details/"+customer.UserAccount_Username, "Customer");
                         }
                     }
                     else { return View(customer); }
@@ -245,17 +245,16 @@ namespace psbizsuite.Controllers
                             {
                                 db.Entry(customer).State = EntityState.Modified;
                                 customerAcc.Password = newpassword;
-                                EmailController ec = new EmailController();
-                                ec.confirmAndEmailOTP(customer.UserAccount_Username);
                                 db.SaveChanges();
-                                return RedirectToAction("Index");
+                                return RedirectToAction("Details/" + customer.UserAccount_Username, "Customer");
                             }
                         }
                     }
                     else { return View(customer); }
                 }
                 ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Password", customer.UserAccount_Username);
-                return View("Edit", customer);
+                //return View("Edit", customer);
+                return RedirectToAction("Details/" + customer.UserAccount_Username, "Customer");
                 }
             else
             {
