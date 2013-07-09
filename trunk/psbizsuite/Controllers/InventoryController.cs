@@ -100,9 +100,9 @@ namespace psbizsuite.Controllers
 
                     ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName", inventory.Supplier_UserAccount_Username);
                      ViewBag.Category_CatId = new SelectList(db.categories, "CatId", "CatName");
-                    return View(inventory);
+                     return RedirectToAction("Index");
                 }
-                return View(inventory);
+                return RedirectToAction("Index") ;
                 }
             else
             {

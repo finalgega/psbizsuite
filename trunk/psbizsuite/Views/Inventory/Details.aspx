@@ -18,7 +18,6 @@
             <td><%: Html.DisplayFor(model => model.ItemName) %></td>
             <th> <%: Html.DisplayNameFor(model => model.ItemDescription) %></th>
             <td><%: Html.DisplayFor(model => model.ItemDescription) %></td>
-           <td> <%: Html.ActionLink("click", "ShowImage", new { id = Model.InventoryId }) %>"</td>
             
             <td rowspan="5" colspan="2"> <img src="/Inventory/ShowImage?id=<%= Model.InventoryId %>"/></td>
         </tr>
