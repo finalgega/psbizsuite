@@ -55,7 +55,7 @@
                                             </tr>
                                             <tr>
                                                 <th>NRIC:</th>
-                                                <td><%:Html.EditorFor(model => model.NRIC)%>
+                                                <td><%:Html.DisplayFor(model => model.NRIC)%>
                                                 <td><%: Html.ValidationMessageFor(model => model.NRIC) %></td>
                                             </tr>
                                             <tr>
@@ -65,7 +65,7 @@
                                             </tr>
                                             <tr>
                                                 <th>Date Of Birth:</th>
-                                                <td><%: Html.EditorFor(model => model.DOB) %></td>
+                                                <td><%: Html.DisplayFor(model => model.DOB) %></td>
                                                 <td><%: Html.ValidationMessageFor(model => model.DOB) %></td>
                                             </tr>
                                             <tr>
@@ -75,19 +75,20 @@
                                             </tr>
                                             <tr>
                                                 <th>User Account: </th>
-                                                <td><%: Html.EditorFor(model => model.UserAccount_Username) %>
+                                                <td><%: Html.DisplayFor(model => model.UserAccount_Username) %>
                                                     <%: Html.ValidationMessageFor(model => model.UserAccount_Username) %></td>
                                             </tr>
                                             <tr>
                                                 <th>Phone Uid: </th>
-                                                <td><%: Html.EditorFor(model => model.PhoneUid) %>
+                                                <td><%: Html.DisplayFor(model => model.PhoneUid) %>
                                                     <%: Html.ValidationMessageFor(model => model.PhoneUid) %></td>
                                             </tr>
                                             <tr>
                                                 <th>Position: </th>
-                                                <td><%: Html.DropDownList("EmployeePosition_PositionName", String.Empty) %></td>
-                                                <td><%: Html.ValidationMessageFor(model => model.EmployeePosition_PositionName) %></td>
+                                                <td><%: Html.DisplayFor(model => model.EmployeePosition_PositionName) %>
+                                                <%: Html.ValidationMessageFor(model => model.EmployeePosition_PositionName) %></td>
                                             </tr>
+                                            <% if(User.IsInRole("HR Manager"))  { %>
                                             <tr>
                                                 <th>Start Date of Employement:</th>
                                                 <td><%: Html.EditorFor(model => model.StartEmploymentDate) %></td>
@@ -113,6 +114,7 @@
                                                 <td><%: Html.EditorFor(model => model.SalaryPerHour) %></td>
                                                 <td><%: Html.ValidationMessageFor(model => model.SalaryPerHour) %></td>
                                             </tr>
+                                            <% } %>
                                             <tr>
                                                 <th>&nbsp;</th>
                                                 <td style="vertical-align: top">
