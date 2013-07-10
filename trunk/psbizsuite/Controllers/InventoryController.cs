@@ -97,9 +97,10 @@ namespace psbizsuite.Controllers
                        //  extracts filename
                         inventoryItem.Image = new byte[uploadFile.ContentLength];
                         uploadFile.InputStream.Read(inventoryItem.Image, 0, uploadFile.ContentLength);    
-                    db.Inventories.Add(inventoryItem);
-                        db.SaveChanges();
+                   
                     }
+                    db.Inventories.Add(inventoryItem);
+                    db.SaveChanges();
 
                     ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName", inventory.Supplier_UserAccount_Username);
                      ViewBag.Category_CatId = new SelectList(db.categories, "CatId", "CatName");
@@ -272,6 +273,7 @@ namespace psbizsuite.Controllers
                 string hash = split[Encryption.PBKDF2_INDEX];
                 usrAc.UserAccount.Password = hash;
                 usrAc.UserAccount.Salt = salt;
+                db.UserAccounts.Add(usrAc.UserAccount);
                 db.Suppliers.Add(usrAc);
                 db.SaveChanges();
                 return RedirectToAction("Index");

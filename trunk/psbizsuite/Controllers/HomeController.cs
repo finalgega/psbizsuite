@@ -59,7 +59,7 @@ namespace psbizsuite.Controllers
                         }
                         if (employee.EmployeePosition_PositionName == "Sale")
                         {
-                            return RedirectToAction("Index", "Order");
+                            return RedirectToAction("Index", "SupportTicket");
                         }
                         if (employee.EmployeePosition_PositionName == "Logistic")
                         {
