@@ -17,6 +17,7 @@ namespace psbizsuite.Models
         public byte[] Private { get; set; }
         public byte[] Public { get; set; }
         public string Employee_UserAccount_Username { get; set; }
+        public byte[] IV { get; set; }
     
         public virtual Employee Employee { get; set; }
     }

@@ -44,78 +44,117 @@
 
                                         <% using (Html.BeginForm())
                                            { %>
-                                        <%: Html.ValidationSummary(true) %>
+                                        <%: Html.ValidationSummary(true)%>
 
                                         <!-- start id-form -->
                                         <table border="0" class="zeroPS id-form">
                                             <tr>
                                                 <th>Full Name:</th>
-                                                <td><%: Html.EditorFor(model => model.FullName) %></td>
-                                                <td><%: Html.ValidationMessageFor(model => model.FullName) %></td>
+                                                <td><%: Html.EditorFor(model => model.FullName)%>
+                                                <%: Html.ValidationMessageFor(model => model.FullName)%></td>
                                             </tr>
+                                           <% if (User.IsInRole("HR Manager"))
+                                              { %>
                                             <tr>
                                                 <th>NRIC:</th>
                                                 <td><%:Html.DisplayFor(model => model.NRIC)%>
-                                                <td><%: Html.ValidationMessageFor(model => model.NRIC) %></td>
+                                                <%: Html.ValidationMessageFor(model => model.NRIC)%></td>
                                             </tr>
                                             <tr>
                                                 <th>Contact No:</th>
-                                                <td><%: Html.TextBoxFor(model => model.PhoneNo) %></td>
-                                                <td><%: Html.ValidationMessageFor(model => model.PhoneNo) %></td>
+                                                <td><%: Html.TextBoxFor(model => model.PhoneNo)%>
+                                                    <%: Html.ValidationMessageFor(model => model.PhoneNo)%></td>
                                             </tr>
                                             <tr>
                                                 <th>Date Of Birth:</th>
-                                                <td><%: Html.DisplayFor(model => model.DOB) %></td>
-                                                <td><%: Html.ValidationMessageFor(model => model.DOB) %></td>
+                                                <td><%: Html.EditorFor(model => model.DOB)%>
+                                                <%: Html.ValidationMessageFor(model => model.DOB)%></td>
                                             </tr>
                                             <tr>
                                                 <th>Address:</th>
-                                                <td><%: Html.TextAreaFor(model => model.Address, new { @class = "address" })%></td>
-                                                <td><%: Html.ValidationMessageFor(model => model.Address) %></td>
+                                                <td><%: Html.TextAreaFor(model => model.Address, new { @class = "address" })%>
+                                                <%: Html.ValidationMessageFor(model => model.Address)%></td>
                                             </tr>
                                             <tr>
                                                 <th>User Account: </th>
-                                                <td><%: Html.DisplayFor(model => model.UserAccount_Username) %>
-                                                    <%: Html.ValidationMessageFor(model => model.UserAccount_Username) %></td>
+                                                <td><%: Html.EditorFor(model => model.UserAccount_Username)%>
+                                                    <%: Html.ValidationMessageFor(model => model.UserAccount_Username)%></td>
                                             </tr>
                                             <tr>
                                                 <th>Phone Uid: </th>
-                                                <td><%: Html.DisplayFor(model => model.PhoneUid) %>
-                                                    <%: Html.ValidationMessageFor(model => model.PhoneUid) %></td>
+                                                <td><%: Html.EditorFor(model => model.PhoneUid)%>
+                                                    <%: Html.ValidationMessageFor(model => model.PhoneUid)%></td>
                                             </tr>
                                             <tr>
                                                 <th>Position: </th>
-                                                <td><%: Html.DisplayFor(model => model.EmployeePosition_PositionName) %>
-                                                <%: Html.ValidationMessageFor(model => model.EmployeePosition_PositionName) %></td>
+                                                <td><%: Html.DropDownList("EmployeePosition_PositionName", String.Empty)%>
+                                                <%: Html.ValidationMessageFor(model => model.EmployeePosition_PositionName)%></td>
                                             </tr>
                                             <% if(User.IsInRole("HR Manager"))  { %>
                                             <tr>
                                                 <th>Start Date of Employement:</th>
-                                                <td><%: Html.EditorFor(model => model.StartEmploymentDate) %></td>
-                                                <td><%: Html.ValidationMessageFor(model => model.StartEmploymentDate) %></td>
+                                                <td><%: Html.EditorFor(model => model.StartEmploymentDate)%>
+                                                <%: Html.ValidationMessageFor(model => model.StartEmploymentDate)%></td>
                                             </tr>
                                             <tr>
                                                 <th>End Date of Employement:</th>
-                                                <td><%: Html.EditorFor(model => model.EndEmploymentDate) %></td>
-                                                <td><%: Html.ValidationMessageFor(model => model.EndEmploymentDate) %></td>
+                                                <td><%: Html.EditorFor(model => model.EndEmploymentDate)%>
+                                                <%: Html.ValidationMessageFor(model => model.EndEmploymentDate)%></td>
                                             </tr>
                                             <tr>
                                                 <th>Start Working Hour:</th>
-                                                <td><%: Html.EditorFor(model => model.StartShiftHour) %></td>
-                                                <td><%: Html.ValidationMessageFor(model => model.StartShiftHour) %></td>
+                                                <td><%: Html.EditorFor(model => model.StartShiftHour)%>
+                                                <%: Html.ValidationMessageFor(model => model.StartShiftHour)%></td>
                                             </tr>
                                             <tr>
                                                 <th>End Working Hour:</th>
-                                                <td><%: Html.EditorFor(model => model.EndShiftHour) %></td>
-                                                <td><%: Html.ValidationMessageFor(model => model.EndShiftHour) %></td>
+                                                <td><%: Html.EditorFor(model => model.EndShiftHour)%>
+                                                <%: Html.ValidationMessageFor(model => model.EndShiftHour)%></td>
                                             </tr>
                                             <tr>
                                                 <th>Salary Per Hour:</th>
-                                                <td><%: Html.EditorFor(model => model.SalaryPerHour) %></td>
-                                                <td><%: Html.ValidationMessageFor(model => model.SalaryPerHour) %></td>
+                                                <td><%: Html.EditorFor(model => model.SalaryPerHour)%>
+                                                <%: Html.ValidationMessageFor(model => model.SalaryPerHour)%></td>
                                             </tr>
-                                            <% } %>
+                                            <% }
+                                              else
+                                              { %>
                                             <tr>
+                                                <th>NRIC:</th>
+                                                <td><%:Html.DisplayFor(model => model.NRIC)%>
+                                                <%: Html.ValidationMessageFor(model => model.NRIC)%></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Contact No:</th>
+                                                <td><%: Html.TextBoxFor(model => model.PhoneNo)%>
+                                                    <%: Html.ValidationMessageFor(model => model.PhoneNo)%></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Date Of Birth:</th>
+                                                <td><%: Html.DisplayFor(model => model.DOB)%></td>
+                                               
+                                            </tr>
+                                            <tr>
+                                                <th>Address:</th>
+                                                <td><%: Html.TextAreaFor(model => model.Address, new { @class = "address" })%>
+                                                    <%: Html.ValidationMessageFor(model => model.Address)%></td>
+                                            </tr>
+                                            <tr>
+                                                <th>User Account: </th>
+                                                <td><%: Html.DisplayFor(model => model.UserAccount_Username)%>
+                                                    <%: Html.ValidationMessageFor(model => model.UserAccount_Username)%></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Phone Uid: </th>
+                                                <td><%: Html.DisplayFor(model => model.PhoneUid)%>
+                                                    <%: Html.ValidationMessageFor(model => model.PhoneUid)%></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Position: </th>
+                                                <td><%: Html.DisplayFor(model => model.EmployeePosition_PositionName)%></td>
+                                            <tr>
+                                                   <% }
+                                           } %>
                                                 <th>&nbsp;</th>
                                                 <td style="vertical-align: top">
                                                     <input type="submit" class="form-submit" />
@@ -126,7 +165,6 @@
 
                                         </table>
                                         <!-- end id-form  -->
-                                        <% } %>
                                     </td>
                                 </tr>
                             </table>
@@ -160,3 +198,12 @@
     <% if (User.IsInRole("Accountant")) %>
     <% Html.RenderPartial("../Shared/Menu/AccountantMenu"); %>
 </asp:Content>
+
+ <asp:Content ID="Content4" ContentPlaceHolderID="MyAccount" runat="server">
+         <a href='<%: Url.Action("Edit/" + User.Identity.Name, "Employee") %>'>
+             <img src="../../Assets/Images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" />
+         </a>
+ </asp:Content>  
+ <asp:Content ID="Content5" ContentPlaceHolderID="LogoImg" runat="server">
+         <img src="../../Assets/Images/shared/logo-Hr.png" height="40" alt="" />
+ </asp:Content>   
