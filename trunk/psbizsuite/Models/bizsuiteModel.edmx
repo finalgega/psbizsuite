@@ -109,8 +109,8 @@
             <PropertyRef Name="CatId" />
           </Key>
           <Property Name="CatId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="CatName" Type="varchar" Nullable="false" MaxLength="45" />
-          <Property Name="CatDescription" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="CatName" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="CatDescription" Type="varchar" Nullable="false" MaxLength="255" />
         </EntityType>
         <EntityType Name="customer">
           <Key>
@@ -154,16 +154,16 @@
             <PropertyRef Name="InventoryId" />
           </Key>
           <Property Name="InventoryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="ItemDescription" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="ItemDescription" Type="varchar" Nullable="false" MaxLength="255" />
           <Property Name="Image" Type="blob" />
           <Property Name="UnitCost" Type="decimal" Nullable="false" Precision="8" Scale="2" />
           <Property Name="UnitWeightKilo" Type="decimal" Precision="8" Scale="2" />
           <Property Name="Quantity" Type="int" Nullable="false" />
-          <Property Name="Location" Type="varchar" MaxLength="45" />
+          <Property Name="Location" Type="varchar" MaxLength="255" />
           <Property Name="TimeStamp" Type="timestamp" Nullable="false" />
           <Property Name="Supplier_UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="Category_CatId" Type="int" Nullable="false" />
-          <Property Name="ItemName" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="ItemName" Type="varchar" Nullable="false" MaxLength="255" />
         </EntityType>
         <EntityType Name="invoice">
           <Key>
@@ -186,6 +186,7 @@
           <Property Name="Private" Type="binary" Nullable="false" MaxLength="1" />
           <Property Name="Public" Type="binary" Nullable="false" MaxLength="1" />
           <Property Name="Employee_UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="IV" Type="binary" MaxLength="1" />
         </EntityType>
         <EntityType Name="leavepolicy">
           <Key>
@@ -271,7 +272,7 @@
           <Property Name="PhoneNo" Type="int" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="45" />
           <Property Name="FaxNo" Type="int" />
-          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="255" />
           <Property Name="UserAccount_Username" Type="varchar" Nullable="false" MaxLength="45" />
         </EntityType>
         <EntityType Name="supportticket">
@@ -683,6 +684,7 @@
           <Property Name="Public" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
           <Property Name="Employee_UserAccount_Username" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="Employee" Relationship="BizSuiteDBModel.fk_KeyPair_Employee1" FromRole="KeyPair" ToRole="Employee" />
+          <Property Type="Binary" Name="IV" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="LeaveRequest">
           <Key>
@@ -1226,6 +1228,7 @@
           <EntitySetMapping Name="KeyPairs">
             <EntityTypeMapping TypeName="IsTypeOf(BizSuiteDBModel.KeyPair)">
               <MappingFragment StoreEntitySet="keypair">
+                <ScalarProperty Name="IV" ColumnName="IV" />
                 <ScalarProperty Name="Employee_UserAccount_Username" ColumnName="Employee_UserAccount_Username" />
                 <ScalarProperty Name="Public" ColumnName="Public" />
                 <ScalarProperty Name="Private" ColumnName="Private" />

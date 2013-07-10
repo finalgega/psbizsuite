@@ -230,6 +230,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="AlterDBSchema.txt" />
     <Content Include="Assets\Css\datePicker.css" />
     <Content Include="Assets\Css\inventory.css" />
     <Content Include="Assets\Css\notifications.css" />
@@ -353,18 +354,11 @@
     <Content Include="Views\Accounting\ManageCashFlow.aspx" />
     <Content Include="Views\Accounting\ViewIR.aspx" />
     <Content Include="Views\Accounting\ViewPL.aspx" />
-    <Content Include="Views\Attendance\Create.aspx" />
-    <Content Include="Views\Attendance\Delete.aspx" />
     <Content Include="Views\Attendance\Details.aspx" />
     <Content Include="Views\Attendance\Edit.aspx" />
     <Content Include="Views\Attendance\Index.aspx" />
     <Content Include="Views\Attendance\ViewAttendance.aspx" />
     <Content Include="Views\Attendance\ViewAttendanceSummary.aspx" />
-    <Content Include="Views\CashFlow\Create.aspx" />
-    <Content Include="Views\CashFlow\Delete.aspx" />
-    <Content Include="Views\CashFlow\Details.aspx" />
-    <Content Include="Views\CashFlow\Edit.aspx" />
-    <Content Include="Views\CashFlow\Index.aspx" />
     <Content Include="Views\Customer\EditPassword.aspx" />
     <Content Include="Views\Customer\Create.aspx" />
     <Content Include="Views\Customer\CreateCustomerProfile.aspx" />

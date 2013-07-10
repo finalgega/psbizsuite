@@ -1,0 +1,4 @@
+ALTER TABLE `bizsuitedb`.`inventory` CHANGE COLUMN `ItemName` `ItemName` VARCHAR(255) NOT NULL  , CHANGE COLUMN `ItemDescription` `ItemDescription` VARCHAR(255) NOT NULL  , CHANGE COLUMN `Image` `Image` BLOB NULL  , CHANGE COLUMN `Location` `Location` VARCHAR(255) NULL DEFAULT NULL  ;
+ALTER TABLE `bizsuitedb`.`category` CHANGE COLUMN `CatName` `CatName` VARCHAR(255) NOT NULL  , CHANGE COLUMN `CatDescription` `CatDescription` VARCHAR(255) NOT NULL  ;
+ALTER TABLE `bizsuitedb`.`supplier` CHANGE COLUMN `Description` `Description` VARCHAR(255) NOT NULL  ;
+ALTER TABLE `bizsuitedb`.`keypair` ADD COLUMN `IV` BINARY NULL  AFTER `Employee_UserAccount_Username` ;

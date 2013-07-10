@@ -98,4 +98,23 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="NavContent" runat="server">
+    <% if (User.IsInRole("HR Manager")) %>
+    <% Html.RenderPartial("../Shared/Menu/HrMenu"); %>
+    <% if (User.IsInRole("Sale")) %>
+    <% Html.RenderPartial("../Shared/Menu/SaleMenu"); %>
+    <% if (User.IsInRole("Customer")) %>
+    <% Html.RenderPartial("../Shared/Menu/CustomerMenu"); %>
+    <% if (User.IsInRole("Logistic")) %>
+    <% Html.RenderPartial("../Shared/Menu/LogisticMenu"); %>
+    <% if (User.IsInRole("Accountant")) %>
+    <% Html.RenderPartial("../Shared/Menu/AccountantMenu"); %>
 </asp:Content>
+
+ <asp:Content ID="Content4" ContentPlaceHolderID="MyAccount" runat="server">
+         <a href='<%: Url.Action("Edit/" + User.Identity.Name, "Employee") %>'>
+             <img src="../../Assets/Images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" />
+         </a>
+ </asp:Content>  
+  <asp:Content ID="Content5" ContentPlaceHolderID="LogoImg" runat="server">
+         <img src="../../Assets/Images/shared/logo-Hr.png" height="40" alt="" />
+ </asp:Content>   

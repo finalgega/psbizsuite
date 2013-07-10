@@ -29,7 +29,10 @@
 
             <!-- start logo -->
             <div id="logo">
-                <img src="../../Assets/Images/shared/logo.png" width="156" height="40" alt="" />
+                 <asp:ContentPlaceHolder ID="LogoImg" runat="server">
+                     <%--<img src="../../Assets/Images/shared/logo.png" width="156" height="40" alt="" />--%>
+                 </asp:ContentPlaceHolder>
+                
             </div>
             <!-- end logo -->
 
@@ -51,14 +54,18 @@
             <div id="nav-right">
 
                 <div class="nav-divider">&nbsp;</div>
-                <div class="showhide-account">  <a href='<%: Url.Action("Edit/Tigger", "Employee") %>'>
-                    <img src="../../Assets/Images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" /></a></div>   
+                <div class="showhide-account"> 
+                    <asp:ContentPlaceHolder ID="MyAccount" runat="server">
+                        <%-- <a href='<%: Url.Action("Edit/Tigger", "Employee") %>'>
+                        <img src="../../Assets/Images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" /></a>--%>
+                    </asp:ContentPlaceHolder>
+                </div>  
                 <div class="nav-divider">&nbsp;</div>
                 <div style="padding-top: 10px;">
-                <a href='<%: Url.Action("Index", "Home") %>'>
-                    <img src='<%: Url.Content("../../Assets/Images/shared/nav/nav_logout.gif") %>' width="64" height="14" alt="" />
-                </a>
-                    </div>
+                    <a href='<%: Url.Action("Index", "Home") %>'>
+                        <img src='<%: Url.Content("../../Assets/Images/shared/nav/nav_logout.gif") %>' width="64" height="14" alt="" />
+                    </a>
+                </div>
                   
                 <div class="clear">&nbsp;</div>
 

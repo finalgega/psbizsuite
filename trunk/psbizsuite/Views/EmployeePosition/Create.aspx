@@ -97,3 +97,12 @@
     <% Html.RenderPartial("../Shared/Menu/AccountantMenu"); %>
 </asp:Content>
 
+ <asp:Content ID="Content4" ContentPlaceHolderID="MyAccount" runat="server">
+         <a href='<%: Url.Action("Edit/" + User.Identity.Name, "Employee") %>'>
+             <img src="../../Assets/Images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" />
+         </a>
+ </asp:Content>  
+  <asp:Content ID="Content5" ContentPlaceHolderID="LogoImg" runat="server">
+         <img src="../../Assets/Images/shared/logo-Hr.png" height="40" alt="" />
+ </asp:Content>   
+
