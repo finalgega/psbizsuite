@@ -12,6 +12,7 @@
     <%: Html.ValidationSummary(true) %>
 
     <fieldset>
+        <%=TempData["errorMsg"] %>
         <legend>SupportTicket</legend>
 
         <h2>Contact Us</h2>

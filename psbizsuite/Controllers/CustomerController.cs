@@ -75,6 +75,7 @@ namespace psbizsuite.Controllers
         [HttpPost]
         public ActionResult Create(Customer customer)
         {
+            AuditLogController alc = new AuditLogController();
             /*if (customer.FullName==null)
             {
                 ModelState.AddModelError("FullName", "Full Name is required.");
@@ -129,12 +130,15 @@ namespace psbizsuite.Controllers
 
                     //EmailController email = new EmailController();
                     //bool ok =email.createAndEmailOTP();
-                    AuditLogController alc = new AuditLogController();
+                    
                     alc.writeRecords(User.Identity.Name, "create customer", customer.UserAccount_Username);
+                    alc.writeSuccessRecords(User.Identity.Name, "create customer", customer.UserAccount_Username);
+                    TempData["errorMsg"] = ""; 
                     return RedirectToAction("Index");
 
                 }
-
+                alc.writeRecords(User.Identity.Name, "create customer", customer.UserAccount_Username);
+                TempData["errorMsg"] = "Create was unsuccessful. Please correct the errors and try again."; 
                 ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Password", customer.UserAccount_Username);
                 return View(customer);
             }
@@ -187,12 +191,17 @@ namespace psbizsuite.Controllers
                         {
                             db.Entry(customer).State = EntityState.Modified;
                             db.SaveChanges();
+                            TempData["errorMsg"] = ""; 
                             return RedirectToAction("Details/"+customer.UserAccount_Username, "Customer");
                         }
                     }
-                    else { return View(customer); }
+                    else {
+                        TempData["errorMsg"] = "Your entered details are incorrect. Please recheck"; 
+                        return View(customer);
+                    }
                 }
                 ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Password", customer.UserAccount_Username);
+                TempData["errorMsg"] = "Your entered details are incorrect. Please recheck"; 
                 return View("Edit", customer);
             }
             else
@@ -250,15 +259,16 @@ namespace psbizsuite.Controllers
                             }
                         }
                     }
-                    else { 
-                        TempData["errorMsg"] = "Please enter password"; 
+                    else {
+                        TempData["errorMsg"] = "Your entered details are incorrect. Please recheck"; 
                         return View(customer); 
                     }
                 }
                 ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Password", customer.UserAccount_Username);
-                //return View("Edit", customer);
-                TempData["errorMsg"] = "Please enter password"; 
-                return RedirectToAction("Details/" + customer.UserAccount_Username, "Customer");
+                
+                TempData["errorMsg"] = "Your entered details are incorrect. Please recheck"; 
+                //return RedirectToAction("Details/" + customer.UserAccount_Username, "Customer");
+                return View(customer); 
                 }
             else
             {
