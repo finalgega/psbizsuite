@@ -354,7 +354,6 @@
     <Content Include="Views\Accounting\ManageCashFlow.aspx" />
     <Content Include="Views\Accounting\ViewIR.aspx" />
     <Content Include="Views\Accounting\ViewPL.aspx" />
-    <Content Include="Views\Attendance\Details.aspx" />
     <Content Include="Views\Attendance\Edit.aspx" />
     <Content Include="Views\Attendance\Index.aspx" />
     <Content Include="Views\Attendance\ViewAttendance.aspx" />
