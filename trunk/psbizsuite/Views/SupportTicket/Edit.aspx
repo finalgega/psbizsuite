@@ -12,6 +12,7 @@
     <%: Html.ValidationSummary(true) %>
 
     <fieldset>
+        <%=TempData["errorMsg"] %>
         <legend>SupportTicket</legend>
         <table>
             <%: Html.HiddenFor(model => model.SupportTicketId) %>

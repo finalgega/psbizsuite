@@ -9,9 +9,10 @@
 <h2>Create Customer</h2>
 
 <% using (Html.BeginForm()) { %>
-    <%= Html.ValidationSummary("Create was unsuccessful. Please correct the errors and try again.", true) %>
+    <%= Html.ValidationSummary(true) %>
 
     <fieldset>
+        <%=TempData["errorMsg"] %>
         <legend>Customer</legend>
         <table>
             <tr>

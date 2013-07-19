@@ -83,12 +83,14 @@ namespace psbizsuite.Controllers
                     db.SaveChanges();
                     EmailController e = new EmailController();
                     e.submitEmail(supportticket.SupportTicketId, supportticket.Customer_UserAccount_Username, supportticket.EnquiryType, supportticket.EnquiryPriority, supportticket.Details);
+                    TempData["errorMsg"] = ""; 
                     return RedirectToAction("Details/" + User.Identity.Name, "Customer");
                 }
 
                 ViewBag.Customer_UserAccount_Username = new SelectList(db.Customers, "UserAccount_Username", "FullName", supportticket.Customer_UserAccount_Username);
                 ViewBag.Employee_UserAccount_Username = new SelectList(db.Employees, "UserAccount_Username", "FullName", supportticket.Employee_UserAccount_Username);
                 ViewBag.ReferenceId = new SelectList(db.SupportTickets, "SupportTicketId", "EnquiryType", supportticket.ReferenceId);
+                TempData["errorMsg"] = "Send failed. Please enter all details and resend your enquiry."; 
                 return View(supportticket);
             }
             else
@@ -137,12 +139,13 @@ namespace psbizsuite.Controllers
                     EmailController e = new EmailController();
                     int count = 10;
                     e.submitEmail(supportticket.SupportTicketId, supportticket.Customer_UserAccount_Username, supportticket.EnquiryType, supportticket.EnquiryPriority, supportticket.Details, supportticket.Reply, supportticket.Employee_UserAccount_Username, count);
+                    TempData["errorMsg"] = ""; 
                     return RedirectToAction("Index");
                 }
                 // ViewBag.Customer_UserAccount_Username = new SelectList(db.Customers, "UserAccount_Username", "FullName", supportticket.Customer_UserAccount_Username);
                 // ViewBag.Employee_UserAccount_Username = new SelectList(db.Employees, "UserAccount_Username", "FullName", supportticket.Employee_UserAccount_Username);
                 // ViewBag.ReferenceId = new SelectList(db.SupportTickets, "SupportTicketId", "EnquiryType", supportticket.ReferenceId);
-
+                TempData["errorMsg"] = "Reply failed. Please enter all details and attempt again."; 
                 return View(supportticket);
             }
             else 
