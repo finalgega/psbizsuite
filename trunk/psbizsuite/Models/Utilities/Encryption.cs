@@ -26,6 +26,10 @@ namespace psbizsuite.Models.Utilities
         public const int SALT_INDEX = 1;
         public const int PBKDF2_INDEX = 2;
 
+        public const int IV_INDEX = 0;
+        public const int KEY_INDEX = 1;
+        public const int ENCRYPTED_TEXT = 2;
+
         /// <summary>
         /// Encryption portion of RSA
         /// </summary>
@@ -164,7 +168,15 @@ namespace psbizsuite.Models.Utilities
             return pbkdf2.GetBytes(outputBytes);
         }
 
-        public static byte[] Encrypt(byte[] IV, byte[] key, string clearText)
+        /// <summary>
+        /// Encryption via TripleDES Algorithm
+        /// Note : A string is returned in this order IV, Key, EncryptedText. Separated by :
+        /// </summary>
+        /// <param name="IV"></param>
+        /// <param name="key"></param>
+        /// <param name="clearText"></param>
+        /// <returns></returns>
+        public static string Encrypt(byte[] IV, byte[] key, string clearText)
         {
             SymmetricAlgorithm sa = TripleDESCryptoServiceProvider.Create();
             sa.IV = IV;
@@ -176,7 +188,7 @@ namespace psbizsuite.Models.Utilities
             cs.Close();
             byte[] byteCiphertext = ms.ToArray();
             ms.Close();
-            return byteCiphertext;
+            return Encoding.UTF8.GetString(sa.IV) + ":" + Encoding.UTF8.GetString(sa.Key) + ":" + Encoding.UTF8.GetString(byteCiphertext);
         }
 
         public static string Decrypt(byte[] IV, byte[] key, byte[] byteCipher)
