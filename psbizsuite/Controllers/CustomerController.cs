@@ -250,10 +250,14 @@ namespace psbizsuite.Controllers
                             }
                         }
                     }
-                    else { return View(customer); }
+                    else { 
+                        TempData["errorMsg"] = "Please enter password"; 
+                        return View(customer); 
+                    }
                 }
                 ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Password", customer.UserAccount_Username);
                 //return View("Edit", customer);
+                TempData["errorMsg"] = "Please enter password"; 
                 return RedirectToAction("Details/" + customer.UserAccount_Username, "Customer");
                 }
             else

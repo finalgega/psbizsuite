@@ -12,6 +12,7 @@
     <%: Html.ValidationSummary(true) %>
 
     <fieldset>
+        <%=TempData["errorMsg"] %>
         <legend>Customer</legend>
         Note: Usernames cannot be changed once registered <br />
         <table>
