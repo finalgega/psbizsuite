@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using psbizsuite.Models;
+using psbizsuite.Models.AccessControl;
 using psbizsuite.Models.Utilities;
 
 namespace psbizsuite.Controllers
@@ -240,6 +241,7 @@ namespace psbizsuite.Controllers
         [HttpPost]
         public ActionResult EditPassword(Customer customer, string password, string newpassword, string otp)
         {
+            
             if (User.IsInRole("Customer"))
             {
                 if (ModelState.IsValid)
@@ -248,7 +250,8 @@ namespace psbizsuite.Controllers
                     {
                         UserAccount customerAcc = new UserAccount();
                         customerAcc = db.UserAccounts.Find(customer.UserAccount_Username);
-                        if (password == customerAcc.Password)
+                        //if (password == customerAcc.Password)
+                        if (Encryption.ValidatePassword(password, customerAcc.Password, customerAcc.Salt))
                         {
                             if (customerAcc.Otp == otp)
                             {
