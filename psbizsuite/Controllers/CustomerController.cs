@@ -77,6 +77,7 @@ namespace psbizsuite.Controllers
         public ActionResult Create(Customer customer)
         {
             AuditLogController alc = new AuditLogController();
+            alc.writeRecords(User.Identity.Name, "create customer", customer.UserAccount_Username);
             /*if (customer.FullName==null)
             {
                 ModelState.AddModelError("FullName", "Full Name is required.");
@@ -112,6 +113,7 @@ namespace psbizsuite.Controllers
 
                     UserAccount customerAcc = new UserAccount();
                     EncryptionController ec = new EncryptionController();
+                    if (customerAcc.Username == db.UserAccounts.Find(customer.UserAccount_Username).Username) //IS IT SOMETHING LIKE THIS?
                     customerAcc.Username = customer.UserAccount_Username;
                     customerAcc.Password = customerAcc.Username;
                     string hashData = Encryption.CreatePasswordHash(customerAcc.Password);
@@ -132,13 +134,13 @@ namespace psbizsuite.Controllers
                     //EmailController email = new EmailController();
                     //bool ok =email.createAndEmailOTP();
                     
-                    alc.writeRecords(User.Identity.Name, "create customer", customer.UserAccount_Username);
+                    
                     alc.writeSuccessRecords(User.Identity.Name, "create customer", customer.UserAccount_Username);
                     TempData["errorMsg"] = ""; 
                     return RedirectToAction("Index");
 
                 }
-                alc.writeRecords(User.Identity.Name, "create customer", customer.UserAccount_Username);
+                alc.writeFailedRecords(User.Identity.Name, "create customer", customer.UserAccount_Username);
                 TempData["errorMsg"] = "Create was unsuccessful. Please correct the errors and try again."; 
                 ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Password", customer.UserAccount_Username);
                 return View(customer);
