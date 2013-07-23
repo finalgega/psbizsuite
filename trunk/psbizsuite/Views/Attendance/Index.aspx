@@ -7,10 +7,64 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
   <script>
 
+
+
+
+      function CreateHTMLTableFromJSON(objArray, theme,tableHeaderArry ) {
+          // set optional theme parameter
+          if (theme === undefined) {
+              theme = 'mediumTable';  //default theme
+          }
+
+          // If the returned data is an object do nothing, else try to parse
+          var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+
+          var str = '<table class="' + theme + '">';
+
+          // table head
+          if (tableHeaderArry) {
+              str += '<thead><tr>';
+              for (var index in tableHeaderArry) {
+                  str += '<th>' + tableHeaderArry[index] + '</th>';
+              }
+              str += '</tr></thead>';
+          }
+          str += '<tbody>';
+          for (var i = 0; i < array.length; i++) {
+              var row = 0;
+              str += (row % 2 == 0) ? '<tr class="alt">' : '<tr class="row">';
+              for (var index in array[i]) {
+                  str += '<td>' + array[i][index] + '</td>';
+              }
+              str += '</tr>';
+              row++;
+          }
+          str += '</tbody>'
+          str += '</table>';
+          return str;
+      }
+
       $(function () {
           $('#calendar').datepicker({
               inline: true,
-              maxDate: '0'
+              maxDate: '0',
+          });
+          $('#calendar').change(function () {
+              var rawDate = $(this).datepicker("getDate");
+              var formattedDate = $.datepicker.formatDate("yy-mm-dd", rawDate);
+              $.ajax({
+                  type: "GET",
+                  url: "/Attendance/Index", // the URL of the controller action method
+                  data: {date : formattedDate}, // optional data
+                  success: function (result) {
+                    //  $('#Content2').html(result); // do something with result
+                      $('#product-table').html(CreateHTMLTableFromJSON(result, null, false));
+                  },
+                  error: function (req, status, error) {
+                      // do something with error   
+                  }
+              });
+            
           });
 
       });
@@ -43,9 +97,10 @@
                                 <tr>
                                     <td>
                                         <div id="calendar"></div>
+                                        <input type="hidden" id="datepicker_send" name="datepicker_send">
                                     </td>
                                     <td>
-                                        <table class="zeroPS" id="product-table" style="margin-left:100px; width:347px; height:294px" >
+                                        <table class="zeroPS" id="product-table" style="margin-left:100px; width:347px; max-height:294px" >
                                             <tr>
                                                 <th class="table-header-repeat line-left minwidth-1" style="height:28px">
                                                     <a>Name</a>
@@ -60,9 +115,10 @@
                                                     <a>Location</a>
                                                 </th>
                                             </tr>
+                                
                                             <% foreach(var item in Model){ %>
                                             <tr>
-                                                <td>
+                                                <td>          
                                                      <%: Html.DisplayFor(modelItem => item.Employee.FullName) %>
                                                 </td>
                                                 <td>
@@ -76,6 +132,7 @@
                                                 </td>
                                             </tr>
                                             <% } %>   
+                                       
                                         </table>
                                     </td>
                                 </tr>

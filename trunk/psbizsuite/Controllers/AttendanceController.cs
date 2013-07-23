@@ -16,12 +16,23 @@ namespace psbizsuite.Controllers
         //
         // GET: /Attendance/
 
-        public ActionResult Index()
+        public ActionResult Index(string date)
         {
             if (User.IsInRole("HR Manager"))
             {
-                var attendances = db.Attendances.Include(a => a.Employee);
+                if (date == null)
+                {
+                    date = "2013-07-12"; //DateTime.Today.Date.ToString("yyyy-MM-dd");
+                }
+               
+                var ParsedDate = DateTime.Parse(date);
+                var attendances = db.Attendances.Include(a => a.Employee).Where(a=>a.Date == ParsedDate);
+              //  System.Diagnostics.Debug.WriteLine(DateTime.Today.Date.ToString("yyyy-MM-dd"));
 
+                if (Request.IsAjaxRequest())
+                {
+                    return Json(attendances.ToList(), JsonRequestBehavior.AllowGet);
+                }
                 return View(attendances.ToList());
             }
             else
