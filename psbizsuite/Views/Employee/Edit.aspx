@@ -90,7 +90,6 @@
                                                 <td><%: Html.DropDownList("EmployeePosition_PositionName", String.Empty)%>
                                                 <%: Html.ValidationMessageFor(model => model.EmployeePosition_PositionName)%></td>
                                             </tr>
-                                            <% if(User.IsInRole("HR Manager"))  { %>
                                             <tr>
                                                 <th>Start Date of Employement:</th>
                                                 <td><%: Html.EditorFor(model => model.StartEmploymentDate)%>
@@ -153,8 +152,8 @@
                                                 <th>Position: </th>
                                                 <td><%: Html.DisplayFor(model => model.EmployeePosition_PositionName)%></td>
                                             <tr>
-                                                   <% }
-                                           } %>
+                                                   <% 
+                                           } } %>
                                                 <th>&nbsp;</th>
                                                 <td style="vertical-align: top">
                                                     <input type="submit" class="form-submit" />
