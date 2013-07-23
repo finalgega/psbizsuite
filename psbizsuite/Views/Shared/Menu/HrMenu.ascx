@@ -10,7 +10,7 @@
             <ul class="sub">
                 <li> <%: Html.ActionLink("Manage employee profile", "Index", "Employee", null, null) %> </li>
                 <li> <%: Html.ActionLink("Add new employee", "Create", "Employee", null, null) %> </li>
-                <li> <%: Html.ActionLink("Manage employee position", "Index", "EmployePosition", null, null) %> </li>
+                <li> <%: Html.ActionLink("Manage employee position", "Index", "EmployeePosition", null, null) %> </li>
             </ul>
         </div>
     </li>
@@ -32,8 +32,8 @@
 <ul class="select">
     <li><a href="#nogo"><b>Payroll</b></a><div class="select_sub">
         <ul class="sub">
-            <li><a href="../Attendance/ViewAttendanceSummary">Calculate payroll</a></li>
-            <li><a href="../Employee/EditEmployeeDetail">View payroll history</a></li>
+            <li><a href="#">Calculate payroll</a></li>
+            <li><a href="#">View payroll history</a></li>
         </ul>
     </div>
     </li>
