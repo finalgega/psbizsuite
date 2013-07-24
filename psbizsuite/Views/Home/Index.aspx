@@ -54,7 +54,7 @@
                     <tr>
                         <th></th>
                         <td style="display: table-cell; vertical-align: top;">
-                            <input type="checkbox" class="checkbox-size" id="login-check" /><label for="login-check">Remember me</label></td>
+                           
                     </tr>
                     <tr>
                         <th></th>

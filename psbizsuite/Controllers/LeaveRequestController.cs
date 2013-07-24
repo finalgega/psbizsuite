@@ -20,8 +20,15 @@ namespace psbizsuite.Controllers
         /// </summary>
         public ActionResult AllList()
         {
-            var leaverequests = db.LeaveRequests.Include(l => l.Employee).Include(l => l.leavepolicy);
-            return View(leaverequests.ToList());
+            if (User.IsInRole("HR Manager"))
+            {
+                var leaverequests = db.LeaveRequests.Include(l => l.Employee).Include(l => l.leavepolicy);
+                return View(leaverequests.ToList());
+            }
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
         /// <summary>
@@ -29,9 +36,16 @@ namespace psbizsuite.Controllers
         /// </summary>
         public ActionResult MyList()
         {
-            var username = User.Identity.Name;
-            var leaverequests = db.LeaveRequests.Where(l => l.Employee_UserAccount_Username == username).Include(l => l.Employee).Include(l => l.leavepolicy);
-            return View(leaverequests.ToList());
+            if (!User.IsInRole("Customer"))
+            {
+                var username = User.Identity.Name;
+                var leaverequests = db.LeaveRequests.Where(l => l.Employee_UserAccount_Username == username).Include(l => l.Employee).Include(l => l.leavepolicy);
+                return View(leaverequests.ToList());
+            }
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
         /// <summary>
@@ -39,20 +53,27 @@ namespace psbizsuite.Controllers
         /// </summary>
         public ActionResult Create()
         {
-            // get entitled leave policies based on year of service in the company
-            var username = User.Identity.Name;
-            Employee employee = db.Employees.Find(username);
-            TimeSpan serviceYear = DateTime.Today - employee.StartEmploymentDate;
-            double serviceYearInDouble = Math.Abs(serviceYear.TotalHours / 365);
-            IEnumerable<LeavePolicy> entitledLeavePolicies = db.LeavePolicies.Where(l => l.MinServiceYear <= serviceYearInDouble);
-            if (entitledLeavePolicies.Count() <= 0)
+            if (!User.IsInRole("Customer"))
             {
-                return HttpNotFound("You cannot apply leave");
-            }
+                // get entitled leave policies based on year of service in the company
+                var username = User.Identity.Name;
+                Employee employee = db.Employees.Find(username);
+                TimeSpan serviceYear = DateTime.Today - employee.StartEmploymentDate;
+                double serviceYearInDouble = Math.Abs(serviceYear.TotalHours / 365);
+                IEnumerable<LeavePolicy> entitledLeavePolicies = db.LeavePolicies.Where(l => l.MinServiceYear <= serviceYearInDouble);
+                if (entitledLeavePolicies.Count() <= 0)
+                {
+                    return HttpNotFound("You cannot apply leave");
+                }
 
-            ViewBag.Employee_UserAccount_Username = new SelectList(db.Employees, "UserAccount_Username", "UserAccount_Username");
-            ViewBag.LeavePolicy_LeavePolicyId = new SelectList(entitledLeavePolicies, "LeavePolicyId", "PolicyName");
-            return View();
+                ViewBag.Employee_UserAccount_Username = new SelectList(db.Employees, "UserAccount_Username", "UserAccount_Username");
+                ViewBag.LeavePolicy_LeavePolicyId = new SelectList(entitledLeavePolicies, "LeavePolicyId", "PolicyName");
+                return View();
+            }
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
         /// <summary>
@@ -125,7 +146,8 @@ namespace psbizsuite.Controllers
                         sb.ToString(), ex
                     ); // Add the original exception as the innerException
                 }
-                return RedirectToAction("AllList");
+
+                return RedirectToAction("MyList");
                 #endregion
 
             }
@@ -138,35 +160,49 @@ namespace psbizsuite.Controllers
         // GET: /LeaveRequest/Approve
         public ActionResult Approve(int id)
         {
-            LeaveRequest leaverequest = db.LeaveRequests.Find(id);
-            if (leaverequest == null)
+            if (User.IsInRole("HR Manager"))
             {
-                return HttpNotFound();
+                LeaveRequest leaverequest = db.LeaveRequests.Find(id);
+                if (leaverequest == null)
+                {
+                    return HttpNotFound();
+                }
+                else
+                {
+                    leaverequest.Status = "Approved";
+                    db.Entry(leaverequest).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("AllList");
+                }
             }
             else
             {
-                leaverequest.Status = "Approved";
-                db.Entry(leaverequest).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("AllList");
+                return HttpNotFound("Unauthorized access");
             }
         }
 
         //
         // GET: /LeaveRequest/Approve
         public ActionResult NotApprove(int id)
-        {
-            LeaveRequest leaverequest = db.LeaveRequests.Find(id);
-            if (leaverequest == null)
+        {   
+            if (User.IsInRole("HR Manager"))
             {
-                return HttpNotFound();
+                LeaveRequest leaverequest = db.LeaveRequests.Find(id);
+                if (leaverequest == null)
+                {
+                    return HttpNotFound();
+                }
+                else
+                {
+                    leaverequest.Status = "Not approved";
+                    db.Entry(leaverequest).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("AllList");
+                }
             }
             else
             {
-                leaverequest.Status = "Not approved";
-                db.Entry(leaverequest).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("AllList");
+                return HttpNotFound("Unauthorized access");
             }
         }
 
@@ -174,15 +210,22 @@ namespace psbizsuite.Controllers
         // GET: /LeaveRequest/Delete
         public ActionResult Delete(int id)
         {
-            LeaveRequest leaverequest = db.LeaveRequests.Find(id);
-            if (leaverequest.Status == "Pending")
+            if (!User.IsInRole("Customer"))
             {
-                db.LeaveRequests.Remove(leaverequest);
-                db.SaveChanges();
+                LeaveRequest leaverequest = db.LeaveRequests.Find(id);
+                if (leaverequest.Status == "Pending")
+                {
+                    db.LeaveRequests.Remove(leaverequest);
+                    db.SaveChanges();
+                    return RedirectToAction("MyList");
+                }
+                TempData["message"] = "Unable to delete";
                 return RedirectToAction("MyList");
             }
-            TempData["message"] = "Unable to delete";
-            return RedirectToAction("MyList");
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
         }
 
         protected override void Dispose(bool disposing)
