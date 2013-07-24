@@ -86,5 +86,9 @@
          </a>
  </asp:Content>  
  <asp:Content ID="Content5" ContentPlaceHolderID="LogoImg" runat="server">
+     <% if(User.IsInRole("Customer")){ %>
          <img src="../../Assets/Images/shared/logo-Sale.png" height="40" alt="" />
+     <%}else{ %>
+         <img src="../../Assets/Images/shared/logo-Customer.png" height="40" alt="" />
+     <%} %>
  </asp:Content>   
