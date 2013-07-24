@@ -129,5 +129,16 @@
          </a>
  </asp:Content>  
   <asp:Content ID="Content5" ContentPlaceHolderID="LogoImg" runat="server">
-         <img src="../../Assets/Images/shared/logo-Hr.png" height="40" alt="" />
+ <% if (User.IsInRole("HR Manager")){ %>
+    <img src="../../Assets/Images/shared/logo-Hr.png" height="40" alt="" />
+      <% } %>
+       <% if (User.IsInRole("Sale")){ %>
+      <img src="../../Assets/Images/shared/logo-Sale.png" height="40" alt="" />
+       <% } %>
+    <% if (User.IsInRole("Logistic")) {%>
+      <img src="../../Assets/Images/shared/logo-Logistic.png" height="40" alt="" />
+       <% } %>
+    <% if (User.IsInRole("Accountant")) {%>
+      <img src="../../Assets/Images/shared/logo-Accounting.png" height="40" alt="" />
+       <% } %>
  </asp:Content> 
