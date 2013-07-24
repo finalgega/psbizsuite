@@ -87,7 +87,12 @@ namespace psbizsuite.Controllers
             return View("Index");
         }
 
-
+        public ActionResult resetpwd(string username, string email)
+        {
+            EmailController ec = new EmailController();
+            ec.ForgetPasswordAndEmail(username);
+            return View("Index");
+        }
 
         //
         // GET: /Home/Details/5

@@ -113,7 +113,7 @@ namespace psbizsuite.Controllers
 
                     UserAccount customerAcc = new UserAccount();
                     EncryptionController ec = new EncryptionController();
-                    if (customerAcc.Username == db.UserAccounts.Find(customer.UserAccount_Username).Username) //IS IT SOMETHING LIKE THIS?
+                    if (customerAcc.Username != db.UserAccounts.Find(customer.UserAccount_Username).Username) //IS IT SOMETHING LIKE THIS?
                     customerAcc.Username = customer.UserAccount_Username;
                     customerAcc.Password = customerAcc.Username;
                     string hashData = Encryption.CreatePasswordHash(customerAcc.Password);
