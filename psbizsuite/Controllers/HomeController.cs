@@ -43,6 +43,8 @@ namespace psbizsuite.Controllers
             {
                 if (MembershipService.ValidateUser(username, password))
                 {
+                    TempData["msg"] = "";
+
                     FormsAuthentication.SetAuthCookie(username, false);
 
                     EmailController em = new EmailController();
@@ -71,15 +73,14 @@ namespace psbizsuite.Controllers
                         }
                     }
                     else
-                    {   //redirect to customer page
-                       //return RedirectToAction("Index", "Employee"); 
+                    {   //redirect to customer page 
                         return RedirectToAction("Details/"+username, "Customer");
                     }
 
                 }
                 else
                 {
-                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                    TempData["msg"] = "The username or password is incorrect";
                 }
             }
 
@@ -87,11 +88,21 @@ namespace psbizsuite.Controllers
             return View("Index");
         }
 
-        public ActionResult resetpwd(string username, string email)
+        public ActionResult resetpwd(string usernameReset, string emailReset)
         {
-            EmailController ec = new EmailController();
-            ec.ForgetPasswordAndEmail(username);
-            return View("Index");
+            UserAccount user = db.UserAccounts.Find(usernameReset);
+            if (user != null)
+            {
+                EmailController ec = new EmailController();
+                ec.ForgetPasswordAndEmail(usernameReset);
+                TempData["msg"] = "Please check your email";
+                return View("Index");
+            }
+            else
+            {
+                TempData["msg"] = "Please re-enter username and email";
+                return View("Index");
+            }
         }
 
         //

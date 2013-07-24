@@ -10,13 +10,27 @@
     <link rel="stylesheet" href="../../Assets/Css/screen.css" type="text/css" media="screen" title="default" />
 
     <!--  jquery core -->
-    <script src="../../Assets/Jquery/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script src="../../Assets/Jquery/jquery-1.9.1.js" type="text/javascript"></script>
 
     <!-- Custom jquery scripts -->
     <script src="../../Assets/Jquery/custom_jquery.js" type="text/javascript"></script>
 
     <!-- MUST BE THE LAST SCRIPT IN <HEAD></HEAD></HEAD> png fix -->
     <script src="../../Assets/Jquery/jquery.pngFix.pack.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(".forgot-pwd").click(function () {
+                $("#loginbox").hide();
+                $("#forgotbox").show();
+            });
+            $(".back-login").click(function () {
+                $("#loginbox").show();
+                $("#forgotbox").hide();
+            });
+               
+        });
+    </script>
 
 </head>
 <body id="login-bg">
@@ -26,11 +40,14 @@
 
         <!-- start logo -->
         <div id="logo-login">
-            <a href="index.html">
-                <img src="../../Assets/Images/shared/logo.png" width="156" height="40" alt="" /></a>
+                <img src="../../Assets/Images/shared/logo.png" width="156" height="40" alt="" />
         </div>
         <!-- end logo -->
-
+        <!-- start error message -->
+        <div id="errorMsg" style="top: 170px; position:relative; float:right;">
+            <span style="color:yellow; font-size: 15px; float:right; ">* <%= TempData["msg"]%></span>  
+        </div>  
+        <!-- end error message -->   
         <div class="clear"></div>
 
         <!--  start loginbox ................................................................................. -->
@@ -66,35 +83,42 @@
             </div>
             <!--  end login-inner -->
             <div class="clear"></div>
-            <a href="x" class="forgot-pwd">Forgot Password?</a>
+            <a class="forgot-pwd">Forgot Password?</a>
         </div>
         <!--  end loginbox -->
 
         <!--  start forgotbox ................................................................................... -->
         <div id="forgotbox">
-            <div id="forgotbox-text">Please send us your email and we'll reset your password.</div>
+            <div id="forgotbox-text" style="margin-bottom:20px">Reset Password </div>
             <!--  start forgot-inner -->
             <div id="forgot-inner">
+                 <% using (Html.BeginForm("resetpwd", "Home", FormMethod.Post))
+                   { %>
                 <table border="0" class="zeroPS">
                     <tr>
-                        <th>Email address:</th>
-                        <td>
-                            <input type="text" value="" class="login-inp" /></td>
+                        <th>Username</th>
+                        <td><input type="text" value="" name="usernameReset" class="login-inp" /></td>
+                    </tr>
+                    <tr>
+                        <th>Email address</th>
+                        <td><input type="text" value="" name="emailReset"  class="login-inp" /></td>
                     </tr>
                     <tr>
                         <th></th>
                         <td>
-                            <input type="button" class="submit-login" /></td>
+                            <input type="submit" class="submit-login" style="height: 30px"/></td>
                     </tr>
                 </table>
+                  <% } %>
             </div>
             <!--  end forgot-inner -->
             <div class="clear"></div>
-            <a href="x" class="back-login">Back to login</a>
+            <a class="back-login">Back to login</a>
         </div>
         <!--  end forgotbox -->
 
     </div>
     <!-- End: login-holder -->
+
 </body>
 </html>
