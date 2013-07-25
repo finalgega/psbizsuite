@@ -1,7 +1,13 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<dynamic>" %>
 
 <ul class="select">
-    <li><a href="#nogo"><b>Attendance</b></a></li>
+    <li><a href="#nogo"><b>Attendance</b></a>
+         <div class="select_sub">
+            <ul class="sub">
+                <li> <%: Html.ActionLink("View employee attendance", "Index", "Attendance", null, null) %> </li>
+            </ul>
+        </div>
+    </li>
 </ul>
 <div class="nav-divider">&nbsp;</div>
 <ul class="select">
@@ -32,8 +38,8 @@
 <ul class="select">
     <li><a href="#nogo"><b>Payroll</b></a><div class="select_sub">
         <ul class="sub">
-            <li><a href="#">Calculate payroll</a></li>
-            <li><a href="#">View payroll history</a></li>
+           <li><%: Html.ActionLink("Calculate payroll", "Calculate", "Payroll", null, null) %></li>
+         <!--   <li><a href="#">View payroll history</a></li>   -->
         </ul>
     </div>
     </li>
