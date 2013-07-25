@@ -95,12 +95,12 @@ namespace psbizsuite.Controllers
             {
                 EmailController ec = new EmailController();
                 ec.ForgetPasswordAndEmail(usernameReset);
-                TempData["msg"] = "Please check your email";
+                TempData["msg"] = "* Please check your email";
                 return View("Index");
             }
             else
             {
-                TempData["msg"] = "Please re-enter username and email";
+                TempData["msg"] = "* Please re-enter username and email";
                 return View("Index");
             }
         }

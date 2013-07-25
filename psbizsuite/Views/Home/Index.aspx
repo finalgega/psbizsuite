@@ -45,7 +45,7 @@
         <!-- end logo -->
         <!-- start error message -->
         <div id="errorMsg" style="top: 170px; position:relative; float:right;">
-            <span style="color:yellow; font-size: 15px; float:right; ">* <%= TempData["msg"]%></span>  
+            <span style="color:yellow; font-size: 15px; float:right; "><%= TempData["msg"]%></span>  
         </div>  
         <!-- end error message -->   
         <div class="clear"></div>
