@@ -12,7 +12,7 @@ namespace psbizsuite.Controllers
     {
         public void writeRecords(string actor, string action, string particulars)
         {
-            string path = "../../../Users/Acer/Desktop/AuditLog.biz";
+            string path = "../../../Users/Roy/Desktop/AuditLog.biz";
             
             if (!File.Exists(path))
             {
@@ -44,7 +44,7 @@ namespace psbizsuite.Controllers
 
         public void writeSuccessRecords(string actor, string action, string particulars)
         {
-            string path = "../../../Users/Acer/Desktop/AuditLog.biz";
+            string path = "../../../Users/Roy/Desktop/AuditLog.biz";
 
             if (!File.Exists(path))
             {
@@ -59,7 +59,7 @@ namespace psbizsuite.Controllers
             // if it is not deleted. 
             using (StreamWriter sw = File.AppendText(path))
             {
-                sw.WriteLine(DateTime.Now + " : " + actor + " has " + action + " - " + particulars + "successfully");
+                sw.WriteLine(DateTime.Now + " : " + actor + " has " + action + " - " + particulars + " successfully");
             }
 
             // Open the file to read from. 
@@ -76,7 +76,7 @@ namespace psbizsuite.Controllers
 
         public void writeFailedRecords(string actor, string action, string particulars)
         {
-            string path = "../../../Users/Acer/Desktop/AuditLog.biz";
+            string path = "../../../Users/Roy/Desktop/AuditLog.biz";
 
             if (!File.Exists(path))
             {
@@ -91,7 +91,7 @@ namespace psbizsuite.Controllers
             // if it is not deleted. 
             using (StreamWriter sw = File.AppendText(path))
             {
-                sw.WriteLine(DateTime.Now + " : " + actor + " has failed to" + action + " - " + particulars + "successfully");
+                sw.WriteLine(DateTime.Now + " : " + actor + " has failed to " + action + " - " + particulars);
             }
 
             // Open the file to read from. 
