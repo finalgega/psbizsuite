@@ -113,35 +113,34 @@ namespace psbizsuite.Controllers
 
                     UserAccount customerAcc = new UserAccount();
                     EncryptionController ec = new EncryptionController();
-                    if (customerAcc.Username != db.UserAccounts.Find(customer.UserAccount_Username).Username) //IS IT SOMETHING LIKE THIS?
-                    customerAcc.Username = customer.UserAccount_Username;
-                    customerAcc.Password = customerAcc.Username;
-                    string hashData = Encryption.CreatePasswordHash(customerAcc.Password);
-                    char[] delimiter = { ':' };
-                    string[] split = hashData.Split(delimiter);
-                    string salt = split[Encryption.SALT_INDEX];
-                    string hash = split[Encryption.PBKDF2_INDEX];
-                    customerAcc.Salt = salt;
-                    customerAcc.Password = hash;
+                    if (customer.UserAccount_Username != db.UserAccounts.Find(customer.UserAccount_Username).Username)
+                    {//IS IT SOMETHING LIKE THIS?
+                        customerAcc.Username = customer.UserAccount_Username;
+                        customerAcc.Password = customerAcc.Username;
+                        string hashData = Encryption.CreatePasswordHash(customerAcc.Password);
+                        char[] delimiter = { ':' };
+                        string[] split = hashData.Split(delimiter);
+                        string salt = split[Encryption.SALT_INDEX];
+                        string hash = split[Encryption.PBKDF2_INDEX];
+                        customerAcc.Salt = salt;
+                        customerAcc.Password = hash;
 
-                    customerAcc.Type = "Customer";
-                    db.UserAccounts.Add(customerAcc);
+                        customerAcc.Type = "Customer";
+                        db.UserAccounts.Add(customerAcc);
 
 
-                    db.Customers.Add(customer);
-                    db.SaveChanges();
+                        db.Customers.Add(customer);
+                        db.SaveChanges();
 
-                    //EmailController email = new EmailController();
-                    //bool ok =email.createAndEmailOTP();
-                    
-                    
-                    alc.writeSuccessRecords(User.Identity.Name, "create customer", customer.UserAccount_Username);
-                    TempData["errorMsg"] = ""; 
-                    return RedirectToAction("Index");
+                        
+                        alc.writeSuccessRecords(User.Identity.Name, "create customer", customer.UserAccount_Username);
+                        TempData["errorMsg"] = "";
+                        return RedirectToAction("Index");
+                    }
 
                 }
                 alc.writeFailedRecords(User.Identity.Name, "create customer", customer.UserAccount_Username);
-                TempData["errorMsg"] = "Create was unsuccessful. Please correct the errors and try again."; 
+                TempData["errorMsg"] = "Please enter another username. Create is unsuccessful. Please correct the errors and try again."; 
                 ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Password", customer.UserAccount_Username);
                 return View(customer);
             }
@@ -258,7 +257,16 @@ namespace psbizsuite.Controllers
                             if (customerAcc.Otp == otp)
                             {
                                 db.Entry(customer).State = EntityState.Modified;
-                                customerAcc.Password = newpassword;
+                                //customerAcc.Password = newpassword;
+
+                                customerAcc.Password = password;
+                                string hashData = Encryption.CreatePasswordHash(customerAcc.Password);
+                                char[] delimiter = { ':' };
+                                string[] split = hashData.Split(delimiter);
+                                string salt = split[Encryption.SALT_INDEX];
+                                string hash = split[Encryption.PBKDF2_INDEX];
+                                customerAcc.Salt = salt;
+                                customerAcc.Password = hash;
                                 db.SaveChanges();
                                 return RedirectToAction("Details/" + customer.UserAccount_Username, "Customer");
                             }
