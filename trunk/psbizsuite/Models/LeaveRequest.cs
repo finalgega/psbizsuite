@@ -24,6 +24,7 @@ namespace psbizsuite.Models
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public System.DateTime EndDate { get; set; }
+        [Required(ErrorMessage = "This field is required")]
         public string Reason { get; set; }
         public string Employee_UserAccount_Username { get; set; }
         public int LeavePolicy_LeavePolicyId { get; set; }

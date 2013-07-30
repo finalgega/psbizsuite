@@ -11,6 +11,7 @@ namespace psbizsuite.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class EmployeePosition
     {
@@ -20,7 +21,9 @@ namespace psbizsuite.Models
         }
     
         public int PositionId { get; set; }
+        [Required(ErrorMessage = "Position name is required")]
         public string PositionName { get; set; }
+        [Required(ErrorMessage = "Responsibility is required")]
         public string Responsibility { get; set; }
     
         public virtual ICollection<Employee> Employees { get; set; }

@@ -355,6 +355,7 @@
     <Content Include="Views\Accounting\ViewIR.aspx" />
     <Content Include="Views\Accounting\ViewPL.aspx" />
     <Content Include="Views\Attendance\Edit.aspx" />
+    <Content Include="Views\Attendance\Filter.aspx" />
     <Content Include="Views\Attendance\Index.aspx" />
     <Content Include="Views\Attendance\ViewAttendance.aspx" />
     <Content Include="Views\Attendance\ViewAttendanceSummary.aspx" />

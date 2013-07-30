@@ -11,6 +11,7 @@ namespace psbizsuite.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class LeavePolicy
     {
@@ -20,11 +21,17 @@ namespace psbizsuite.Models
         }
     
         public int LeavePolicyId { get; set; }
+        [Required(ErrorMessage = "Policy name is required")]
         public string PolicyName { get; set; }
+        [Required(ErrorMessage = "Policy description is required")]
         public string PolicyDescription { get; set; }
+        [Required(ErrorMessage = "days of leave is required")]
         public int DaysOfLeave { get; set; }
+        [Required(ErrorMessage = "Policy name is required")]
         public double MinServiceYear { get; set; }
+        [Required(ErrorMessage = "This field is required")]
         public bool Paid { get; set; }
+        [Required(ErrorMessage = "This field is required")]
         public string Period { get; set; }
     
         public virtual ICollection<LeaveRequest> leaverequests { get; set; }

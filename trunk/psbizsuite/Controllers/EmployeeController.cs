@@ -22,6 +22,7 @@ namespace psbizsuite.Controllers
             if (User.IsInRole("HR Manager"))
             {
                 var employees = db.Employees.Include(e => e.EmployeePosition).Include(e => e.UserAccount);
+                TempData["notice"] = null;
                 return View(employees.ToList());
             }
             else
@@ -66,8 +67,8 @@ namespace psbizsuite.Controllers
         [HttpPost]
         public ActionResult Create(Employee employee)
         {
-            //if (User.IsInRole("HR Manager"))
-            //{
+            if (User.IsInRole("HR Manager"))
+            {
                 if (ModelState.IsValid)
                 {
                     //create employee account
@@ -77,7 +78,7 @@ namespace psbizsuite.Controllers
                     employeeAcc.Type = "Employee";
 
                     //generate salt and hashed password
-                    string hashData = Encryption.CreatePasswordHash(employeeAcc.Password);                                    
+                    string hashData = Encryption.CreatePasswordHash(employeeAcc.Password);
                     char[] delimiter = { ':' };
                     string[] split = hashData.Split(delimiter);
                     string salt = split[Encryption.SALT_INDEX];
@@ -94,8 +95,10 @@ namespace psbizsuite.Controllers
                     //save db query
                     db.SaveChanges();
 
+                    TempData["notice"] = "Created successfully ";
+
                     //return to index page
-                    return RedirectToAction("Index");
+                    return View("Index", db.Employees.Include(e => e.EmployeePosition).Include(e => e.UserAccount).ToList());
                 }
                 else
                 {
@@ -104,10 +107,11 @@ namespace psbizsuite.Controllers
                     return View(employee);
                 }
             }
-            //else
-            //{
-            //    return HttpNotFound("Unauthorized access");
-            //}
+            else
+            {
+                return HttpNotFound("Unauthorized access");
+            }
+        }
 
         
 
@@ -142,9 +146,14 @@ namespace psbizsuite.Controllers
         {
             if (ModelState.IsValid)
             {
+                //db.Entry(employee).CurrentValues.SetValues(employee);
                 db.Entry(employee).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                TempData["notice"] = "Edited successfully ";
+
+                //return to index page
+                return View("Index", db.Employees.Include(e => e.EmployeePosition).Include(e => e.UserAccount).ToList());
             }
             ViewBag.EmployeePosition_PositionName = new SelectList(db.EmployeePositions, "PositionName", "PositionName", employee.EmployeePosition_PositionName);
             ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Username", employee.UserAccount_Username);
@@ -163,7 +172,10 @@ namespace psbizsuite.Controllers
                 db.Employees.Remove(employee);
                 db.UserAccounts.Remove(employeeAcc);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                TempData["notice"] = "Deleted successfully ";
+
+                //return to index page
+                return View("Index", db.Employees.Include(e => e.EmployeePosition).Include(e => e.UserAccount).ToList());
             }
             else
             {
