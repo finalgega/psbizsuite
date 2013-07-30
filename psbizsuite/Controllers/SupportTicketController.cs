@@ -23,6 +23,12 @@ namespace psbizsuite.Controllers
                 var supporttickets = db.SupportTickets.Include(s => s.Customer).Include(s => s.Employee).Include(s => s.SupportTicket2);
                 return View(supporttickets.ToList());
             }
+            if (User.IsInRole("Customer"))
+            {
+                var username = User.Identity.Name;
+                var supporttickets = db.SupportTickets.Where(s => s.Customer_UserAccount_Username == username).Include(s => s.Customer).Include(s => s.Employee).Include(s => s.SupportTicket2);
+                return View(supporttickets.ToList());
+            }
             else
             {
                 return HttpNotFound("Unauthorized access");

@@ -21,12 +21,19 @@ namespace psbizsuite.Controllers
 
         public ActionResult Index()
         {
-            if (User.IsInRole("Sale") || User.IsInRole("Customer"))
+            if (User.IsInRole("Sale"))
             {
                 var customers = db.Customers.Include(c => c.UserAccount);
                 return View(customers.ToList());
             }
-            else{
+            if (User.IsInRole("Customer"))
+            {
+                var username = User.Identity.Name;
+                var customers = db.Customers.Where(c => c.UserAccount_Username == username).Include(c => c.UserAccount);
+                return View(customers.ToList());
+            }
+            else
+            {
                 return HttpNotFound("Unauthorized access");
             }
         }
