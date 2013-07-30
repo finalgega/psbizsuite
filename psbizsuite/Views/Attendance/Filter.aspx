@@ -5,19 +5,22 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    
   <script>
-
+      var date = '<%:TempData["selectedDate"]%>';
 
       $(function () {
           $('#calendar').datepicker({
               inline: true,
               maxDate: '0',
+              dateFormat : 'yy-mm-dd',
           });
+          $('#calendar').datepicker("setDate", date);
           $('#calendar').change(function () {
               var rawDate = $(this).datepicker("getDate");
               var formattedDate = $.datepicker.formatDate("yy-mm-dd", rawDate);
-              window.location = "Attendance/Filter?date=" + formattedDate;
-            
+              window.location = "/Attendance/Filter?date=" + formattedDate;
+
           });
 
       });
@@ -29,7 +32,6 @@
     <div id="content-outer">
         <!-- start content -->
         <div id="content">
-
 
             <table border="0" class="zeroPS" style="width: 100%" id="content-table">
                 <tr>
@@ -52,7 +54,7 @@
                                         <div id="calendar"></div>
                                         <input type="hidden" id="datepicker_send" name="datepicker_send">
                                     </td>
-                                    <td style=" vertical-align: top;">
+                                    <td style=" vertical-align: top;"> 
                                         <table class="zeroPS" id="product-table" style="margin-left:100px; width:347px; max-height:294px" >
                                             <tr>
                                                 <th class="table-header-repeat line-left minwidth-1" style="height:28px">

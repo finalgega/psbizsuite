@@ -57,8 +57,8 @@
                                               { %>
                                             <tr>
                                                 <th>NRIC:</th>
-                                                <td><%:Html.DisplayFor(model => model.NRIC)%>
-                                                <%: Html.ValidationMessageFor(model => model.NRIC)%></td>
+                                                <td><%:Html.DisplayFor(model => model.NRIC)%> <%:Html.HiddenFor(model => model.NRIC)%>
+                                               
                                             </tr>
                                             <tr>
                                                 <th>Contact No:</th>

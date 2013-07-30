@@ -54,7 +54,6 @@
                                 </td>
                                 <td>
                                     <%: Html.DisplayFor(modelItem => item.EmployeePosition.PositionName) %>
-                                   
                                 </td>
                                 <td>
                                     <%= item.SalaryPerHour * 30 * (item.EndShiftHour.TotalHours-item.StartShiftHour.TotalHours) %>
@@ -67,6 +66,19 @@
                             <% } %>
                         </table>
                         <div class="clear"></div>
+
+                        <!-- start pop up message -->
+                        <script>
+                            $(document).ready(function() {
+                                $('.close').click(function() {
+                                    $('.popup').fadeOut('fast');
+                                });
+                            });   
+                        </script>
+                         <% if (TempData["notice"] != null) { %>
+                          <div class="popup"><%= Html.Encode(TempData["notice"]) %><br /><br /><a href="#" class="close">close</a></div>
+                        <% } %>
+                        <!-- end pop up message -->
 
                     </div>
                     <!--  end content-table-inner ............................................END  -->

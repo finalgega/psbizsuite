@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using psbizsuite.Models;
+using System.Globalization;
 
 namespace psbizsuite.Controllers
 {
@@ -16,24 +17,30 @@ namespace psbizsuite.Controllers
         //
         // GET: /Attendance/
 
-        public ActionResult Index(string date)
+        public ActionResult Index()
         {
             if (User.IsInRole("HR Manager"))
             {
-                if (date == null)
-                {
-                    date = "2013-07-12"; //DateTime.Today.Date.ToString("yyyy-MM-dd");
-                }
-               
-                var ParsedDate = DateTime.Parse(date);
-                var attendances = db.Attendances.Include(a => a.Employee).Where(a=>a.Date == ParsedDate);
+                string date = DateTime.Today.Date.ToString("yyyy-MM-dd");
+                var attendances = db.Database.SqlQuery<Attendance>("SELECT * FROM Attendance WHERE Date = '" + date + "'").ToList();
+                    return View(attendances);
+              
               //  System.Diagnostics.Debug.WriteLine(DateTime.Today.Date.ToString("yyyy-MM-dd"));
 
-                if (Request.IsAjaxRequest())
-                {
-                    return Json(attendances.ToList(), JsonRequestBehavior.AllowGet);
-                }
-                return View(attendances.ToList());
+            }
+            else
+            {
+                return HttpNotFound("Unauthorized accessed");
+            }
+        }
+
+        public ActionResult Filter(string date)
+        {
+            if (User.IsInRole("HR Manager"))
+            {
+                var attendances = db.Database.SqlQuery<Attendance>("SELECT * FROM Attendance WHERE Date = '" + date + "'").ToList();
+                TempData["selectedDate"] = date;
+                return View(attendances);
             }
             else
             {
