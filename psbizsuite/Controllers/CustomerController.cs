@@ -14,6 +14,7 @@ namespace psbizsuite.Controllers
 {
     public class CustomerController : Controller
     {
+        AuditLogController alc = new AuditLogController();
         private BizSuiteDBEntities db = new BizSuiteDBEntities();
 
         //
@@ -24,12 +25,16 @@ namespace psbizsuite.Controllers
             if (User.IsInRole("Sale"))
             {
                 var customers = db.Customers.Include(c => c.UserAccount);
+                
+                alc.writeRecords(User.Identity.Name, "view all customer details", " ");
                 return View(customers.ToList());
             }
             if (User.IsInRole("Customer"))
             {
                 var username = User.Identity.Name;
                 var customers = db.Customers.Where(c => c.UserAccount_Username == username).Include(c => c.UserAccount);
+                
+                alc.writeRecords(User.Identity.Name, "view his own customer details", " ");
                 return View(customers.ToList());
             }
             else
@@ -85,34 +90,7 @@ namespace psbizsuite.Controllers
         {
             AuditLogController alc = new AuditLogController();
             alc.writeRecords(User.Identity.Name, "create customer", customer.UserAccount_Username);
-            /*if (customer.FullName==null)
-            {
-                ModelState.AddModelError("FullName", "Full Name is required.");
-            }
-            if (customer.UserAccount_Username== null)
-            {
-                ModelState.AddModelError("UserAccount_Username", "Name is required.");
-            }
-            if (customer.Address ==null)
-            {
-                ModelState.AddModelError("Address", "Address is required.");
-            }
-            if (customer.PhoneNo.ToString().Length!=8)
-            {
-                ModelState.AddModelError("PhoneNo", "Phone Number must be 8 digits");
-            }
-            if (customer.FaxNo.ToString().Length != 8)
-            {
-                ModelState.AddModelError("FaxNo", "Fax Number must be 8 digits");
-            }
-            if (!Regex.IsMatch(customer.Email, @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"))
-            {
-                ModelState.AddModelError("Email", "Email format is invalid.");
-            }
-            if (!ModelState.IsValid)
-            {
-                return View("Create", customer);
-            }*/
+            
             if (User.IsInRole("Sale"))
             {
                 if (ModelState.IsValid)
@@ -120,7 +98,7 @@ namespace psbizsuite.Controllers
 
                     UserAccount customerAcc = new UserAccount();
                     EncryptionController ec = new EncryptionController();
-                    if (customer.UserAccount_Username != db.UserAccounts.Find(customer.UserAccount_Username).Username)
+                    if (db.UserAccounts.Find(customer.UserAccount_Username) == null)
                     {//IS IT SOMETHING LIKE THIS?
                         customerAcc.Username = customer.UserAccount_Username;
                         customerAcc.Password = customerAcc.Username;
