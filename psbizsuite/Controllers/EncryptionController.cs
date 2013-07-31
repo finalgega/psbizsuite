@@ -11,6 +11,7 @@ using System.Text;
 
 namespace psbizsuite.Controllers
 {
+    [Obsolete]
     public class EncryptionController : ApiController
     {
         // The following constants may be changed without breaking existing hashes.

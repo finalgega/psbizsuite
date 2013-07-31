@@ -16,12 +16,12 @@
     <table border="0" class="zeroPS" id="content-table" style="width: 100%;">
         <tr>
             <th rowspan="3" class="sized">
-                <img src="../../Assets/Images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
+                <img src="../../../psbizsuite/Assets/Images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
             <th class="topleft"></th>
             <td id="tbl-border-top">&nbsp;</td>
             <th class="topright"></th>
             <th rowspan="3" class="sized">
-                <img src="../../Assets/Images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
+                <img src="../../../psbizsuite/Assets/Images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
         </tr>
         <tr>
             <td id="tbl-border-left"></td>

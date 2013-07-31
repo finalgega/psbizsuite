@@ -8,15 +8,8 @@
     <title>Login</title>
 
     <link rel="stylesheet" href="../../Assets/Css/screen.css" type="text/css" media="screen" title="default" />
-
     <!--  jquery core -->
-    <script src="../../Assets/Jquery/jquery-1.9.1.js" type="text/javascript"></script>
-
-    <!-- Custom jquery scripts -->
-    <script src="../../Assets/Jquery/custom_jquery.js" type="text/javascript"></script>
-
-    <!-- MUST BE THE LAST SCRIPT IN <HEAD></HEAD></HEAD> png fix -->
-    <script src="../../Assets/Jquery/jquery.pngFix.pack.js" type="text/javascript"></script>
+    <script src="../psbizsuite/Assets/Jquery/jquery-1.7.2.js" type="text/javascript"></script>
 
     <script>
         $(document).ready(function () {
@@ -40,7 +33,8 @@
 
         <!-- start logo -->
         <div id="logo-login">
-                <img src="../../Assets/Images/shared/logo.png" width="156" height="40" alt="" />
+            <a href="index.html">
+                <img src="../psbizsuite/Assets/Images/shared/logo.png" width="156" height="40" alt="" /></a>
         </div>
         <!-- end logo -->
         <!-- start error message -->

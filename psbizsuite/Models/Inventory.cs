@@ -11,18 +11,24 @@ namespace psbizsuite.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class Inventory
     {
         public int InventoryId { get; set; }
+        [Required(ErrorMessage = "Item name cannot be empty")]
         public string ItemName { get; set; }
+        [Required(ErrorMessage = "Please remember to give your item a description")]
         public string ItemDescription { get; set; }
         public byte[] Image { get; set; }
+        [Required(ErrorMessage = "Item requires a set price!")]
+        [Range(typeof(decimal),"0","99999999.99")]
         public decimal UnitCost { get; set; }
         public Nullable<decimal> UnitWeightKilo { get; set; }
+        [Required(ErrorMessage = "Please set the quantity of the item")]
         public int Quantity { get; set; }
         public string Location { get; set; }
         public System.DateTime TimeStamp { get; set; }
+        [Required(ErrorMessage = "Please choose an existing supplier!")]
         public string Supplier_UserAccount_Username { get; set; }
         public int Category_CatId { get; set; }
     

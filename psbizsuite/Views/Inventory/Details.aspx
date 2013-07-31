@@ -19,7 +19,7 @@
             <th> <%: Html.DisplayNameFor(model => model.ItemDescription) %></th>
             <td><%: Html.DisplayFor(model => model.ItemDescription) %></td>
             
-            <td rowspan="5" colspan="2"> <img src="/Inventory/ShowImage?id=<%= Model.InventoryId %>"/></td>
+            <td rowspan="5" colspan="2"> <img src="../../../psbizsuite/Inventory/ShowImage?id=<%= Model.InventoryId %>"/></td>
         </tr>
         <tr>
             <th> <%: Html.DisplayNameFor(model => model.UnitCost) %></th>

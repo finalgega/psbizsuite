@@ -10,12 +10,23 @@
                 </div>
             </li>
         </ul>
+<div class="nav-divider">&nbsp;</div>
+<ul class="select">
+    <li><a href="#nogo"><b>Category</b></a>
+        <div class="select_sub">
+            <ul class="sub">
+                <li><%: Html.ActionLink("Manage Categories","Index","Category",null,null) %></li>
+                <li><%: Html.ActionLink("Create Category","Create","Category",null,null) %></li>
+            </ul>
+        </div>
+</ul>
         <div class="nav-divider">&nbsp;</div>
         <ul class="select">
             <li><a href="#nogo"><b>Supplier</b></a>
                 <div class="select_sub">
                     <ul class="sub">
-                        <li><%: Html.ActionLink("Create Supplier","CreateSupplier","Inventory") %></li>
+                        <li><%: Html.ActionLink("Manage Suppliers","Index","Supplier",null,null) %></li>
+                        <li><%: Html.ActionLink("Create Supplier","CreateSupplier","Supplier") %></li>
                     </ul>
                 </div>
             </li>

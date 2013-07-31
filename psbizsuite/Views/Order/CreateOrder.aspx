@@ -39,7 +39,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <link href="../../Assets/Css/order.css" type="text/css" rel="stylesheet" />
+    <link href="../../../psbizsuite/Assets/Css/order.css" type="text/css" rel="stylesheet" />
     <form id="form1" runat="server">
 
 <h2>Create Order</h2>
@@ -57,7 +57,7 @@
             </tr>
             <tr>
                 <td><asp:Label ID="ItemImage" runat="server" Text="Item Image"></asp:Label></td>
-                <td><img src="../../Assets/Images/ItemImg.jpg" width="80" height="80" /></td>
+                <td><img src="../../../psbizsuite/Assets/Images/ItemImg.jpg" width="80" height="80" /></td>
             </tr>
             <tr>
                 <td></td>

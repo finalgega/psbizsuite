@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Security.Cryptography;
 using psbizsuite.Models;
 using psbizsuite.Models.Utilities;
 using System.Data.Entity.Validation;
@@ -22,7 +23,7 @@ namespace psbizsuite.Controllers
 
         //
         // GET: /Inventory/
-
+        [Authorize]
         public ActionResult Index()
         {
             if (User.IsInRole("Logistic"))
@@ -59,7 +60,7 @@ namespace psbizsuite.Controllers
             {
                 return HttpNotFound("Unauthorized access");
             }
-            
+
         }
 
         //
@@ -77,7 +78,7 @@ namespace psbizsuite.Controllers
             {
                 return HttpNotFound("Unauthorized access");
             }
-            
+
         }
 
         //
@@ -88,31 +89,40 @@ namespace psbizsuite.Controllers
         {
             if (User.IsInRole("Logistic"))
             {
+                AuditLogController acl = new AuditLogController();
+                acl.writeRecords("Inventory Controller","Create Record Attempt","Inventory Item Data :\n Inventory Name: " 
+                    + inventory.ItemName + "\nInventory Description : " + inventory.ItemDescription + "\nInventory Weight : " 
+                    +inventory.UnitWeightKilo + "\nInventory Quantity : " + inventory.Quantity + "Location : " + inventory.Location
+                    + "Supplier : " + inventory.Supplier_UserAccount_Username  + "Cost " +  inventory.UnitCost + " Category " +  inventory.Category_CatId);
                 if (ModelState.IsValid)
                 {
                     Inventory inventoryItem = inventory;
                     inventoryItem.TimeStamp = System.DateTime.Now;
                     if (uploadFile != null && uploadFile.ContentLength > 0)
                     {
-                       //  extracts filename
+                        //  extracts filename
                         inventoryItem.Image = new byte[uploadFile.ContentLength];
-                        uploadFile.InputStream.Read(inventoryItem.Image, 0, uploadFile.ContentLength);    
-                   
+                        uploadFile.InputStream.Read(inventoryItem.Image, 0, uploadFile.ContentLength);
+
                     }
                     db.Inventories.Add(inventoryItem);
                     db.SaveChanges();
 
                     ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName", inventory.Supplier_UserAccount_Username);
-                     ViewBag.Category_CatId = new SelectList(db.categories, "CatId", "CatName");
-                     return RedirectToAction("Index");
+                    ViewBag.Category_CatId = new SelectList(db.categories, "CatId", "CatName");
+                    return RedirectToAction("Index");
                 }
-                return RedirectToAction("Index") ;
+                else
+                {
+                    ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName");
+                    ViewBag.Category_CatId = new SelectList(db.categories, "CatId", "CatName");
+                    return View(inventory);
                 }
+            }
             else
             {
                 return HttpNotFound("Unauthorized access");
             }
-            
         }
 
         //
@@ -129,13 +139,13 @@ namespace psbizsuite.Controllers
                 }
                 ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName", inventory.Supplier_UserAccount_Username);
                 return View(inventory);
-               
+
             }
             else
             {
                 return HttpNotFound("Unauthorized access");
             }
-            
+
         }
 
         //
@@ -177,18 +187,16 @@ namespace psbizsuite.Controllers
                             sb.ToString(), ex
                         ); // Add the original exception as the innerException
                     }
-                    ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName", inventory.Supplier_UserAccount_Username);
-                    return RedirectToAction("Index");
                 }
 
                 ViewBag.Supplier_UserAccount_Username = new SelectList(db.Suppliers, "UserAccount_Username", "FullName", inventory.Supplier_UserAccount_Username);
                 return RedirectToAction("Index");
-                }
+            }
             else
             {
                 return HttpNotFound("Unauthorized access");
             }
-           
+
         }
 
         //
@@ -198,19 +206,19 @@ namespace psbizsuite.Controllers
         {
             if (User.IsInRole("Logistic"))
             {
-                    Inventory inventory = db.Inventories.Find(id);
+                Inventory inventory = db.Inventories.Find(id);
                 if (inventory == null)
                 {
                     return HttpNotFound();
                 }
-           
+
                 return View(inventory);
             }
             else
             {
                 return HttpNotFound("Unauthorized access");
             }
-            
+
         }
 
         //
@@ -230,7 +238,7 @@ namespace psbizsuite.Controllers
             {
                 return HttpNotFound("Unauthorized access");
             }
-          
+
         }
 
         public ActionResult CreateInventoryItem()
@@ -248,7 +256,7 @@ namespace psbizsuite.Controllers
             Debug.WriteLine("randStr : " + randStr);
             Debug.WriteLine("nXtString : " + nXtString);
             Debug.WriteLine("x0r of nXtString : " + encrypt.SimpleXORAlgorithm(nXtString));
-            string pbkdf2Pwd = EncryptionController.CreatePasswordHash("Sypeskder");
+            string pbkdf2Pwd = Encryption.CreatePasswordHash("Sypeskder");
             Debug.WriteLine("Original Password :  Sypeskder");
             Debug.WriteLine("Hash of password using PBKDF2 : " + pbkdf2Pwd);
             return RedirectToAction("Index");
@@ -256,28 +264,6 @@ namespace psbizsuite.Controllers
 
         public ActionResult CreateSupplier()
         {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult CreateSupplier(Supplier supplier)
-        {
-            if (ModelState.IsValid)
-            {
-                Supplier usrAc = supplier;
-                usrAc.UserAccount.Type = "Supplier";
-                string hashData = Encryption.CreatePasswordHash(usrAc.FullName);
-                char[] delimiter = { ':' };
-                string[] split = hashData.Split(delimiter);
-                string salt = split[Encryption.SALT_INDEX];
-                string hash = split[Encryption.PBKDF2_INDEX];
-                usrAc.UserAccount.Password = hash;
-                usrAc.UserAccount.Salt = salt;
-                db.UserAccounts.Add(usrAc.UserAccount);
-                db.Suppliers.Add(usrAc);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
             return View();
         }
 
@@ -322,16 +308,16 @@ namespace psbizsuite.Controllers
                 Document document = new Document(PageSize.A4, 25, 25, 30, 30);
                 document.SetPageSize(PageSize.A4.Rotate());
                 PdfWriter writer = PdfWriter.GetInstance(document, ms);
-                string password = "sypeskder";
-                writer.SetEncryption(Encoding.UTF8.GetBytes(password),Encoding.UTF8.GetBytes("Vivivephua030492"),PdfWriter.ALLOW_PRINTING,PdfWriter.ENCRYPTION_AES_128);
+                string password = "bizsuite";
+                writer.SetEncryption(Encoding.UTF8.GetBytes(password), Encoding.UTF8.GetBytes("psbizsuite"), PdfWriter.ALLOW_PRINTING, PdfWriter.ENCRYPTION_AES_128);
                 document.Open();
                 //  Adding meta information to document
-                document.AddAuthor("Tigger");
-                document.AddCreator("Tigger Tigris");
+                document.AddAuthor(User.Identity.Name);
+                document.AddCreator(User.Identity.Name);
                 document.AddKeywords("Inventory Report;BizSuite");
                 document.AddSubject("Inventory Report as of " + System.DateTime.Now);
                 document.AddTitle("Inventory Report as of " + System.DateTime.Now);
-                
+
                 PdfPTable table = new PdfPTable(9);
                 //actual width of table in points
                 table.TotalWidth = 800f;
@@ -339,7 +325,7 @@ namespace psbizsuite.Controllers
                 table.LockedWidth = true;
 
                 //relative col widths in proportions - 1/3 and 2/3
-                float[] widths = new float[] { 1f, 2f,3f,1f,1f,1f,2f,1f,1f,};
+                float[] widths = new float[] { 1f, 2f, 3f, 1f, 1f, 1f, 2f, 1f, 1f, };
                 table.SetWidths(widths);
                 table.HorizontalAlignment = 0;
                 //leave a gap before and after the table
@@ -352,7 +338,7 @@ namespace psbizsuite.Controllers
                 cell.HorizontalAlignment = 1;
                 table.AddCell(cell);
                 string[] columnNames = { "S/N", "Item Name", "Description", "Quantity", "Unit Cost", "Unit Weight (kg)", "Location", "Supplier", "Category" };
-                for(int i = 0; i < columnNames.Length;i++)
+                for (int i = 0; i < columnNames.Length; i++)
                 {
                     table.AddCell(columnNames[i]);
                 }
@@ -373,7 +359,7 @@ namespace psbizsuite.Controllers
                 writer.Close();
                 Response.ContentType = "pdf/application";
                 Response.AddHeader("content-disposition",
-                "attachment;filename=Inventory Report as of " + System.DateTime.Now+".pdf");
+                "attachment;filename=Inventory Report as of " + System.DateTime.Now + ".pdf");
                 Response.OutputStream.Write(ms.GetBuffer(), 0, ms.GetBuffer().Length);
             }
 

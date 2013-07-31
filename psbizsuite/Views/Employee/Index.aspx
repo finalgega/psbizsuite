@@ -12,12 +12,12 @@
     <table border="0" class="zeroPS" id="content-table" style="width: 100%;">
         <tr>
             <th rowspan="3" class="sized">
-                <img src="../../Assets/Images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
+                <img src="../../../psbizsuite/Assets/Images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
             <th class="topleft"></th>
             <td id="tbl-border-top">&nbsp;</td>
             <th class="topright"></th>
             <th rowspan="3" class="sized">
-                <img src="../../Assets/Images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
+                <img src="../../../psbizsuite/Assets/Images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
         </tr>
         <tr>
             <td id="tbl-border-left"></td>
@@ -110,9 +110,9 @@
 
  <asp:Content ID="Content4" ContentPlaceHolderID="MyAccount" runat="server">
          <a href='<%: Url.Action("Edit/" + User.Identity.Name, "Employee") %>'>
-             <img src="../../Assets/Images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" />
+             <img src="../../../psbizsuite/Assets/Images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" />
          </a>
  </asp:Content>  
   <asp:Content ID="Content5" ContentPlaceHolderID="LogoImg" runat="server">
-         <img src="../../Assets/Images/shared/logo-Hr.png" height="40" alt="" />
+         <img src="../../../psbizsuite/Assets/Images/shared/logo-Hr.png" height="40" alt="" />
  </asp:Content>   

@@ -5,83 +5,111 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <!-- start content-outer -->
+    <div id="content-outer">
+        <!-- start content -->
+        <div id="content">
 
-<h2>Edit</h2>
+            <div id="page-heading">
+                <h1>Edit Inventory Item Details</h1>
+            </div>
 
-<% using (Html.BeginForm()) { %>
-    <%: Html.ValidationSummary(true) %>
 
-    <fieldset>
-        <legend>Inventory</legend>
+            <table border="0" class="zeroPS" style="width: 100%" id="content-table">
+                <tr>
+                    <th rowspan="3" class="sized">
+                        <img src="../../../psbizsuite/Assets/Images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
+                    <th class="topleft"></th>
+                    <td id="tbl-border-top">&nbsp;</td>
+                    <th class="topright"></th>
+                    <th rowspan="3" class="sized">
+                        <img src="../../../psbizsuite/Assets/Images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
+                </tr>
+                <tr>
+                    <td id="tbl-border-left"></td>
+                    <td>
+                        <!--  start content-table-inner -->
+                        <div id="content-table-inner">
 
-        <%: Html.HiddenFor(model => model.InventoryId) %>
-          <%: Html.HiddenFor(model => model.Category_CatId) %>
-        <%: Html.HiddenFor(model => model.Image) %>
-        
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.ItemName) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.ItemName) %>
-            <%: Html.ValidationMessageFor(model => model.ItemName) %>
-        </div>
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.ItemDescription) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.ItemDescription) %>
-            <%: Html.ValidationMessageFor(model => model.ItemDescription) %>
-        </div>
+                            <table border="0" class="zeroPS" style="width: 100%">
+                                <tr style="vertical-align: top">
+                                    <td>
+                                        <% using (Html.BeginForm())
+                                           { %>
+                                        <%: Html.ValidationSummary(true) %>
+                                        <%: Html.HiddenFor(model => model.InventoryId) %>
+                                        <%: Html.HiddenFor(model => model.Category_CatId) %>
+                                        <%: Html.HiddenFor(model => model.Image) %>
+                                        <!-- start id-form -->
+                                        <table border="0" class="zeroPS id-form">
+                                            <tr>
+                                                <th>Item Name:</th>
+                                                <td><%: Html.TextBoxFor(model => model.ItemName, new { style="width: 250px;"})%>
+                                                    <%: Html.ValidationMessageFor(model => model.ItemName)%></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Item Description:</th>
+                                                <td><%: Html.EditorFor(model => model.ItemDescription) %>
+                                                    <%: Html.ValidationMessageFor(model => model.ItemDescription) %></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Quantity:</th>
+                                                <td><%: Html.EditorFor(model => model.Quantity) %>
+                                                    <%: Html.ValidationMessageFor(model => model.Quantity) %></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Cost per Unit:</th>
+                                                <td><%: Html.EditorFor(model => model.UnitCost) %>
+                                                    <%: Html.ValidationMessageFor(model => model.UnitCost) %></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Unit Weight (kg):</th>
+                                                <td><%: Html.TextAreaFor(model => model.UnitWeightKilo)%>
+                                                    <%: Html.ValidationMessageFor(model => model.UnitWeightKilo) %></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Location: </th>
+                                                <td><%: Html.EditorFor(model => model.Location) %>
+                                                    <%: Html.ValidationMessageFor(model => model.Location) %></td>
+                                            </tr>
+                                            <tr>
+                                                <th>SUpplier : </th>
+                                                <td><%: Html.DropDownList("Supplier_UserAccount_Username","Please select the supplier the good was ordered from") %></td>
+                                                <td><%: Html.ValidationMessageFor(model => model.Supplier_UserAccount_Username) %></td>
+                                            </tr>
+                                            <tr>
+                                                <th>&nbsp;</th>
+                                                <td style="vertical-align: top">
+                                                    <input type="submit" class="form-submit" />
+                                                    <input type="reset" class="form-reset" />
+                                                </td>
+                                                <td></td>
+                                            </tr>
 
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.UnitCost) %>
+                                        </table>
+                                        <!-- end id-form  -->
+                                        <% } %>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="clear"></div>
+                        </div>
+                        <!--  end content-table-inner  -->
+                    </td>
+                    <td id="tbl-border-right"></td>
+                </tr>
+                <tr>
+                    <th class="sized bottomleft"></th>
+                    <td id="tbl-border-bottom">&nbsp;</td>
+                    <th class="sized bottomright"></th>
+                </tr>
+            </table>
         </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.UnitCost) %>
-            <%: Html.ValidationMessageFor(model => model.UnitCost) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.UnitWeightKilo) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.UnitWeightKilo) %>
-            <%: Html.ValidationMessageFor(model => model.UnitWeightKilo) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.Quantity) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.Quantity) %>
-            <%: Html.ValidationMessageFor(model => model.Quantity) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.Location) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.Location) %>
-            <%: Html.ValidationMessageFor(model => model.Location) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.Supplier_UserAccount_Username, "Supplier") %>
-        </div>
-        <div class="editor-field">
-            <%: Html.DropDownList("Supplier_UserAccount_Username", String.Empty) %>
-            <%: Html.ValidationMessageFor(model => model.Supplier_UserAccount_Username) %>
-        </div>
-
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>
-<% } %>
-
-<div>
-    <%: Html.ActionLink("Back to List", "Index") %>
-</div>
+    </div>
+    <div class="clear">&nbsp;</div>
+    <div>
+        <%: Html.ActionLink("Back to List", "Index") %>
+    </div>
 
 </asp:Content>
 
@@ -97,11 +125,11 @@
     <% if (User.IsInRole("Accountant")) %>
     <% Html.RenderPartial("../Shared/Menu/AccountantMenu"); %>
 </asp:Content>
- <asp:Content ID="Content4" ContentPlaceHolderID="MyAccount" runat="server">
-         <a href='<%: Url.Action("Edit/" + User.Identity.Name, "Employee") %>'>
-             <img src="../../Assets/Images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" />
-         </a>
- </asp:Content>  
-  <asp:Content ID="Content5" ContentPlaceHolderID="LogoImg" runat="server">
-         <img src="../../Assets/Images/shared/logo-Logistic.png" height="40" alt="" />
- </asp:Content>  
+<asp:Content ID="Content4" ContentPlaceHolderID="MyAccount" runat="server">
+    <a href='<%: Url.Action("Edit/" + User.Identity.Name, "Employee") %>'>
+        <img src="../../../psbizsuite/Assets/Images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" />
+    </a>
+</asp:Content>
+<asp:Content ID="Content5" ContentPlaceHolderID="LogoImg" runat="server">
+    <img src="../../../psbizsuite/Assets/Images/shared/logo-Logistic.png" height="40" alt="" />
+</asp:Content>

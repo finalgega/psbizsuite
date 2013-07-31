@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<psbizsuite.Models.OrderItem>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.master" Inherits="System.Web.Mvc.ViewPage<psbizsuite.Models.category>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Delete
@@ -10,34 +10,27 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <fieldset>
-    <legend>OrderItem</legend>
+    <legend>category</legend>
 
     <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.Description) %>
+        <%: Html.DisplayNameFor(model => model.CatId) %>
     </div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.Description) %>
-    </div>
-
-    <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.UnitPrice) %>
-    </div>
-    <div class="display-field">
-        <%: Html.DisplayFor(model => model.UnitPrice) %>
+        <%: Html.DisplayFor(model => model.CatId) %>
     </div>
 
     <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.Quantity) %>
+        <%: Html.DisplayNameFor(model => model.CatName) %>
     </div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.Quantity) %>
+        <%: Html.DisplayFor(model => model.CatName) %>
     </div>
 
     <div class="display-label">
-        <%: Html.DisplayNameFor(model => model.Order.Status) %>
+        <%: Html.DisplayNameFor(model => model.CatDescription) %>
     </div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.Order.Status) %>
+        <%: Html.DisplayFor(model => model.CatDescription) %>
     </div>
 </fieldset>
 <% using (Html.BeginForm()) { %>
@@ -61,11 +54,11 @@
     <% if (User.IsInRole("Accountant")) %>
     <% Html.RenderPartial("../Shared/Menu/AccountantMenu"); %>
 </asp:Content>
-  <asp:Content ID="Content4" ContentPlaceHolderID="MyAccount" runat="server">
-         <a href='<%: Url.Action("Edit/" + User.Identity.Name, "Employee") %>'>
-             <img src="../../../psbizsuite/Assets/Images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" />
-         </a>
- </asp:Content>  
-  <asp:Content ID="Content5" ContentPlaceHolderID="LogoImg" runat="server">
-         <img src="../../../psbizsuite/Assets/Images/shared/logo-Sale.png" height="40" alt="" />
- </asp:Content> 
+<asp:Content ID="Content4" ContentPlaceHolderID="MyAccount" runat="server">
+    <a href='<%: Url.Action("Edit/" + User.Identity.Name, "Employee") %>'>
+        <img src="../../../psbizsuite/Assets/Images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" />
+    </a>
+</asp:Content>
+<asp:Content ID="Content5" ContentPlaceHolderID="LogoImg" runat="server">
+    <img src="../../../psbizsuite/Assets/Images/shared/logo-Logistic.png" height="40" alt="" />
+</asp:Content>
