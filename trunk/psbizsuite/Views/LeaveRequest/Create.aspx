@@ -125,20 +125,20 @@
 </asp:Content>
   <asp:Content ID="Content4" ContentPlaceHolderID="MyAccount" runat="server">
          <a href='<%: Url.Action("Edit/" + User.Identity.Name, "Employee") %>'>
-             <img src="../../Assets/Images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" />
+             <img src="../../../psbizsuite/Assets/Images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" />
          </a>
  </asp:Content>  
   <asp:Content ID="Content5" ContentPlaceHolderID="LogoImg" runat="server">
  <% if (User.IsInRole("HR Manager")){ %>
-    <img src="../../Assets/Images/shared/logo-Hr.png" height="40" alt="" />
+         <img src="../../../psbizsuite/Assets/Images/shared/logo-Hr.png" height="40" alt="" />
       <% } %>
        <% if (User.IsInRole("Sale")){ %>
-      <img src="../../Assets/Images/shared/logo-Sale.png" height="40" alt="" />
+      <img src="../../../psbizsuite/Assets/Images/shared/logo-Sale.png" height="40" alt="" />
        <% } %>
     <% if (User.IsInRole("Logistic")) {%>
-      <img src="../../Assets/Images/shared/logo-Logistic.png" height="40" alt="" />
+      <img src="../../../psbizsuiteAssets/Images/shared/logo-Logistic.png" height="40" alt="" />
        <% } %>
     <% if (User.IsInRole("Accountant")) {%>
-      <img src="../../Assets/Images/shared/logo-Accounting.png" height="40" alt="" />
+      <img src="../../../psbizsuite/Assets/Images/shared/logo-Accounting.png" height="40" alt="" />
        <% } %>
  </asp:Content> 

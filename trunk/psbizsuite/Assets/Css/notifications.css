@@ -33,7 +33,7 @@
 		.notice-body {
 			min-height: 50px;
 			padding: 22px 22px 0 22px;
-			background: rgba(127,127,127,0.7) repeat left top;
+			background: url(../Images/shared/BrushedMetal.gif);
 			color: #f9f9f9;
 		}
 			.notice-body img	{width: 50px; margin: 0 10px 0 0; float: left;}
@@ -42,5 +42,5 @@
 		
 		.notice-bottom {
 			height: 22px;
-			background: rgba(127,127,127,0.7) repeat left top;
+			background: url(../Images/shared/BrushedMetal.gif);
 		}

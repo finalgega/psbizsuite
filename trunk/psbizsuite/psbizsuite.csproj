@@ -134,6 +134,7 @@
     <Compile Include="Controllers\AccountingController.cs" />
     <Compile Include="Controllers\AttendanceController.cs" />
     <Compile Include="Controllers\AuditLogController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
@@ -147,6 +148,7 @@
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\PayrollController.cs" />
     <Compile Include="Controllers\PurchaseController.cs" />
+    <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Controllers\SupportTicketController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -276,6 +278,7 @@
     <Content Include="Assets\Images\md22.jpg" />
     <Content Include="Assets\Images\shared\blank.gif" />
     <Content Include="Assets\Images\shared\border_bit.jpg" />
+    <Content Include="Assets\Images\shared\BrushedMetal.gif" />
     <Content Include="Assets\Images\shared\cal_th_repeat.jpg" />
     <Content Include="Assets\Images\shared\cal_top_bg.jpg" />
     <Content Include="Assets\Images\shared\cal_top_repeat.jpg" />
@@ -286,6 +289,11 @@
     <Content Include="Assets\Images\shared\corner_top_left.jpg" />
     <Content Include="Assets\Images\shared\corner_top_right.jpg" />
     <Content Include="Assets\Images\shared\icon_idlogo.jpg" />
+    <Content Include="Assets\Images\shared\logo-Accounting.png" />
+    <Content Include="Assets\Images\shared\logo-Customer.png" />
+    <Content Include="Assets\Images\shared\logo-Hr.png" />
+    <Content Include="Assets\Images\shared\logo-Logistic.png" />
+    <Content Include="Assets\Images\shared\logo-Sale.png" />
     <Content Include="Assets\Images\shared\logo.png" />
     <Content Include="Assets\Images\shared\nav\account_drop_bg.gif" />
     <Content Include="Assets\Images\shared\nav\account_line.gif" />
@@ -359,6 +367,11 @@
     <Content Include="Views\Attendance\Index.aspx" />
     <Content Include="Views\Attendance\ViewAttendance.aspx" />
     <Content Include="Views\Attendance\ViewAttendanceSummary.aspx" />
+    <Content Include="Views\Category\Create.aspx" />
+    <Content Include="Views\Category\Delete.aspx" />
+    <Content Include="Views\Category\Details.aspx" />
+    <Content Include="Views\Category\Edit.aspx" />
+    <Content Include="Views\Category\Index.aspx" />
     <Content Include="Views\Customer\EditPassword.aspx" />
     <Content Include="Views\Customer\Create.aspx" />
     <Content Include="Views\Customer\CreateCustomerProfile.aspx" />
@@ -377,7 +390,7 @@
     <Content Include="Views\Employee\Index.aspx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Inventory\Create.aspx" />
-    <Content Include="Views\Inventory\CreateSupplier.aspx" />
+    <Content Include="Views\Supplier\CreateSupplier.aspx" />
     <Content Include="Views\Inventory\CreateInventoryItem.aspx" />
     <Content Include="Views\Inventory\Delete.aspx" />
     <Content Include="Views\Inventory\Details.aspx" />
@@ -419,6 +432,11 @@
     <Content Include="Views\Shared\Menu\HrMenu.ascx" />
     <Content Include="Views\Shared\Menu\LogisticMenu.ascx" />
     <Content Include="Views\Shared\Menu\SaleMenu.ascx" />
+    <Content Include="Views\Supplier\Create.aspx" />
+    <Content Include="Views\Supplier\Delete.aspx" />
+    <Content Include="Views\Supplier\Details.aspx" />
+    <Content Include="Views\Supplier\Edit.aspx" />
+    <Content Include="Views\Supplier\Index.aspx" />
     <Content Include="Views\SupportTicket\Create.aspx" />
     <Content Include="Views\SupportTicket\Delete.aspx" />
     <Content Include="Views\SupportTicket\Details.aspx" />

@@ -13,76 +13,93 @@
             padding: 20px;
             }
     </style>
-<h2>Index</h2>
+    <div id="page-heading">
+        <h1>Manage Inventory Details </h1>
+    </div>
+    <table border="0" class="zeroPS" id="content-table" style="width: 100%;">
+        <tr>
+            <th rowspan="3" class="sized">
+                <img src="../../../psbizsuite/Assets/Images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
+            <th class="topleft"></th>
+            <td id="tbl-border-top">&nbsp;</td>
+            <th class="topright"></th>
+            <th rowspan="3" class="sized">
+                <img src="../../../psbizsuite/Assets/Images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
+        </tr>
+        <tr>
+            <td id="tbl-border-left"></td>
+            <td>
+                <!--  start content-table-inner ...................................................................... START -->
+                <div id="content-table-inner">
 
-<p>
-    <%: Html.ActionLink("Create New", "Create") %>
-</p>
-<table class="tbl-class" border="1">
-    <tr>
-        <th>
-            <%: Html.DisplayNameFor(model => model.ItemName) %>
-        </th>
-        <th>
-            <%: Html.DisplayNameFor(model => model.ItemDescription) %>
-        </th>
-        <th>
-            <%: Html.DisplayNameFor(model => model.UnitCost) %>
-        </th>
-        <th>
-            <%: Html.DisplayNameFor(model => model.UnitWeightKilo) %>
-        </th>
-        <th>
-            <%: Html.DisplayNameFor(model => model.Quantity) %>
-        </th>
-        <th>
-            <%: Html.DisplayNameFor(model => model.Location) %>
-        </th>
-        <th>
-            <%: Html.DisplayNameFor(model => model.TimeStamp) %>
-        </th>
-        <th>
-            <%: Html.DisplayNameFor(model => model.Supplier.FullName) %>
-        </th>
-        <th></th>
-    </tr>
+                    <!--  start table-content  -->
+                    <div id="table-content">
+                        <table border="0" class="zeroPS" style="width: 100%;" id="product-table">
+                            <tr>
+                                <th class="table-header-check"><a id="toggle-all"></a></th>
+                                <th class="table-header-repeat line-left minwidth-1"><a href=""><%: Html.DisplayNameFor(model => model.ItemName) %></a></th>
+                                <th class="table-header-repeat line-left minwidth-1"><a href=""> <%: Html.DisplayNameFor(model => model.ItemDescription) %></a></th>
+                                <th class="table-header-repeat line-left"><a href=""><%: Html.DisplayNameFor(model => model.UnitCost) %></a></th>
+                                <th class="table-header-repeat line-left"><a href=""><%: Html.DisplayNameFor(model => model.UnitWeightKilo) %></a></th>
+                                <th class="table-header-repeat line-left"><a href=""><%: Html.DisplayNameFor(model => model.Quantity) %></a></th>
+                                <th class="table-header-repeat line-left"><a href=""><%: Html.DisplayNameFor(model => model.Location) %></a></th>
+                                <th class="table-header-repeat line-left"><a href=""> <%: Html.DisplayNameFor(model => model.TimeStamp) %></a></th>
+                                <th class="table-header-repeat line-left"><a href="">Supplier</a></th>
+                                <th class="table-header-options line-left"></th>
+                            </tr>
+                            <% foreach (var item in Model)
+                               { %>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" />
+                                </td>
+                                <td>
+                                    <%: Html.DisplayFor(modelItem => item.ItemName) %>
+                                </td>
+                                <td>
+                                    <%: Html.DisplayFor(modelItem => item.ItemDescription) %>
+                                </td>
+                                <td>
+                                    <%: Html.DisplayFor(modelItem => item.UnitCost) %>
+                                </td>
+                                <td>
+                                    <%: Html.DisplayFor(modelItem => item.UnitWeightKilo) %>
+                                </td>
+                                <td>
+                                    <%: Html.DisplayFor(modelItem => item.Quantity) %>
+                                </td>
+                                <td>
+                                    <%: Html.DisplayFor(modelItem => item.Location) %>
+                                </td>
+                                <td>
+                                    <%: Html.DisplayFor(modelItem => item.TimeStamp) %>
+                                </td>
+                                <td>
+                                    <%: Html.DisplayFor(modelItem => item.Supplier.FullName) %>
+                                </td>
+                                <td class="options-width">
+                                    <%: Html.ActionLink(" ", "Edit", new { id = item.InventoryId }, new { @class = "icon-1", title="More details/Edit" }) %>
+                                    <%: Html.ActionLink(" ", "Details", new { id = item.InventoryId }, new { @class = "icon-3" ,title="Details" }) %>
+                                    <%: Html.ActionLink(" ", "Delete", new { id = item.InventoryId }, new { @class = "icon-2", title="Delete" }) %>      
+                                </td>
+                            </tr>
+                            <% } %>
+                        </table>
+                        <div class="clear"></div>
 
-<% foreach (var item in Model) { %>
-    <tr>
-        <td>
-            <%: Html.DisplayFor(model => item.ItemName) %>
-        </td>
-        <td>
-            <%: Html.DisplayFor(modelItem => item.ItemDescription) %>
-        </td>
-        <td>
-            <%: Html.DisplayFor(modelItem => item.UnitCost) %>
-        </td>
-        <td>
-            <%: Html.DisplayFor(modelItem => item.UnitWeightKilo) %>
-        </td>
-        <td>
-            <%: Html.DisplayFor(modelItem => item.Quantity) %>
-        </td>
-        <td>
-            <%: Html.DisplayFor(modelItem => item.Location) %>
-        </td>
-        <td>
-            <%: Html.DisplayFor(modelItem => item.TimeStamp) %>
-        </td>
-        <td>
-            <%: Html.DisplayFor(modelItem => item.Supplier.FullName) %>
-        </td>
-        <td>
-            <%: Html.ActionLink("Edit", "Edit", new { id=item.InventoryId }) %> |
-            <%: Html.ActionLink("Details", "Details", new { id=item.InventoryId }) %> |
-            <%: Html.ActionLink("Delete", "Delete", new { id=item.InventoryId }) %>
-        </td>
-    </tr>
-<% } %>
-
-</table>
-
+                    </div>
+              </div>
+                    <!--  end content-table-inner ............................................END  -->
+            </td>
+            <td id="tbl-border-right"></td>
+        </tr>
+        <tr>
+            <th class="sized bottomleft"></th>
+            <td id="tbl-border-bottom">&nbsp;</td>
+            <th class="sized bottomright"></th>
+        </tr>
+    </table>
+    <div class="clear">&nbsp;</div>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="NavContent" runat="server">
@@ -99,9 +116,9 @@
 </asp:Content>
  <asp:Content ID="Content4" ContentPlaceHolderID="MyAccount" runat="server">
          <a href='<%: Url.Action("Edit/" + User.Identity.Name, "Employee") %>'>
-             <img src="../../Assets/Images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" />
+             <img src="../../../psbizsuite/Assets/Images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" />
          </a>
  </asp:Content>  
   <asp:Content ID="Content5" ContentPlaceHolderID="LogoImg" runat="server">
-         <img src="../../Assets/Images/shared/logo-Logistic.png" height="40" alt="" />
+         <img src="../../../psbizsuite/Assets/Images/shared/logo-Logistic.png" height="40" alt="" />
  </asp:Content>  

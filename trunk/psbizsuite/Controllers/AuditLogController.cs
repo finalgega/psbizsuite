@@ -12,7 +12,7 @@ namespace psbizsuite.Controllers
     {
         public void writeRecords(string actor, string action, string particulars)
         {
-            string path = "../../../Users/Roy/Desktop/AuditLog.biz";
+            string path = "../../../Users/Administrator/Desktop/AuditLog.biz";
             
             if (!File.Exists(path))
             {
@@ -44,7 +44,7 @@ namespace psbizsuite.Controllers
 
         public void writeSuccessRecords(string actor, string action, string particulars)
         {
-            string path = "../../../Users/Roy/Desktop/AuditLog.biz";
+            string path = "../../../Users/Administrator/Desktop/AuditLog.biz";
 
             if (!File.Exists(path))
             {
@@ -76,7 +76,7 @@ namespace psbizsuite.Controllers
 
         public void writeFailedRecords(string actor, string action, string particulars)
         {
-            string path = "../../../Users/Roy/Desktop/AuditLog.biz";
+            string path = "../../../Users/Administrator/Documents/AuditLog.biz";
 
             if (!File.Exists(path))
             {

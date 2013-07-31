@@ -170,13 +170,15 @@ namespace psbizsuite.Models.Utilities
 
         /// <summary>
         /// Encryption via TripleDES Algorithm
-        /// Note : A string is returned in this order IV, Key, EncryptedText. Separated by :
+        /// You are required to generate a Symmetric Algo = TripleDESCryoptoServiceProvider.Create()
+        /// and pass in sa.GenerateKey() and sa.GenerateIV results inside as params
+        /// /// Note : A string is returned in this order IV, Key, EncryptedText. Separated by :
         /// </summary>
         /// <param name="IV"></param>
         /// <param name="key"></param>
         /// <param name="clearText"></param>
         /// <returns></returns>
-        public static string Encrypt(byte[] IV, byte[] key, string clearText)
+        public static byte[] Encrypt(byte[] IV, byte[] key,string clearText)
         {
             SymmetricAlgorithm sa = TripleDESCryptoServiceProvider.Create();
             sa.IV = IV;
@@ -188,7 +190,7 @@ namespace psbizsuite.Models.Utilities
             cs.Close();
             byte[] byteCiphertext = ms.ToArray();
             ms.Close();
-            return Encoding.UTF8.GetString(sa.IV) + ":" + Encoding.UTF8.GetString(sa.Key) + ":" + Encoding.UTF8.GetString(byteCiphertext);
+            return byteCiphertext;
         }
 
         public static string Decrypt(byte[] IV, byte[] key, byte[] byteCipher)

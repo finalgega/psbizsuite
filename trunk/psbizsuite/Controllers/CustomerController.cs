@@ -97,7 +97,6 @@ namespace psbizsuite.Controllers
                 {
 
                     UserAccount customerAcc = new UserAccount();
-                    EncryptionController ec = new EncryptionController();
                     if (db.UserAccounts.Find(customer.UserAccount_Username) == null)
                     {//IS IT SOMETHING LIKE THIS?
                         customerAcc.Username = customer.UserAccount_Username;

@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <link href="../../Assets/Css/order.css" type="text/css" rel="stylesheet" />
+    <link href="../../../psbizsuite/Assets/Css/order.css" type="text/css" rel="stylesheet" />
 <h2>View Customer Details</h2>
 
 <fieldset>
@@ -82,12 +82,12 @@
 
  <asp:Content ID="Content4" ContentPlaceHolderID="MyAccount" runat="server">
          <a href='<%: Url.Action("Edit/" + User.Identity.Name, "Employee") %>'>
-             <img src="../../Assets/Images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" />
+             <img src="../../../psbizsuite/Assets/Images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" />
          </a>
  </asp:Content>  
  <asp:Content ID="Content5" ContentPlaceHolderID="LogoImg" runat="server">
      <% if(User.IsInRole("Customer")){ %>
-         <img src="../../Assets/Images/shared/logo-Sale.png" height="40" alt="" />
+         <img src="../../../psbizsuite/Assets/Images/shared/logo-Sale.png" height="40" alt="" />
      <%}else{ %>
          <img src="../../Assets/Images/shared/logo-Customer.png" height="40" alt="" />
      <%} %>

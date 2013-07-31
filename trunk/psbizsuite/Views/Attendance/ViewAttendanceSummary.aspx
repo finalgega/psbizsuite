@@ -16,7 +16,7 @@
 
         });
     </script>
-    <link href="../../Assets/Css/datePicker.css" rel="stylesheet">
+    <link href="../../../psbizsuite/Assets/Css/datePicker.css" rel="stylesheet">
 
     <!-- start content-outer -->
     <div id="content-outer">
@@ -27,12 +27,12 @@
             <table border="0" class="zeroPS" style="width: 100%" id="content-table">
                 <tr>
                     <th rowspan="3" class="sized">
-                        <img src="../../Assets/Images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
+                        <img src="../../../psbizsuite/Assets/Images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
                     <th class="topleft"></th>
                     <td id="tbl-border-top">&nbsp;</td>
                     <th class="topright"></th>
                     <th rowspan="3" class="sized">
-                        <img src="../../Assets/Images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
+                        <img src="../../../psbizsuite/Assets/Images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
                 </tr>
                 <tr>
                     <td id="tbl-border-left"></td>

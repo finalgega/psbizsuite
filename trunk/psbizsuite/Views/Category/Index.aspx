@@ -1,14 +1,12 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<psbizsuite.Models.LeaveRequest>>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<psbizsuite.Models.category>>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    YourList
+    Index
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-
-    <div id="page-heading">
-        <h1>Manage Your Leave Requests </h1>
+      <div id="page-heading">
+        <h1>Manage Categories</h1>
     </div>
     <table border="0" class="zeroPS" id="content-table" style="width: 100%;">
         <tr>
@@ -25,18 +23,15 @@
             <td>
                 <!--  start content-table-inner ...................................................................... START -->
                 <div id="content-table-inner">
+
                     <!--  start table-content  -->
                     <div id="table-content">
-                        <div style="color: red;font-weight:900;"><%= TempData["message"] %></div><br />
                         <table border="0" class="zeroPS" style="width: 100%;" id="product-table">
                             <tr>
                                 <th class="table-header-check"><a id="toggle-all"></a></th>
-                                <th class="table-header-repeat line-left"><a href="">Start Date</a></th>
-                                <th class="table-header-repeat line-left"><a href="">End Date</a></th>
-                                <th class="table-header-repeat line-left minwidth-1"><a href="">Reason</a></th>
-                                <th class="table-header-repeat line-left"><a href="">Policy Name</a></th>
-                                <th class="table-header-repeat line-left"><a href="">Status</a></th>
-                                <th class="table-header-options line-left"><a href="">Options</a></th>
+                                <th class="table-header-repeat line-left minwidth-1"><a href=""><%: Html.DisplayNameFor(model => model.CatName) %></a></th>
+                                <th class="table-header-repeat line-left minwidth-1"><a href=""> <%: Html.DisplayNameFor(model => model.CatDescription) %></a></th>
+                                <th class="table-header-options line-left"></th>
                             </tr>
                             <% foreach (var item in Model)
                                { %>
@@ -45,20 +40,15 @@
                                     <input type="checkbox" />
                                 </td>
                                 <td>
-                                    <%: Html.DisplayFor(modelItem => item.StartDate) %>
+                                    <%: Html.DisplayFor(modelItem => item.CatName) %>
                                 </td>
                                 <td>
-                                    <%: Html.DisplayFor(modelItem => item.EndDate) %>
+                                    <%: Html.DisplayFor(modelItem => item.CatDescription) %>
                                 </td>
-                                <td>
-                                    <%: Html.DisplayFor(modelItem => item.Reason) %>
-                                </td>
-                                <td>
-                                    <%: Html.DisplayFor(modelItem => item.leavepolicy.PolicyName) %>
-                                </td>
-                                <td><%: Html.DisplayFor(modelItem => item.Status) %></td>
                                 <td class="options-width">
-                                    <%: Html.ActionLink(" ", "Delete", new { id = item.LeaveRequestId }, new { @class = "icon-2", title="Delete" }) %>      
+                                    <%: Html.ActionLink(" ", "Edit", new { id = item.CatId }, new { @class = "icon-1", title="More details/Edit" }) %>
+                                    <%: Html.ActionLink(" ", "Details", new { id = item.CatId }, new { @class = "icon-3" ,title="Details" }) %>
+                                    <%: Html.ActionLink(" ", "Delete", new { id = item.CatId }, new { @class = "icon-2", title="Delete" }) %>      
                                 </td>
                             </tr>
                             <% } %>
@@ -66,6 +56,7 @@
                         <div class="clear"></div>
 
                     </div>
+              </div>
                     <!--  end content-table-inner ............................................END  -->
             </td>
             <td id="tbl-border-right"></td>
@@ -77,7 +68,6 @@
         </tr>
     </table>
     <div class="clear">&nbsp;</div>
-
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="NavContent" runat="server">
@@ -92,11 +82,11 @@
     <% if (User.IsInRole("Accountant")) %>
     <% Html.RenderPartial("../Shared/Menu/AccountantMenu"); %>
 </asp:Content>
-  <asp:Content ID="Content4" ContentPlaceHolderID="MyAccount" runat="server">
-         <a href='<%: Url.Action("Edit/" + User.Identity.Name, "Employee") %>'>
-             <img src="../../../psbizsuite/Assets/Images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" />
-         </a>
- </asp:Content>  
-  <asp:Content ID="Content5" ContentPlaceHolderID="LogoImg" runat="server">
-         <img src="../../../psbizsuite/Assets/Images/shared/logo-Hr.png" height="40" alt="" />
- </asp:Content> 
+<asp:Content ID="Content4" ContentPlaceHolderID="MyAccount" runat="server">
+    <a href='<%: Url.Action("Edit/" + User.Identity.Name, "Employee") %>'>
+        <img src="../../../psbizsuite/Assets/Images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" />
+    </a>
+</asp:Content>
+<asp:Content ID="Content5" ContentPlaceHolderID="LogoImg" runat="server">
+    <img src="../../../psbizsuite/Assets/Images/shared/logo-Logistic.png" height="40" alt="" />
+</asp:Content>

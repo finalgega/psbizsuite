@@ -41,13 +41,12 @@
 				
             $( '.show-sticky' ).click( function () 
             {
-                var itemName = $('#MainContent_itemName').val();
+                var itemName = $('#itemName').val();
                 var messageTitle = "Inventory Item Added Successfully!";
                 var messageBody = itemName;
                 var notice = '<div class="notice">'
                           + '<div class="notice-body">' 
                               + '<img src="../../Assets/Images/shared/logo.png" alt="" />'
-                              + '<a class="close" onclick="removeNotice"/>'
                               + '<h3>' + messageTitle + '</h3>'
                               + '<p>' + messageBody + '</p>'
                           + '</div>'
@@ -67,6 +66,9 @@
             );
         }
                );
+        $('.notice').click(function () {
+            removeNotice();
+        });
         function useHTML5Notifications() {
             //  Checks if notifications is supported
             /**
