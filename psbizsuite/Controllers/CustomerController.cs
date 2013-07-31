@@ -170,6 +170,7 @@ namespace psbizsuite.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    alc.writeRecords(User.Identity.Name, "edit customer details", customer.UserAccount_Username);
                     if (password != "")
                     {
                         UserAccount customerAcc = new UserAccount();
@@ -178,17 +179,20 @@ namespace psbizsuite.Controllers
                         {
                             db.Entry(customer).State = EntityState.Modified;
                             db.SaveChanges();
-                            TempData["errorMsg"] = ""; 
+                            TempData["errorMsg"] = "";
+                            alc.writeSuccessRecords(User.Identity.Name, "create customer", customer.UserAccount_Username);
                             return RedirectToAction("Details/"+customer.UserAccount_Username, "Customer");
                         }
                     }
                     else {
-                        TempData["errorMsg"] = "Your entered details are incorrect. Please recheck"; 
+                        TempData["errorMsg"] = "Your entered details are incorrect. Please recheck";
+                        alc.writeFailedRecords(User.Identity.Name, "edit customer details", customer.UserAccount_Username);
                         return View(customer);
                     }
                 }
                 ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Password", customer.UserAccount_Username);
-                TempData["errorMsg"] = "Your entered details are incorrect. Please recheck"; 
+                TempData["errorMsg"] = "Your entered details are incorrect. Please recheck";
+                alc.writeFailedRecords(User.Identity.Name, "edit customer details", customer.UserAccount_Username);
                 return View("Edit", customer);
             }
             else
@@ -236,6 +240,7 @@ namespace psbizsuite.Controllers
                     {
                         UserAccount customerAcc = new UserAccount();
                         customerAcc = db.UserAccounts.Find(customer.UserAccount_Username);
+                        alc.writeRecords(User.Identity.Name, "change password", " ");
                         //if (password == customerAcc.Password)
                         if (Encryption.ValidatePassword(password, customerAcc.Password, customerAcc.Salt))
                         {
@@ -253,19 +258,21 @@ namespace psbizsuite.Controllers
                                 customerAcc.Salt = salt;
                                 customerAcc.Password = hash;
                                 db.SaveChanges();
+                                alc.writeSuccessRecords(User.Identity.Name, "change password", " ");
                                 return RedirectToAction("Details/" + customer.UserAccount_Username, "Customer");
                             }
                         }
                     }
                     else {
-                        TempData["errorMsg"] = "Your entered details are incorrect. Please recheck"; 
+                        TempData["errorMsg"] = "Your entered details are incorrect. Please recheck";
+                        alc.writeFailedRecords(User.Identity.Name, "change password", " ");
                         return View(customer); 
                     }
                 }
                 ViewBag.UserAccount_Username = new SelectList(db.UserAccounts, "Username", "Password", customer.UserAccount_Username);
                 
-                TempData["errorMsg"] = "Your entered details are incorrect. Please recheck"; 
-                //return RedirectToAction("Details/" + customer.UserAccount_Username, "Customer");
+                TempData["errorMsg"] = "Your entered details are incorrect. Please recheck";
+                alc.writeFailedRecords(User.Identity.Name, "change password", customer.UserAccount_Username);
                 return View(customer); 
                 }
             else
@@ -286,6 +293,7 @@ namespace psbizsuite.Controllers
                 {
                     return HttpNotFound();
                 }
+
                 return View(customer);
             }
             else
@@ -304,6 +312,7 @@ namespace psbizsuite.Controllers
             if (User.IsInRole("Sale"))
             {
                 Customer customer = db.Customers.Find(id);
+                alc.writeSuccessRecords(User.Identity.Name, "deleted a customer", customer.UserAccount_Username);
                 db.Customers.Remove(customer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
