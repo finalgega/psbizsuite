@@ -1,0 +1,4 @@
+# Introduction #
+Small and Medium Enterprises (**SMEs**) usually lack financial and human resources. By using BizSuite, our one-stop business solution, SMEs can avoid purchasing several costly licenses for various programs needed and additional security software and enhancements. You can save money buying hardware such as servers because BizSuite is running on the cloud. Using our business solution also promotes a green initiative by going paperless and also saves on paper and pen costs. In addition to reduce in training time and cost, employees’ productivity also is greatly increased because of our user-friendly interface.
+
+For an overview of our project. Please click this link : http://mrl.li/19UGTyj
